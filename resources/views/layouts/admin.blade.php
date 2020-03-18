@@ -51,8 +51,8 @@
         .sidenav a,.sidenav .dropdown-btn {
             padding: 8px 8px 8px 12px;
             text-decoration: none;
-            font-size: 20px;
-            color: #859398;
+            font-size: 18px;
+            color: #ffffff;
             display: block;
             border: none;
             background: none;
@@ -68,13 +68,14 @@
 
         .sidenav a:hover,.sidenav .dropdown-btn:hover {
             color: #000000;
+            background-color: #cae8bf;
         }
 
         .sidenav .closebtn {
             position: absolute;
             top: 0;
             font-size: 26px;
-            margin-left: 186px;
+            margin-left: 200px;
         }
 
         .sidenav .active {
@@ -131,7 +132,7 @@
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
                     <img class="image" src="https://www.w3schools.com/howto/img_avatar.png" style="width:106px">
-
+<br/><br/>
                     <a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
                     <a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
                     <a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>

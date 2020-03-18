@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Company;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -29,6 +30,14 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function show(Request $request)
+    {
+
+    }
+
+/***********************************************************************************/
+      /***************   control the companies    ***************************/
+
     public function companies(Request $request){
         if($request->ajax())
         {
@@ -46,11 +55,6 @@ class HomeController extends Controller
         }
 
         return view('admin.companies');
-
-    }
-
-    public function show(Request $request)
-    {
 
     }
 
@@ -83,4 +87,60 @@ class HomeController extends Controller
 
         return;
     }
+            /*********************** end companies *********************************/
+    /***********************************************************************************/
+
+    /***********************************************************************************/
+    /***************   control the users    ***************************/
+
+    public function users(Request $request){
+        if($request->ajax())
+        {
+            $data = User::latest()->get();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="edit" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.users');
+
+    }
+
+    public function editUser(Request $request,$id)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'mobile' => 'required',
+           // 'address' => 'required',
+        ]);
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->mobile = $request->input('mobile');
+        //$user->address = $request->input('address');
+        $user->save(); //persist the data
+        return view('admin.users');
+    }
+
+    public function updateUser(User $user){
+        return view('admin.userEdit',compact('user'));
+    }
+
+    public function deleteUser(Request $request){
+        $data = User::findOrFail($request->id);
+        $data->delete();
+
+        return;
+    }
+        /*********************** end companies *********************************/
+    /***********************************************************************************/
+
 }

@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Companies:</h1>
+        <h1>Users:</h1>
 
         <div align="right">
             <button  type="button" name="create_record" id="create_record" class="btn btn-success btn-sm" >Create Record</button>
@@ -55,7 +55,7 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('admin.companies') }}",
+                ajax: "{{ route('admin.users') }}",
 
                 columns: [
 
@@ -76,7 +76,7 @@
         });
 
         function update(id) {
-            window.location.href = 'company/'+id+'/update';
+            window.location.href = 'user/'+id+'/update';
             }
 
         function del(id) {
@@ -91,7 +91,7 @@
                 }
             };
             var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ Route("admin.company.delete") }}?id=" + id, true);
+            xhttp.open("get", "{{ Route("admin.user.delete") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 
