@@ -54,7 +54,7 @@ class HomeController extends Controller
 
     }
 
-    public function edit(Request $request,$id)
+    public function editCompany(Request $request,$id)
     {
         $data = request()->validate([
             'name' => 'required',
@@ -73,7 +73,7 @@ class HomeController extends Controller
         return view('admin.companies');
     }
 
-    public function update(Company $company){
+    public function updateCompany(Company $company){
         return view('admin.companyEdit',compact('company'));
     }
 

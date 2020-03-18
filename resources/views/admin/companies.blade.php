@@ -77,7 +77,7 @@
 
         function update(id) {
 
-            window.location.href = '/company/'+id+'/update';
+            window.location.href = 'company/'+id+'/update';
             //var xhttp = new XMLHttpRequest();
            // xhttp.onreadystatechange = function() {
            //     if (this.readyState == 4 && this.status == 200) {
@@ -104,7 +104,7 @@
                 }
             };
             var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ Route("company.delete") }}?id=" + id, true);
+            xhttp.open("get", "{{ Route("admin.company.delete") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 

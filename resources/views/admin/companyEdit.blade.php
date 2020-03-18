@@ -10,7 +10,7 @@
                 <div class="row">
                     <h1>Edit Profile</h1>
                 </div>
-                <form method="POST" action="{{ route('company.edit',$company->id) }}">
+                <form method="POST" action="{{ route('admin.company.edit',$company->id) }}">
                     @csrf
 
 

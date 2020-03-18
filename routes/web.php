@@ -22,9 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin', 'admin\HomeController@index')->name('admin');
 
-Route::get('/company/{company}/update', 'admin\HomeController@update')->name('company.update');
-Route::get('/company/delete', 'admin\HomeController@deleteCompany')->name('company.delete');
-Route::post('/company/{id}/edit', 'admin\HomeController@edit')->name('company.edit');
+
 
 
 
@@ -33,6 +31,9 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
     Route::get('/home', 'HomeController@index');
     Route::get('/companies', 'HomeController@companies')->name('companies');
-    //Route::get('companies', ['uses'=>'HomeController@companies', 'as'=>'admin.companies']);
+    Route::get('/company/{company}/update', 'HomeController@updateCompany')->name('company.update');
+    Route::get('/company/delete', 'HomeController@deleteCompany')->name('company.delete');
+    Route::post('/company/{id}/edit', 'HomeController@editCompany')->name('company.edit');
+
 });
 
