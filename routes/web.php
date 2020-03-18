@@ -41,5 +41,8 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/user/delete', 'HomeController@deleteUser')->name('user.delete');
     Route::post('/user/{id}/edit', 'HomeController@editUser')->name('user.edit');
 
+    Route::get('/orders', 'HomeController@orders')->name('orders');
+    Route::get('/order/done', 'HomeController@done')->name('order.done');
+    Route::get('/order/{order}/items', 'HomeController@orderItems')->name('order.items');
 });
 

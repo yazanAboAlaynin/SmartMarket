@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Company;
 use App\Http\Controllers\Controller;
+use App\Order;
+use App\Order_item;
 use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -140,7 +142,61 @@ class HomeController extends Controller
 
         return;
     }
-        /*********************** end companies *********************************/
+        /*********************** end users *********************************/
+    /***********************************************************************************/
+
+    /***********************************************************************************/
+    /***************   control the orders    ***************************/
+
+    public function orders(Request $request){
+
+        if($request->ajax())
+        {
+            $data = Order::where('done','=',0)->get();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="done" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>done</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=show('.$data->id.')>view</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.orders');
+
+    }
+
+    public function done(Request $request){
+        $data = Order::findOrFail($request->id);
+        $data->done = 1;
+        $data->save();
+        return "yes";
+    }
+
+    public function showOrder(Order $order){
+        return view('admin.orderShow',compact('order'));
+    }
+
+    public function orderItems(Order $order){
+
+        if(request()->ajax())
+        {
+            $items = Order_item::all();
+            return DataTables::of($items)
+                ->addColumn('action', function($items){
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.orderShow',compact('order'));
+    }
+
+    /*********************** end users *********************************/
     /***********************************************************************************/
 
 }
