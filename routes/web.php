@@ -34,7 +34,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/companies', 'HomeController@companies')->name('companies');
     Route::get('/company/{company}/update', 'HomeController@updateCompany')->name('company.update');
     Route::get('/company/delete', 'HomeController@deleteCompany')->name('company.delete');
+    Route::get('/company/approve', 'HomeController@approve')->name('company.approve');
     Route::post('/company/{id}/edit', 'HomeController@editCompany')->name('company.edit');
+    Route::get('/pending/companies', 'HomeController@pendingCompanies')->name('pendingCompanies');
+
 
     Route::get('/users', 'HomeController@users')->name('users');
     Route::get('/user/{user}/update', 'HomeController@updateUser')->name('user.update');
@@ -44,5 +47,6 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/orders', 'HomeController@orders')->name('orders');
     Route::get('/order/done', 'HomeController@done')->name('order.done');
     Route::get('/order/{order}/items', 'HomeController@orderItems')->name('order.items');
+    Route::get('/old/orders', 'HomeController@oldOrders')->name('oldOrders');
 });
 

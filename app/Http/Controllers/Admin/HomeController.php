@@ -41,15 +41,17 @@ class HomeController extends Controller
       /***************   control the companies    ***************************/
 
     public function companies(Request $request){
+
         if($request->ajax())
         {
-            $data = Company::latest()->get();
+            $data = Company::where('approved','=','1')->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" 
                     class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
+
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -80,15 +82,45 @@ class HomeController extends Controller
     }
 
     public function updateCompany(Company $company){
+
         return view('admin.companyEdit',compact('company'));
     }
 
     public function deleteCompany(Request $request){
+
         $data = Company::findOrFail($request->id);
         $data->delete();
 
         return;
     }
+
+    public function pendingCompanies(Request $request){
+
+        if($request->ajax())
+        {
+
+            $data = Company::where('approved','=',"0")->get();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="approve" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>approve</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.pendingCompanies');
+    }
+
+    public function approve(Request $request){
+
+        $data = Company::findOrFail($request->id);
+        $data->approved = 1;
+        $data->save();
+        return "yes";
+    }
+
             /*********************** end companies *********************************/
     /***********************************************************************************/
 
@@ -173,7 +205,7 @@ class HomeController extends Controller
         $data = Order::findOrFail($request->id);
         $data->done = 1;
         $data->save();
-        return "yes";
+        return;
     }
 
     public function showOrder(Order $order){
@@ -196,7 +228,24 @@ class HomeController extends Controller
         return view('admin.orderShow',compact('order'));
     }
 
-    /*********************** end users *********************************/
+    public function oldOrders(Request $request){
+        if($request->ajax())
+        {
+            $data = Order::where('done','=',1)->get();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="show" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=show('.$data->id.')>view</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.oldOrders');
+    }
+
+    /*********************** end orders *********************************/
     /***********************************************************************************/
 
 }

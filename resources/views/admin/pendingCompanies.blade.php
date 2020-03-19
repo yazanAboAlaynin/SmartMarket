@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Companies:</h1>
+        <h1>Pending Companies:</h1>
 
         <div align="right">
             <button  type="button" name="create_record" id="create_record" class="btn btn-success btn-sm" >Create Record</button>
@@ -55,7 +55,7 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('admin.companies') }}",
+                ajax: "{{ route('admin.pendingCompanies') }}",
 
                 columns: [
 
@@ -75,23 +75,19 @@
 
         });
 
-        function update(id) {
-            window.location.href = 'company/'+id+'/update';
-        }
-
-        function del(id) {
+        function done(id) {
 
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     //document.getElementById("test").innerHTML = this.responseText;
-                    //window.alert("deleted successfuly id = "+this.responseText);
+                    window.alert("deleted successfuly id = "+this.responseText);
                     $('.data-table').DataTable().ajax.reload();
-                    alert('Data Deleted');
+                    alert('succsess');
                 }
             };
             var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ route("admin.company.delete") }}?id=" + id, true);
+            xhttp.open("get", "{{ Route("admin.company.approve") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 
