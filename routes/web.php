@@ -49,5 +49,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
 Route::namespace('Company')->prefix('company')->as('company.')->group(function() {
     Auth::routes();
     Route::get('/home', 'CompanyController@index');
+    Route::get('/register', 'auth\RegisterController@index')->name('register');
+    Route::post('/create', 'auth\RegisterController@register')->name('create');
 
 });
