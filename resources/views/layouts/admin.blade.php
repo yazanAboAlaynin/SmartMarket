@@ -85,7 +85,7 @@
 
         .sidenav .dropdown-container {
             display: none;
-            background-color: #536976;
+            background-color: #526b72;
             padding-left: 8px;
         }
 
