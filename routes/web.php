@@ -52,9 +52,9 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
-    Route::get('/create', 'CompanyController@addproduct')->name('create');
-    Route::get('/company', 'CompanyController@company')->name('company');
+    Route::get('/add/product', 'CompanyController@addProduct')->name('add.product');
+    Route::post('/store/product', 'CompanyController@storeProduct')->name('store.product');
     
-    Route::get('/{id}/products', 'CompanyController@products')->name('products');
+    Route::get('/products', 'CompanyController@products')->name('products');
 
 });

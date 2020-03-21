@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Company;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
 {
@@ -27,13 +30,16 @@ class CompanyController extends Controller
         return view('home');
     }
 
-  
+    /***********************************************************************************/
+            /***************    Products    ***************************/
 
-    public function products(Company $company){
+    public function products()
+    {
+        $id = auth()->guard('company')->user()->id;
 
         if(request()->ajax())
         {
-            $items = Product::where('company_id','=',$company->id)->get();
+            $items = Product::where('company_id','=',$id)->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
 
@@ -42,11 +48,15 @@ class CompanyController extends Controller
                 ->make(true);
         }
 
-        return view('company.products',compact('company'));
+        return view('company.products',compact('id'));
+    }
+
+    public function addProduct(){
+        return view('company.addProduct');
     }
 
 
-    public function addproduct(Request $request){
+    public function storeProduct(Request $request){
 
         request()->validate([
             'name' => 'required',
@@ -54,53 +64,33 @@ class CompanyController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'required',
-            'company_id' => 'required',
+            //'company_id' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
         ]);
 
         $data = $request->all();
+
         $check = $this->create($data);
-        return redirect('company/addproduct');
+        return view('company.products');
     }
 
     public function create(array $data)
     {
-        return Company::create([
+        return Product::create([
             'name' => $data['name'],
             'description' => $data['description'],
             'price' => $data['price'],
             'quantity' => $data['quantity'],
             'image' => $data['image'],
-            'company_id' => $data['company_id'],
+            'company_id' => 15,
             'category_id' => $data['category_id'],
             'brand_id' => $data['brand_id'],
             'discount' => $data['discount'],
         ]);
     }
 
-    public function company(Request $request){
-
-        if($request->ajax())
-        {
-            $data = Company::latest()->get();
-            return DataTables::of($data)
-                ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'" 
-                    class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
-                    class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
-
-                    return $button;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-        return view('company.company');
-
-    }
 
     public function editCompany(Request $request,$id)
     {
