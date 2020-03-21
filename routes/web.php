@@ -52,4 +52,6 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
+    Route::get('/create', 'HomeController@addproduct')->name('create');
+
 });
