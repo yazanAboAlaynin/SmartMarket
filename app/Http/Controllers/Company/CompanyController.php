@@ -73,7 +73,7 @@ class CompanyController extends Controller
         $data = $request->all();
 
         $check = $this->create($data);
-        return view('company.products');
+        return redirect('company/products');
     }
 
     public function create(array $data)
