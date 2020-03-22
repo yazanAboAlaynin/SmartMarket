@@ -104,13 +104,14 @@
                     @endif
 
                 </div>
-
+                    <div class="row">
+                        <button class="btn btn-primary"  style="margin-top:30px">Save Profile</button>
+                    </div>
+                </form>
             </div>
         </div>
 
-        <div class="row">
-            <button class="btn btn-primary"  style="margin-top:30px">Save Profile</button>
-        </div>
+
 
         <br>
 

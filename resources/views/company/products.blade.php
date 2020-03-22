@@ -80,7 +80,7 @@
         });
 
         function update(id) {
-            window.location.href = 'company/'+id+'/update';
+            window.location.href = 'product/'+id+'/update';
         }
 
         function del(id) {
@@ -94,8 +94,8 @@
                     alert('Data Deleted');
                 }
             };
-            var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ route("admin.company.delete") }}?id=" + id, true);
+
+            xhttp.open("get", "{{ route("company.product.delete") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 

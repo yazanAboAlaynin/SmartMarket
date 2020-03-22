@@ -42,7 +42,12 @@ class CompanyController extends Controller
             $items = Product::where('company_id','=',$id)->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
+                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
 
+                    return $button;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -84,7 +89,7 @@ class CompanyController extends Controller
             'price' => $data['price'],
             'quantity' => $data['quantity'],
             'image' => $data['image'],
-            'company_id' => 15,
+            'company_id' => auth()->guard('company')->user()->id,
             'category_id' => $data['category_id'],
             'brand_id' => $data['brand_id'],
             'discount' => $data['discount'],
@@ -92,41 +97,41 @@ class CompanyController extends Controller
     }
 
 
-    public function editCompany(Request $request,$id)
+    public function editProduct(Product $product,Request $request)
     {
+
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'image' => 'required',
-            'company_id' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
         ]);
-        $company = Company::find($id);
-        $company->name = $request->input('name');
-        $company->description = $request->input('description');
-        $company->price = $request->input('price');
-        $company->quantity = $request->input('quantity');
-        $company->image = $request->input('image');
-        $company->company_id = $request->input('company_id');
-        $company->category_id = $request->input('category_id');
-        $company->brand_id = $request->input('brand_id');
-        $company->discount = $request->input('discount');
-        $company->save(); //persist the data
-        return view('company.company');
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->quantity = $request->input('quantity');
+        $product->image = $request->input('image');
+        $product->category_id = $request->input('category_id');
+        $product->brand_id = $request->input('brand_id');
+        $product->discount = $request->input('discount');
+        $product->save(); //persist the data
+
+        return redirect('company/products');
     }
 
-    public function updateCompany(Company $company){
+    public function updateProduct(Product $product){
 
-        return view('company.companyEdit',compact('company'));
+        return view('company.productEdit',compact('product'));
     }
 
-    public function deleteCompany(Request $request){
+    public function deleteProduct(Request $request){
 
-        $data = Company::findOrFail($request->id);
+        $data = Product::findOrFail($request->id);
         $data->delete();
 
         return;

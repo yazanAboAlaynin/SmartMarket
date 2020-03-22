@@ -56,5 +56,8 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::post('/store/product', 'CompanyController@storeProduct')->name('store.product');
     
     Route::get('/products', 'CompanyController@products')->name('products');
+    Route::get('/product/{product}/update', 'CompanyController@updateProduct')->name('product.update');
+    Route::post('/product/{product}/edit', 'CompanyController@editProduct')->name('product.edit');
+    Route::get('/product/delete', 'CompanyController@deleteProduct')->name('product.delete');
 
 });
