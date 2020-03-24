@@ -23,8 +23,6 @@
 
                 <th>price</th>
 
-                <th width="100px">Action</th>
-
             </tr>
 
             </thead>
@@ -65,7 +63,6 @@
 
                     {data: 'price', name: 'price'},
 
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
 
                 ]
 
