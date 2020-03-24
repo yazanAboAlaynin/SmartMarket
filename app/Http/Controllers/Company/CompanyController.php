@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Company;
 use App\Http\Controllers\Controller;
 use App\Order;
+use App\Order_item;
 use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -171,17 +172,13 @@ class CompanyController extends Controller
         return;
     }
 
-    public function showOrder(Order $order){
-        return view('company.orderShow',compact('order'));
-    }
+
 
     public function orderItems(Order $order){
 
-        $id = auth()->guard('order')->user()->id;
-
         if(request()->ajax())
         {
-            $items = Order_item::where('order_id','=',$id)->get();
+            $items = Order_item::where('order_id','=',$order->id)->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
 

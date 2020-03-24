@@ -208,15 +208,12 @@ class HomeController extends Controller
         return;
     }
 
-    public function showOrder(Order $order){
-        return view('admin.orderShow',compact('order'));
-    }
 
     public function orderItems(Order $order){
 
         if(request()->ajax())
         {
-            $items = Order_item::all();
+            $items = Order_item::where('order_id','=',$order->id)->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
 

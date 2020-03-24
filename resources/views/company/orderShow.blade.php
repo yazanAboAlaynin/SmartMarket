@@ -85,7 +85,7 @@
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     //document.getElementById("test").innerHTML = this.responseText;
-                    window.alert("deleted successfuly id = "+this.responseText);
+                  //  window.alert("deleted successfuly id = "+this.responseText);
                     $('.data-table').DataTable().ajax.reload();
                     alert('Data Deleted');
                 }
