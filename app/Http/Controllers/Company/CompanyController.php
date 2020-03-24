@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Company;
 
 use App\Company;
 use App\Http\Controllers\Controller;
+use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
