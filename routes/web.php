@@ -62,8 +62,8 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
 
     Route::get('/orders', 'CompanyController@orders')->name('orders');
     Route::get('/order/{order}/items', 'CompanyController@orderItems')->name('order.items');
-    Route::get('/order/done', 'HomeController@done')->name('order.done');
-    Route::get('/order/{order}/items', 'HomeController@orderItems')->name('order.items');
-    Route::get('/old/orders', 'HomeController@oldOrders')->name('oldOrders');
+    Route::get('/order/done', 'CompanyController@done')->name('order.done');
+    Route::get('/order/{order}/items', 'CompanyController@orderItems')->name('order.items');
+    Route::get('/old/orders', 'CompanyController@oldOrders')->name('oldOrders');
 
 });
