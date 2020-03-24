@@ -83,6 +83,10 @@
             color: #000000;
         }
 
+        #mySidenav {
+            box-shadow: 6px 1px 7px #526b729e;
+        }
+
         .sidenav .dropdown-container {
             display: none;
             background-color: #526b72;
