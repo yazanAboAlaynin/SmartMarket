@@ -136,4 +136,60 @@ class CompanyController extends Controller
 
         return;
     }
+
+
+        /***********************************************************************************/
+    /***************  show orders    ***************************/
+
+    public function orders(Request $request){
+
+        if($request->ajax())
+        {
+            $data = Order::where('done','=',0)->get();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="done" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>done</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=show('.$data->id.')>view</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('company.orders');
+
+    }
+
+    
+    public function done(Request $request){
+        $data = Order::findOrFail($request->id);
+        $data->done = 1;
+        $data->save();
+        return;
+    }
+
+    public function showOrder(Order $order){
+        return view('company.orderShow',compact('order'));
+    }
+
+    public function orderItems(Order $order){
+
+        $id = auth()->guard('order')->user()->id;
+
+        if(request()->ajax())
+        {
+            $items = Order_item::where('order_id','=',$id)->get();
+            return DataTables::of($items)
+                ->addColumn('action', function($items){
+
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('company.orderShow',compact('order'));
+    }
+
 }
