@@ -139,9 +139,12 @@ class CompanyController extends Controller
         return;
     }
 
+    /*********************** end products *********************************/
+    /***********************************************************************************/
+
 
         /***********************************************************************************/
-    /***************  show orders    ***************************/
+    /***************   orders    ***************************/
 
     public function orders(Request $request){
 
@@ -173,7 +176,6 @@ class CompanyController extends Controller
     }
 
 
-
     public function orderItems(Order $order){
 
         if(request()->ajax())
@@ -189,5 +191,8 @@ class CompanyController extends Controller
 
         return view('company.orderShow',compact('order'));
     }
+
+    /*********************** end orders *********************************/
+    /***********************************************************************************/
 
 }
