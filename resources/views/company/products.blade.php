@@ -69,7 +69,7 @@
                         "name": "image",
                         "data": "image",
                         "render": function (data, type, full, meta) {
-                            return "<img src=\"/storage/" + data + "\" height=\"50\" />";
+                            return "<img src=\"/storage/" + data + "\" height=\"60\" />";
                         },
                         "title": "Image",
                         "orderable": true,
