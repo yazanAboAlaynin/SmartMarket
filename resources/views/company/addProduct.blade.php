@@ -139,7 +139,7 @@
                 
 
                         <div class="form-group text-center">
-                            <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Add New Post</button>
+                            <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Add Product</button>
                         </div>
                     </form>
                 </div>
