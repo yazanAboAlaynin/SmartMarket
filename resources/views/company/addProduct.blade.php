@@ -5,9 +5,9 @@
 <div class="container pt-2">
 
 <div class="row justify-content-center ">
-    <div class="col-md-6">
+    <div class="col-md-8">
 
-           <div class="card">
+           <div class="card"> 
 
                    <div class="card-header">
                         <h1>add new product</h1>
