@@ -19,6 +19,8 @@
 
                 <th>id</th>
 
+                <th>image</th>
+
                 <th>Name</th>
 
                 <th>Description</th>
@@ -62,6 +64,17 @@
                 columns: [
 
                     {data: 'id', name: 'id'},
+
+                    {
+                        "name": "image",
+                        "data": "image",
+                        "render": function (data, type, full, meta) {
+                            return "<img src=\"/storage/" + data + "\" height=\"50\" />";
+                        },
+                        "title": "Image",
+                        "orderable": true,
+                        "searchable": true
+                    },
 
                     {data: 'name', name: 'name'},
 
