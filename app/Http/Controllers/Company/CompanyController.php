@@ -86,7 +86,7 @@ class CompanyController extends Controller
 
             // for save original image
             $imagePath = request('image')->store('images','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
             $image->save();
         }
         $p = new Product();
