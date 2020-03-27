@@ -70,10 +70,14 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
-                        <label for="category" class="col-md-4 control-label">category</label>
 
+                        <label for="category_id" class="col-md-4 control-label">category</label>
+                                <select class="form-control" name="category_id" id="category_id" required autofocus>
+                                    @foreach($categories as $c)
+                                    <option value = "{{ $c->id }}">{{ $c->name }}</option>
+                                    @endforeach
+                                </select>
 
-                        <input id="category_id" type="text" class="form-control" name="category_id" value="{{ old('category_id') }}" required autofocus>
 
                         @if ($errors->has('category_id'))
                             <span class="help-block">
@@ -84,10 +88,13 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('brand_id') ? ' has-error' : '' }}">
+
                         <label for="brand_id" class="col-md-4 control-label">brand</label>
-
-
-                        <input id="brand_id" type="text" class="form-control" name="brand_id" value="{{ old('brand_id') }}" required autofocus>
+                                <select class="form-control" name="brand_id" id = "brand_id" >
+                                    @foreach($brands as $b)
+                                        <option value = "{{ $b->id }}">{{ $b->name }}</option>
+                                    @endforeach
+                                </select>
 
                         @if ($errors->has('brand_id'))
                             <span class="help-block">

@@ -78,7 +78,7 @@ class HomeController extends Controller
         $company->phone = $request->input('phone');
         $company->address = $request->input('address');
         $company->save(); //persist the data
-        return view('admin.companies');
+        return redirect('admin/companies');
     }
 
     public function updateCompany(Company $company){
@@ -161,7 +161,7 @@ class HomeController extends Controller
         $user->mobile = $request->input('mobile');
         //$user->address = $request->input('address');
         $user->save(); //persist the data
-        return view('admin.users');
+        return redirect('admin/users');
     }
 
     public function updateUser(User $user){

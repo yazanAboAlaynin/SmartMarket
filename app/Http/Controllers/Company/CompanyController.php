@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Company;
 
+use App\Brand;
+use App\Category;
 use App\Company;
 use App\Http\Controllers\Controller;
 use App\Order;
@@ -29,7 +31,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('company.home');
     }
 
     /***********************************************************************************/
@@ -59,7 +61,9 @@ class CompanyController extends Controller
     }
 
     public function addProduct(){
-        return view('company.addProduct');
+        $categories = Category::all();
+        $brands = Brand::all();
+        return view('company.addProduct',compact('categories','brands'));
     }
 
 
