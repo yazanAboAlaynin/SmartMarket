@@ -10,7 +10,9 @@ use App\Order;
 use App\Order_item;
 use App\Product;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\Facades\DataTables;
+
 
 class CompanyController extends Controller
 {
@@ -74,34 +76,34 @@ class CompanyController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             //'company_id' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
         ]);
+        if ($files = $request->file('image')) {
 
-        $data = $request->all();
+            // for save original image
+            $imagePath = request('image')->store('images','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200,1200);
+            $image->save();
+        }
+        $p = new Product();
 
-        $check = $this->create($data);
+        $p->name = request()->name;
+        $p->price = request()->price;
+        $p->description = request()->description;
+        $p->image = $imagePath;
+        $p->quantity = request()->quantity;
+        $p->company_id = auth()->guard('company')->user()->id;
+        $p->category_id = request()->category_id;
+        $p->brand_id = request()->brand_id;
+        $p->discount = request()->discount;
+        $p->save();
+
         return redirect('company/products');
     }
-
-    public function create(array $data)
-    {
-        return Product::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'price' => $data['price'],
-            'quantity' => $data['quantity'],
-            'image' => $data['image'],
-            'company_id' => auth()->guard('company')->user()->id,
-            'category_id' => $data['category_id'],
-            'brand_id' => $data['brand_id'],
-            'discount' => $data['discount'],
-        ]);
-    }
-
 
     public function editProduct(Product $product,Request $request)
     {
