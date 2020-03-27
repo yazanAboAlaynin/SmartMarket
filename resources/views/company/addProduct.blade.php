@@ -36,7 +36,7 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
 
-                            <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autofocus>
+                            <textarea id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autofocus></textarea>
 
                             @if ($errors->has('description'))
                                 <span class="help-block">
