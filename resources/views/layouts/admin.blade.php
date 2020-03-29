@@ -165,7 +165,7 @@
                     </div>
 
                 </div>
-                <span class="myclass" style="cursor: pointer;" onclick="openNav()">&#9776;</span>
+                <span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>
                 <a class="navbar-brand" id="main" style="padding-left: 40px" href="{{ url('/admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
