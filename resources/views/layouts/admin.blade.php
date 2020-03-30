@@ -137,31 +137,32 @@
 
                     <img class="image" src="/storage/2.jpg" style="width:106px">
 <br/><br/>
-                    <a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
-                    <a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
-                    <a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
-                    <a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>
+                    <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
+                    <a href="{{ Route('admin.home') }}"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
+                    <a href="{{ Route('admin.home') }}"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
+                    <a href="#"><i class="fa fa-handshake-o" style="font-size:24px"></i> Products</a>
+
                     <button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <a href="#">Show Companies</a>
-                        <a href="#">Add New Company</a>
-                        <a href="#">Delete Company</a>
+                        <a href="{{ Route('admin.companies') }}"><i class="fa " style="font-size:24px"></i> companies</a>
+                        <a href="{{ Route('admin.pendingCompanies') }}"><i class="fa " style="font-size:24px"></i> company requests</a>
+
                     </div>
                     <button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <a href="#">Show Customer</a>
-                        <a href="#">Delete Customer</a>
+                        <a href="{{ Route('admin.users') }}"><i class="fa " style="font-size:24px"></i> Customers</a>
+
                     </div>
                     <button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <a href="#">Show Orders</a>
-                        <a href="#">Show Old Orders</a>
+                        <a href="{{ Route('admin.orders') }}"><i class="fa " style="font-size:24px"></i> Orders</a>
+                        <a href="{{ Route('admin.oldOrders') }}"><i class="fa " style="font-size:24px"></i> old Orders</a>
                     </div>
 
                 </div>

@@ -25,7 +25,7 @@ Route::get('/admin', 'admin\HomeController@index')->name('admin');
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/companies', 'HomeController@companies')->name('companies');
     Route::get('/company/{company}/update', 'HomeController@updateCompany')->name('company.update');
@@ -48,7 +48,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
 
 Route::namespace('Company')->prefix('company')->as('company.')->group(function() {
     Auth::routes();
-    Route::get('/home', 'CompanyController@index');
+    Route::get('/home', 'CompanyController@index')->name('home');
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
