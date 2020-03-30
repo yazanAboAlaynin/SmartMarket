@@ -9,14 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -30,10 +25,13 @@
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Gelasio', serif;
+
         }
 
         body {
             background: #f1f1f1;
+
         }
 
         .leftcolumn {
@@ -282,12 +280,12 @@
             width: 80%;
             padding-left:20px;
             color:#E2E2E2;
-         
+
         }
         .feature-box {
             padding-top:20px;
         }
-        
+
 
         /* Footer */
         .footer {
@@ -339,39 +337,37 @@
             }
         }
     </style>
+
 </head>
 <body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-<div class="header">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    </ul>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="navbar-nav ml-auto">
-                    <!-- Authentication Links -->
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('register'))
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                        @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -390,389 +386,167 @@
                                     </form>
                                 </div>
                             </li>
-                            @endguest
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+<div class="row">
+    <div class="rightcolumn">
+        <div class="card">
+                <div>
+                    <i class="fa fa-bars" id="menu-btn-open" style="font-size:22px;margin-left: 1px;" onclick="openmenu()"></i>
+                    <i class="fa fa-times" id="menu-btn-close" style="font-size:22px" onclick="closemenu()"></i>
+                </div>
+            <div class="sidenav" id="sidenav">
+
+                <ul>
+                    <li>Home <i class="fa fa-angle-right" style="font-size:22px"></i>
+                    <ul>
+                        <li>categories</li>
+                        <li>rr</li>
+                    </ul>
+                    </li>
+                    <li>off Click <i class="fa fa-angle-right" style="font-size:22px"></i>
+                    <ul>
+                        <li>categories</li>
+                        <li>rrmm</li>
+                    </ul>
+                    </li>
+                    <li>On Click <i class="fa fa-angle-right" style="font-size:22px"></i>
+                    <ul>
+                        <li>categories</li>
+                        <li>rr</li>
+                    </ul>
+                    </li>
+                    <li>On Click <i class="fa fa-angle-right" style="font-size:22px"></i>
+                    <ul>
+                        <li>categories</li>
+                        <li>rr</li>
+                    </ul>
+                    </li>
+
+                <li> <a href="#"><i class="fa fa-shopping-basket" style="font-size:22px"></i> Card</a></li>
                 </ul>
             </div>
-        </div>
-    </nav>
-</div>
+      </div>
+   </div>
 
 
-
-
-
-<div class="leftcolumn">
-
-
-<div class="card">
-    <div class="slider">
-        <div id="slider" class="carousel slide carousel-fade" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="/storage/2.jpg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/2.jpg" class="d-block w-100">
-                </div>
-                <div class="carousel-item">
-                    <img src="/storage/2.jpg" class="d-block w-100">
-                </div>
-                <ol class="carousel-indicators">
-                    <li data-target="#slider" data-slide-to="0" class="active"></li>
-                    <li data-target="#slider" data-slide-to="1"></li>
-                    <li data-target="#slider" data-slide-to="2"></li>
-                </ol>
-            </div>
-        </div>
-    </div>
-</div>
-<!------------------------           ------------------------------------->
-<div class="card">
-    <section class="featured-categories">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="/storage/2.jpg" >
-                </div>
-                <div class="col-md-4">
-                    <img src="/storage/2.jpg">
-                </div>
-                <div class="col-md-4">
-                    <img src="/storage/2.jpg">
-                </div>
-                <div class="col-md-4">
-                    <img src="/storage/2.jpg">
-                </div>
-                <div class="col-md-4">
-                    <img src="/storage/2.jpg">
+   <div class="leftcolumn">
+      <div class="card">
+            <div class="slider">
+                <div id="slider" class="carousel slide carousel-fade" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/storage/2.jpg" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/storage/2.jpg" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/storage/2.jpg" class="d-block w-100">
+                        </div>
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider" data-slide-to="1"></li>
+                            <li data-target="#slider" data-slide-to="2"></li>
+                        </ol>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-------------------------------             --------------------------------------->
-    <section class="on-sale">
-        <div class="container">
-            <div class="title-box">
-                <h2>On Sale</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>Watch</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>Watch</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>Watch</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>Watch</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!--------------------------------               --------------------------------------->
-    <section class="new-products">
-        <div class="container">
-            <div class="title-box">
-                <h2>new Arrivals</h2>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>shoes</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>shoes</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>shoes</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="product-top">
-                        <img src="/storage/2.jpg" class="d-block w-100">
-                        <div class="overlay-right">
-                            <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                <i class="fa fa-eye"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="btn btn-secondary" title="Add to Cart">
-                                <i class="fa fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="product-bottom text-center">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <h3>shoes</h3>
-                        <h5>5000</h5>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-</div>
-
-</div>
-</div>
 
 
 
+        <main class="py-4">
+            @yield('content')
+        </main>
 
 
 
+       <div class="footer">
 
-
-
-       
-
-
-<div class="footer">
-
-    <section class="website-features">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 feature-box">
-                            <i class="fa fa-tachometer" style="font-size:50px"></i>
-                            <div class="feature-text">
-                            <p><b>100% Original item</b> are available at company</p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 feature-box">
-                            <i class="fa fa-truck" style="font-size:50px"></i>
-                            <div class="feature-text">
-                            <p><b>Get free delivery for every</b> order on more than price.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 feature-box">
-                                 <i class="fa fa-retweet" style="font-size:47px"></i>
-                                <div class="feature-text">
-                                 <p><b>Return within 3 days</b> of receiving your order.</p>
+            <section class="website-features">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-4 feature-box">
+                                    <i class="fa fa-tachometer" style="font-size:50px"></i>
+                                    <div class="feature-text">
+                                    <p><b>100% Original item</b> are available at company</p>
+                                    </div>
                                 </div>
+
+                                <div class="col-md-4 feature-box">
+                                    <i class="fa fa-truck" style="font-size:50px"></i>
+                                    <div class="feature-text">
+                                    <p><b>Get free delivery for every</b> order on more than price.</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 feature-box">
+                                        <i class="fa fa-retweet" style="font-size:47px"></i>
+                                        <div class="feature-text">
+                                        <p><b>Return within 3 days</b> of receiving your order.</p>
+                                        </div>
+                                </div>
+
+                            </div>
                         </div>
+            </section>
 
+            <!------------              --------------------------->
+            <section class="footer">
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h1>Useful Links</h1>
+                            <a href="">Profile</a>
+                            <a href="">On Sale</a>
+                            <a href="">Cart</a>
+                        </div>
+                        <div class="col-md-3">
+                            <h1>Company</h1>
+                            <a href="">About Us</a>
+                            <a href="">Contact Us</a>
+                            <a href="">Career</a>
+                        </div>
+                        <div class="col-md-3">
+                            <h1>Follow Us On</h1>
+                            <a href=""><i class="fa fa-facebook-official" style="font-size:17px;"></i> Facebook</a>
+                            <a href=""><i class="fa fa-instagram" style="font-size:17px"></i> Instagram</a>
+                            <a href=""><i class="fa fa-telegram" style="font-size:17px"></i> Telegram</a>
+                        </div>
+                        <div class="col-md-3 footer-image">
+                            <h1>Download App</h1>
+                            <img src="/storage/ggg.jpg">
+                        </div>
                     </div>
+                    <hr>
+                    <p class="copyright">Smart Market <i class="fa fa-heart-o"></i> </p>
                 </div>
-     </section>
-
-    <!------------              --------------------------->
-    <section class="footer">
-        <div class="container text-center">
-            <div class="row">
-                <div class="col-md-3">
-                    <h1>Useful Links</h1>
-                    <a href="">Profile</a>
-                    <a href="">On Sale</a>
-                    <a href="">Cart</a>
-                </div>
-                <div class="col-md-3">
-                    <h1>Company</h1>
-                    <a href="">About Us</a>
-                    <a href="">Contact Us</a>
-                    <a href="">Career</a>
-                </div>
-                <div class="col-md-3">
-                    <h1>Follow Us On</h1>
-                    <a href=""><i class="fa fa-facebook-official" style="font-size:17px;"></i> Facebook</a>
-                    <a href=""><i class="fa fa-instagram" style="font-size:17px"></i> Instagram</a>
-                    <a href=""><i class="fa fa-telegram" style="font-size:17px"></i> Telegram</a>
-                </div>
-                <div class="col-md-3 footer-image">
-                    <h1>Download App</h1>
-                    <img src="/storage/ggg.jpg">
-                </div>
-            </div>
-            <hr>
-            <p class="copyright">Smart Market <i class="fa fa-heart-o"></i> </p>
-        </div>
-    </section>
-</div>
+            </section>
+    </div>
 
 
 
 <script>
-    function openmenu() {
-        document.getElementById("sidenav").style.display="block";
-        document.getElementById("menu-btn-open").style.display="none";
-        document.getElementById("menu-btn-close").style.display="block";
-    }
-    function closemenu() {
-        document.getElementById("sidenav").style.display="none";
-        document.getElementById("menu-btn-open").style.display="block";
-        document.getElementById("menu-btn-close").style.display="none";
-    }
+function openmenu() {
+    document.getElementById("sidenav").style.display="block";
+    document.getElementById("menu-btn-open").style.display="none";
+    document.getElementById("menu-btn-close").style.display="block";
+}
+function closemenu() {
+    document.getElementById("sidenav").style.display="none";
+    document.getElementById("menu-btn-open").style.display="block";
+    document.getElementById("menu-btn-close").style.display="none";
+}
 
 </script>
 
 
+    </div>
 </body>
 </html>

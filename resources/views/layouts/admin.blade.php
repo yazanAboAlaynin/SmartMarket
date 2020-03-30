@@ -135,7 +135,7 @@
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                    <img class="image" src="https://www.w3schools.com/howto/img_avatar.png" style="width:106px">
+                    <img class="image" src="/storage/2.jpg" style="width:106px">
 <br/><br/>
                     <a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
                     <a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
