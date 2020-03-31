@@ -65,7 +65,4 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::get('/orders', 'CompanyController@orders')->name('orders');
     Route::get('/sold/items', 'CompanyController@soldItems')->name('soldItems');
 
-
-
-
 });

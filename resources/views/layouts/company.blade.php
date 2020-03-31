@@ -49,11 +49,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('company.login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('company.register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -87,7 +87,7 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.home')}}">Profile</a>
+                    <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ Route('company.products')}}">Products</a>
@@ -96,7 +96,7 @@
                     <a class="nav-link" href="{{ Route('company.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.oldOrders')}}">Finished Orders</a>
+                    <a class="nav-link" href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
 
             </ul>

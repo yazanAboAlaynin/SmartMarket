@@ -124,18 +124,19 @@ h4 {
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Active</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="{{ Route('company.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="{{ Route('company.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
+
             </ul>
         </nav>
 
