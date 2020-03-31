@@ -90,7 +90,7 @@
                     <a class="nav-link" href="#">Active</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>

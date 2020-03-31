@@ -52,7 +52,7 @@
             padding: 8px 8px 8px 12px;
             text-decoration: none;
             font-size: 18px;
-            color: #ffffff;
+            color: #ede7f6;
             display: block;
             border: none;
             background: none;
@@ -79,7 +79,7 @@
         }
 
         .sidenav .active {
-            background-color: #BBD2C5;
+            background-color: #c5cae9;
             color: #000000;
         }
 
@@ -89,7 +89,8 @@
 
         .sidenav .dropdown-container {
             display: none;
-            background-color: #526b72;
+            background-color: #75899b42;
+            outline: 5px solid #ede7f6;
             padding-left: 8px;
         }
 
@@ -102,7 +103,6 @@
         #main {
             transition: margin-left .5s;
             margin-left: 250px;
-
         }
         .myclass{
             font-size: 20px;
@@ -112,11 +112,12 @@
             margin-left: 250px;
         }
 
-        img{
+        .imagesidebar{
             border-radius: 50%;
-            padding: 10px;
+            padding: 5px;
+            margin-left: 6px;
             border: 3px solid;
-            box-shadow: 6px 5px 4px 3px #29323c;
+            box-shadow: 6px 5px 4px 3px #b3e5fc;
         }
 
 
@@ -135,12 +136,12 @@
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                    <img class="image" src="/storage/2.jpg" style="width:106px">
+                    <img class="imagesidebar" src="/storage/ee.jpg" style="width:106px">
 <br/><br/>
                     <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
                     <a href="{{ Route('admin.home') }}"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
                     <a href="{{ Route('admin.home') }}"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
-                    <a href="#"><i class="fa fa-handshake-o" style="font-size:24px"></i> Products</a>
+                    <a href="#"><i class="fa fa-product-hunt" style="font-size:24px"></i> Products</a>
 
                     <button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company
                         <i class="fa fa-caret-down"></i>
