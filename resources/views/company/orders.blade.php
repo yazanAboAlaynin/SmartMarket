@@ -1,4 +1,4 @@
-@extends('layouts.company')
+@extends('layouts.company2')
 
 @section('content')
 
@@ -19,9 +19,13 @@
 
                 <th>id</th>
 
-                <th>Total Price</th>
+                <th>order id</th>
 
-                <th>discount</th>
+                <th>product id</th>
+
+                <th>quantity</th>
+
+                <th>price</th>
 
                 <th width="100px">Action</th>
 
@@ -61,9 +65,13 @@
 
                     {data: 'id', name: 'id'},
 
-                    {data: 'total_price', name: 'total_price'},
+                    {data: 'order_id', name: 'order_id'},
 
-                    {data: 'discount', name: 'discount'},
+                    {data: 'product_id', name: 'product_id'},
+
+                    {data: 'quantity', name: 'quantity'},
+
+                    {data: 'price', name: 'price'},
 
                     {data: 'action', name: 'action', orderable: false, searchable: false},
 
@@ -75,27 +83,6 @@
 
         });
 
-        function show(id) {
-            window.location.href = 'order/'+id+'/items';
-        }
-
-        function done(id) {
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById("test").innerHTML = this.responseText;
-                    window.alert("deleted successfuly id = "+this.responseText);
-                    $('.data-table').DataTable().ajax.reload();
-                    alert('Data Deleted');
-                }
-            };
-            var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ Route("company.order.done") }}?id=" + id, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
-
-        }
 
     </script>
 

@@ -19,6 +19,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->BigInteger('quantity');
             $table->BigInteger('price');
+            $table->Integer('done');
             $table->timestamps();
         });
     }

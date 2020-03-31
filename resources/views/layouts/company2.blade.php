@@ -80,25 +80,22 @@
             </div>
         </nav>
 
-        <div class="img">
-            <img src="/storage/2.jpg" width="100%" height="400px"/>
-        </div>
+
 
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.home')}}">Profile</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Active</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.products')}}">Products</a>
+                    <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.orders')}}">Orders</a>
+                    <a class="nav-link" href="#">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.oldOrders')}}">Finished Orders</a>
+                    <a class="nav-link disabled" href="#">Disabled</a>
                 </li>
-
             </ul>
         </nav>
 

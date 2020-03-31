@@ -45,7 +45,7 @@ class CompanyController extends Controller
 
         if(request()->ajax())
         {
-            $items = Product::where('company_id','=',$id)->get();
+            $items = auth()->guard('company')->user()->products();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
                     $button = '<button type="button" name="edit" id="'.$items->id.'" 
@@ -156,7 +156,10 @@ class CompanyController extends Controller
 
         if($request->ajax())
         {
-            $data = Order::where('done','=',0)->get();
+            $id = auth()->guard('company')->user()->id;
+            $items = Product::select('id')->where('company_id','=',$id)->get();
+            $data = Order_item::whereIn('product_id',$items)->where('done','=',0);
+
             return DataTables::of($data)
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="done" id="'.$data->id.'" 
@@ -173,29 +176,26 @@ class CompanyController extends Controller
 
     }
 
-    
-    public function done(Request $request){
-        $data = Order::findOrFail($request->id);
-        $data->done = 1;
-        $data->save();
-        return;
-    }
+    public function soldItems(Request $request){
 
 
-    public function orderItems(Order $order){
-
-        if(request()->ajax())
+        if($request->ajax())
         {
-            $items = Order_item::where('order_id','=',$order->id)->get();
-            return DataTables::of($items)
-                ->addColumn('action', function($items){
+            $id = auth()->guard('company')->user()->id;
+            $items = Product::select('id')->where('company_id','=',$id)->get();
+            $data = Order_item::whereIn('product_id',$items)->where('done','=',1);
 
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '<button type="button" name="show" id="'.$data->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=show('.$data->id.')>view</button>';
+                    return $button;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
-        return view('company.orderShow',compact('order'));
+        return view('company.soldItems');
     }
 
     /*********************** end orders *********************************/

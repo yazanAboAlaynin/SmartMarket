@@ -1,10 +1,10 @@
-@extends('layouts.company')
+@extends('layouts.company2')
 
 @section('content')
 
     <div class="container">
 
-        <h1>Order {{ $order->id }} :</h1>
+        <h1>Orders:</h1>
 
         <div align="right">
             <button  type="button" name="create_record" id="create_record" class="btn btn-success btn-sm" >Create Record</button>
@@ -19,9 +19,15 @@
 
                 <th>id</th>
 
+                <th>order id</th>
+
+                <th>product id</th>
+
                 <th>quantity</th>
 
                 <th>price</th>
+
+                <th width="100px">Action</th>
 
             </tr>
 
@@ -53,16 +59,21 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('company.order.items',$order->id) }}",
+                ajax: "{{ route('company.soldItems') }}",
 
                 columns: [
 
                     {data: 'id', name: 'id'},
 
+                    {data: 'order_id', name: 'order_id'},
+
+                    {data: 'product_id', name: 'product_id'},
+
                     {data: 'quantity', name: 'quantity'},
 
                     {data: 'price', name: 'price'},
 
+                    {data: 'action', name: 'action', orderable: false, searchable: false},
 
                 ]
 
@@ -72,27 +83,7 @@
 
         });
 
-        function show(id) {
-            window.location.href = 'order/'+id+'/view';
-        }
 
-        function done(id) {
-
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    //document.getElementById("test").innerHTML = this.responseText;
-                  //  window.alert("deleted successfuly id = "+this.responseText);
-                    $('.data-table').DataTable().ajax.reload();
-                    alert('Data Deleted');
-                }
-            };
-            var x = document.getElementById(id).value;
-            xhttp.open("get", "{{ Route("company.order.done") }}?id=" + id, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send();
-
-        }
 
     </script>
 

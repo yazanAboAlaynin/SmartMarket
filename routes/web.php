@@ -61,9 +61,9 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::get('/product/delete', 'CompanyController@deleteProduct')->name('product.delete');
 
     Route::get('/orders', 'CompanyController@orders')->name('orders');
-    Route::get('/order/{order}/items', 'CompanyController@orderItems')->name('order.items');
-    Route::get('/order/done', 'CompanyController@done')->name('order.done');
-    Route::get('/order/{order}/items', 'CompanyController@orderItems')->name('order.items');
-    Route::get('/old/orders', 'CompanyController@oldOrders')->name('oldOrders');
+    Route::get('/sold/items', 'CompanyController@soldItems')->name('soldItems');
+
+
+
 
 });

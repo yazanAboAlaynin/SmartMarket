@@ -48,7 +48,7 @@
         /*   .......... sidebar     .... */
         .sidenav {
             height: 100%;
-            width: 250px;
+            width: 0;
             position: fixed;
             z-index: 1;
             top: 0;
@@ -343,7 +343,7 @@
 <div id="app">
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="navbar-header" >
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
@@ -489,7 +489,7 @@
         @yield('content')
     </main>
 
-    <div class="footer">
+    <div class="footer" >
 
         <section class="website-features">
                     <div class="container">
@@ -520,7 +520,7 @@
         </section>
 
         <!------------              --------------------------->
-        <section class="foote">
+        <section class="footer">
             <div class="container text-center">
                 <div class="row">
                     <div class="col-md-3">
