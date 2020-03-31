@@ -52,6 +52,8 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
+    Route::get('/profile', 'CompanyController@profile')->name('profile');
+
     Route::get('/add/product', 'CompanyController@addProduct')->name('add.product');
     Route::post('/store/product', 'CompanyController@storeProduct')->name('store.product');
     

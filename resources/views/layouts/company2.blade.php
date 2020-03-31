@@ -26,6 +26,46 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+
+    <style>
+/* profile */
+body {
+    font-family: 'Gelasio', serif;
+    line-height: 1.8;
+    color: #818181;
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 19px;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+.container-fluid {
+    padding: 60px 50px;
+}
+.bg-grey {
+    background-color: #cfd8dc;
+}
+  .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+
+</style>
+
 </head>
 <body>
     <div id="app">

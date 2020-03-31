@@ -40,7 +40,7 @@
             color:#BBD2C5;
         }
         .navbar a {
-            color:#526b72;
+            color:#fff;
         }
         .navbar a:hover {
             color:#BBD2C5;

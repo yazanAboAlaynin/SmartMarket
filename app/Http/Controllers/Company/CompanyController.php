@@ -36,6 +36,11 @@ class CompanyController extends Controller
         return view('company.home');
     }
 
+    public function profile()
+    {
+        return view('company.profile');
+    }
+
     /***********************************************************************************/
             /***************    Products    ***************************/
 
