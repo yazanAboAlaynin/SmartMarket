@@ -98,6 +98,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ Route('company.add.product')}}">Add Product</a>
+                </li>
 
             </ul>
         </nav>
