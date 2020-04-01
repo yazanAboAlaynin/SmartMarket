@@ -53,6 +53,8 @@ Route::namespace('Company')->prefix('company')->as('company.')->group(function()
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
     Route::get('/profile', 'CompanyController@profile')->name('profile');
+    Route::get('/profile/edit', 'CompanyController@edit')->name('profile.edit');
+    Route::post('/profile/update', 'CompanyController@update')->name('profile.update');
 
     Route::get('/add/product', 'CompanyController@addProduct')->name('add.product');
     Route::post('/store/product', 'CompanyController@storeProduct')->name('store.product');

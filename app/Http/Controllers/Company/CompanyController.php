@@ -11,6 +11,7 @@ use App\Order_item;
 use App\Product;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use function Sodium\compare;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -42,6 +43,36 @@ class CompanyController extends Controller
         $company = Company::find($id);
 
         return view('company.profile',compact('company'));
+    }
+
+    public function edit()
+    {
+        $id = auth()->guard('company')->user()->id;
+        $company = Company::find($id);
+        return view('company.profileEdit',compact('company'));
+    }
+
+    public function update(Request $request){
+
+        request()->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'mobile' => 'required',
+        ]);
+
+        $id = auth()->guard('company')->user()->id;
+        $company = Company::find($id);
+
+        $company->name = $request['name'];
+
+        $company->address = $request['address'];
+        $company->phone = $request['phone'];
+        $company->mobile = $request['mobile'];
+        $company->save();
+
+        return redirect('company/profile');
+
     }
 
     /***********************************************************************************/

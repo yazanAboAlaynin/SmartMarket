@@ -12,8 +12,14 @@
                  <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $company->email}}</h4><br> 
                  <h4><i class="fa fa-map-marker" style="font-size:22px;"></i><strong> Address : </strong>{{ $company->address}}</h4><br> 
                  <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $company->mobile}}</h4><br> 
-                 <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $company->phone}}</h4><br> 
-                 <button style="margin-right: 19px;margin-bottom: 20px;border-radius: 10%;">Eidt Profile</button>
+                 <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $company->phone}}</h4><br>
+                    <div class="form-group row mb-0">
+                        <div class="col-md-6 ">
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Edit Profile') }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-4">
                    <img src="/storage/{{ $company->image }}" style="width:100%;margin-bottom: 20px;border-radius: 50%">
