@@ -61,6 +61,48 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Date') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="date" type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" required autocomplete="date">
+
+                                @error('date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="mobile" class="col-md-4 col-form-label text-md-right">{{ __('Mobile') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile" type="text" class="form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile">
+
+                                @error('mobile')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                                    <label for="image" class="col-md-4 col-form-label text-md-right">{{ __('Image') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
+
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
