@@ -16,7 +16,7 @@
                  <button style="margin-right: 19px;margin-bottom: 20px;border-radius: 10%;">Eidt Profile</button>
                 </div>
                 <div class="col-sm-4">
-                   <img src="/storage/www.jpg" style="width:100%;margin-bottom: 20px;border-radius: 50%">
+                   <img src="/storage/{{ $company->image }}" style="width:100%;margin-bottom: 20px;border-radius: 50%">
                 </div>
             </div>
             </div>
