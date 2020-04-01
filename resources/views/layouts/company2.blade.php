@@ -69,7 +69,7 @@ h4 {
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #3f5c80; z-index: 2">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -85,7 +85,7 @@ h4 {
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto" >
+                    <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -122,25 +122,25 @@ h4 {
 
 
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style="z-index: -1">
+        <nav class="navbar navbar-expand-md shadow-sm navbar-light sticky-top" style="background-color: #919191;z-index: 1">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.home')}}">Home</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.products')}}">Products</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.orders')}}">Orders</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.soldItems')}}">Sold Items</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.add.product')}}">Add Product</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.add.product')}}">Add Product</a>
                 </li>
 
             </ul>

@@ -38,7 +38,10 @@ class CompanyController extends Controller
 
     public function profile()
     {
-        return view('company.profile');
+        $id = auth()->guard('company')->user()->id;
+        $company = Company::find($id);
+
+        return view('company.profile',compact('company'));
     }
 
     /***********************************************************************************/

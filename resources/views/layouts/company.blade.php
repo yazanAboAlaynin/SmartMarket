@@ -84,25 +84,25 @@
             <img src="/storage/2.jpg" width="100%" height="400px"/>
         </div>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-md shadow-lg navbar-light sticky-top" style="background-color: #6f6f6f;">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.home')}}">Home</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.products')}}">Products</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.orders')}}">Orders</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.soldItems')}}">Sold Items</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ Route('company.add.product')}}">Add Product</a>
+                    <a class="nav-link" style="color: white" href="{{ Route('company.add.product')}}">Add Product</a>
                 </li>
 
             </ul>
