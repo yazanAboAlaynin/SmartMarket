@@ -4,7 +4,6 @@
     <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/company/profile.blade.php" afterPath="$PROJECT_DIR$/resources/views/company/profile.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/company/profileEdit.blade.php" afterPath="$PROJECT_DIR$/resources/views/company/profileEdit.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,12 +60,12 @@
       <file leaf-file-name="profile.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/company/profile.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+            <state relative-caret-position="360">
+              <caret line="18" column="67" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
               <folding>
-                <marker date="1585753147904" expanded="false" signature="1913:1939" ph="..." />
-                <marker date="1585753147904" expanded="false" signature="2168:2194" ph="..." />
-                <marker date="1585753147904" expanded="false" signature="2427:2453" ph="..." />
+                <marker date="1585753296049" expanded="false" signature="1821:1847" ph="..." />
+                <marker date="1585753296049" expanded="false" signature="2076:2102" ph="..." />
+                <marker date="1585753296049" expanded="false" signature="2335:2361" ph="..." />
               </folding>
             </state>
           </provider>
@@ -451,7 +450,7 @@
       <workItem from="1585664083465" duration="231000" />
       <workItem from="1585669227531" duration="1434000" />
       <workItem from="1585736483121" duration="6900000" />
-      <workItem from="1585750473842" duration="2467000" />
+      <workItem from="1585750473842" duration="2611000" />
     </task>
     <task id="LOCAL-00001" summary="creating models">
       <created>1584290701346</created>
@@ -726,11 +725,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585752018784</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="new">
+      <created>1585753164465</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1585753164465</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106354000" />
+    <option name="totallyTimeSpent" value="106498000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1120,12 +1126,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/company/profile.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        <state relative-caret-position="360">
+          <caret line="18" column="67" lean-forward="false" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
           <folding>
-            <marker date="1585753147904" expanded="false" signature="1913:1939" ph="..." />
-            <marker date="1585753147904" expanded="false" signature="2168:2194" ph="..." />
-            <marker date="1585753147904" expanded="false" signature="2427:2453" ph="..." />
+            <marker date="1585753296049" expanded="false" signature="1821:1847" ph="..." />
+            <marker date="1585753296049" expanded="false" signature="2076:2102" ph="..." />
+            <marker date="1585753296049" expanded="false" signature="2335:2361" ph="..." />
           </folding>
         </state>
       </provider>
