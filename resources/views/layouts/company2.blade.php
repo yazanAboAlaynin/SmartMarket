@@ -56,6 +56,13 @@ h4 {
     padding-top: 15px;
 }
 
+/* nav */
+
+.bakcolor {
+    font-weight: bold;
+    font-size: 17px;
+}
+
 
 </style>
 
@@ -115,24 +122,24 @@ h4 {
 
 
         <nav class="navbar navbar-expand-md shadow-sm navbar-light sticky-top" style="background-color: #b0b6b8;z-index: 1">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav bakcolor">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.home')}}">Home</a>
+                    <a class="nav-link"  href="{{ Route('company.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.profile')}}">Profile</a>
+                    <a class="nav-link"  href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.products')}}">Products</a>
+                    <a class="nav-link"  href="{{ Route('company.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.orders')}}">Orders</a>
+                    <a class="nav-link"  href="{{ Route('company.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.soldItems')}}">Sold Items</a>
+                    <a class="nav-link"  href="{{ Route('company.soldItems')}}">Sold Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: #3f5c80;font-weight: bold;font-size: 17px;" href="{{ Route('company.add.product')}}">Add Product</a>
+                    <a class="nav-link"  href="{{ Route('company.add.product')}}">Add Product</a>
                 </li>
 
             </ul>

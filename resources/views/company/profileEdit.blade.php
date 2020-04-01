@@ -76,7 +76,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-10">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" style="width: 20%" class="btn btn-primary">
                                     {{ __('Edit') }}
                                 </button>
                             </div>

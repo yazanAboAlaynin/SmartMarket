@@ -16,7 +16,7 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 ">
-                            <a href="{{ Route('company.profile.edit') }}" class="btn btn-primary">
+                            <a href="{{ Route('company.profile.edit') }}" class="btn btn-primary" style="border-radius:10%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                                 {{ __('Edit Profile') }}
                             </a>
                         </div>
