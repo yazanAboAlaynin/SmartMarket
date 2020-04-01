@@ -48,21 +48,14 @@ h4 {
     margin-bottom: 15px;
 }
 .container-fluid {
-    padding: 60px 50px;
+    padding: 5px 10px;
 }
 .bg-grey {
     background-color: #cfd8dc;
+    height: 250px;
+    padding-top: 15px;
 }
-  .thumbnail {
-    padding: 0 0 15px 0;
-    border: none;
-    border-radius: 0;
-  }
-  .thumbnail img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
+
 
 </style>
 

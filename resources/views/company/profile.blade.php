@@ -7,59 +7,21 @@
             <!-- Container (About Section) -->
         <div id="about" class="container-fluid">
             <div class="row">
-                <div class="col-sm-8">
-                <h2>About Company</h2><br>
-                <h4>Description company Description company Description company Description company
-                Description company Description company Description company Description company Description company
-                Description company Description company Description company.</h4><br> 
+                <div class="col-sm-7" style=" margin-left: 40px;">
+                <h2>{{ $company->name }}</h2><br>
+                 <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $company->email}}</h4><br> 
+                 <h4><i class="fa fa-map-marker" style="font-size:22px;"></i><strong> Address : </strong>{{ $company->address}}</h4><br> 
+                 <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $company->mobile}}</h4><br> 
+                 <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $company->phone}}</h4><br> 
+                 <button style="margin-right: 19px;margin-bottom: 20px;border-radius: 10%;">Eidt Profile</button>
                 </div>
                 <div class="col-sm-4">
-                   <img src="/storage/www.jpg">
+                   <img src="/storage/www.jpg" style="width:100%;margin-bottom: 20px;border-radius: 50%">
                 </div>
             </div>
             </div>
 
-            <div class="container-fluid bg-grey">
-                <div class="row">
-                    <div class="col-sm-4">
-                       <img src="/storage/ww.jpg">
-                    </div>
-                    <div class="col-sm-8">
-                    <h2>Our areas of spread</h2><br>
-                    <h4><strong>The region is more spread out : </strong> Description company Description company Description company Description company
-                Description company Description company Description company Description company Description company
-                Description company Description company Description company .</h4><br>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Container (Portfolio Section) -->
-                <div id="portfolio" class="container-fluid text-center">
-                    <h2>Area</h2>
-                    <div class="row text-center slideanim">
-                        <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="/storage/www.jpg">
-                            <p><strong>place</strong></p>
-                            <p>address</p>
-                        </div>
-                        </div>
-                        <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="/storage/www.jpg">
-                            <p><strong>place</strong></p>
-                            <p>address</p>
-                        </div>
-                        </div>
-                        <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <img src="/storage/www.jpg">
-                            <p><strong>place</strong></p>
-                            <p>address</p>
-                        </div>
-                        </div>
-                    </div>
-                </div>
+         
 
             <!-- Container (Services Section) -->
             <div id="services" class="container-fluid text-center bg-grey">
@@ -84,20 +46,13 @@
                 </div> 
             </div>
 
-            <!-- Container (Contact Section) -->
-            <div id="contact" class="container-fluid" style="background-color: #263238;">
-                <h2 class="text-center" style="color: #000;">CONTACT</h2>
-                <div class="row text-center pt-2">
-                    <div class="col-md-12">
-                    <p><i class="fa fa-map-marker" style="font-size:22px;"></i> <strong>place :</strong> mazah </p> 
-                    <p><i class="fa fa-phone" style="font-size:22ph;"></i> <strong>number :</strong> 09000</p>
-                    <p><i class="fa fa-envelope-o" style="font-size:22px;"></i> <strong>emiil :</strong> company@gmail.com</p>
-                    </div>
-                </div>
-            </div>
+         
 
         </div>
+
+       
     
 
 
 @endsection
+
