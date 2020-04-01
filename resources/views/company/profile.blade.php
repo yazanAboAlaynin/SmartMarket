@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                   <img src="/storage/{{ $company->image }}" style="width:100%;margin-bottom: 20px;border-radius: 50%">
+                   <img src="/storage/{{ $company->image }}" style="width:90%;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                 </div>
             </div>
             </div>
