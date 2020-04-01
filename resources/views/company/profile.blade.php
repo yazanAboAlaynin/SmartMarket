@@ -13,6 +13,7 @@
                  <h4><i class="fa fa-map-marker" style="font-size:22px;"></i><strong> Address : </strong>{{ $company->address}}</h4><br> 
                  <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $company->mobile}}</h4><br> 
                  <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $company->phone}}</h4><br>
+                    <form method="GET" action="{{ route('company.profile.edit') }}">
                     <div class="form-group row mb-0">
                         <div class="col-md-6 ">
                             <button type="submit" class="btn btn-primary">
@@ -20,6 +21,7 @@
                             </button>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="col-sm-4">
                    <img src="/storage/{{ $company->image }}" style="width:90%;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
