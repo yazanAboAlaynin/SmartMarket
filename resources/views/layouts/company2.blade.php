@@ -85,7 +85,7 @@ h4 {
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" >
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -122,8 +122,11 @@ h4 {
 
 
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top" style="z-index: -1">
             <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ Route('company.home')}}">Home</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
                 </li>

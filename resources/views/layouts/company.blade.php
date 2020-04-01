@@ -87,6 +87,9 @@
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ Route('company.home')}}">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ Route('company.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
