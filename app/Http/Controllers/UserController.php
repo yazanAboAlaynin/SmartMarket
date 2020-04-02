@@ -25,6 +25,11 @@ class UserController extends Controller
     {
         return view('home');
     }
+    public function product()
+    {
+        return view('user.product');
+    }
+
 
 
 }

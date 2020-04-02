@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'UserController@index')->name('home');
 Route::get('/admin', 'admin\AdminController@index')->name('admin');
 
+Route::get('/product', 'UserController@product')->name('product');
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);

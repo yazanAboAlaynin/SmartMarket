@@ -32,7 +32,6 @@
         body {
             font-family: 'Gelasio', serif;
             transition: background-color .5s;
-
         }
 
         .navbar {
@@ -140,7 +139,7 @@
         /* Add a card effect for articles */
         .card {
             background-color: white;
-            padding: 20px;
+            padding: 10px;
             margin-top: 6px;
         }
 
@@ -149,7 +148,7 @@
 
         .column {
             float: right;
-            width: 20.3%;
+            width: 21.7%;
             margin-bottom: 6px;
             padding: 0 8px;
             margin-left:45px;
@@ -282,6 +281,69 @@
         }
         .feature-box {
             padding-top:20px;
+        }
+
+        /* show product */
+        .single-product img {
+            height: 300px;
+            width: 300px;
+           
+        }
+        .single-product {
+            margin-top: 50px;
+        }
+        .new-saly {
+            background: #669b10;
+            width: 12%;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 18px;
+        }
+        .col-md-7 h2 {
+            color : #555;
+        }
+        .col-md-7 .fa {
+            color:orange;
+            font-size:20px;
+        } 
+        .single-product .price {
+            text-decoration-line: line-through;
+            color:red;
+        }
+        .single-product .price-discount {
+            color: orange;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .single-product input {
+            border: 1px solid #ccc;
+            font-weight: bold;
+            height: 33px;
+            text-align: center;
+            width: 30px
+        }
+        .single-product .btn-primary {
+            background: #263238 !important;
+            color: #fff;
+            font-size: 15px;
+            margin-left: 20px;
+            border: none;
+            box-shadow: none !important;
+        }
+        .product-description h6 {
+            background: #526b72;
+            color:#fff;
+            width:19%;
+            padding: 6px 4px;
+            height:30px;
+            margin-bottom:30px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .product-description hr {
+            margin-bottom:50px;
+            margin-top:30px;
         }
 
 
@@ -433,57 +495,7 @@
         </div>
     </nav>
 
-<div class="row">
-  <div class="column">
-    <div class="card">
-      <img src="/storage/2.jpg" style="width:100%">
-      <div class="container">
-        <h2>Name</h2>
-        <p class="title">description</p>
-        <p>mmmmm.</p>
-        <p>emil company</p>
-        <p><button class="button">ok</button></p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="/storage/2.jpg" style="width:100%">
-      <div class="container">
-        <h2>Name</h2>
-        <p class="title">description</p>
-        <p>mmmmm.</p>
-        <p>emil company</p>
-        <p><button class="button">ok</button></p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="/storage/2.jpg" style="width:100%">
-      <div class="container">
-        <h2>Name</h2>
-        <p class="title">description</p>
-        <p>mmmmm.</p>
-        <p>emil company</p>
-        <p><button class="button">ok</button></p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="/storage/2.jpg" style="width:100%">
-      <div class="container">
-        <h2>Name</h2>
-        <p class="title">description</p>
-        <p>mmmmm.</p>
-        <p>emil company</p>
-        <p><button class="button">ok</button></p>
-      </div>
-    </div>
-  </div>
 
-    </div>  
 
     <main class="py-4 content" id="content" >
         @yield('content')
