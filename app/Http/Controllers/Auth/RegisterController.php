@@ -69,6 +69,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         $imagePath = $data['image']->store('images','public');
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
         $image->save();
