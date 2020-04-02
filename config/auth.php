@@ -46,9 +46,9 @@ return [
             'provider' => 'admins'
         ],
 
-        'company' => [
+        'vendor' => [
             'driver' => 'session',
-            'provider' => 'companies',
+            'provider' => 'vendors',
         ],
 
         'api' => [
@@ -84,9 +84,9 @@ return [
             'driver' => 'eloquent',
             'model' => App\Admin::class,
         ],
-        'companies' => [
+        'vendors' => [
             'driver' => 'eloquent',
-            'model' => App\Company::class,
+            'model' => App\Vendor::class,
         ],
 
         // 'users' => [

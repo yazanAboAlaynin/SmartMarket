@@ -1,4 +1,4 @@
-@extends('layouts.company2')
+@extends('layouts.vendor2')
 
 @section('content')
 
@@ -59,7 +59,7 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('company.orders') }}",
+                ajax: "{{ route('vendor.soldItems') }}",
 
                 columns: [
 
@@ -82,6 +82,7 @@
 
 
         });
+
 
 
     </script>

@@ -19,52 +19,52 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'admin\HomeController@index')->name('admin');
+Route::get('/home', 'UserController@index')->name('home');
+Route::get('/admin', 'admin\AdminController@index')->name('admin');
 
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'AdminController@index')->name('home');
 
-    Route::get('/companies', 'HomeController@companies')->name('companies');
-    Route::get('/company/{company}/update', 'HomeController@updateCompany')->name('company.update');
-    Route::get('/company/delete', 'HomeController@deleteCompany')->name('company.delete');
-    Route::get('/company/approve', 'HomeController@approve')->name('company.approve');
-    Route::post('/company/{id}/edit', 'HomeController@editCompany')->name('company.edit');
-    Route::get('/pending/companies', 'HomeController@pendingCompanies')->name('pendingCompanies');
+    Route::get('/vendors', 'AdminController@vendors')->name('vendors');
+    Route::get('/vendor/{vendor}/update', 'AdminController@updateVendor')->name('vendor.update');
+    Route::get('/vendor/delete', 'AdminController@deleteVendor')->name('vendor.delete');
+    Route::get('/vendor/approve', 'AdminController@approve')->name('vendor.approve');
+    Route::post('/vendor/{id}/edit', 'AdminController@editVendor')->name('vendor.edit');
+    Route::get('/pending/vendors', 'AdminController@pendingVendor')->name('pendingVendors');
 
 
-    Route::get('/users', 'HomeController@users')->name('users');
-    Route::get('/user/{user}/update', 'HomeController@updateUser')->name('user.update');
-    Route::get('/user/delete', 'HomeController@deleteUser')->name('user.delete');
-    Route::post('/user/{id}/edit', 'HomeController@editUser')->name('user.edit');
+    Route::get('/users', 'AdminController@users')->name('users');
+    Route::get('/user/{user}/update', 'AdminController@updateUser')->name('user.update');
+    Route::get('/user/delete', 'AdminController@deleteUser')->name('user.delete');
+    Route::post('/user/{id}/edit', 'AdminController@editUser')->name('user.edit');
 
-    Route::get('/orders', 'HomeController@orders')->name('orders');
-    Route::get('/order/done', 'HomeController@done')->name('order.done');
-    Route::get('/order/{order}/items', 'HomeController@orderItems')->name('order.items');
-    Route::get('/old/orders', 'HomeController@oldOrders')->name('oldOrders');
+    Route::get('/orders', 'AdminController@orders')->name('orders');
+    Route::get('/order/done', 'AdminController@done')->name('order.done');
+    Route::get('/order/{order}/items', 'AdminController@orderItems')->name('order.items');
+    Route::get('/old/orders', 'AdminController@oldOrders')->name('oldOrders');
 });
 
-Route::namespace('Company')->prefix('company')->as('company.')->group(function() {
+Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
     Auth::routes();
-    Route::get('/home', 'CompanyController@index')->name('home');
+    Route::get('/home', 'VendorController@index')->name('home');
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
-    Route::get('/profile', 'CompanyController@profile')->name('profile');
-    Route::get('/profile/edit', 'CompanyController@edit')->name('profile.edit');
-    Route::post('/profile/update', 'CompanyController@update')->name('profile.update');
+    Route::get('/profile', 'VendorController@profile')->name('profile');
+    Route::get('/profile/edit', 'VendorController@edit')->name('profile.edit');
+    Route::post('/profile/update', 'VendorController@update')->name('profile.update');
 
-    Route::get('/add/product', 'CompanyController@addProduct')->name('add.product');
-    Route::post('/store/product', 'CompanyController@storeProduct')->name('store.product');
+    Route::get('/add/product', 'VendorController@addProduct')->name('add.product');
+    Route::post('/store/product', 'VendorController@storeProduct')->name('store.product');
     
-    Route::get('/products', 'CompanyController@products')->name('products');
-    Route::get('/product/{product}/update', 'CompanyController@updateProduct')->name('product.update');
-    Route::post('/product/{product}/edit', 'CompanyController@editProduct')->name('product.edit');
-    Route::get('/product/delete', 'CompanyController@deleteProduct')->name('product.delete');
+    Route::get('/products', 'VendorController@products')->name('products');
+    Route::get('/product/{product}/update', 'VendorController@updateProduct')->name('product.update');
+    Route::post('/product/{product}/edit', 'VendorController@editProduct')->name('product.edit');
+    Route::get('/product/delete', 'VendorController@deleteProduct')->name('product.delete');
 
-    Route::get('/orders', 'CompanyController@orders')->name('orders');
-    Route::get('/sold/items', 'CompanyController@soldItems')->name('soldItems');
+    Route::get('/orders', 'VendorController@orders')->name('orders');
+    Route::get('/sold/items', 'VendorController@soldItems')->name('soldItems');
 
 });

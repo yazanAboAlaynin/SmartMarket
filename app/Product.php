@@ -8,8 +8,8 @@ class Product extends Model
 {
     protected $guarded =[];
 
-    public function company(){
-        return $this->belongsTo(Company::class);
+    public function vendor(){
+        return $this->belongsTo(Vendor::class);
     }
 
     public function brand(){

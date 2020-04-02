@@ -1,4 +1,4 @@
-@extends('layouts.company2')
+@extends('layouts.vendor2')
 
 @section('content')
 
@@ -11,14 +11,14 @@
                    </div>
                 <div class="card-body">  
 
-                    <form method="POST" action="{{ route('company.profile.update') }}">
+                    <form method="POST" action="{{ route('vendor') }}">
                         @csrf
 
                     <div  class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                         <label for="name" class="col-md-4 control-label">Name</label>
                             <div>
                                 <input id="name" type="text" class="form-control" name="name"
-                                    value="{{ old('name') ?? $company->name }}"  required autofocus>
+                                    value="{{ old('name') ?? $vendor->name }}"  required autofocus>
                             </div>
 
                         @if ($errors->has('name'))
@@ -33,7 +33,7 @@
                             <label for="address" class="col-md-4 control-label">Address</label>
                                 <div >
                                     <input id="address" type="text" class="form-control" name="address"
-                                        value="{{ old('address') ?? $company->address }}"  required autofocus>
+                                        value="{{ old('address') ?? $vendor->address }}"  required autofocus>
                                 </div>
 
                             @if ($errors->has('address'))
@@ -48,7 +48,7 @@
                             <label for="mobile" class="col-md-4 control-label">Mobile</label>
                                 <div >
                                     <input id="mobile" type="text" class="form-control" name="mobile"
-                                        value="{{ old('mobile') ?? $company->mobile }}"  required autofocus>
+                                        value="{{ old('mobile') ?? $vendor->mobile }}"  required autofocus>
                                 </div>
 
                             @if ($errors->has('mobile'))
@@ -63,7 +63,7 @@
                             <label for="phone" class="col-md-4 control-label">Phone</label>
                                 <div>
                                     <input id="phone" type="text" class="form-control" name="phone"
-                                        value="{{ old('phone') ?? $company->phone }}"  required autofocus>
+                                        value="{{ old('phone') ?? $vendor->phone }}"  required autofocus>
                                 </div>
 
                             @if ($errors->has('phone'))

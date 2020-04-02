@@ -1,4 +1,4 @@
-@extends('layouts.company2')
+@extends('layouts.vendor2')
 
 @section('content')
 
@@ -8,15 +8,15 @@
         <div id="about" class="container-fluid">
             <div class="row">
                 <div class="col-sm-7" style=" margin-left: 40px;">
-                <h2>{{ $company->name }}</h2><br>
-                 <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $company->email}}</h4><br> 
-                 <h4><i class="fa fa-map-marker" style="font-size:22px;"></i><strong> Address : </strong>{{ $company->address}}</h4><br> 
-                 <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $company->mobile}}</h4><br> 
-                 <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $company->phone}}</h4><br>
+                <h2>{{ $vendor->name }}</h2><br>
+                 <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $vendor->email}}</h4><br>
+                 <h4><i class="fa fa-map-marker" style="font-size:22px;"></i><strong> Address : </strong>{{ $vendor->address}}</h4><br>
+                 <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $vendor->mobile}}</h4><br>
+                 <h4><i class="fa fa-phone" style="font-size:22px;"></i> <strong> Phone : </strong>{{ $vendor->phone}}</h4><br>
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 ">
-                            <a href="{{ Route('company.profile.edit') }}" class="btn btn-primary" style="border-radius:10%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
+                            <a href="{{ Route('vendor.profile.edit') }}" class="btn btn-primary" style="border-radius:10%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                                 {{ __('Edit Profile') }}
                             </a>
                         </div>
@@ -24,7 +24,7 @@
 
                 </div>
                 <div class="col-sm-4">
-                   <img src="/storage/{{ $company->image }}" style="width:90%;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
+                   <img src="/storage/{{ $vendor->image }}" style="width:90%;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                 </div>
             </div>
             </div>

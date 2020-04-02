@@ -147,8 +147,8 @@
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="dropdown-container">
-                        <a href="{{ Route('admin.companies') }}"><i class="fa " style="font-size:24px"></i> companies</a>
-                        <a href="{{ Route('admin.pendingCompanies') }}"><i class="fa " style="font-size:24px"></i> company requests</a>
+                        <a href="{{ Route('admin.vendors') }}"><i class="fa " style="font-size:24px"></i> companies</a>
+                        <a href="{{ Route('admin.pendingVendors') }}"><i class="fa " style="font-size:24px"></i> company requests</a>
 
                     </div>
                     <button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer

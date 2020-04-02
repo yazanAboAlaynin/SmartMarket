@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Company\auth;
+namespace App\Http\Controllers\vendor\auth;
 
-use App\Company;
+use App\Vendor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     public function index($message=""){
 
-        return view('company.auth.register',compact('message'));
+        return view('vendor.auth.register',compact('message'));
     }
 
     public function register(Request $request)
@@ -21,7 +21,7 @@ class RegisterController extends Controller
 
         request()->validate([
             'name' => 'required',
-            'email' => 'unique:companies|required|email',
+            'email' => 'unique:vendors|required|email',
             'password' => 'required|min:8',
             'password_confirmation' => 'required_with:password|same:password|min:8',
             'address' => 'required',
@@ -41,7 +41,7 @@ class RegisterController extends Controller
 
         $data = $request->all();
 
-            $company = Company::create([
+            $company = Vendor::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
@@ -52,9 +52,9 @@ class RegisterController extends Controller
                 'approved' => "0",
             ]);
 
-            auth()->guard('company')->login($company);
+            auth()->guard('vendor')->login($company);
 
-            return redirect('company/login');
+            return redirect('vendor/login');
          }
 
 

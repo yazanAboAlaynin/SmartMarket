@@ -22,8 +22,8 @@ class RedirectIfAuthenticated
             if($guard === 'admin') {
                 return redirect('/admin/home');
             }
-            else if($guard === 'company')
-            return redirect('/company/home');
+            else if($guard === 'vendor')
+            return redirect('/vendor/home');
         }
 
         return $next($request);

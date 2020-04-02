@@ -26,10 +26,50 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+
+    <style>
+/* profile */
+body {
+    font-family: 'Gelasio', serif;
+    line-height: 1.8;
+    color: #818181;
+}
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 19px;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+.container-fluid {
+    padding: 5px 10px;
+}
+.bg-grey {
+    background-color: #cfd8dc;
+    height: 250px;
+    padding-top: 15px;
+}
+
+/* nav */
+
+.bakcolor {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+
+</style>
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #3f5c80; z-index: 2">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -49,11 +89,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('company.login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('company.register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -80,29 +120,26 @@
             </div>
         </nav>
 
-        <div class="img">
-            <img src="/storage/2.jpg" width="100%" height="400px"/>
-        </div>
 
-        <nav class="navbar navbar-expand-md shadow-lg navbar-light sticky-top" style="background-color: #6f6f6f;">
-            <ul class="navbar-nav">
+        <nav class="navbar navbar-expand-md shadow-sm navbar-light sticky-top" style="background-color: #b0b6b8;z-index: 1">
+            <ul class="navbar-nav bakcolor">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.home')}}">Home</a>
+                    <a class="nav-link"  href="{{ Route('vendor.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.profile')}}">Profile</a>
+                    <a class="nav-link"  href="{{ Route('vendor.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.products')}}">Products</a>
+                    <a class="nav-link"  href="{{ Route('vendor.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.orders')}}">Orders</a>
+                    <a class="nav-link"  href="{{ Route('vendor.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.soldItems')}}">Sold Items</a>
+                    <a class="nav-link"  href="{{ Route('vendor.soldItems')}}">Sold Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('company.add.product')}}">Add Product</a>
+                    <a class="nav-link"  href="{{ Route('vendor.add.product')}}">Add Product</a>
                 </li>
 
             </ul>

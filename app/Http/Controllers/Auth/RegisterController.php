@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'dob' => $data['dob'],
             'mobile' => $data['mobile'],
-            'image' => $imagePath,
+            'image' => $data['image'],
         ]);
     }
 }

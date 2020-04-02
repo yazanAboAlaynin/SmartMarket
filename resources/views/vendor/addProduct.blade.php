@@ -1,4 +1,4 @@
-@extends('layouts.company2')
+@extends('layouts.vendor2')
 
 @section('content')
 
@@ -15,7 +15,7 @@
 
               <div class="card-body">
 
-                    <form action="{{ route('company.store.product') }}" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('vendor.store.product') }}" enctype="multipart/form-data" method="post">
                        @csrf
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

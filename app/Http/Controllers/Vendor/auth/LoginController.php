@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Company\auth;
+namespace App\Http\Controllers\vendor\auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/company/home';
+    protected $redirectTo = '/vendor/home';
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:company')->except('logout');
+        $this->middleware('guest:vendor')->except('logout');
     }
 
     protected function credentials(Request $request) {
@@ -44,7 +44,7 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        return \Auth::guard('company');
+        return \Auth::guard('vendor');
     }
     /**
      * Show the application's login form.
@@ -53,6 +53,6 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('company.auth.login');
+        return view('vendor.auth.login');
     }
 }

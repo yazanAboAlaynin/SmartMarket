@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Company;
+use App\Vendor;
 use App\Http\Controllers\Controller;
 use App\Order;
 use App\Order_item;
@@ -10,7 +10,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -38,13 +38,13 @@ class HomeController extends Controller
     }
 
 /***********************************************************************************/
-      /***************   control the companies    ***************************/
+      /***************   control the vendors    ***************************/
 
-    public function companies(Request $request){
+    public function vendors(Request $request){
 
         if($request->ajax())
         {
-            $data = Company::where('approved','=','1')->get();
+            $data = Vendor::where('approved','=','1')->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="edit" id="'.$data->id.'" 
@@ -58,11 +58,11 @@ class HomeController extends Controller
                 ->make(true);
         }
 
-        return view('admin.companies');
+        return view('admin.vendors');
 
     }
 
-    public function editCompany(Request $request,$id)
+    public function editVendor(Request $request,$id)
     {
         $data = request()->validate([
             'name' => 'required',
@@ -71,35 +71,35 @@ class HomeController extends Controller
             'mobile' => 'required',
             'address' => 'required',
         ]);
-        $company = Company::find($id);
-        $company->name = $request->input('name');
-        $company->email = $request->input('email');
-        $company->mobile = $request->input('mobile');
-        $company->phone = $request->input('phone');
-        $company->address = $request->input('address');
-        $company->save(); //persist the data
-        return redirect('admin/companies');
+        $vendor = Vendor::find($id);
+        $vendor->name = $request->input('name');
+        $vendor->email = $request->input('email');
+        $vendor->mobile = $request->input('mobile');
+        $vendor->phone = $request->input('phone');
+        $vendor->address = $request->input('address');
+        $vendor->save(); //persist the data
+        return redirect('admin/vendors');
     }
 
-    public function updateCompany(Company $company){
+    public function updateVendor(Vendor $vendor){
 
-        return view('admin.companyEdit',compact('company'));
+        return view('admin.vendorEdit',compact('vendor'));
     }
 
-    public function deleteCompany(Request $request){
+    public function deleteVendor(Request $request){
 
-        $data = Company::findOrFail($request->id);
+        $data = Vendor::findOrFail($request->id);
         $data->delete();
 
         return;
     }
 
-    public function pendingCompanies(Request $request){
+    public function pendingVendor(Request $request){
 
         if($request->ajax())
         {
 
-            $data = Company::where('approved','=',"0")->get();
+            $data = Vendor::where('approved','=',"0")->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
                     $button = '<button type="button" name="approve" id="'.$data->id.'" 
@@ -110,18 +110,18 @@ class HomeController extends Controller
                 ->make(true);
         }
 
-        return view('admin.pendingCompanies');
+        return view('admin.pendingVendors');
     }
 
     public function approve(Request $request){
 
-        $data = Company::findOrFail($request->id);
+        $data = Vendor::findOrFail($request->id);
         $data->approved = 1;
         $data->save();
         return "yes";
     }
 
-            /*********************** end companies *********************************/
+            /*********************** end vendors *********************************/
     /***********************************************************************************/
 
     /***********************************************************************************/

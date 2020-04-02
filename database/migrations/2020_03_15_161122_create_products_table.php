@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->BigInteger('price');
             $table->BigInteger('quantity');
             $table->string('image');
-            $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('vendor_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('brand_id');
             $table->BigInteger('discount');

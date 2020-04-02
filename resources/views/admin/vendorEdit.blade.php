@@ -14,7 +14,7 @@
 
                <div class="card-body">
 
-                    <form method="POST" action="{{ route('admin.company.edit',$company->id) }}">
+                    <form method="POST" action="{{ route('vendor',$vendor->id) }}">
                         @csrf
 
 
@@ -23,7 +23,7 @@
                             
                                 <div >
                                     <input id="name" type="text" class="form-control" name="name"
-                                        value="{{ old('name') ?? $company->name }}"  required autofocus>
+                                        value="{{ old('name') ?? $vendor->name }}"  required autofocus>
                                 </div>
 
                             
@@ -40,7 +40,7 @@
                         
                             <div >
                                 <input id="mobile" type="text" class="form-control" name="mobile"
-                                    value="{{ old('mobile') ?? $company->mobile }}" required autofocus>
+                                    value="{{ old('mobile') ?? $vendor->mobile }}" required autofocus>
                             </div>
 
                         
@@ -57,7 +57,7 @@
                             
                                 <div >
                                     <input id="phone" type="text" class="form-control" name="phone"
-                                        value="{{ old('phone') ?? $company->phone }}" required autofocus>
+                                        value="{{ old('phone') ?? $vendor->phone }}" required autofocus>
                                 </div>
 
                             
@@ -75,7 +75,7 @@
                         
                             <div >
                                 <input id="email" type="text" class="form-control" name="email"
-                                    value="{{ old('email') ?? $company->email }}" required autofocus>
+                                    value="{{ old('email') ?? $vendor->email }}" required autofocus>
                             </div>
 
                         
@@ -95,7 +95,7 @@
                         
                             <div >
                                 <input id="address" type="text" class="form-control" name="address"
-                                    value="{{ old('address') ?? $company->address }}" required autofocus>
+                                    value="{{ old('address') ?? $vendor->address }}" required autofocus>
                             </div>
 
                         
