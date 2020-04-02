@@ -57,6 +57,14 @@ class RegisterController extends Controller
             'mobile' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        if ($files = $data->file('image')) {
+
+            // for save original image
+            $imagePath = data('image')->store('images','public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
+            $image->save();
+        }
     }
 
     /**
