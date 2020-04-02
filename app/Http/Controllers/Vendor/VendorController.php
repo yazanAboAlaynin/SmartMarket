@@ -152,7 +152,6 @@ class VendorController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
-            'image' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
@@ -162,7 +161,7 @@ class VendorController extends Controller
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->quantity = $request->input('quantity');
-        $product->image = $request->input('image');
+
         $product->category_id = $request->input('category_id');
         $product->brand_id = $request->input('brand_id');
         $product->discount = $request->input('discount');

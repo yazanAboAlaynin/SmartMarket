@@ -11,7 +11,7 @@
                    </div>
                 <div class="card-body">  
 
-                    <form method="POST" action="{{ route('vendor',$product->id) }}">
+                    <form method="POST" action="{{ route('vendor.product.edit',$product->id) }}">
                         @csrf
 
                     <div  class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -119,20 +119,6 @@
 
                         </div>
 
-                        <div  class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">image</label>
-                                <div >
-                                    <input id="image" type="file" class="form-control" name="image"
-                                        value="{{ old('image') ?? $product->image }}"  required autofocus>
-                                </div>
-
-                            @if ($errors->has('image'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('image') }}</strong>
-                        </span>
-                            @endif
-
-                        </div>
                         <div class="form-group text-center">
                             <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Profile</button>
                         </div>
