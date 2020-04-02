@@ -397,6 +397,15 @@
             }
         }
 
+        /* dropdown-menu */
+        .dropdown-menu {
+            background-color: #8e9193ed;
+        }
+        .dropdown-menu a:hover {
+            color: #000;
+            font-size:16px;
+        }
+
 
     </style>
 </head>
