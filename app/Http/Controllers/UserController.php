@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
      * @return void
      */
     public function __construct()
-    { 
+    {
         $this->middleware('auth');
     }
 
@@ -23,16 +24,27 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-    public function product()
-    {
-        return view('user.product');
+        return view('user.home');
     }
     public function products()
     {
-        return view('user.products');
+        return view('user.product');
     }
+
+    public function chooseType($type,$choice){
+
+        dd($type." ".$choice);
+        switch ($type){
+            case 'category':
+                return redirect('products/category',$choice);
+        }
+        return redirect('product');
+    }
+
+    public function byCategory($choice){
+        dd($choice);
+    }
+
 
 
 }
