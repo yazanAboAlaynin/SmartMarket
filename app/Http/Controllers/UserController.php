@@ -29,7 +29,10 @@ class UserController extends Controller
     {
         return view('user.product');
     }
-
+    public function products()
+    {
+        return view('user.products');
+    }
 
 
 }

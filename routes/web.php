@@ -23,6 +23,7 @@ Route::get('/home', 'UserController@index')->name('home');
 Route::get('/admin', 'admin\AdminController@index')->name('admin');
 
 Route::get('/product', 'UserController@product')->name('product');
+Route::get('/products', 'UserController@products')->name('products');
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
@@ -59,7 +60,7 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
 
     Route::get('/add/product', 'VendorController@addProduct')->name('add.product');
     Route::post('/store/product', 'VendorController@storeProduct')->name('store.product');
-    
+
     Route::get('/products', 'VendorController@products')->name('products');
     Route::get('/product/{product}/update', 'VendorController@updateProduct')->name('product.update');
     Route::post('/product/{product}/edit', 'VendorController@editProduct')->name('product.edit');
