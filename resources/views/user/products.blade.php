@@ -9,7 +9,7 @@
         <div class="title-box">
             <h2>categories</h2>
         </div>
-        <div class="row">
+        <div class="row"> 
             <div class="col-md-3">
                 <div class="product-top">
                    <img src="/storage/2.jpg" class="d-block w-100">

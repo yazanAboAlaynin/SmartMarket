@@ -141,7 +141,7 @@
         }
         .title-box h2 {
             font-size:24px;
-        }
+        } 
         .title-box::after {
             content: '';
             border-top: 40px solid #526b72;
