@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
+use App\Rating;
 use Illuminate\Http\Request;
+use function Sodium\compare;
 
 class UserController extends Controller
 {
@@ -28,15 +31,16 @@ class UserController extends Controller
     }
     public function products()
     {
-        return view('user.product');
+        $category = Category::all();
+
+        return view('user.products',compact('category'));
     }
 
     public function chooseType($type,$choice){
 
-        dd($type." ".$choice);
         switch ($type){
             case 'category':
-                return redirect('products/category',$choice);
+              return redirect()->route('category.choice',compact('choice'));
         }
         return redirect('product');
     }

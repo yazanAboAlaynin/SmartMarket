@@ -24,8 +24,10 @@ Route::get('/admin', 'admin\AdminController@index')->name('admin');
 
 /****** user ********/
 Route::get('/product', 'UserController@product')->name('product');
-Route::get('/products/category/{choice}', 'UserController@byCategory');
-Route::get('/products/choose', 'UserController@chooseType')->name('choose');
+Route::get('/products', 'UserController@products')->name('products');
+Route::get('/products/choose/{type}/{choice}', 'UserController@chooseType')->name('choose');
+Route::get('/products/category/{choice}', 'UserController@byCategory')->name('category.choice');
+
 
 
 
