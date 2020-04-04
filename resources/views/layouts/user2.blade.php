@@ -333,10 +333,10 @@
 
         /* dropdown-menu */
         .dropdown-menu {
-            background-color: #8e9193ed;
+            background-color: #f1a51be3;
         }
         .dropdown-menu a:hover {
-            color: #000;
+            color: #263238;
             font-size:16px;
         }
         /* Style the search box */
@@ -376,7 +376,7 @@
                     <!-- Authentication Links -->
 
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px"></i> Cart</a>
+                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart</a>
                     </li>
                     @guest
                         <li class="nav-item">

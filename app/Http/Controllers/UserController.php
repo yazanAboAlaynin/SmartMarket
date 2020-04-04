@@ -49,6 +49,10 @@ class UserController extends Controller
         dd($choice);
     }
 
+    public function showProducts()
+    {
+        return view('user.showProducts');
+    }
 
 
 }

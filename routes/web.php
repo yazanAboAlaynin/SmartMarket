@@ -28,7 +28,7 @@ Route::get('/products', 'UserController@products')->name('products');
 Route::get('/products/choose/{type}/{choice}', 'UserController@chooseType')->name('choose');
 Route::get('/products/category/{choice}', 'UserController@byCategory')->name('category.choice');
 
-
+Route::get('/showProducts', 'UserController@showProducts')->name('showProducts');
 
 
 
