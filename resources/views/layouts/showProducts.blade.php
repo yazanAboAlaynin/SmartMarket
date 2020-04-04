@@ -339,14 +339,7 @@
             color: #263238;
             font-size:16px;
         }
-        /* Style the search box */
-        #sideSearch {
-            width: 100%;
-            font-size: 18px;
-            padding: 11px;
-            border: 1px solid #ddd;
-        }
-
+  
 
     </style>
 </head>

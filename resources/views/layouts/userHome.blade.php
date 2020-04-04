@@ -111,15 +111,10 @@
 
         #main {
             transition: margin-left .5s;
-            margin-left: 250px;
 
         }
         .myclass{
             font-size: 20px;
-        }
-
-        .content{
-            margin-left: 250px;
         }
 
 
@@ -287,7 +282,7 @@
         .single-product img {
             height: 300px;
             width: 300px;
-           
+
         }
         .single-product {
             margin-top: 50px;
@@ -306,7 +301,7 @@
         .col-md-7 .fa {
             color:orange;
             font-size:20px;
-        } 
+        }
         .single-product .price {
             text-decoration-line: line-through;
             color:red;
@@ -397,12 +392,12 @@
             }
         }
 
-        /* dropdown-menu */
+         /* dropdown-menu */
         .dropdown-menu {
-            background-color: #8e9193ed;
+            background-color: #f1a51be3;
         }
         .dropdown-menu a:hover {
-            color: #000;
+            color: #263238;
             font-size:16px;
         }
 
@@ -465,10 +460,10 @@
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px"></i> Language</a>
+                         <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px"></i> Cart</a>
+                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart</a>
                     </li>
                     @guest
                         <li class="nav-item">
@@ -498,7 +493,7 @@
                                 </div>
                             </li>
                             @endguest
-                            
+
                 </ul>
             </div>
         </div>
