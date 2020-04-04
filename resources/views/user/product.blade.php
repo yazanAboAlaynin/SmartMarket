@@ -36,21 +36,37 @@
                        </div>
                 </div>
             </div>
-            
+
             <div class="col-md-7">
                 <p class="new-saly text-center">New/saly</p>
                 <h2>Name of product</h2>
-                <p><b>Reting : </b> 
+                <p><b>Reting : </b>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>  </p>
-                
+
                 <p class="price"><b>Price : </b> 1500</p>
                 <p><b>Discount : </b> 15%</p>
                 <p class="price-discount"><b>Price-Discount : </b> 1000</p>
                 <p><b>Brand : </b> Adidas</p>
+
+                <div class="row mb-2 ml-1">
+                    <p>
+                    <b style="font-size:16px;">Size : &nbsp; &nbsp;</b>
+                    </p>
+                    <div class="dropdown">
+                    <button class="dropbtn">Select Size <i class="fa fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                    <a href="#">Small</a>
+                    <a href="#">meduem</a>
+                    <a href="#">Larg</a>
+                    <a href="#">X larg</a>
+                    </div>
+                    </div>
+                </div>
+
                 <b> Quantity : </b>
                 <input type="text" value="1">
                 <button type="button" class="btn btn-primary">Add to Cart</button>

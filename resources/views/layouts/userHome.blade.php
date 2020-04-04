@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Gelasio', serif;
@@ -280,7 +281,7 @@
 
         /* show product */
         .single-product img {
-            height: 300px;
+            height: 370px;
             width: 300px;
 
         }
@@ -400,6 +401,44 @@
             color: #263238;
             font-size:16px;
         }
+        /* dropdown size products */
+        .dropbtn {
+            background-color: #263238 ;
+            color: white;
+            padding: 5px;
+            font-size: 15px;
+            border: none;
+            cursor: pointer;
+            border-radius: 6px;
+            width:110%;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #202326eb;;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: orange;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover { background-color: #ffa50094 ; color: #000; }
+
+        .dropdown:hover .dropdown-content { display: block; }
+
+        .dropdown:hover .dropbtn { background-color: #000; }
 
 
     </style>
