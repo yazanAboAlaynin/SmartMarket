@@ -40,19 +40,13 @@ class UserController extends Controller
 
         switch ($type){
             case 'category':
-              return redirect()->route('category.choice',compact('choice'));
+                $t = Category::find($choice);
+                $products = Product::where('category_id','=',$t->id)->get();
+                $choice = $t->name;
+
+              return view('user.showProducts',compact('type','products','choice'));
         }
         return redirect('product');
     }
-
-    public function byCategory($choice){
-        dd($choice);
-    }
-
-    public function showProducts()
-    {
-        return view('user.showProducts');
-    }
-
 
 }

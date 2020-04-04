@@ -13,7 +13,7 @@
             @foreach($category as $c)
             <div class="col-md-3">
                 <div class="product-top">
-                 <a href="{{ Route('choose',['category',$c->name]) }}">  <img src="/storage/2.jpg" class="d-block w-100"></a>
+                 <a href="{{ Route('choose',['category',$c->id]) }}">  <img src="/storage/2.jpg" class="d-block w-100"></a>
                 </div>
                 <div class="product-bottom text-center">
                     <h3>{{ $c->name }}</h3>
