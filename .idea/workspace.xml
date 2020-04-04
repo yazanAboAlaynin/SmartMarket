@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/products.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/products.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/user/showProducts.blade.php" afterPath="$PROJECT_DIR$/resources/views/user/showProducts.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -321,7 +317,7 @@
       <workItem from="1585819513009" duration="7294000" />
       <workItem from="1585945429243" duration="7932000" />
       <workItem from="1586032773525" duration="4621000" />
-      <workItem from="1585994517851" duration="1038000" />
+      <workItem from="1585994517851" duration="1050000" />
     </task>
     <task id="LOCAL-00001" summary="creating models">
       <created>1584290701346</created>
@@ -659,11 +655,18 @@
       <option name="project" value="LOCAL" />
       <updated>1585955789118</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="latest">
+      <created>1585995571804</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1585995571804</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132689000" />
+    <option name="totallyTimeSpent" value="132701000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1028,6 +1031,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="62" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
