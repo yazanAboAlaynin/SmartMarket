@@ -49,8 +49,12 @@
 
                 <p class="price"><b>Price : </b> {{$product->price}}</p>
                 <p><b>Discount : </b> {{$product->discount}}%</p>
-                           <!-- $pr= ( $product->price * $product->discount )/100 ; $p = ($product->price) - $pr ;   -->
-                <p class="price-discount"><b>Price-Discount : </b> {{ $product-> price}}</p>
+                <?php
+                $priceAfterDiscount = ( $product->price * $product->discount )/100 ;
+                $priceAfterDiscount = ($product->price) - $priceAfterDiscount ;
+
+                ?>
+                <p class="price-discount"><b>Price-Discount : </b> {{ $priceAfterDiscount}}</p>
                 <p><b>Brand : </b> {{$product->brand->name}}</p>
 
                 <div class="row mb-2 ml-1">
