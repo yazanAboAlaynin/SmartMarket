@@ -398,9 +398,11 @@
             background-color: #263238 ;
             color: white;
             cursor: pointer;
+            box-shadow: 3px 2px 2px 3px #526b729e;
         }
         .dropdown-menu a:hover {
-            background-color: #ffa50094 ; color: #000;
+            background-color: #ffa50094 ;
+             color: #000;
             font-size:16px;
         }
         /* dropdown size products */
