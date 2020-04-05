@@ -7,9 +7,10 @@
 <!-------------------------------             --------------------------------------->
 <section class="featured-categories">
     <div class="container card">
-        <div class="title-box">
+        <div class="text-center">
             <h2>{{ $type }}</h2>
         </div>
+        <br/>
          <div class="title-box">
             <h2>{{ $choice }}</h2>
         </div>
@@ -38,8 +39,8 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-half-o"></i>
-                    <h3>Watch</h3>
-                    <h5>5000</h5>
+                    <h3>{{ $product->name }}</h3>
+                    <h5>{{ $product->price }}</h5>
                 </div>
             </div>
             @endforeach
