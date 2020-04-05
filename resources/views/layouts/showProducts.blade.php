@@ -43,7 +43,7 @@
             color:#fff;
         }
         .navbar a:hover {
-            color:#BBD2C5;
+            color:#BBD2C5; 
         }
 
 
@@ -141,7 +141,7 @@
         }
         .title-box h2 {
             font-size:24px;
-        } 
+        }
         .title-box::after {
             content: '';
             border-top: 40px solid #526b72;
@@ -166,14 +166,15 @@
         }
         .overlay-right .fa {
             cursor: pointer;
-            background-color:#fff;
+            background-color:#ffffffd4;
             color:#000;
             height:35px;
             width:35px;
-            font-size:20px;
+            font-size:22px;
             padding:7px;
             margin-top:5%;
             margin-bottom:5%;
+            border-radius: 20%;
         }
         .overlay-right .btn-secondary {
             background:none !important;
@@ -331,15 +332,19 @@
             }
         }
 
-        /* dropdown-menu */
-        .dropdown-menu {
-            background-color: #f1a51be3;
+       /* dropdown-menu */
+       .dropdown-menu {
+            background-color: #263238 ;
+            color: white;
+            cursor: pointer;
+            box-shadow: 3px 2px 2px 3px #526b729e;
         }
         .dropdown-menu a:hover {
-            color: #263238;
+            background-color: #ffa50094 ;
+             color: #000000;
             font-size:16px;
         }
-  
+
 
     </style>
 </head>
