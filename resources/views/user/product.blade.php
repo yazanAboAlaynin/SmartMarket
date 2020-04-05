@@ -54,13 +54,12 @@
 
                 <div class="row mb-2 ml-1">
                     <p>
-                    <b style="font-size:16px;">Size : &nbsp; &nbsp;</b>
+                    <b style="font-size:15px;">Size : &nbsp; &nbsp;</b>
                     </p>
                     <div class="dropdown">
                     <button class="dropbtn">Select Size <i class="fa fa-chevron-down"></i></button>
                     <div class="dropdown-content">
                     <a href="#">Small</a>
-                    <a href="#">meduem</a>
                     <a href="#">Larg</a>
                     <a href="#">X larg</a>
                     </div>
