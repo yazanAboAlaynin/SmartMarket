@@ -83,7 +83,19 @@ class UserController extends Controller
         $cart->add($product,$product->id);
         $request->session()->put('cart',$cart);
 
-        return redirect()->route('products');
+        return redirect()->route('cart');
+    }
+
+    public function deleteFromCart(Request $request,Product $product){
+
+        if(Session::has('cart')){
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $cart->delete($product);
+            $request->session()->put('cart',$cart);
+        }
+
+        return redirect()->route('cart');
     }
 
 }

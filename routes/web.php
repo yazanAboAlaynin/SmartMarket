@@ -29,6 +29,7 @@ Route::get('/products/{type}/{choice}', 'UserController@chooseType')->name('choo
 Route::get('/show/products', 'UserController@showProducts')->name('showProducts');
 Route::get('/view/product/{product}', 'UserController@viewProduct')->name('viewProduct');
 Route::get('/add/product/{product}', 'UserController@addToCart')->name('addProduct');
+Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('deleteProduct');
 Route::get('/cart', 'UserController@cart')->name('cart');
 
 

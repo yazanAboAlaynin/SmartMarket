@@ -40,7 +40,7 @@
                         <a href="{{ Route("addProduct",$product['item']->id) }}" class="btn btn-info btn-sm update-cart"
                            data-id="{{ $product['item']->id }}" >+
                         </a>
-                        <a href="" class="btn btn-danger btn-sm delete-cart"
+                        <a href="{{ Route("deleteProduct",$product['item']->id) }}" class="btn btn-danger btn-sm delete-cart"
                            data-id="{{ $product['item']->id }}" >-
                         </a>
                     </td>
