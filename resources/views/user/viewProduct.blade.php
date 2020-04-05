@@ -39,7 +39,7 @@
 
             <div class="col-md-7">
                 <p class="new-saly text-center">New/saly</p>
-                <h2>Name of product</h2>
+                <h2> {{$product->name}} </h2>
                 <p><b>Reting : </b>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -47,10 +47,11 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>  </p>
 
-                <p class="price"><b>Price : </b> 1500</p>
-                <p><b>Discount : </b> 15%</p>
-                <p class="price-discount"><b>Price-Discount : </b> 1000</p>
-                <p><b>Brand : </b> Adidas</p>
+                <p class="price"><b>Price : </b> {{$product->price}}</p>
+                <p><b>Discount : </b> {{$product->discount}}</p>
+                           <!-- $pr= ( $product->price * $product->discount )/100 ; $p = ($product->price) - $pr ;   -->
+                <p class="price-discount"><b>Price-Discount : </b> {{ $product-> price}}</p>
+                <p><b>Brand : </b> {{$product->brand_id}}</p>
 
                 <div class="row mb-2 ml-1">
                     <p>
@@ -81,10 +82,7 @@
 <section class="product-description">
     <div class="container">
         <h6>Product Description</h6>
-        <p>product-description product-description product-description product-description product-description
-           product-description product-description product-description product-description product-description
-           product-description product-description product-description product-description product-description
-        </p>
+        <p>{{$product->description}}</p>
 
         <hr>
     </div>

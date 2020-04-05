@@ -395,10 +395,12 @@
 
          /* dropdown-menu */
         .dropdown-menu {
-            background-color: #f1a51be3;
+            background-color: #263238 ;
+            color: white;
+            cursor: pointer;
         }
         .dropdown-menu a:hover {
-            color: #263238;
+            background-color: #ffa50094 ; color: #000;
             font-size:16px;
         }
         /* dropdown size products */
