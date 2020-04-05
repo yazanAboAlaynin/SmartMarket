@@ -506,7 +506,9 @@
                          <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart</a>
+                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
+                             <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                         </a>
                     </li>
                     @guest
                         <li class="nav-item">

@@ -55,7 +55,7 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('vendor.products') }}",
+                ajax: "{{ route('cart') }}",
 
                 columns: [
 
@@ -100,7 +100,7 @@
                 }
             };
 
-            xhttp.open("get", "{{ route("user.product.delete") }}?id=" + id, true);
+            xhttp.open("get", "{{ route("cart") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 

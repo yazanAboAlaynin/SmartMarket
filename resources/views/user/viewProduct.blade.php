@@ -48,10 +48,10 @@
                 <i class="fa fa-star-half-o"></i>  </p>
 
                 <p class="price"><b>Price : </b> {{$product->price}}</p>
-                <p><b>Discount : </b> {{$product->discount}}</p>
+                <p><b>Discount : </b> {{$product->discount}}%</p>
                            <!-- $pr= ( $product->price * $product->discount )/100 ; $p = ($product->price) - $pr ;   -->
                 <p class="price-discount"><b>Price-Discount : </b> {{ $product-> price}}</p>
-                <p><b>Brand : </b> {{$product->brand_id}}</p>
+                <p><b>Brand : </b> {{$product->brand->name}}</p>
 
                 <div class="row mb-2 ml-1">
                     <p>
@@ -69,7 +69,7 @@
 
                 <b> Quantity : </b>
                 <input type="text" value="1">
-                <button type="button" class="btn btn-primary">Add to Cart</button>
+                <a href="{{ route('addProduct',$product->id) }}" class="btn btn-primary">Add to Cart</a>
 
             </div>
 
