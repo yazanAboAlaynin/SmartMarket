@@ -36,13 +36,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i>
+                            
                         </button>
                     </div>
                 </div>
@@ -62,13 +62,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i>
+                           
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i>
+                            
                         </button>
                     </div>
                 </div>
@@ -88,13 +88,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i>
+                           
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i>
+                            
                         </button>
                     </div>
                 </div>
@@ -114,13 +114,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            <i class="fa fa-eye"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            <i class="fa fa-heart-o"></i>
+                            
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            <i class="fa fa-shopping-cart"></i>
+                            
                         </button>
                     </div>
                 </div>

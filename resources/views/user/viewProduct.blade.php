@@ -98,7 +98,7 @@
                             <img src="/storage/2.jpg" class="d-block w-100">
                             <div class="overlay-right">
                                 <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:70px;width:100px;margin-top: 120px;margin-left: 46px;font-size:70px;background-image: linear-gradient( #343a4073,#ffffffc2);padding-top: 0;"></i>
+                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
                                 </button>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                             <img src="/storage/www.jpg" class="d-block w-100">
                             <div class="overlay-right">
                                 <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:70px;width:100px;margin-top: 120px;margin-left: 46px;font-size:70px;background-image: linear-gradient( #343a4073,#ffffffc2);padding-top: 0;"></i>
+                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
                                 </button>
                             </div>
                         </div>
@@ -120,7 +120,7 @@
                             <img src="/storage/ww.jpg" class="d-block w-100">
                             <div class="overlay-right">
                                 <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:70px;width:100px;margin-top: 120px;margin-left: 46px;font-size:70px;background-image: linear-gradient( #343a4073,#ffffffc2);padding-top: 0;"></i>
+                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
                                 </button>
                             </div>
                         </div>
@@ -131,7 +131,7 @@
                             <img src="/storage/w.jpg" class="d-block w-100">
                             <div class="overlay-right">
                                 <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:70px;width:100px;margin-top: 120px;margin-left: 46px;font-size:70px;background-image: linear-gradient( #343a4073,#ffffffc2);padding-top: 0;"></i>
+                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
                                 </button>
                             </div>
                         </div>
