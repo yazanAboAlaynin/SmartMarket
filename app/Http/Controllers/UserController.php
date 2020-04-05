@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
-use App\Providers\Cart;
+use App\Cart;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -58,33 +58,22 @@ class UserController extends Controller
         return view('user.viewProduct',compact('product'));
     }
 
-    public function cart(){
+    public function cart()
+    {
         $products = [];
+        $totalQty = 0;
+        $totalPrice = 0;
+        $qty = [];
 
-        if(request()->ajax())
-        {
-           if(Session::has('cart')){
-               $oldCart = Session::get('cart');
-               $cart = new Cart($oldCart);
-               $items = $cart->items;
-               foreach ($items as $item){
-                   array_push($products,$item['item']);
-               }
-               return DataTables::of($products)
-                   ->addColumn('action', function($products){
-                       $button = '<button type="button" name="edit" id="'.$products->id.'" 
-                    class="edit btn btn-primary btn-sm" onclick=update('.$products->id.')>Edit</button>';
-                       $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$products->id.'" 
-                    class="delete btn btn-danger btn-sm" onclick=del('.$products->id.')>Delete</button>';
-
-                       return $button;
-                   })
-                   ->rawColumns(['action'])
-                   ->make(true);
-           }
+        if (Session::has('cart')) {
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $products = $cart->items;
+            $totalQty = $cart->totalQty;
+            $totalPrice = $cart->totalPrice;
         }
 
-        return view('user.cart',compact('products'));
+        return view('user.cart', compact('products','totalPrice','totalQty'));
     }
 
     public function addToCart(Request $request,Product $product){

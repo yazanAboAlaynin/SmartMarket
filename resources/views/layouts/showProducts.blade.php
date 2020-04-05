@@ -440,7 +440,7 @@
     <main class="py-4 content leftcolumn" id="content" >
         @yield('content')
     </main>
-
+    </div>
     <div class="footer" >
 
         <section class="website-features">
@@ -534,5 +534,6 @@
         });
     }
 </script>
+
 </body>
 </html>
