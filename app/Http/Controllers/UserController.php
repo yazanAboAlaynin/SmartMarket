@@ -49,4 +49,9 @@ class UserController extends Controller
         return redirect('product');
     }
 
+    public function viewProduct(Product $product){
+
+        return view('user.viewProduct',compact('product'));
+    }
+
 }

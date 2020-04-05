@@ -10,7 +10,7 @@
                 <div id="prouct-slider" class="carousel slide carousel-fade" data-ride="carousel">
                        <div class="carousel-inner shadow p-3 mb-5 rounded">
                             <div class="carousel-item active">
-                                <img src="/storage/2.jpg" class="d-block w-100 ">
+                                <img src="/storage/{{ $product->image }}" class="d-block w-100 ">
                             </div>
                             <div class="carousel-item ">
                                 <img src="/storage/w.jpg" class="d-block w-100">

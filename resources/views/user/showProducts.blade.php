@@ -20,7 +20,7 @@
             @foreach($products as $product)
             <div class="col-md-3">
                 <div class="product-top">
-                   <img src="/storage/{{ $product->image }}" class="d-block w-100">
+                  <a href="{{ Route('viewProduct',$product->id) }}"> <img src="/storage/{{ $product->image }}" class="d-block w-100"> </a>
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
                             <i class="fa fa-eye"></i>
