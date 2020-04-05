@@ -6,10 +6,6 @@
 
         <h1>Cart:</h1>
 
-        <div align="right">
-            <button  type="button" name="create_record" id="create_record" class="btn btn-success btn-sm" >Create Record</button>
-        </div>
-        <br/>
 
         <table class="table table-bordered table-striped data-table">
 
