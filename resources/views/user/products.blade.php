@@ -5,6 +5,7 @@
 
 <!-------------------------------             --------------------------------------->
 <section class="featured-categories">
+    <a href="{{ Route('search',['seller',1]) }}">search</a>
     <div class="container">
         <div class="title-box">
             <h2>categories</h2>
@@ -13,7 +14,7 @@
             @foreach($category as $c)
             <div class="col-md-3">
                 <div class="product-top">
-                 <a href="{{ Route('choose',['category',$c->id]) }}">  <img src="/storage/2.jpg" class="d-block w-100"></a>
+                 <a href="{{ Route('search',['category',$c->id]) }}">  <img src="/storage/2.jpg" class="d-block w-100"></a>
                 </div>
                 <div class="product-bottom text-center">
                     <h3>{{ $c->name }}</h3>
