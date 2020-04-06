@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Order;
+use App\Order_item;
 use App\Product;
 use App\Cart;
 use App\Rating;
@@ -96,6 +98,42 @@ class UserController extends Controller
         }
 
         return redirect()->route('cart');
+    }
+
+    public function order(){
+        if(Session::has('cart')){
+            $oldCart = Session::get('cart');
+            $cart = new Cart($oldCart);
+            $products = $cart->items;
+
+            $order = new Order();
+            $user = auth()->user()->id;
+            $totDiscount = 0;
+
+            $order->user_id = $user;
+            $order->discount = 0;
+            $order->total_price =$cart->totalPrice;
+            $order->done = 0;
+            $order->save();
+
+            foreach ($products as $product){
+                $order_item = new Order_item();
+                $order_item->product_id = $product['item']->id;
+                $order_item->quantity = $product['qty'];
+                $p = Product::find($product['item']->id);
+                $p->quantity -= $product['qty'];
+                $p->save();
+                $order_item->price = $product['price'];
+                $order_item->done = 0;
+                $discount = ($product['item']->discount * $product['item']->price)/100;
+                $totDiscount += ($discount * $product['qty']);
+                $order->order_items()->save($order_item);
+            }
+            Session::remove('cart');
+            $order->discount = $totDiscount;
+            $order->save();
+        }
+        return redirect()->route('home');
     }
 
 }
