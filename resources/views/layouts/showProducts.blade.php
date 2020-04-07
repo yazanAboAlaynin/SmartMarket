@@ -126,16 +126,57 @@
 
                 <div class=" leftsidenav" id="leftsidenav">
 
-                    <ul>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                        <li>Home  </li>
-                      </ul>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6><b>Category</b></h6>
+                            <ul>
+                            @foreach($category as $c)
+
+                                    <li> <a href="{{ Route('search',['category',$c->id]) }}"> {{$c->name}} </a></li>
+
+                            @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h6><b>Brand</b></h6>
+                            <ul>
+                                @foreach($brands as $brand)
+
+                                    <li> <a href="{{ Route('search',['brand',$brand->id]) }}"> {{$brand->name}} </a></li>
+
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h6><b>Sellers</b></h6>
+                            <ul>
+                                @foreach($sellers as $seller)
+
+                                    <li>  <a href="{{ Route('search',['sellers',$seller->id]) }}">{{$seller->name}} </a></li>
+
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h6><b>Avg. Customer Review</b></h6>
+                            <ul>
+                                <li> <a href="{{ Route('search',['onRate',4]) }}"> 4 stars & UP </a></li>
+                                <li> <a href="{{ Route('search',['onRate',3]) }}"> 3 stars & UP </a></li>
+                                <li> <a href="{{ Route('search',['onRate',2]) }}"> 2 stars & UP </a></li>
+                                <li> <a href="{{ Route('search',['onRate',1]) }}"> 1 stars & UP </a></li>
+
+                            </ul>
+                        </div>
+                    </div>
 
                 </div>
        </div>
@@ -247,6 +288,8 @@
         document.getElementById("menu-btn-open").style.display="block";
         document.getElementById("menu-btn-close").style.display="none";
     }
+
+
 
 </script>
 </body>

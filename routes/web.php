@@ -32,6 +32,7 @@ Route::get('/add/product/{product}', 'UserController@addToCart')->name('addProdu
 Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('deleteProduct');
 Route::get('/cart', 'UserController@cart')->name('cart');
 Route::get('/order', 'UserController@order')->name('order');
+Route::get('/getsrchlist', 'UserController@getSearchList')->name('getSearchList');
 
 
 

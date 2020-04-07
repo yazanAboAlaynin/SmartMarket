@@ -116,6 +116,7 @@ body {
 /* ..............show product start................  */
 .rightcolumn {
     margin-top: 10px;
+
 }
 
 .leftcolumn {
@@ -139,26 +140,25 @@ body {
 .leftsidenav ul {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 15px;
     color: #000;
     display: block;
 }
 
-.leftsidenav ul li {
+.leftsidenav ul li  {
     list-style-type: none;
-    font-weight: bold;
-    margin-top: 10px;
     cursor: pointer;
+
+}
+
+.leftsidenav ul li a{
+    color: #0d6479;
 }
 
 .leftsidenav  ul li:hover {
     color: #064579;
 }
-.leftsidenav  ul li ul {
-    display: none;
-    z-index: 10;
 
-}
 #menu-btn-open , #menu-btn-close {
     font-size: 25px;
     color : #263238;
