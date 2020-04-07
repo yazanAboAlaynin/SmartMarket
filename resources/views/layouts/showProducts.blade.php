@@ -28,325 +28,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Gelasio', serif;
-            transition: background-color .5s;
-        }
 
-
-        .navbar {
-            background-color: #263238;
-            color:#BBD2C5;
-        }
-        .navbar a {
-            color:#fff;
-        }
-        .navbar a:hover {
-            color:#BBD2C5; 
-        }
-
-
-        .leftcolumn {
-            float: left;
-            width: 80%;
-            margin-top: 10px;
-        }
-
-        .rightcolumn {
-            float: left;
-            width: 20%;
-            padding-left: 4px;
-            padding-right: 2px;
-            margin-top: 33px;
-        }
-
-        /* Fake image */
-        .fakeimg {
-            background-color: #aaa;
-            width: 100%;
-            padding: 20px;
-        }
-
-        /* Add a card effect for articles */
-        .card {
-            background-color: white;
-            padding: 20px;
-            margin-top: 6px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* ********* */
-        .sidenav {
-            top: 20px;
-            left: 10px;
-            z-index:1;
-            background-color: #f1f1f1;
-            padding: 8px 0;
-            box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.5);
-        }
-
-        .sidenav ul {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #000;
-            display: block;
-        }
-
-        .sidenav ul li {
-            list-style-type: none;
-            font-weight: bold;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        .sidenav  ul li:hover {
-            color: #064579;
-        }
-        .sidenav  ul li ul {
-            display: none;
-            z-index: 10;
-
-        }
-
-        /* featured-categories */
-        .featured-categories {
-            margin:15px 0;
-        }
-        .featured-categories img {
-            width:100%;
-            padding:15px 0;
-            transition:1s;
-            cursor: pointer;
-        }
-        .featured-categories img:hover {
-            transform : scale(1.1);
-        }
-        /* categories */
-        .title-box {
-            background: #526b72;
-            color:#fff;
-            width:180px;
-            padding: 4px 10px;
-            height:40px;
-            margin-bottom:30px;
-            display:flex;
-        }
-        .title-box h2 {
-            font-size:24px;
-        }
-        .title-box::after {
-            content: '';
-            border-top: 40px solid #526b72;
-            border-right: 50px solid transparent;
-            position:absolute;
-            display:flex;
-            margin-top: -4px;
-            margin-left: 170px;
-        }
-        /* product-top */
-        .product-top img {
-            width:100%;
-            height:300px;
-        }
-        .overlay-right {
-            display:block;
-            opacity:0;
-            position:absolute;
-            top:10%;
-            margin-left: 0;
-            width:70px;
-        }
-        .overlay-right .fa {
-            cursor: pointer;
-            background-color:#ffffffd4;
-            color:#000;
-            height:35px;
-            width:35px;
-            font-size:22px;
-            padding:7px;
-            margin-top:5%;
-            margin-bottom:5%;
-            border-radius: 20%;
-        }
-        .overlay-right .btn-secondary {
-            background:none !important;
-            border:none !important;
-            box-shadow:none !important;
-        }
-        .product-top:hover .overlay-right {
-            opacity:1;
-            margin-left:5%;
-            transition:0.5s;
-        }
-        /* product-bottom */
-        .product-bottom .fa {
-            color:orange;
-            font-size:10px;
-        }
-        .product-bottom h3 {
-            font-size:20px;
-            font-weight:bold;
-        }
-        .product-bottom h5 {
-            font-size:15px;
-            padding-bottom:10px;
-        }
-        .new-products {
-            margin: 15px 0;
-        }
-        /* website-features */
-        .website-features {
-            margin:20px 0;
-        }
-        .feature-text {
-            margin-top: 10px;
-            float: right;
-            width: 80%;
-            padding-left:20px;
-            color:#E2E2E2;
-
-        }
-        .feature-box {
-            padding-top:20px;
-        }
-
-        /* show product */
-        .single-product img {
-            height: 300px;
-            width: 300px;
-
-        }
-        .single-product {
-            margin-top: 50px;
-        }
-        .new-saly {
-            background: #669b10;
-            width: 12%;
-            color: #fff;
-            font-size: 15px;
-            font-weight: bold;
-            margin-top: 18px;
-        }
-        .col-md-7 h2 {
-            color : #555;
-        }
-        .col-md-7 .fa {
-            color:orange;
-            font-size:20px;
-        }
-        .single-product .price {
-            text-decoration-line: line-through;
-            color:red;
-        }
-        .single-product .price-discount {
-            color: orange;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .single-product input {
-            border: 1px solid #ccc;
-            font-weight: bold;
-            height: 33px;
-            text-align: center;
-            width: 30px
-        }
-        .single-product .btn-primary {
-            background: #263238 !important;
-            color: #fff;
-            font-size: 15px;
-            margin-left: 20px;
-            border: none;
-            box-shadow: none !important;
-        }
-        .product-description h6 {
-            background: #526b72;
-            color:#fff;
-            width:19%;
-            padding: 6px 4px;
-            height:30px;
-            margin-bottom:30px;
-            text-align: center;
-            font-size: 18px;
-        }
-        .product-description hr {
-            margin-bottom:50px;
-            margin-top:30px;
-        }
-
-
-        /* Footer */
-        .footer {
-            margin-top: 50px;
-            background-color: #263238;
-            color:#fff;
-        }
-        .footer h1 {
-            font-size:15px;
-            margin:25px 0;
-        }
-        .footer a {
-            text-decoration: none;
-            font-size: 12px;
-            color: #fff;
-            display: block;
-            padding-bottom: 15px;
-        }
-
-        .footer a:hover {
-           color: red;
-        }
-        .copyright {
-            margin-bottom: -80px;
-            text-align: center;
-            font-size: 15px;
-            padding-bottom: 20px;
-        }
-        .fa-heart-o {
-            color:red;
-            font-size: 15px;
-        }
-        .footer hr {
-            margin-top: 10px;
-            background-color: #ccc;
-        }
-        .footer-image img {
-            width: 150px;
-        }
-        .footer .row .fa {
-            padding-right:6px;
-        }
-
-        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 800px) {
-            .leftcolumn, .rightcolumn {
-                width: 100%;
-                padding: 0;
-            }
-        }
-
-       /* dropdown-menu */
-       .dropdown-menu {
-            background-color: #263238 ;
-            color: white;
-            cursor: pointer;
-            box-shadow: 3px 2px 2px 3px #526b729e;
-        }
-        .dropdown-menu a:hover {
-            background-color: #ffa50094 ;
-             color: #000000;
-            font-size:16px;
-        }
-
-
-    </style>
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -354,8 +37,39 @@
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
             <div class="navbar-header" >
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                <a class="navbar-brand" id="main" href="{{ url('/admin') }}">
+                    <a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
+                    <a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
+                    <a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
+                    <a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>
+                    <button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="#">Show Companies</a>
+                        <a href="#">Add New Company</a>
+                        <a href="#">Delete Company</a>
+                    </div>
+                    <button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="#">Show Customer</a>
+                        <a href="#">Delete Customer</a>
+                    </div>
+                    <button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="#">Show Orders</a>
+                        <a href="#">Show Old Orders</a>
+                    </div>
+
+                </div>
+                <span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>
+                <a class="navbar-brand" id="main" style="padding-left: 40px" href="{{ url('/admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
@@ -372,10 +86,12 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-
+                    <li class="nav-item">
+                         <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
+                    </li>
                     <li class="nav-item">
                          <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
-                            <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                             <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                          </a>
                     </li>
                     @guest
@@ -412,10 +128,14 @@
         </div>
     </nav>
 
+
     <div class="row">
-        <div class="rightcolumn">
-            <div class="card">
-                <div class="sidenav" id="sidenav">
+        <div class="col-sm-3 leftcolumn">  
+                <div style="float:right;margin-right: 22px;">
+                    <i class="fa fa-bars" id="menu-btn-open" style="font-size:22px;margin-right: 1px;" onclick="openmenu()"></i>
+                    <i class="fa fa-times" id="menu-btn-close" style="font-size:22px" onclick="closemenu()"></i>
+                </div>
+                <div class="leftsidenav" id="leftsidenav">
 
                     <ul>
                         <li>Home  </li>
@@ -429,18 +149,14 @@
                       </ul>
 
                 </div>
-          </div>
        </div>
 
 
 
-
-
-
-    <main class="py-4 content leftcolumn" id="content" >
+    <main class="py-4 content col-sm-9 rightcolumn" id="content" >
         @yield('content')
     </main>
-    </div>
+
     <div class="footer" >
 
         <section class="website-features">
@@ -509,7 +225,7 @@
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
-        document.getElementById("content").style.marginLeft = "250px";
+        document.getElementById("content").style.marginLeft = "-35px";
 
     }
 
@@ -533,7 +249,18 @@
             }
         });
     }
-</script>
 
+    function openmenu() {
+    document.getElementById("leftsidenav").style.display="block";
+    document.getElementById("menu-btn-open").style.display="none";
+    document.getElementById("menu-btn-close").style.display="block";
+    }
+    function closemenu() {
+        document.getElementById("leftsidenav").style.display="none";
+        document.getElementById("menu-btn-open").style.display="block";
+        document.getElementById("menu-btn-close").style.display="none";
+    }
+
+</script>
 </body>
 </html>

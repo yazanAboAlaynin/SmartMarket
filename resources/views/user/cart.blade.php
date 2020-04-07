@@ -64,5 +64,7 @@
         <a href="{{ Route('order') }}">Order Now</a>
     </div>
 
+</div>
+
 
 @endsection
