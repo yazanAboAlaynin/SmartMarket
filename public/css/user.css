@@ -89,7 +89,7 @@ body {
 }
 
 .content{
-    margin-left: -20px;
+
 }
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -115,12 +115,12 @@ body {
 
 /* ..............show product start................  */
 .rightcolumn {
-    margin-top: 10px;   
-    border-left: 2px solid #263238;
+    margin-top: 10px;
 }
 
 .leftcolumn {
     margin-top: 33px;
+    border-right: 2px solid #263238;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -131,8 +131,6 @@ body {
 
   /* **** left side start***** */
   .leftsidenav {
-    top: 20px;
-    left: 10px;
     z-index:1;
     padding: 8px 0;
     margin-left: 10px;

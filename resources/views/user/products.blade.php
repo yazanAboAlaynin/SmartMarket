@@ -2,10 +2,10 @@
 
 @section('content')
 
-
+<div class="container">
 <!-------------------------------             --------------------------------------->
 <section class="featured-categories">
-    <a href="{{ Route('search',['seller',1]) }}">search</a>
+
     <div class="container">
         <div class="title-box">
             <h2>categories</h2>
@@ -37,13 +37,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            
+
                         </button>
                     </div>
                 </div>
@@ -63,13 +63,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                           
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            
+
                         </button>
                     </div>
                 </div>
@@ -89,13 +89,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                           
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            
+
                         </button>
                     </div>
                 </div>
@@ -115,13 +115,13 @@
                    <img src="/storage/2.jpg" class="d-block w-100">
                     <div class="overlay-right">
                         <button type="button" class="btn btn-secondary" title="Quick Shop">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to wishlist">
-                            
+
                         </button>
                         <button type="button" class="btn btn-secondary" title="Add to Cart">
-                            
+
                         </button>
                     </div>
                 </div>
@@ -139,12 +139,5 @@
         </div>
     </div>
 </section>
-
-
 </div>
-
-</div>
-</div>
-
-
 @endsection
