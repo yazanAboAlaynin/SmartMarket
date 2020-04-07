@@ -31,7 +31,7 @@
         <div class="title-box">
             <h2>more pay</h2>
         </div>
-        <div class="row">
+        <div class="row">x
             <div class="col-md-3">
                 <div class="product-top">
                    <img src="/storage/2.jpg" class="d-block w-100">
