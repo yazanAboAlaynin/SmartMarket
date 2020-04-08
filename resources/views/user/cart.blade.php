@@ -61,7 +61,7 @@
             </tr>
             </tfoot>
         </table>
-        <a href="{{ Route('order') }}">Order Now</a>
+        <a class="btn btn-primary float-right" href="{{ Route('order') }}">Order Now</a>
     </div>
 
 <br/>

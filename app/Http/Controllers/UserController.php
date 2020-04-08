@@ -193,6 +193,7 @@ class UserController extends Controller
                 $totDiscount += ($discount * $product['qty']);
                 $order->order_items()->save($order_item);
             }
+
             Session::remove('cart');
             $order->discount = $totDiscount;
             $order->save();
