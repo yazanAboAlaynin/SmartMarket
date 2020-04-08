@@ -82,7 +82,7 @@
                          <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
                     </li>
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
+                         <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
                              <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                          </a>
                     </li>
@@ -158,7 +158,7 @@
                             <ul>
                                 @foreach($sellers as $seller)
 
-                                    <li>  <a href="{{ Route('search',['sellers',$seller->id]) }}">{{$seller->name}} </a></li>
+                                    <li>  <a href="{{ Route('search',['seller',$seller->id]) }}">{{$seller->name}} </a></li>
 
                                 @endforeach
                             </ul>
