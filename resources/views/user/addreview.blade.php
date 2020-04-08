@@ -29,7 +29,7 @@
                 <span class="vl-innertext">and</span>
             </div>
             <div class="col-md-6">
-            
+             
                 <div class="col">
                     <div>
                         <label for="name" class="col-md-4 control-label">Name User</label>
