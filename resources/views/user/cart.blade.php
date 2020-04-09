@@ -37,7 +37,7 @@
                     </td>
                     <td data-th="Subtotal" class="text-center">${{ $product['price'] }}</td>
                     <td class="actions" data-th="">
-                        <a href="{{ Route("addProduct",$product['item']->id) }}" class="btn btn-info btn-sm update-cart"
+                        <a href="{{ Route("addProduct",[$product['item']->id,'quantity'=>1]) }}" class="btn btn-info btn-sm update-cart"
                            data-id="{{ $product['item']->id }}" >+
                         </a>
                         <a href="{{ Route("deleteProduct",$product['item']->id) }}" class="btn btn-danger btn-sm delete-cart"

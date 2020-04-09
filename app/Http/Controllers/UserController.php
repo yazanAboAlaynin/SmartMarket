@@ -144,9 +144,13 @@ class UserController extends Controller
 
     public function addToCart(Request $request,Product $product){
 
+        request()->validate([
+            'quantity' => 'required',
+        ]);
+
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$product->id);
+        $cart->add($product,$product->id,$request->quantity);
         $request->session()->put('cart',$cart);
 
         return redirect()->route('cart');
@@ -165,6 +169,7 @@ class UserController extends Controller
     }
 
     public function order(){
+
         if(Session::has('cart')){
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);

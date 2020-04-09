@@ -17,15 +17,16 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
 
-    <link href="{{ asset('css/user.css') }}" rel="stylesheet">
+
 </head>
 
-<body>
-<div id="app">
+<body style="overflow-x: hidden">
+<div id="app" >
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
             <div class="navbar-header" >
@@ -83,7 +84,7 @@
                     </li>
                     <li class="nav-item">
                          <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
-                             <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                             <span  class="badge badge-pill badge-danger">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                          </a>
                     </li>
                     @guest
@@ -181,7 +182,7 @@
                 </div>
        </div>
 
-    <main class="py-4 content rightcolumn" id="content" >
+    <main class="py-4 content rightcolumn"  id="content" >
         @yield('content')
     </main>
     </div>
@@ -260,8 +261,7 @@
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
         document.getElementById("main").style.marginLeft= "0";
-        document.getElementById("content").style.marginLeft = "0";
-        document.body.style.backgroundColor = "white";
+
     }
 
     var dropdown = document.getElementsByClassName("dropdown-btn");

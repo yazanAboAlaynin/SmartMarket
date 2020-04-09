@@ -70,11 +70,12 @@
                     </div>
                     </div>
                 </div>
-
-                <b> Quantity : </b>
-                <input type="text" value="1">
-                <a href="{{ route('addProduct',$product->id) }}" class="btn btn-primary">Add to Cart</a>
-
+                <form method="GET" action="{{ Route('addProduct',$product->id) }}">
+                    @csrf
+                    <label for="quantity" class="">{{ __('Quantity') }}</label>
+                    <input id="quantity" type="number" max="10" min="1" name="quantity" value="1" required autocomplete="quantity" autofocus>
+                    <button class="btn btn-primary">Add to Cart</button>
+                </form>
             </div>
 
         </div>
