@@ -39,6 +39,11 @@ class UserController extends Controller
         return view('user.home');
     }
 
+    public function profile(){
+        $user = auth()->user();
+        return view('user.profile',compact('user'));
+    }
+
     public function getSearchList()
     {
         $category = Cache::remember
