@@ -146,4 +146,34 @@
             </div>
 
 </section>
+
+<!--  Ratings & Raviews  -->
+<div class="container mt-5 mb-5">
+    <div class="row title-box">
+        <h2>Rating&Raview</h2>
+    </div>
+
+    <div class="row mt-5 mb-5">
+      <div class="media">
+        <img src="/storage/w.jpg" class="mr-3" style="width:80px">
+        <div class="media-body">
+          <h5 class="mt-0">user name . <span class="text-warning"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> </span></h5>
+            comment
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-5 mb-5">
+      <div class="media">
+        <img src="/storage/w.jpg" class="mr-3" style="width:80px">
+        <div class="media-body">
+          <h5 class="mt-0">user name . <span class="text-warning"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> </span></h5>
+            comment
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
 @endsection

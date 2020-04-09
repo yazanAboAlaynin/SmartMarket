@@ -43,6 +43,32 @@ class UserController extends Controller
         $user = auth()->user();
         return view('user.profile',compact('user'));
     }
+    public function edit()
+    {
+        $id = auth()->user()->id;
+        $user = User::find($id);
+        return view('user.profileEdit',compact('user'));
+    }
+
+    public function update(Request $request){
+
+        request()->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+        ]);
+
+        $id = auth()->user()->id;
+        $user = User::find($id);
+
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->mobile = $request['mobile'];
+        $user->save();
+
+        return redirect('user/profile');
+
+    }
 
     public function getSearchList()
     {

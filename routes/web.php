@@ -26,6 +26,8 @@ Route::get('/admin', 'admin\AdminController@index')->name('admin');
 
 Route::get('/products', 'UserController@products')->name('products');
 Route::get('/profile', 'UserController@profile')->name('profile');
+Route::get('/profile/edit', 'UserController@edit')->name('profile.edit');
+Route::post('/profile/update', 'UserController@update')->name('profile.update');
 Route::get('/products/{type}/{choice}', 'UserController@search')->name('search');
 Route::get('/show/products', 'UserController@showProducts')->name('showProducts');
 Route::get('/view/product/{product}', 'UserController@viewProduct')->name('viewProduct');
