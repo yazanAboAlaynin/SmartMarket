@@ -9,22 +9,14 @@
             <div class="col-md-5">
                 <div id="prouct-slider" class="carousel slide carousel-fade" data-ride="carousel">
                        <div class="carousel-inner shadow p-3 mb-5 rounded">
-                            <div class="carousel-item active">
-                                <img src="/storage/{{ $product->image }}" class="d-block w-100 ">
-                            </div>
+                           <div class="carousel-item active">
+                               <img src="/storage/{{ $product->image }}" class="d-block w-100 ">
+                           </div>
+                           @foreach($images as $image)
                             <div class="carousel-item ">
-                                <img src="/storage/w.jpg" class="d-block w-100">
+                                <img src="/storage/{{ $image->src }}" class="d-block w-100 ">
                             </div>
-                            <div class="carousel-item ">
-                                <img src="/storage/ww.jpg" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item ">
-                                <img src="/storage/www.jpg" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item ">
-                                <img src="/storage/w.jpg" class="d-block w-100">
-                            </div>
-
+                           @endforeach
                             <a class="carousel-control-prev" href="#prouct-slider" role="button" data-slide="prev" >
                                 <span class="carousel-control-prev-icon" aria-hidden="true" ></span>
                                 <span class="sr-only">Previous</span>

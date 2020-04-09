@@ -72,27 +72,11 @@ class UserController extends Controller
 
     public function getSearchList()
     {
-        $category = Cache::remember
-        ('category',
-            now()->addSeconds(3000000),
-            function (){
-                return  Category::all();
-            });
+        $category = Category::all();
 
-        $brands = Cache::remember
-        ('brands',
-            now()->addSeconds(3000000),
-            function (){
-                return  Brand::all();
-            });
+        $brands = Brand::all();
 
-        $sellers = Cache::remember
-        ('sellers',
-            now()->addSeconds(3000000),
-            function (){
-                return  Vendor::all();
-            });
-
+        $sellers = Vendor::all();
 
         return [$category,$brands,$sellers];
     }
@@ -151,8 +135,8 @@ class UserController extends Controller
     }
 
     public function viewProduct(Product $product){
-
-        return view('user.viewProduct',compact('product'));
+        $images = $product->images()->get();
+        return view('user.viewProduct',compact('product','images'));
     }
 
     public function cart()

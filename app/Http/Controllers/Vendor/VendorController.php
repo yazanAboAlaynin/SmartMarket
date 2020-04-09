@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\vendor;
 
 use App\Brand;
+use App\Image as img;
 use App\Category;
 use App\Vendor;
 use App\Http\Controllers\Controller;
@@ -115,19 +116,20 @@ class VendorController extends Controller
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
+            'filename' => 'required',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            //'vendor_id' => 'required',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
         ]);
-        if ($files = $request->file('image')) {
 
-            // for save original image
-            $imagePath = request('image')->store('images','public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
+        if ($files = $request->file('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
             $image->save();
         }
+
         $p = new Product();
 
         $p->name = request()->name;
@@ -140,6 +142,21 @@ class VendorController extends Controller
         $p->brand_id = request()->brand_id;
         $p->discount = request()->discount;
         $p->save();
+        if ($files = $request->file('filename')) {
+
+            foreach ($request->file('filename') as $image) {
+
+                // for save original image
+                $imagePath = $image->store('images', 'public');
+                $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
+                $image->save();
+                $img = new img();
+                $img->src = $imagePath;
+                $img->product_id = $p->id;
+                $img->save();
+            }
+        }
+
 
         return redirect('vendor/products');
     }

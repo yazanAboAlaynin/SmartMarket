@@ -7,8 +7,17 @@
 <div class="row justify-content-center ">
     <div class="col-md-8">
 
-           <div class="card"> 
-
+           <div class="card">
+               @if (count($errors) > 0)
+                   <div class="alert alert-danger">
+                       <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                       <ul>
+                           @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                           @endforeach
+                       </ul>
+                   </div>
+               @endif
                    <div class="card-header">
                         <h1>add new product</h1>
                     </div>
@@ -36,7 +45,7 @@
                             <label for="description" class="col-md-4 control-label">description</label>
 
 
-                            <textarea id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required autofocus></textarea>
+                            <textarea id="description" type="text" class="form-control" name="description" required autofocus></textarea>
 
                             @if ($errors->has('description'))
                                 <span class="help-block">
@@ -124,7 +133,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                            <label for="image" class="col-md-4 control-label">image</label>
+                            <label for="image" class="col-md-4 control-label">primary image</label>
 
 
                             <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
@@ -136,8 +145,34 @@
                             @endif
 
                         </div>
-                
 
+                        <div class="input-group control-group increment" >
+                            <label for="image" class="col-md-4 control-label">images</label>
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        <div class="input-group control-group increment" >
+                            <input type="file" name="filename[]" class="form-control">
+                        </div><br/><br/>
+
+                        </div>
                         <div class="form-group text-center">
                             <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Add Product</button>
                         </div>
