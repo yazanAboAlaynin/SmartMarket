@@ -19,14 +19,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    //firebase
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-    <link rel="manifest" href="manifest.json" >
+    <link rel="manifest" href="{{ asset('manifest.json') }}" >
 </head>
 <body>
     <div id="app">
@@ -85,6 +85,7 @@
             @yield('content')
         </main>
     </div>
-    <script src="{{ asset('js/firebase.js') }}"></script>
+    @yield('script')
+
 </body>
 </html>

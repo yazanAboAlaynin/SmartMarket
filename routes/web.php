@@ -60,6 +60,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/order/done', 'AdminController@done')->name('order.done');
     Route::get('/order/{order}/items', 'AdminController@orderItems')->name('order.items');
     Route::get('/old/orders', 'AdminController@oldOrders')->name('oldOrders');
+    Route::post('/order/read', 'AdminController@readOrder')->name('read.order');
 });
 
 Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {

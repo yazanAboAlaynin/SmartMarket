@@ -31,14 +31,15 @@
     
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
-    //firebase
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-    <link rel="manifest" href="manifest.json" >
+    <link rel="manifest" href="{{ asset('manifest.json') }}" >
+
+
 
 </head>
 
@@ -109,6 +110,25 @@
                             </li>
                         @endif
                         @else
+                            <li class="nav-item dropdown show-order">
+                                <a id="navbarDropdown" class="nav-link " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <i class="fa fa-bell" style="font-size:18px; color: red"></i>
+                                    <span class="label number-alert">{{ $numberAlert }}</span>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <li class="header number-message">
+                                        <a class="dropdown-item" href="">
+                                            you have {{ $numberAlert }} messages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <ul class="menu order-notification" style="width: 400px; height: 400px; overflow-y: scroll">
+
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -126,6 +146,7 @@
                                     </form>
                                 </div>
                             </li>
+
                             @endguest
                 </ul>
             </div>
@@ -166,5 +187,31 @@
         });
     }
 </script>
+
+<script>
+
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('.show-order').on('click',function () {
+
+            $.ajax({
+                url: "{{ route('admin.read.order') }}",
+                type: 'post',
+                dataType: 'html',
+                success: function (data) {
+                    //console.log('hhhehfie');
+                    $('.order-notification').html(data);
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

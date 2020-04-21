@@ -53,6 +53,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
+                                <input type="hidden" name="device_token" id="device_token">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
@@ -70,4 +71,10 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script src="{{ asset('js/firebase.js') }}"></script>
+    <script>
+
+    </script>
 @endsection

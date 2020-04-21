@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Notification;
 use App\Vendor;
 use App\Http\Controllers\Controller;
 use App\Order;
@@ -29,6 +30,7 @@ class AdminController extends Controller
      */
     public function index()
     {
+
         return view('home');
     }
 
@@ -211,6 +213,10 @@ class AdminController extends Controller
 
     public function orderItems(Order $order){
 
+        if(Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')])){
+            dd($order);
+        }
+
         if(request()->ajax())
         {
             $items = Order_item::where('order_id','=',$order->id)->get();
@@ -240,6 +246,14 @@ class AdminController extends Controller
         }
 
         return view('admin.oldOrders');
+    }
+
+    public function readOrder(Request $request){
+        if($request->ajax()){
+            $notis = Notification::read();
+            return view('readOrder',compact('notis'));
+        }
+        return response()->json(['data'=>234234],200);
     }
 
     /*********************** end orders *********************************/

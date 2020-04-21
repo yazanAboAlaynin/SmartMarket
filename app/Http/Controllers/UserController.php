@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Brand;
 use App\Category;
+use App\Notification;
 use App\Order;
 use App\Order_item;
 use App\Product;
 use App\Cart;
 use App\Rating;
+use App\User;
 use App\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -36,6 +39,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         return view('user.home');
     }
 
@@ -217,6 +221,17 @@ class UserController extends Controller
             Session::remove('cart');
             $order->discount = $totDiscount;
             $order->save();
+
+            $noti = new Notification();
+            $noti->user_id = auth()->guard()->user()->id;
+            $noti->title = 'New Order';
+            $noti->body = 'you have new order from user: '.auth()->guard()->user()->id;
+            if($noti->save()){
+
+                $url = route('admin.order.items',$order->id);
+                $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
+            }
+
         }
         return redirect()->route('home');
     }

@@ -14,40 +14,30 @@ firebase.initializeApp(firebaseConfig);
 // Retrieve Firebase Messaging object.
 // Retrieve Firebase Messaging object.
 const messaging = firebase.messaging();
-messaging.requestPermission().then(function() {
-    console.log('Notification permission granted.');
-    // TODO(developer): Retrieve an Instance ID token for use with FCM.
-    // ...
-}).catch(function(err) {
-    console.log('Unable to get permission to notify.', err);
-});
-// Get Instance ID token. Initially this makes a network call, once retrieved
-// subsequent calls to getToken will return from cache.
-messaging.getToken().then(function(currentToken) {
-    if (currentToken) {
-        $('#device_token').val(currentToken);
-      //  alert(currentToken);
-       // document.getElementById("device_token").innerHTML = currentToken;
-        console.log('token',currentToken);
-
-    } else {
-        // Show permission request.
-        console.log('No Instance ID token available. Request permission to generate one.');
-        // Show permission UI.
-        updateUIForPushPermissionRequired();
-        setTokenSentToServer(false);
-    }
-}).catch(function(err) {
-    console.log('An error occurred while retrieving token. ', err);
-
-    setTokenSentToServer(false);
-});
+messaging.requestPermission()
+    .then(function(){
+        console.log('I am in here');
+        //You must return the token
+        return  messaging.getToken()
+            .then(function(currentToken) {
+                $('#device_token').val(currentToken);
+                console.log(currentToken);
+            })
+            .catch(function(err) {
+                console.log('An error occurred while retrieving token. ', err);
+                showToken('Error retrieving Instance ID token. ', err);
+                setTokenSentToServer(false);
+            })});
 
 messaging.onMessage(function(payload){
     console.log('onMessage:', payload);
+
+    $('.number-alert').empty().html(payload.data['gcm.notification.badge']);
+    $('.number-message').empty().html('You have '+ payload.data['gcm.notification.badge'] +' messages');
+
 });
+
 
 function setTokenSentToServer(sent) {
     window.localStorage.setItem('sentToServer', sent ? '1' : '0');
 }
-

@@ -22,15 +22,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
 
-
-    //firebase
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-    <link rel="manifest" href="manifest.json" >
 </head>
 
 <body style="overflow-x: hidden">
@@ -258,7 +249,7 @@
    </div>
 
 </div>
-<script src="{{ asset('js/firebase.js') }}"></script>
+
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
