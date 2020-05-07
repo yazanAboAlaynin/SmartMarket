@@ -28,40 +28,23 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
     <link rel="manifest" href="{{ asset('manifest.json') }}" >
 </head>
-<style>
-    .navbar.transparent.navbar-inverse .navbar-inner {
-        border-width: 0px;
-        -webkit-box-shadow: 0px 0px;
-        box-shadow: 0px 0px;
-        background-color: rgba(0,0,0,0.0);
-        background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
-        background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-        background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
-    }
-
-</style>
 <body style="
-        background-image: url({{ asset('images/bg1.jpg') }});
+        background-image: url({{ asset('images/bg2.jpg') }});
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
         ">
 <div id="app">
-    <nav class="navbar navbar-expand-md" >
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}" style="color: black; font-size: 40px">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-
-        </div>
-    </nav>
 
     <main class="py-4">
     <div class="container p-5" >
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" style="height: 500px;">
-                    <div class="card-header">{{ __('Admin Login') }}
+                    <div class="card-header bg-white">
+                        <img src="{{asset('images/logo.jpg')}}" style="width: 300px;height: 100px;padding-right: 40px"/>
+                        {{ __('Admin Login') }}
+
                         <a class="float-right" href="{{ route('admin.login') }}">{{ __('Register') }}</a></div>
 
                     <div class="card-body">

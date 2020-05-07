@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Brand;
+use App\Category;
 use App\Notification;
 use App\Product;
 use App\Vendor;
@@ -260,6 +262,8 @@ class AdminController extends Controller
     /*********************** end orders *********************************/
     /***********************************************************************************/
 
+    /***********************************************************************************/
+    /***************   control the products    ***************************/
 
     public function products()
     {
@@ -319,5 +323,35 @@ class AdminController extends Controller
         $data->delete();
 
         return;
+    }
+
+    public function addCategory(){
+        return view('admin.addCategory');
+    }
+
+    public function storeCategory(Request $request){
+        $data = request()->validate([
+            'name' => 'required',
+        ]);
+        $category = new Category();
+        $category->name = $data['name'];
+        $category->save();
+
+        return redirect()->route('admin.home');
+    }
+
+    public function addBrand(){
+        return view('admin.addBrand');
+    }
+
+    public function storeBrand(Request $request){
+        $data = request()->validate([
+            'name' => 'required',
+        ]);
+        $brand = new Brand();
+        $brand->name = $data['name'];
+        $brand->save();
+
+        return redirect()->route('admin.home');
     }
 }

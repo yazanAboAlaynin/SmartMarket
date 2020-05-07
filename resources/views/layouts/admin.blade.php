@@ -45,11 +45,11 @@
 
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" >
         <div class="container-fluid">
             <div class="navbar-header">
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div id="mySidenav" class="sidenav example" >
+                    <a href="javascript:void(0)" class="closebtn" style="" onclick="closeNav()">&times;</a>
 
                     <img class="imagesidebar" src="{{ asset('images/avatar.png') }}" style="width:106px">
 <br/><br/>
@@ -76,6 +76,12 @@
 
                     <a href="{{ Route('admin.oldOrders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Old Orders</span></a>
+
+                    <a href="{{ Route('admin.category.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">add Category</span></a>
+
+                    <a href="{{ Route('admin.brand.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">add Brand</span></a>
 
 
                     <div class="dropdown-container">
