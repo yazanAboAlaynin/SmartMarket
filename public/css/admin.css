@@ -1,7 +1,8 @@
 body {
+    height: 100%;
+    margin: 0;
     font-family: 'Gelasio', serif;
     transition: background-color .5s;
-
 }
 /* sidenav start */
 .sidenav {
@@ -18,7 +19,7 @@ body {
 }
 
 .sidenav a,.sidenav .dropdown-btn {
-    padding: 8px 8px 8px 12px;
+    padding: 20px 8px 12px 12px;
     text-decoration: none;
     font-size: 18px;
     color: #ede7f6;
@@ -37,7 +38,7 @@ body {
 
 .sidenav a:hover,.sidenav .dropdown-btn:hover {
     color: #000000;
-    background-color: #cae8bf;
+    background-color: #e1e8d1;
 }
 
 .sidenav .closebtn {
@@ -89,8 +90,6 @@ body {
     border-radius: 50%;
     padding: 5px;
     margin-left: 6px;
-    border: 3px solid;
-    box-shadow: 6px 5px 4px 3px #b3e5fc;
 }
 
 /* sidenav at small Screen Followed larvel */

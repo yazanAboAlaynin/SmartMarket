@@ -45,40 +45,42 @@
 
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="">
         <div class="container-fluid">
             <div class="navbar-header">
                 <div id="mySidenav" class="sidenav">
                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                    <img class="imagesidebar" src="/storage/ee.jpg" style="width:106px">
+                    <img class="imagesidebar" src="{{ asset('images/avatar.png') }}" style="width:106px">
 <br/><br/>
-                    <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
-                    <a href="{{ Route('admin.home') }}"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
-                    <a href="{{ Route('admin.home') }}"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
-                    <a href="#"><i class="fa fa-product-hunt" style="font-size:24px"></i> Products</a>
+                    <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:32px"></i>
+                        <span style="margin-left: 30px;">Home</span></a>
 
-                    <button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="{{ Route('admin.vendors') }}"><i class="fa " style="font-size:24px"></i> companies</a>
-                        <a href="{{ Route('admin.pendingVendors') }}"><i class="fa " style="font-size:24px"></i> company requests</a>
+                    <a href="{{ Route('admin.home') }}"><i class="fa fa-user-circle-o" style="font-size:32px"></i>
+                        <span style="margin-left: 30px">Profile</span></a>
 
-                    </div>
-                    <button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="{{ Route('admin.users') }}"><i class="fa " style="font-size:24px"></i> Customers</a>
+                    <a href="{{ Route('admin.products') }}"><i class="fa fa-product-hunt" style="font-size:32px"></i>
+                        <span style="margin-left: 30px">Products</span></a>
 
-                    </div>
-                    <button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                    <a href="{{ Route('admin.vendors') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Vendors</span></a>
+
+                    <a href="{{ Route('admin.pendingVendors') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Vendors requests</span></a>
+
+                    <a href="{{ Route('admin.users') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Customers</span></a>
+
+                    <a href="{{ Route('admin.orders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Orders</span></a>
+
+                    <a href="{{ Route('admin.oldOrders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Old Orders</span></a>
+
+
                     <div class="dropdown-container">
-                        <a href="{{ Route('admin.orders') }}"><i class="fa " style="font-size:24px"></i> Orders</a>
-                        <a href="{{ Route('admin.oldOrders') }}"><i class="fa " style="font-size:24px"></i> old Orders</a>
+                        <a href="{{ Route('admin.orders') }}"><i class="fa " style="font-size:24px"></i> </a>
+                        <a href="{{ Route('admin.oldOrders') }}"><i class="fa " style="font-size:24px"></i> </a>
                     </div>
 
                 </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Notification;
+use App\Product;
 use App\Vendor;
 use App\Http\Controllers\Controller;
 use App\Order;
@@ -31,7 +32,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        return view('home');
+        return view('admin.dashboard');
     }
 
     public function show(Request $request)
@@ -259,4 +260,64 @@ class AdminController extends Controller
     /*********************** end orders *********************************/
     /***********************************************************************************/
 
+
+    public function products()
+    {
+        if(request()->ajax())
+        {
+            $items = Product::latest()->get();
+            return DataTables::of($items)
+                ->addColumn('action', function($items){
+                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.products');
+    }
+
+    public function editProduct(Product $product,Request $request)
+    {
+
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'category_id' => 'required',
+            'brand_id' => 'required',
+            'discount' => 'required',
+        ]);
+
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->price = $request->input('price');
+        $product->quantity = $request->input('quantity');
+
+        $product->category_id = $request->input('category_id');
+        $product->brand_id = $request->input('brand_id');
+        $product->discount = $request->input('discount');
+        $product->save(); //persist the data
+
+        return redirect('admin/products');
+    }
+
+    public function updateProduct(Product $product){
+
+        return view('admin.productEdit',compact('product'));
+    }
+
+    public function deleteProduct(Request $request){
+
+        $data = Product::findOrFail($request->id);
+        $data->delete();
+
+        return;
+    }
 }

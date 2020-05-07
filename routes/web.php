@@ -61,6 +61,11 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/order/{order}/items', 'AdminController@orderItems')->name('order.items');
     Route::get('/old/orders', 'AdminController@oldOrders')->name('oldOrders');
     Route::post('/order/read', 'AdminController@readOrder')->name('read.order');
+
+    Route::get('/products', 'AdminController@products')->name('products');
+    Route::get('/product/{product}/update', 'AdminController@updateProduct')->name('product.update');
+    Route::post('/product/{product}/edit', 'AdminController@editProduct')->name('product.edit');
+    Route::get('/product/delete', 'AdminController@deleteProduct')->name('product.delete');
 });
 
 Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {

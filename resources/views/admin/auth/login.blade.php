@@ -1,11 +1,68 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-    <div class="container">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
+    <link rel="manifest" href="{{ asset('manifest.json') }}" >
+</head>
+<style>
+    .navbar.transparent.navbar-inverse .navbar-inner {
+        border-width: 0px;
+        -webkit-box-shadow: 0px 0px;
+        box-shadow: 0px 0px;
+        background-color: rgba(0,0,0,0.0);
+        background-image: -webkit-gradient(linear, 50.00% 0.00%, 50.00% 100.00%, color-stop( 0% , rgba(0,0,0,0.00)),color-stop( 100% , rgba(0,0,0,0.00)));
+        background-image: -webkit-linear-gradient(270deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+        background-image: linear-gradient(180deg,rgba(0,0,0,0.00) 0%,rgba(0,0,0,0.00) 100%);
+    }
+
+</style>
+<body style="
+        background-image: url({{ asset('images/bg1.jpg') }});
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        ">
+<div id="app">
+    <nav class="navbar navbar-expand-md" >
+        <div class="container">
+            <a class="navbar-brand" href="{{ url('/') }}" style="color: black; font-size: 40px">
+                {{ config('app.name', 'Laravel') }}
+            </a>
+
+        </div>
+    </nav>
+
+    <main class="py-4">
+    <div class="container p-5" >
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Admin Login') }}</div>
+                <div class="card" style="height: 500px;">
+                    <div class="card-header">{{ __('Admin Login') }}
+                        <a class="float-right" href="{{ route('admin.login') }}">{{ __('Register') }}</a></div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.login') }}">
@@ -71,5 +128,9 @@
             </div>
         </div>
     </div>
-@endsection
+    </main>
+</div>
+
+</body>
+</html>
 
