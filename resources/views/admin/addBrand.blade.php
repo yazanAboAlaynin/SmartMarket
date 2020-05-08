@@ -18,7 +18,7 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h1>add new Category</h1>
+                        <h1>add new Brand</h1>
                     </div>
 
                     <div class="card-body">
