@@ -5,6 +5,7 @@ namespace App\Http\Controllers\vendor;
 use App\Brand;
 use App\Image as img;
 use App\Category;
+use App\property;
 use App\Vendor;
 use App\Http\Controllers\Controller;
 use App\Order;
@@ -43,17 +44,18 @@ class VendorController extends Controller
         $id = auth()->guard('vendor')->user()->id;
         $vendor = Vendor::find($id);
 
-        return view('vendor.profile',compact('vendor'));
+        return view('vendor.profile', compact('vendor'));
     }
 
     public function edit()
     {
         $id = auth()->guard('vendor')->user()->id;
         $vendor = Vendor::find($id);
-        return view('vendor.profileEdit',compact('vendor'));
+        return view('vendor.profileEdit', compact('vendor'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         request()->validate([
             'name' => 'required',
@@ -77,21 +79,20 @@ class VendorController extends Controller
     }
 
     /***********************************************************************************/
-            /***************    Products    ***************************/
+    /***************    Products    ***************************/
 
     public function products()
     {
         $id = auth()->guard('vendor')->user()->id;
 
-        if(request()->ajax())
-        {
+        if (request()->ajax()) {
             $items = auth()->guard('vendor')->user()->products();
             return DataTables::of($items)
-                ->addColumn('action', function($items){
-                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
-                    class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
-                    class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
+                ->addColumn('action', function ($items) {
+                    $button = '<button type="button" name="edit" id="' . $items->id . '" 
+                    class="edit btn btn-primary btn-sm" onclick=update(' . $items->id . ')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '" 
+                    class="delete btn btn-danger btn-sm" onclick=del(' . $items->id . ')>Delete</button>';
 
                     return $button;
                 })
@@ -99,17 +100,19 @@ class VendorController extends Controller
                 ->make(true);
         }
 
-        return view('vendor.products',compact('id'));
+        return view('vendor.products', compact('id'));
     }
 
-    public function addProduct(){
+    public function addProduct()
+    {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('vendor.addProduct',compact('categories','brands'));
+        return view('vendor.addProduct', compact('categories', 'brands'));
     }
 
 
-    public function storeProduct(Request $request){
+    public function storeProduct(Request $request)
+    {
 
         request()->validate([
             'name' => 'required',
@@ -161,7 +164,7 @@ class VendorController extends Controller
         return redirect('vendor/products');
     }
 
-    public function editProduct(Product $product,Request $request)
+    public function editProduct(Product $product, Request $request)
     {
 
         $data = request()->validate([
@@ -187,12 +190,14 @@ class VendorController extends Controller
         return redirect('vendor/products');
     }
 
-    public function updateProduct(Product $product){
+    public function updateProduct(Product $product)
+    {
 
-        return view('vendor.productEdit',compact('product'));
+        return view('vendor.productEdit', compact('product'));
     }
 
-    public function deleteProduct(Request $request){
+    public function deleteProduct(Request $request)
+    {
 
         $data = Product::findOrFail($request->id);
         $data->delete();
@@ -200,31 +205,50 @@ class VendorController extends Controller
         return;
     }
 
-    public function addProperties(){
+    public function addProperties()
+    {
         return view('vendor.addProperty');
+    }
+
+    public function storeProperties(Request $request,Product $product)
+    {
+        request()->validate([
+            'names' => 'required',
+            'values' => 'required',
+        ]);
+
+        foreach ($request['names'] as $index => $names){
+            $property = new Property();
+            $property->product_id = $product->id;
+            $property->name = $names;
+            $property->value = $request['values'][$index];
+            $property->save();
+        }
+
+        return redirect('vendor.home');
     }
 
     /*********************** end products *********************************/
     /***********************************************************************************/
 
 
-        /***********************************************************************************/
+    /***********************************************************************************/
     /***************   orders    ***************************/
 
-    public function orders(Request $request){
+    public function orders(Request $request)
+    {
 
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $id = auth()->guard('vendor')->user()->id;
-            $items = Product::select('id')->where('vendor_id','=',$id)->get();
-            $data = Order_item::whereIn('product_id',$items)->where('done','=',0);
+            $items = Product::select('id')->where('vendor_id', '=', $id)->get();
+            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 0);
 
             return DataTables::of($data)
-                ->addColumn('action', function($data){
-                    $button = '<button type="button" name="done" id="'.$data->id.'" 
-                    class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>done</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
-                    class="delete btn btn-danger btn-sm" onclick=show('.$data->id.')>view</button>';
+                ->addColumn('action', function ($data) {
+                    $button = '<button type="button" name="done" id="' . $data->id . '" 
+                    class="edit btn btn-primary btn-sm" onclick=done(' . $data->id . ')>done</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $data->id . '" 
+                    class="delete btn btn-danger btn-sm" onclick=show(' . $data->id . ')>view</button>';
                     return $button;
                 })
                 ->rawColumns(['action'])
@@ -235,19 +259,19 @@ class VendorController extends Controller
 
     }
 
-    public function soldItems(Request $request){
+    public function soldItems(Request $request)
+    {
 
 
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $id = auth()->guard('vendor')->user()->id;
-            $items = Product::select('id')->where('vendor_id','=',$id)->get();
-            $data = Order_item::whereIn('product_id',$items)->where('done','=',1);
+            $items = Product::select('id')->where('vendor_id', '=', $id)->get();
+            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 1);
 
             return DataTables::of($data)
-                ->addColumn('action', function($data){
-                    $button = '<button type="button" name="show" id="'.$data->id.'" 
-                    class="edit btn btn-primary btn-sm" onclick=show('.$data->id.')>view</button>';
+                ->addColumn('action', function ($data) {
+                    $button = '<button type="button" name="show" id="' . $data->id . '" 
+                    class="edit btn btn-primary btn-sm" onclick=show(' . $data->id . ')>view</button>';
                     return $button;
                 })
                 ->rawColumns(['action'])

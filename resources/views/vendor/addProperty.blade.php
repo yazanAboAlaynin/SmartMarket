@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-8 col-sm-8">
-        
+
             <table class="table table-bordered">
                 <thead>
                     <th>
@@ -15,53 +15,38 @@
                     <th>
                         value
                     </th>
-                    <th style="text-align: center">
-                        <a href="" class="btn btn-info addRow">+</a>
-                    </th>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="text" name="name" class="form-control">
-                        </td>
-                        <td>
-                            <input type="text" name="value" class="form-control">
-                        </td>
-                        <td style="text-align: center">
-                            <a href="" class="btn btn-danger remove">-</a>
-                        </td>
-                    </tr>
+                <tbody id="dynamicInput">
+
                 </tbody>
             </table>
-        </div>    
+        </div>
     </div>
 
        <div class="form-group text-center">
-               <button class="btn btn-primary"  style="margin-top:10px;width: 10%">Add Property</button>
+           <input class="btn btn-primary" type="button" value="Add another text input" onClick="addInput('dynamicInput');">
       </div>
- 
+
 </div>
 
+<script>
 
-    <script type="text/javascript">
-            $('.addRow').on('click',function(){
-                    addRow();
-            });
+    var counter = 0;
+    var limit = 10;
 
-            function addRow() {
-                var tr = '<tr>'+
-                        '<td><input type="text" name="name" class="form-control"></td>'+
-                        '<td><input type="text" name="value" class="form-control"></td>'+
-                        '<td style="text-align: center"><a href="" class="btn btn-danger remove">-</a></td>'+
-                    '</tr>';
-                    $('tbody').append(tr);
-            };
-
-            $('tbody').on('click', '.remove', function(){
-                $(this).parent().parent().remove();
-            });
-
-    </script>
+    function addInput(divName) {
+        if (counter == limit) {
+            alert("You have reached the limit of adding " + counter + " inputs");
+        }
+        else {
+            var newdiv = document.createElement('tr');
+            newdiv.innerHTML ="<td><input type='text' name='myInputs[]' class=\"form-control\"></td>" +
+                "<td><input type='text' name='myInputs[]' class=\"form-control\"></td>";
+            document.getElementById(divName).appendChild(newdiv);
+            counter++;
+        }
+    }
 
 
+</script>
 @endsection
