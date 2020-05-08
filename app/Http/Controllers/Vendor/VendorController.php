@@ -200,6 +200,10 @@ class VendorController extends Controller
         return;
     }
 
+    public function addProperties(){
+        return view('vendor.addProperty');
+    }
+
     /*********************** end products *********************************/
     /***********************************************************************************/
 
