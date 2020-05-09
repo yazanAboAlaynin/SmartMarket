@@ -66,6 +66,7 @@
               $('#users').html(data);
           }
       });
+
       $.ajax({
           url: "{{ route('admin.vendors.count') }}",
           type: 'get',

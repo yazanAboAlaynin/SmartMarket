@@ -49,12 +49,6 @@
                 <p class="price-discount"><b>Price after Discount : </b> {{ $priceAfterDiscount}}</p>
                 <p><b>Brand : </b> {{$product->brand->name}}</p>
 
-                <div class="row mb-2 ml-1">
-                    <p>
-                    <b style="font-size:15px;">Size : &nbsp; &nbsp;</b>
-                    </p>
-
-                </div>
                 <form method="GET" action="{{ Route('addProduct',$product->id) }}">
                     @csrf
                     <label for="quantity" class="">{{ __('Quantity') }}</label>
@@ -74,6 +68,20 @@
        <h6>Properties</h6>
         @foreach($properties as $property)
             <h3><span><b>{{$property->name}}:</b> {{$property->value}}</span></h3>
+            <div class="row mb-2 ml-1">
+                <p>
+                    <b style="font-size:15px;">other {{ $property->name }} : &nbsp; &nbsp;</b>
+                </p>
+                <div class="dropdown">
+                    <button class="dropbtn">Select Size <i class="fa fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        @foreach($otherProp[$property->name] as $p)
+                        <a href="{{ route('viewProduct',$p[0]->product_id) }}">{{ $p[0]->value }}</a>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
         @endforeach
     </div>
 </section>

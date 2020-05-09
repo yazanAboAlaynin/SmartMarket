@@ -142,13 +142,25 @@ class UserController extends Controller
     public function viewProduct(Product $product){
         $images = $product->images()->get();
         $properties = Property::where('product_id','=',$product->id)->get();
+        $otherProp = $this->otherProperties($product,$properties);
 
-        return view('user.viewProduct',compact('product','images','properties'));
+        return view('user.viewProduct',compact('product','images','properties','otherProp'));
     }
 
-    public function otherProperties(Product $product){
-        $other = [[]];
-        //$otherProducts = Product::where('item_num')
+    public function otherProperties(Product $product, $prop){
+
+        $otherProducts = Product::select('id')->where([
+            ['item_num','=',$product->item_num],
+            ['id','<>',$product->id]])->get();
+        $other = [];
+        foreach ($prop as $p){
+            $otherProp = Property::where('name','=',$p->name)->whereIn('product_id',$otherProducts)->get();
+            $other[$p->name]=[];
+             array_push($other[$p->name],$otherProp);
+        }
+
+        return $other;
+
     }
 
     public function cart()

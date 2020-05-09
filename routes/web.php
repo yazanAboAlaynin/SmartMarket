@@ -36,6 +36,7 @@ Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('
 Route::get('/cart', 'UserController@cart')->name('cart');
 Route::get('/order', 'UserController@order')->name('order');
 Route::get('/getsrchlist', 'UserController@getSearchList')->name('getSearchList');
+Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
 
 
