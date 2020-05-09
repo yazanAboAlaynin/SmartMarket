@@ -4,7 +4,7 @@
 
 
   <div class="container pt-2">
-  <div class="row justify-content-center">
+  <div class="row justify-content">
   <div class="col-md-8">
     <div class="card card-default">
         <div class="card-header">
@@ -13,17 +13,17 @@
         <table class="card-body">
         <table class="table">
                 <tbody>
-                    @foreach($admins as $admin)
+
                     <tr>
                         <td>
-                            Users <span class="ml-2 badge badge-warning">6</span>
+                            Users <span id="users" class="ml-2 badge badge-warning"></span>
                         </td> 
                         <td>
                             <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
                         </td>
                     </tr>
                         <td>
-                            Vendors <span class="ml-2 badge badge-warning">6</span>
+                            Vendors <span id="vendors" class="ml-2 badge badge-warning"></span>
                         </td>
                         <td>
                             <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
@@ -31,7 +31,7 @@
                     <tr>
                     </tr>
                         <td>
-                            Vendors Requests <span class="ml-2 badge badge-warning">6</span>
+                            Vendors Requests <span id="vendorsReq"  class="ml-2 badge badge-warning"></span>
                         </td>
                         <td>
                             <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
@@ -39,7 +39,7 @@
                     <tr>
                     <tr>
                         <td>
-                            Products <span class="ml-2 badge badge-warning">6</span>
+                            Orders <span id="orders" class="ml-2 badge badge-warning"></span>
                         </td>
                         <td>
                             <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
@@ -47,7 +47,7 @@
                     </tr>
 
                     </tr>
-                    @endforeach
+
                 </tbody>
         </table>
         </table>
@@ -56,7 +56,40 @@
     </div>
   </div>
 
+  <script>
 
-
+      $.ajax({
+          url: "{{ route('admin.users.count') }}",
+          type: 'get',
+          dataType: 'html',
+          success: function (data) {
+              $('#users').html(data);
+          }
+      });
+      $.ajax({
+          url: "{{ route('admin.vendors.count') }}",
+          type: 'get',
+          dataType: 'html',
+          success: function (data) {
+              $('#vendors').html(data);
+          }
+      });
+      $.ajax({
+          url: "{{ route('admin.orders.count') }}",
+          type: 'get',
+          dataType: 'html',
+          success: function (data) {
+              $('#orders').html(data);
+          }
+      });
+      $.ajax({
+          url: "{{ route('admin.vendors.req.count') }}",
+          type: 'get',
+          dataType: 'html',
+          success: function (data) {
+              $('#vendorsReq').html(data);
+          }
+      });
+  </script>
 
 @endsection

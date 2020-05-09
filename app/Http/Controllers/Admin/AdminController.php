@@ -44,6 +44,26 @@ class AdminController extends Controller
 
     }
 
+    public function usersCount(){
+        $userCount = User::all()->count();
+        return $userCount;
+    }
+
+    public function vendorsCount(){
+        $userCount = vendor::where('approved','=',1)->count();
+        return $userCount;
+    }
+
+    public function ordersCount(){
+        $userCount = Order::all()->count();
+        return $userCount;
+    }
+
+    public function vendorsReqCount(){
+        $userCount = vendor::where('approved','=',0)->count();
+        return $userCount;
+    }
+
 /***********************************************************************************/
       /***************   control the vendors    ***************************/
 

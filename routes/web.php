@@ -42,6 +42,10 @@ Route::get('/getsrchlist', 'UserController@getSearchList')->name('getSearchList'
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
     Route::get('/home', 'AdminController@index')->name('home');
+    Route::get('/users/count', 'AdminController@usersCount')->name('users.count');
+    Route::get('/vendors/count', 'AdminController@vendorsCount')->name('vendors.count');
+    Route::get('/vendors/req/count', 'AdminController@vendorsReqCount')->name('vendors.req.count');
+    Route::get('/orders/count', 'AdminController@ordersCount')->name('orders.count');
 
     Route::get('/vendors', 'AdminController@vendors')->name('vendors');
     Route::get('/vendor/{vendor}/update', 'AdminController@updateVendor')->name('vendor.update');
