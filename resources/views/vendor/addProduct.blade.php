@@ -41,6 +41,20 @@
 
                         </div>
 
+                        <div class="form-group{{ $errors->has('item_num') ? ' has-error' : '' }}">
+                            <label for="item_num" class="col-md-4 control-label">item number</label>
+
+
+                            <input id="item_num" type="text" class="form-control" name="item_num" value="{{ old('item_num') }}" required autofocus>
+
+                            @if ($errors->has('item_num'))
+                                <span class="help-block">
+                            <strong>{{ $errors->first('item_num') }}</strong>
+                        </span>
+                            @endif
+
+                        </div>
+
                         <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
                             <label for="description" class="col-md-4 control-label">description</label>
 

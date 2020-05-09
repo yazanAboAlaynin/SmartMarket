@@ -30,9 +30,9 @@
             </div>
 
             <div class="col-md-7">
-                <p class="new-saly text-center">New/saly</p>
+                <p class="new-saly text-center">New/sale</p>
                 <h2> {{$product->name}} </h2>
-                <p><b>Reting : </b>
+                <p><b>Rating : </b>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -46,21 +46,14 @@
                 $priceAfterDiscount = ($product->price) - $priceAfterDiscount ;
 
                 ?>
-                <p class="price-discount"><b>Price-Discount : </b> {{ $priceAfterDiscount}}</p>
+                <p class="price-discount"><b>Price after Discount : </b> {{ $priceAfterDiscount}}</p>
                 <p><b>Brand : </b> {{$product->brand->name}}</p>
 
                 <div class="row mb-2 ml-1">
                     <p>
                     <b style="font-size:15px;">Size : &nbsp; &nbsp;</b>
                     </p>
-                    <div class="dropdown">
-                    <button class="dropbtn">Select Size <i class="fa fa-chevron-down"></i></button>
-                    <div class="dropdown-content">
-                    <a href="#">Small</a>
-                    <a href="#">Larg</a>
-                    <a href="#">X larg</a>
-                    </div>
-                    </div>
+
                 </div>
                 <form method="GET" action="{{ Route('addProduct',$product->id) }}">
                     @csrf
@@ -71,10 +64,21 @@
             </div>
 
         </div>
+
     </div>
 
 </section>
-
+@if(sizeof($properties) > 0)
+<section class="product-description">
+    <div class="container">
+       <h6>Properties</h6>
+        @foreach($properties as $property)
+            <h3><span><b>{{$property->name}}:</b> {{$property->value}}</span></h3>
+        @endforeach
+    </div>
+</section>
+    <br/><br/><br/>
+@endif
 <!--     Description       -->
 <section class="product-description">
     <div class="container">

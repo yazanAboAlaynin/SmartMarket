@@ -90,7 +90,7 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
     Route::post('/product/{product}/edit', 'VendorController@editProduct')->name('product.edit');
     Route::get('/product/delete', 'VendorController@deleteProduct')->name('product.delete');
 
-    Route::get('/product/add/Properties', 'VendorController@addProperties')->name('product.add.properties');
+    Route::get('/product/{product}/add/Properties', 'VendorController@addProperties')->name('product.add.properties');
     Route::post('/product/{product}/store/Properties', 'VendorController@storeProperties')->name('product.store.properties');
 
     Route::get('/orders', 'VendorController@orders')->name('orders');

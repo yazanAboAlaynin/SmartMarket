@@ -116,6 +116,7 @@ class VendorController extends Controller
 
         request()->validate([
             'name' => 'required',
+            'item_num' => 'required',
             'description' => 'required',
             'price' => 'required',
             'quantity' => 'required',
@@ -136,6 +137,7 @@ class VendorController extends Controller
         $p = new Product();
 
         $p->name = request()->name;
+        $p->item_num = request()->item_num;
         $p->price = request()->price;
         $p->description = request()->description;
         $p->image = $imagePath;
@@ -161,7 +163,7 @@ class VendorController extends Controller
         }
 
 
-        return redirect('vendor/products');
+        return redirect('vendor/product/'.$p->id.'/add/Properties');
     }
 
     public function editProduct(Product $product, Request $request)
@@ -205,17 +207,21 @@ class VendorController extends Controller
         return;
     }
 
-    public function addProperties()
+    public function addProperties(Product $product)
     {
-        return view('vendor.addProperty');
+        return view('vendor.addProperty',compact('product'));
     }
 
     public function storeProperties(Request $request,Product $product)
     {
-        request()->validate([
-            'names' => 'required',
-            'values' => 'required',
-        ]);
+
+        if(is_null($request['names'])){
+            $request['names'] = [];
+        }
+        if(is_null($request['values'])){
+            $request['names'] = [];
+        }
+
 
         foreach ($request['names'] as $index => $names){
             $property = new Property();
@@ -225,7 +231,7 @@ class VendorController extends Controller
             $property->save();
         }
 
-        return redirect('vendor.home');
+        return redirect()->route('vendor.home');
     }
 
     /*********************** end products *********************************/

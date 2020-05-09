@@ -10,6 +10,7 @@ use App\Order;
 use App\Order_item;
 use App\Product;
 use App\Cart;
+use App\property;
 use App\Rating;
 use App\User;
 use App\Vendor;
@@ -140,7 +141,14 @@ class UserController extends Controller
 
     public function viewProduct(Product $product){
         $images = $product->images()->get();
-        return view('user.viewProduct',compact('product','images'));
+        $properties = Property::where('product_id','=',$product->id)->get();
+
+        return view('user.viewProduct',compact('product','images','properties'));
+    }
+
+    public function otherProperties(Product $product){
+        $other = [[]];
+        //$otherProducts = Product::where('item_num')
     }
 
     public function cart()
