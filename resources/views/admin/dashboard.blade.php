@@ -4,8 +4,8 @@
 
 
   <div class="container pt-2">
-  <div class="row justify-content">
-  <div class="col-md-8">
+  <div class="row justify-content-center">
+  <div class="col-md-6">
     <div class="card card-default">
         <div class="card-header">
             All Users and Vendors and Products
@@ -15,34 +15,34 @@
                 <tbody>
 
                     <tr>
-                        <td>
-                            Users <span id="users" class="ml-2 badge badge-warning"></span>
+                        <td class="pt-3">
+                            <h3>Users</h3>
                         </td> 
                         <td>
-                            <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
+                            <h2><span id="users" class="mr-2 float-right badge badge-warning"></span></h2>
                         </td>
                     </tr>
-                        <td>
-                            Vendors <span id="vendors" class="ml-2 badge badge-warning"></span>
+                        <td class="pt-3">
+                            <h3>Vendors</h3> 
                         </td>
                         <td>
-                            <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
+                            <h2><span id="vendors" class="mr-2 float-right badge badge-warning"></span></h2>
                         </td>
                     <tr>
                     </tr>
-                        <td>
-                            Vendors Requests <span id="vendorsReq"  class="ml-2 badge badge-warning"></span>
+                        <td class="pt-3">
+                            <h3>Vendors Requests</h3> 
                         </td>
                         <td>
-                            <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
+                            <h2><span id="vendorsReq"  class="mr-2 float-right badge badge-warning"></span></h2>
                         </td>
                     <tr>
                     <tr>
-                        <td>
-                            Orders <span id="orders" class="ml-2 badge badge-warning"></span>
+                        <td class="pt-3">
+                            <h3>Orders </h3>
                         </td>
                         <td>
-                            <a href="  " class="btn float-right btn-dark btn-sm">Show</a>
+                            <h2><span id="orders" class="mr-2 float-right badge badge-warning"></span></h2>
                         </td>
                     </tr>
 
