@@ -35,8 +35,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = Admin::all();
-        return view('admin.dashboard',compact('admins'));
+        return view('admin.dashboard');
     }
 
     public function show(Request $request)
