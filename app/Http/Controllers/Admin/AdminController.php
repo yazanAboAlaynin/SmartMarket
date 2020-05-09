@@ -14,6 +14,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
+use App\Admin;
+
 class AdminController extends Controller
 {
     /**
@@ -33,8 +35,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-
-        return view('admin.dashboard');
+        $admins = Admin::all();
+        return view('admin.dashboard',compact('admins'));
     }
 
     public function show(Request $request)

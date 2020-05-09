@@ -118,20 +118,20 @@
                             </li>
                         @endif
                         @else
-                            <li class="nav-item dropdown show-order">
+                            <li class="nav-item  dropdown show-order">
                                 <a id="navbarDropdown" class="nav-link " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     <i class="fa fa-bell" style="font-size:18px; color: red"></i>
                                     <span class="label number-alert">{{ $numberAlert }}</span>
                                 </a>
 
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <li class="header number-message">
                                         <a class="dropdown-item" href="">
                                             you have {{ $numberAlert }} messages
                                         </a>
                                     </li>
                                     <li>
-                                        <ul class="menu order-notification" style="width: 400px; height: 400px; overflow-y: scroll">
+                                        <ul class="menu list-group order-notification" style="width: 400px; height: 400px; overflow-y: scroll">
 
                                         </ul>
                                     </li>
