@@ -154,11 +154,14 @@ class UserController extends Controller
             ['id','<>',$product->id]])->get();
         $other = [];
         foreach ($prop as $p){
-            $otherProp = Property::where('name','=',$p->name)->whereIn('product_id',$otherProducts)->get();
+            $otherProp = Property::where([
+                ['name','=',$p->name],
+                ['value','<>',$p->value]
+            ])->whereIn('product_id',$otherProducts)->get();
             $other[$p->name]=[];
              array_push($other[$p->name],$otherProp);
         }
-
+        //dd($other);
         return $other;
 
     }

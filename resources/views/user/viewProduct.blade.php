@@ -73,10 +73,16 @@
                     <b style="font-size:15px;">other {{ $property->name }} : &nbsp; &nbsp;</b>
                 </p>
                 <div class="dropdown">
-                    <button class="dropbtn">Select Size <i class="fa fa-chevron-down"></i></button>
+                    <button class="dropbtn">Select {{ $property->name }} <i class="fa fa-chevron-down"></i></button>
                     <div class="dropdown-content">
                         @foreach($otherProp[$property->name] as $p)
-                        <a href="{{ route('viewProduct',$p[0]->product_id) }}">{{ $p[0]->value }}</a>
+                            <?php $last= ''?>
+                            @foreach($p as $pp)
+                                @if($last != $pp->value)
+                                    <?php $last = $pp->value ?>
+                                   <a href="{{ route('viewProduct',$pp->product_id) }}">{{ $pp->value }}</a>
+                                @endif
+                                @endforeach
                         @endforeach
                     </div>
                 </div>
