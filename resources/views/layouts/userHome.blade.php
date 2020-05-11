@@ -46,38 +46,38 @@
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
             <div class="navbar-header" >
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                {{--<div id="mySidenav" class="sidenav">--}}
+                    {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
 
-                    <a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>
-                    <a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>
-                    <a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>
-                    <a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>
-                    <button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="#">Show Companies</a>
-                        <a href="#">Add New Company</a>
-                        <a href="#">Delete Company</a>
-                    </div>
-                    <button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="#">Show Customer</a>
-                        <a href="#">Delete Customer</a>
-                    </div>
-                    <button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-container">
-                        <a href="#">Show Orders</a>
-                        <a href="#">Show Old Orders</a>
-                    </div>
+                    {{--<a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>--}}
+                    {{--<a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>--}}
+                    {{--<a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>--}}
+                    {{--<a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>--}}
+                    {{--<button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company--}}
+                        {{--<i class="fa fa-caret-down"></i>--}}
+                    {{--</button>--}}
+                    {{--<div class="dropdown-container">--}}
+                        {{--<a href="#">Show Companies</a>--}}
+                        {{--<a href="#">Add New Company</a>--}}
+                        {{--<a href="#">Delete Company</a>--}}
+                    {{--</div>--}}
+                    {{--<button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer--}}
+                        {{--<i class="fa fa-caret-down"></i>--}}
+                    {{--</button>--}}
+                    {{--<div class="dropdown-container">--}}
+                        {{--<a href="#">Show Customer</a>--}}
+                        {{--<a href="#">Delete Customer</a>--}}
+                    {{--</div>--}}
+                    {{--<button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders--}}
+                        {{--<i class="fa fa-caret-down"></i>--}}
+                    {{--</button>--}}
+                    {{--<div class="dropdown-container">--}}
+                        {{--<a href="#">Show Orders</a>--}}
+                        {{--<a href="#">Show Old Orders</a>--}}
+                    {{--</div>--}}
 
-                </div>
-                <span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>
+                {{--</div>--}}
+                {{--<span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>--}}
                 <a class="navbar-brand" id="main" style="padding-left: 40px" href="{{ url('/admin') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -121,7 +121,7 @@
 
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                         <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
+                         {{--<a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>--}}
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
