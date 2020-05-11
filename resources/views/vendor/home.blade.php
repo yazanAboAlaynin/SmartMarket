@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="card card-default">
                     <div class="card-header">
-                        All Users and Vendors and Products
+                        All Product and Oreder and Sold Item
                     </div>
                     <table class="card-body">
                         <table class="table">
