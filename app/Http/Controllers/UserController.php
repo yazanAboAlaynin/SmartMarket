@@ -104,6 +104,22 @@ class UserController extends Controller
         return view('user.products');
     }
 
+    public function searchBtn(Request $request){
+        $request->validate([
+           'category' => 'required',
+           'choice' => 'required'
+        ]);
+        //dd('here');
+        $t = Category::find($request->category);
+        $products = Product::where([
+            ['category_id','=',$t->id],
+            ['name','like',$request->choice]
+        ])->get();
+        $type = $request->category;
+        $choice = $t->name;
+        return view('user.showProducts',compact('type','products','choice'));
+    }
+
     public function search($type,$choice){
 
         switch ($type){

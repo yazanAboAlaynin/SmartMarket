@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -37,7 +37,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-    <link rel="manifest" href="manifest.json" >
+    <link rel="manifest" href="manifest.json">
 
 </head>
 
@@ -45,36 +45,36 @@
 <div id="app">
     <nav class="navbar navbar-expand-sm sticky-top">
         <div class="container-fluid">
-            <div class="navbar-header" >
+            <div class="navbar-header">
                 {{--<div id="mySidenav" class="sidenav">--}}
-                    {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
+                {{--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>--}}
 
-                    {{--<a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>--}}
-                    {{--<a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>--}}
-                    {{--<a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>--}}
-                    {{--<a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>--}}
-                    {{--<button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company--}}
-                        {{--<i class="fa fa-caret-down"></i>--}}
-                    {{--</button>--}}
-                    {{--<div class="dropdown-container">--}}
-                        {{--<a href="#">Show Companies</a>--}}
-                        {{--<a href="#">Add New Company</a>--}}
-                        {{--<a href="#">Delete Company</a>--}}
-                    {{--</div>--}}
-                    {{--<button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer--}}
-                        {{--<i class="fa fa-caret-down"></i>--}}
-                    {{--</button>--}}
-                    {{--<div class="dropdown-container">--}}
-                        {{--<a href="#">Show Customer</a>--}}
-                        {{--<a href="#">Delete Customer</a>--}}
-                    {{--</div>--}}
-                    {{--<button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders--}}
-                        {{--<i class="fa fa-caret-down"></i>--}}
-                    {{--</button>--}}
-                    {{--<div class="dropdown-container">--}}
-                        {{--<a href="#">Show Orders</a>--}}
-                        {{--<a href="#">Show Old Orders</a>--}}
-                    {{--</div>--}}
+                {{--<a class="ap" href="#"><i class="fa fa-home" style="font-size:24px"></i> Home</a>--}}
+                {{--<a href="#"><i class="fa fa-user-circle-o" style="font-size:24px"></i> Profile</a>--}}
+                {{--<a href="#"><i class="fa fa-gear" style="font-size:24px"></i> Settings</a>--}}
+                {{--<a href="#"><i class="fa fa-times-rectangle" style="font-size:24px"></i> Delete Products</a>--}}
+                {{--<button class="dropdown-btn"><i class="fa fa-handshake-o" style="font-size:24px"></i> Company--}}
+                {{--<i class="fa fa-caret-down"></i>--}}
+                {{--</button>--}}
+                {{--<div class="dropdown-container">--}}
+                {{--<a href="#">Show Companies</a>--}}
+                {{--<a href="#">Add New Company</a>--}}
+                {{--<a href="#">Delete Company</a>--}}
+                {{--</div>--}}
+                {{--<button class="dropdown-btn"><i class="fa fa-group" style="font-size:24px"></i> Customer--}}
+                {{--<i class="fa fa-caret-down"></i>--}}
+                {{--</button>--}}
+                {{--<div class="dropdown-container">--}}
+                {{--<a href="#">Show Customer</a>--}}
+                {{--<a href="#">Delete Customer</a>--}}
+                {{--</div>--}}
+                {{--<button class="dropdown-btn"><i class="fa fa-first-order" style="font-size:24px"></i> Orders--}}
+                {{--<i class="fa fa-caret-down"></i>--}}
+                {{--</button>--}}
+                {{--<div class="dropdown-container">--}}
+                {{--<a href="#">Show Orders</a>--}}
+                {{--<a href="#">Show Old Orders</a>--}}
+                {{--</div>--}}
 
                 {{--</div>--}}
                 {{--<span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>--}}
@@ -82,7 +82,9 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -97,35 +99,37 @@
 
                     {{--search--}}
                     <li class="nav-item mr-lg-2">
-                        <form>
-                            <input type="text" name="search" placeholder="Search..">
+                        <form method="POST" action="{{ route('searchBtn') }}">
+                            @csrf
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+
+                                    <select class="custom-select" id="inputGroupSelect01" name="category" required>
+                                        <option disabled selected value>Choose Category</option>
+                                        @foreach($category as $cat)
+                                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+                                <input class="form-control" type="text" name="choice" placeholder="Search.." required>
+                                <div class="input-group-append">
+                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
                         </form>
 
-                    </li>
-
-                    <li class="nav-item mr-lg-2">
-                        <div class="dropdown">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" >
-                                Category
-                            </a>
-
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                @foreach($category as $cat)
-                                    <a class="dropdown-item" href="#">{{ $cat->name }}</a>
-                                @endforeach
-
-                            </div>
-                        </div>
                     </li>
 
 
                     <!-- Authentication Links -->
                     <li class="nav-item">
-                         {{--<a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>--}}
+                        {{--<a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>--}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket" style="font-size:20px;color:orange"></i> Cart
-                            <span  class="badge badge-pill badge-danger">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                        <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket"
+                                                                          style="font-size:20px;color:orange"></i> Cart
+                            <span class="badge badge-pill badge-danger">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                         </a>
                     </li>
                     @guest
@@ -139,7 +143,8 @@
                         @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
@@ -150,7 +155,8 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         @csrf
                                     </form>
                                 </div>
@@ -163,39 +169,38 @@
     </nav>
 
 
-
-    <main class="py-4 content" id="content" >
+    <main class="py-4 content" id="content">
         @yield('content')
     </main>
 
-    <div class="footer" >
+    <div class="footer">
 
         <section class="website-features">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-4 feature-box">
-                                <i class="fa fa-tachometer" style="font-size:50px"></i>
-                                <div class="feature-text">
-                                <p><b>100% Original item</b> are available at company</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 feature-box">
-                                <i class="fa fa-truck" style="font-size:50px"></i>
-                                <div class="feature-text">
-                                <p><b>Get free delivery for every</b> order on more than price.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 feature-box">
-                                    <i class="fa fa-retweet" style="font-size:47px"></i>
-                                    <div class="feature-text">
-                                    <p><b>Return within 3 days</b> of receiving your order.</p>
-                                    </div>
-                            </div>
-
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 feature-box">
+                        <i class="fa fa-tachometer" style="font-size:50px"></i>
+                        <div class="feature-text">
+                            <p><b>100% Original item</b> are available at company</p>
                         </div>
                     </div>
+
+                    <div class="col-md-4 feature-box">
+                        <i class="fa fa-truck" style="font-size:50px"></i>
+                        <div class="feature-text">
+                            <p><b>Get free delivery for every</b> order on more than price.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 feature-box">
+                        <i class="fa fa-retweet" style="font-size:47px"></i>
+                        <div class="feature-text">
+                            <p><b>Return within 3 days</b> of receiving your order.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </section>
 
         <!------------              --------------------------->
@@ -226,14 +231,14 @@
                     </div>
                 </div>
                 <hr>
-                <p class="copyright">Smart Market <i class="fa fa-heart-o"></i> </p>
+                <p class="copyright">Smart Market <i class="fa fa-heart-o"></i></p>
             </div>
         </section>
-   </div>
+    </div>
 
 </div>
 
-    <script src="{{ asset('js/firebase.js') }}"></script>
+<script src="{{ asset('js/firebase.js') }}"></script>
 
 
 <script>
@@ -246,7 +251,7 @@
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
-        document.getElementById("main").style.marginLeft= "0";
+        document.getElementById("main").style.marginLeft = "0";
         document.getElementById("content").style.marginLeft = "0";
         document.body.style.backgroundColor = "white";
     }
@@ -254,7 +259,7 @@
     var dropdown = document.getElementsByClassName("dropdown-btn");
     var i;
     for (i = 0; i < dropdown.length; i++) {
-        dropdown[i].addEventListener("click", function() {
+        dropdown[i].addEventListener("click", function () {
             this.classList.toggle("active");
             var dropdownContent = this.nextElementSibling;
             if (dropdownContent.style.display === "block") {
