@@ -16,6 +16,7 @@ use App\User;
 use App\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use function Sodium\add;
 use function Sodium\compare;
@@ -88,10 +89,25 @@ class UserController extends Controller
 
         $review = new Rating();
         $review->user_id = auth()->user()->id;
-       // $review->product_id =
+        $review->product_id = $product->id;
+        $review->description = $request->comment;
+        $review->rate = $request->stars;
+        $review->save();
+
+        return redirect()->route('home');
+    }
 
 
-        return view('user.addreview');
+
+    public function products()
+    {
+
+        $x = $this->getSearchList();
+        $category = $x[0];
+        $brands = $x[1];
+        $sellers = $x[2];
+
+        return view('user.products',compact('category','brands','sellers'));
     }
 
     public function getSearchList()
@@ -105,55 +121,39 @@ class UserController extends Controller
         return [$category,$brands,$sellers];
     }
 
-    public function products()
-    {
-
-        $x = $this->getSearchList();
-        $category = $x[0];
-        $brands = $x[1];
-        $sellers = $x[2];
-
-        return view('user.products',compact('category','brands','sellers'));
-    }
-
     public function search($type,$choice){
-
-        $x = $this->getSearchList();
-        $category = $x[0];
-        $brands = $x[1];
-        $sellers = $x[2];
 
         switch ($type){
             case 'category':
                 $t = Category::find($choice);
                 $products = Product::where('category_id','=',$t->id)->get();
                 $choice = $t->name;
-              return view('user.showProducts',compact('type','products','choice','category','brands','sellers'));
+              return view('user.showProducts',compact('type','products','choice'));
 
             case 'brand':
                 $t = Brand::find($choice);
                 $products = Product::where('brand_id','=',$t->id)->get();
                 $choice = $t->name;
-                return view('user.showProducts',compact('type','products','choice','category','brands','sellers'));
+                return view('user.showProducts',compact('type','products','choice'));
 
             case 'seller':
                 $t = Vendor::find($choice);
                 $products = Product::where('vendor_id','=',$t->id)->get();
                 $choice = $t->name;
-                return view('user.showProducts',compact('type','products','choice','category','brands','sellers'));
+                return view('user.showProducts',compact('type','products'));
 
             case 'topRated':
-                $t = Rating::select('product_id')->where('rate','>=',4)->get();
+                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','>=',4)->groupBy('product_id')->get();
                 $products = Product::whereIN('id',$t)->get();
                 $choice = null;
                 $type = "Top Rated";
-                return view('user.showProducts',compact('type','products','choice','category','brands','sellers'));
+                return view('user.showProducts',compact('type','products','choice'));
 
             case 'onRate':
-                $t = Rating::select('product_id')->where('rate','>=',$choice)->get();
+                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','>=',$choice)->groupBy('product_id')->get();
                 $products = Product::whereIN('id',$t)->get();
                 $type ="".$choice." stars and up";
-                return view('user.showProducts',compact('type','products','choice','category','brands','sellers'));
+                return view('user.showProducts',compact('type','products','choice'));
         }
         return redirect('product');
     }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('review') }}">
+    <form method="POST" action="{{ route('review',$product->id) }}">
         @csrf
     <div class="container pt-4">
         <div class="row justify-content-center ">
