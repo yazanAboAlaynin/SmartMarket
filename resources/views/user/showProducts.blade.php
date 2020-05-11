@@ -6,6 +6,7 @@
 
 <!-------------------------------             --------------------------------------->
 <section class="featured-categories">
+    @if($products->count() > 0)
     <div class="container card">
         <div class="text-center">
             <h2>{{ $type }}</h2>
@@ -46,7 +47,26 @@
             @endforeach
         </div>
 
+
     </div>
+
+    @else
+        <div class="text-center">
+            <h2>{{ $type }}</h2>
+        </div>
+        <br/>
+        <div class="title-box">
+            <h2>{{ $choice }}</h2>
+        </div>
+        <div class="alert alert-secondary mt-lg-3 ml-lg-3 mr-lg-5 mb-lg-4">
+
+            <h3 class="text-center">
+                No Products Yet.
+            </h3>
+        </div>
+
+    @endif
+
 </section>
 
 

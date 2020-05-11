@@ -10,6 +10,7 @@
         <div class="title-box">
             <h2>categories</h2>
         </div>
+        @if($category->count() > 0)
         <div class="row">
             @foreach($category as $c)
             <div class="col-md-3">
@@ -22,6 +23,15 @@
             </div>
             @endforeach
         </div>
+        @else
+            <div class="alert alert-secondary">
+                <h3 class="text-center">
+                    No Category Yet.
+                </h3>
+            </div>
+
+        @endif
+
     </div>
 </section>
 
