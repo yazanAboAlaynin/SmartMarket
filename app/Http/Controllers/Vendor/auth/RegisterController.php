@@ -52,7 +52,7 @@ class RegisterController extends Controller
                 'approved' => "0",
             ]);
 
-            auth()->guard('vendor')->login($company);
+            //auth()->guard('vendor')->login($company);
 
             return redirect('vendor/login');
          }

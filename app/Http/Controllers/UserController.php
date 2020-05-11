@@ -75,6 +75,25 @@ class UserController extends Controller
 
     }
 
+    public function addReview(Product $product){
+        return view('user.addreview',compact('product'));
+    }
+
+    public function review(Request $request,Product $product){
+
+        $request->validate([
+            'stars' => 'required',
+            'comment' => 'required',
+        ]);
+
+        $review = new Rating();
+        $review->user_id = auth()->user()->id;
+       // $review->product_id =
+
+
+        return view('user.addreview');
+    }
+
     public function getSearchList()
     {
         $category = Category::all();

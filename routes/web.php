@@ -36,9 +36,11 @@ Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('
 Route::get('/cart', 'UserController@cart')->name('cart');
 Route::get('/order', 'UserController@order')->name('order');
 Route::get('/getsrchlist', 'UserController@getSearchList')->name('getSearchList');
-Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
+Route::get('/add/review/{product}', 'UserController@addReview')->name('add.review');
+Route::post('/review/{product}', 'UserController@review')->name('review');
+//Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
-
+/*******************************************************************************************************/
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
@@ -76,6 +78,8 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/brand/add', 'AdminController@addBrand')->name('brand.add');
     Route::post('/brand/store', 'AdminController@storeBrand')->name('brand.store');
 });
+
+/****************************************************************************************************************/
 
 Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
     Auth::routes();

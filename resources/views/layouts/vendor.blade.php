@@ -33,10 +33,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark shadow-sm" style="background-color: #3f5c80; z-index: 2">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Smart Market') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -88,28 +88,30 @@
             <img src="/storage/2.jpg" width="100%" height="400px"/>
         </div>
 
-        <nav class="navbar navbar-expand-md shadow-lg navbar-light sticky-top" style="background-color: #6f6f6f;">
-            <ul class="navbar-nav">
+        <nav class="navbar navbar-expand-md shadow-sm navbar-light sticky-top" style="background-color: #b0b6b8;z-index: 1">
+            <div class="container">
+            <ul class="navbar-nav bakcolor">
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.home')}}">Home</a>
+                    <a class="nav-link"  href="{{ Route('vendor.home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.profile')}}">Profile</a>
+                    <a class="nav-link"  href="{{ Route('vendor.profile')}}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.products')}}">Products</a>
+                    <a class="nav-link"  href="{{ Route('vendor.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.orders')}}">Orders</a>
+                    <a class="nav-link"  href="{{ Route('vendor.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.soldItems')}}">Sold Items</a>
+                    <a class="nav-link"  href="{{ Route('vendor.soldItems')}}">Sold Items</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="color: white" href="{{ Route('vendor.add.product')}}">Add Product</a>
+                    <a class="nav-link"  href="{{ Route('vendor.add.product')}}">Add Product</a>
                 </li>
 
             </ul>
+            </div>
         </nav>
 
         <main class="py-4" style="margin-top: 40px">
