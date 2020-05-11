@@ -290,7 +290,7 @@
                     </div>
                     <div class="col-md-3 footer-image">
                         <h1>Download App</h1>
-                        <img src="images/apps.jpg">
+                        <img src="{{ asset('images/apps.jpg') }}">
                     </div>
                 </div>
                 <hr>
