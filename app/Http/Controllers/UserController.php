@@ -123,7 +123,7 @@ class UserController extends Controller
                 $t = Vendor::find($choice);
                 $products = Product::where('vendor_id','=',$t->id)->get();
                 $choice = $t->name;
-                return view('user.showProducts',compact('type','products'));
+                return view('user.showProducts',compact('type','products','choice'));
 
             case 'topRated':
                 $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','>=',4)->groupBy('product_id')->get();
