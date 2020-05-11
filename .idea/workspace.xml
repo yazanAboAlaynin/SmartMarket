@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/userHome.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/userHome.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,12 +17,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/user/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-4176">
-              <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+              <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showProducts.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="54" column="64" lean-forward="true" selection-start-line="54" selection-start-column="64" selection-end-line="54" selection-end-column="64" />
+              <folding>
+                <marker date="1589209520198" expanded="false" signature="1268:1275" ph="×" />
+                <marker date="1589209520198" expanded="false" signature="1361:1375" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="1469:1483" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="1571:1585" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="1685:1699" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="1819:1833" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="2324:2338" ph="..." />
+                <marker date="1589209520198" expanded="false" signature="2772:2786" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,7 +84,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/NotificationController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2020_04_20_171328_notifications.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/ui/auth-backend/AuthenticatesUsers.php" />
         <option value="$PROJECT_DIR$/public/firebase-messaging-sw.js" />
@@ -116,6 +134,7 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/userHome.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php" />
       </list>
     </option>
   </component>
@@ -455,13 +474,6 @@
       <workItem from="1589122739497" duration="3378000" />
       <workItem from="1589187913323" duration="7816000" />
     </task>
-    <task id="LOCAL-00042" summary="new">
-      <created>1585824364136</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1585824364136</updated>
-    </task>
     <task id="LOCAL-00043" summary="latest">
       <created>1585847175245</created>
       <option name="number" value="00043" />
@@ -798,11 +810,18 @@
       <option name="project" value="LOCAL" />
       <updated>1589205057652</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="latest">
+      <created>1589209045744</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1589209045744</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280975000" />
+    <option name="totallyTimeSpent" value="281515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1068,14 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3300">
-          <caret line="171" column="75" lean-forward="false" selection-start-line="171" selection-start-column="75" selection-end-line="171" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/products.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="464">
@@ -1244,8 +1255,25 @@
     <entry file="file://$PROJECT_DIR$/resources/views/user/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4176">
-          <caret line="29" column="35" lean-forward="true" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <caret line="29" column="35" lean-forward="false" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/showProducts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="54" column="64" lean-forward="true" selection-start-line="54" selection-start-column="64" selection-end-line="54" selection-end-column="64" />
+          <folding>
+            <marker date="1589209520198" expanded="false" signature="1268:1275" ph="×" />
+            <marker date="1589209520198" expanded="false" signature="1361:1375" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="1469:1483" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="1571:1585" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="1685:1699" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="1819:1833" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="2324:2338" ph="..." />
+            <marker date="1589209520198" expanded="false" signature="2772:2786" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
