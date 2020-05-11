@@ -101,24 +101,7 @@ class UserController extends Controller
 
     public function products()
     {
-
-        $x = $this->getSearchList();
-        $category = $x[0];
-        $brands = $x[1];
-        $sellers = $x[2];
-
-        return view('user.products',compact('category','brands','sellers'));
-    }
-
-    public function getSearchList()
-    {
-        $category = Category::all();
-
-        $brands = Brand::all();
-
-        $sellers = Vendor::all();
-
-        return [$category,$brands,$sellers];
+        return view('user.products');
     }
 
     public function search($type,$choice){

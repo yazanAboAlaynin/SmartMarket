@@ -12,6 +12,7 @@ use App\Order;
 use App\Order_item;
 use App\User;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use Yajra\DataTables\Facades\DataTables;
 
 use App\Admin;
@@ -346,6 +347,28 @@ class AdminController extends Controller
         return;
     }
 
+/*********************************************************************************/
+/*************************** control categories **********************************/
+
+    public function categories(){
+        if(request()->ajax())
+        {
+            $items = Category::latest()->get();
+            return DataTables::of($items)
+                ->addColumn('action', function($items){
+                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.categories');
+    }
+
     public function addCategory(){
         return view('admin.addCategory');
     }
@@ -353,14 +376,50 @@ class AdminController extends Controller
     public function storeCategory(Request $request){
         $data = request()->validate([
             'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if ($files = $request->file('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
+            $image->save();
+        }
         $category = new Category();
         $category->name = $data['name'];
+        $category->image = $imagePath;
         $category->save();
 
         return redirect()->route('admin.home');
     }
 
+    public function editCategory(Category $category,Request $request)
+    {
+
+        $data = request()->validate([
+            'name' => 'required',
+        ]);
+        $category->name = $request->input('name');
+
+        $category->save(); //persist the data
+
+        return redirect('admin/categories');
+    }
+
+    public function updateCategory(Category $category){
+
+        return view('admin.categoryEdit',compact('category'));
+    }
+
+    public function deleteCategory(Request $request){
+
+        $data = Category::findOrFail($request->id);
+        $data->delete();
+
+        return;
+    }
+
+
+    /*********************************************************************************/
+    /*************************** control brands **********************************/
     public function addBrand(){
         return view('admin.addBrand');
     }

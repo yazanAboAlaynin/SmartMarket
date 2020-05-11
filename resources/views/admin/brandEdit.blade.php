@@ -23,7 +23,7 @@
 
                     <div class="card-body">
 
-                        <form action="{{ route('admin.category.store') }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('admin.category.edit',$category->id) }}" enctype="multipart/form-data" method="post">
                             @csrf
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -38,21 +38,8 @@
                                 @endif
 
                             </div>
-                            <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-                                <label for="image" class="col-md-4 control-label">primary image</label>
-
-
-                                <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
-
-                                @if ($errors->has('image'))
-                                    <span class="help-block">
-                            <strong>{{ $errors->first('image') }}</strong>
-                        </span>
-                                @endif
-
-                            </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Add Category</button>
+                                <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Edit Category</button>
                             </div>
                         </form>
                     </div>

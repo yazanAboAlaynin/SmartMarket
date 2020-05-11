@@ -73,10 +73,18 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/product/{product}/update', 'AdminController@updateProduct')->name('product.update');
     Route::post('/product/{product}/edit', 'AdminController@editProduct')->name('product.edit');
     Route::get('/product/delete', 'AdminController@deleteProduct')->name('product.delete');
+
     Route::get('/category/add', 'AdminController@addCategory')->name('category.add');
     Route::post('/category/store', 'AdminController@storeCategory')->name('category.store');
+    Route::get('/categories', 'AdminController@categories')->name('categories');
+    Route::get('/category/{category}/update', 'AdminController@updateCategory')->name('category.update');
+    Route::post('/category/{category}/edit', 'AdminController@editCategory')->name('category.edit');
+    Route::get('/category/delete', 'AdminController@deleteCategory')->name('category.delete');
+
     Route::get('/brand/add', 'AdminController@addBrand')->name('brand.add');
     Route::post('/brand/store', 'AdminController@storeBrand')->name('brand.store');
+
+
 });
 
 /****************************************************************************************************************/
