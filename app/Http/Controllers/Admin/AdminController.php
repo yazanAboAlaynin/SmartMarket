@@ -420,6 +420,26 @@ class AdminController extends Controller
 
     /*********************************************************************************/
     /*************************** control brands **********************************/
+
+    public function brands(){
+        if(request()->ajax())
+        {
+            $items = Brand::latest()->get();
+            return DataTables::of($items)
+                ->addColumn('action', function($items){
+                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.brands');
+    }
+
     public function addBrand(){
         return view('admin.addBrand');
     }
@@ -427,11 +447,44 @@ class AdminController extends Controller
     public function storeBrand(Request $request){
         $data = request()->validate([
             'name' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+        if ($files = $request->file('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
+            $image->save();
+        }
         $brand = new Brand();
         $brand->name = $data['name'];
+        $brand->image = $imagePath;
         $brand->save();
 
         return redirect()->route('admin.home');
+    }
+
+    public function editBrand(Brand $brand,Request $request)
+    {
+
+        $data = request()->validate([
+            'name' => 'required',
+        ]);
+        $brand->name = $request->input('name');
+
+        $brand->save(); //persist the data
+
+        return redirect('admin/brands');
+    }
+
+    public function updateBrand(Brand $brand){
+
+        return view('admin.brandEdit',compact('brand'));
+    }
+
+    public function deleteBrand(Request $request){
+
+        $data = Brand::findOrFail($request->id);
+        $data->delete();
+
+        return;
     }
 }

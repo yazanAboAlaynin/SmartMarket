@@ -39,8 +39,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
     <link rel="manifest" href="{{ asset('manifest.json') }}" >
 
-
-
 </head>
 
 <body>
@@ -77,17 +75,22 @@
                     <a href="{{ Route('admin.oldOrders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Old Orders</span></a>
 
+                    <a href="{{ Route('admin.categories') }}"><i class="fa fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Categories</span></a>
+
                     <a href="{{ Route('admin.category.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
                         <span style="margin-left: 30px">add Category</span></a>
 
+                    <a href="{{ Route('admin.brands') }}"><i class="fa fa fa-handshake-o" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Brands</span></a>
+
                     <a href="{{ Route('admin.brand.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
                         <span style="margin-left: 30px">add Brand</span></a>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
 
-
-                    <div class="dropdown-container">
-                        <a href="{{ Route('admin.orders') }}"><i class="fa " style="font-size:24px"></i> </a>
-                        <a href="{{ Route('admin.oldOrders') }}"><i class="fa " style="font-size:24px"></i> </a>
-                    </div>
 
                 </div>
                 <span class="myclass" style="cursor: pointer;font-size:26px" onclick="openNav()">&#9776;</span>

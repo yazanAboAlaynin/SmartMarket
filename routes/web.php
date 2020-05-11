@@ -83,6 +83,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
 
     Route::get('/brand/add', 'AdminController@addBrand')->name('brand.add');
     Route::post('/brand/store', 'AdminController@storeBrand')->name('brand.store');
+    Route::get('/brands', 'AdminController@brands')->name('brands');
+    Route::get('/brand/{brand}/update', 'AdminController@updateBrand')->name('brand.update');
+    Route::post('/brand/{brand}/edit', 'AdminController@editBrand')->name('brand.edit');
+    Route::get('/brand/delete', 'AdminController@deleteBrand')->name('brand.delete');
 
 
 });
