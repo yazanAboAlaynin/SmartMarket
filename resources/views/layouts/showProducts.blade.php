@@ -96,7 +96,7 @@
                                 </div>
                                 <input class="form-control" type="text" name="choice" placeholder="Search.." required>
                                 <div class="input-group-append">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -104,10 +104,10 @@
                     </li>
 
                     <!-- Authentication Links -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i>
-                            Language</a>
-                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i>--}}
+                            {{--Language</a>--}}
+                    {{--</li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket"
                                                                           style="font-size:20px;color:orange"></i> Cart

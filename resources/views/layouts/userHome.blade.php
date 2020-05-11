@@ -40,7 +40,11 @@
     <link rel="manifest" href="manifest.json">
 
 </head>
-
+<style>
+    li{
+        margin-right: 15px;
+    }
+</style>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-sm sticky-top">
@@ -114,7 +118,7 @@
                                 </div>
                                 <input class="form-control" type="text" name="choice" placeholder="Search.." required>
                                 <div class="input-group-append">
-                                    <button type="submit"><i class="fa fa-search"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
