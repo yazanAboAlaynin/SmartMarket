@@ -94,6 +94,31 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+
+                    {{--search--}}
+                    <li class="nav-item mr-lg-2">
+                        <form>
+                            <input type="text" name="search" placeholder="Search..">
+                        </form>
+
+                    </li>
+
+                    <li class="nav-item mr-lg-2">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" >
+                                Category
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @foreach($category as $cat)
+                                    <a class="dropdown-item" href="#">{{ $cat->name }}</a>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </li>
+
+
                     <!-- Authentication Links -->
                     <li class="nav-item">
                          <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
@@ -197,7 +222,7 @@
                     </div>
                     <div class="col-md-3 footer-image">
                         <h1>Download App</h1>
-                        <img src="/storage/ggg.jpg">
+                        <img src="images/apps.jpg">
                     </div>
                 </div>
                 <hr>

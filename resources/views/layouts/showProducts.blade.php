@@ -77,6 +77,29 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
+                    {{--search--}}
+                    <li class="nav-item mr-lg-2">
+                        <form>
+                            <input type="text" name="search" placeholder="Search..">
+                        </form>
+
+                    </li>
+
+                    <li class="nav-item mr-lg-2">
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown" >
+                                Category
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                @foreach($category as $cat)
+                                    <a class="dropdown-item" href="#">{{ $cat->name }}</a>
+                                @endforeach
+
+                            </div>
+                        </div>
+                    </li>
+
                     <!-- Authentication Links -->
                     <li class="nav-item">
                          <a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>
@@ -169,10 +192,38 @@
                         <div class="col-12">
                             <h6><b>Avg. Customer Review</b></h6>
                             <ul>
-                                <li> <a href="{{ Route('search',['onRate',4]) }}"> 4 stars & UP </a></li>
-                                <li> <a href="{{ Route('search',['onRate',3]) }}"> 3 stars & UP </a></li>
-                                <li> <a href="{{ Route('search',['onRate',2]) }}"> 2 stars & UP </a></li>
-                                <li> <a href="{{ Route('search',['onRate',1]) }}"> 1 stars & UP </a></li>
+                                <li> <a href="{{ Route('search',['onRate',4]) }}">
+                                        <div class="product-bottom">
+                                        <i class="fa fa-star" style="font-size:18px"></i>
+                                        <i class="fa fa-star" style="font-size:18px"></i>
+                                        <i class="fa fa-star" style="font-size:18px"></i>
+                                        <i class="fa fa-star" style="font-size:18px"></i>
+                                        </div>
+                                    </a></li>
+                                <li> <a href="{{ Route('search',['onRate',3]) }}">
+                                        <div class="product-bottom">
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                        </div>
+                                    </a></li>
+                                <li> <a href="{{ Route('search',['onRate',2]) }}">
+                                        <div class="product-bottom">
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                        </div>
+                                    </a></li>
+                                <li> <a href="{{ Route('search',['onRate',1]) }}">
+                                        <div class="product-bottom">
+                                            <i class="fa fa-star" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                            <i class="fa fa-star-o" style="font-size:18px"></i>
+                                        </div>
+                                    </a></li>
 
                             </ul>
                         </div>
@@ -239,7 +290,7 @@
                     </div>
                     <div class="col-md-3 footer-image">
                         <h1>Download App</h1>
-                        <img src="/storage/ggg.jpg">
+                        <img src="images/apps.jpg">
                     </div>
                 </div>
                 <hr>
