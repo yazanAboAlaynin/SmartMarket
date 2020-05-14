@@ -42,7 +42,7 @@
             <div class="col-md-8">
                 <div class="card" style="height: 500px;">
                     <div class="card-header bg-white">
-                        <img src="{{asset('images/logo.jpg')}}" style="width: 300px;height: 100px;padding-right: 40px"/>
+                        <img src="{{asset('images/mylogo.png')}}" style="width: 300px;height: 100px;padding-right: 40px"/>
                         {{ __('Admin Login') }}
 
                         <a class="float-right" href="{{ route('admin.login') }}">{{ __('Register') }}</a></div>

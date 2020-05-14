@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
-use phpseclib\Crypt\Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
