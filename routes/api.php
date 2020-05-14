@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login', 'API\UserController@login');
 Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::post('details', 'API\UserController@details');
+    Route::get('categories', 'API\UserController@categories');
+    Route::get('brands', 'API\UserController@brands');
+    Route::get('sellers', 'API\UserController@sellers');
 });

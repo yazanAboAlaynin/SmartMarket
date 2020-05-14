@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Brand;
+use App\Category;
 use App\Http\Controllers\Controller;
+use App\Vendor;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -69,9 +72,24 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details()
+    public function categories()
     {
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this-> successStatus);
+        $categories = Category::all();
+        $success['categories'] = $categories;
+        return response()->json(['success' => $success], $this-> successStatus);
+    }
+
+    public function brands()
+    {
+        $brands = Brand::all();
+        $success['brands'] = $brands;
+        return response()->json(['success' => $success], $this-> successStatus);
+    }
+
+    public function sellers()
+    {
+        $sellers = Vendor::all();
+        $success['sellers'] = $sellers;
+        return response()->json(['success' => $success], $this-> successStatus);
     }
 }
