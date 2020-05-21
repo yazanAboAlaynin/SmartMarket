@@ -4,6 +4,9 @@ namespace App\Http\Controllers\API;
 
 use App\Brand;
 use App\Category;
+use App\Order;
+use App\Product;
+use App\Property;
 use App\Http\Controllers\Controller;
 use App\Vendor;
 use Illuminate\Http\Request;
@@ -92,4 +95,78 @@ class UserController extends Controller
         $success['sellers'] = $sellers;
         return response()->json(['success' => $success], $this-> successStatus);
     }
+	
+	public function products(Request $request,$type,$id){
+		switch($type){
+			case 'category':
+				$products = Product::where('category_id','=',$id)->get();
+				return response()->json(['products' => $products], $this-> successStatus);
+				
+			case 'brand':
+				$products = Product::where('brand_id','=',$id)->get();
+				return response()->json(['products' => $products], $this-> successStatus);
+				
+			case 'seller':
+				$products = Product::where('vendor_id','=',$id)->get();
+				return response()->json(['products' => $products], $this-> successStatus);	
+		}
+	}
+	
+	public function getProductCategory(Request $request,$id){
+        $p = Product::find($id);
+        $category = Category::find($p->category_id);
+	
+		return response()->json(['category' => $category->name], $this-> successStatus);
+	}
+	
+	public function getProductProp(Request $request,$id){
+        $p = Product::find($id);
+        $category = Category::find($p->category_id);
+	
+		return response()->json(['category' => $category->name], $this-> successStatus);
+	}
+	
+	public function productProperties($id){
+		
+		//$p = Product::find($id);
+        $properties = Property::where('product_id','=',$id)->get();
+	
+		return response()->json(['properties' => $properties], $this-> successStatus);
+	}
+	
+	public function otherProperties($id){
+		$product = Product::find($id);
+		$prop = Property::where('product_id','=',$id)->get();
+        $otherProducts = Product::select('id')->where([
+            ['item_num','=',$product->item_num]])->get();
+        $other = [];
+        foreach ($prop as $p){
+            $otherProp = Property::where([
+                ['name','=',$p->name],
+                ['value','<>',$p->value]
+            ])->whereIn('product_id',$otherProducts)->get();
+           
+             array_push($other,$otherProp);
+        }
+        //dd($other);
+		$other = Property::whereIn('product_id',$otherProducts)->get();
+        return response()->json(['other' => $other], $this-> successStatus);
+
+    }
+	
+	public function getProduct($id){
+		$product = Product::find($id);
+		return response()->json(['product' => $product], $this-> successStatus);
+	}
+	
+	
+
 }
+	
+	
+	
+	
+	
+	
+	
+	
