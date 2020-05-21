@@ -41,7 +41,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
         return view('user.home');
     }
 
@@ -74,6 +73,10 @@ class UserController extends Controller
 
         return redirect('user/profile');
 
+    }
+
+    public function addOrderReview(Order $order){
+        return view('user.reviewOrder',compact('order'));
     }
 
     public function addReview(Product $product){

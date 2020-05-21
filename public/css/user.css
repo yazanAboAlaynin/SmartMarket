@@ -558,3 +558,124 @@ input[type=text]:focus {
     width: 100%;
 }
 
+
+/* .............home............ */
+
+.ftco-section {
+    padding: 4em 0;
+    position: relative;}
+@media (max-width: 767.98px) {
+    .ftco-section {
+        padding: 6em 0;
+    }
+}
+
+.d-flex {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+}
+
+.img {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.case {
+    width: 100%;
+    margin-bottom: 50px;
+}
+.case .img {
+    height: 400px;
+}
+.case .text .subheading {
+    font-weight: 500;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+}
+.case .text h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.case .text h2 a {
+    color: #000000;
+}
+
+.case .text .media-social {
+    opacity: 0;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+@media (max-width: 1199.98px) {
+    .case .text .media-social {
+        opacity: 1;
+    }
+}
+.case .text .media-social li {
+    list-style: none;
+    margin: 0 5px 0 0;
+    display: inline-block;
+}
+.case .text .media-social li a {
+    height: 50px;
+    width: 50px;
+    display: block;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+    position: relative;
+    color: #000000;
+}
+.case .text .media-social li a span {
+    position: absolute;
+    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.case .text .media-social li a:hover {
+    background: #ffd369;
+    color: #000000;
+}
+.case .text .meta p {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.2);
+}
+.case .text .meta p a {
+    color: rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+}
+.case:hover .text h2 a {
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+.case:hover .text .media-social {
+    opacity: 1;
+}
+.case:hover .text .meta p a {
+    color: #000000;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

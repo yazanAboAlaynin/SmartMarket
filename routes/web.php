@@ -41,6 +41,8 @@ Route::get('/add/review/{product}', 'UserController@addReview')->name('add.revie
 Route::post('/review/{product}', 'UserController@review')->name('review');
 //Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
+Route::get('/add/orderReview/{order}', 'UserController@addOrderReview')->name('add.orderReview');
+
 /*******************************************************************************************************/
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
