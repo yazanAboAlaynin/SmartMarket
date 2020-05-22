@@ -116,7 +116,7 @@ class UserController extends Controller
         $t = Category::find($request->category);
         $products = Product::where([
             ['category_id','=',$t->id],
-            ['name','like',$request->choice]
+            ['name','like',$request->choice.'%']
         ])->get();
         $type = $request->category;
         $choice = $t->name;
