@@ -376,7 +376,7 @@ class AdminController extends Controller
     public function storeCategory(Request $request){
         $data = request()->validate([
             'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
         ]);
         if ($files = $request->file('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
