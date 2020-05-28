@@ -19,14 +19,14 @@
                                     <h3>All Product</h3>
                                 </td>
                                 <td>
-                                    <h2><span id="product" class="mr-2 float-right badge badge-warning"></span></h2>
+                                    <h2><span id="product" class="mr-2 float-right badge badge-warning">{{$products_count}}</span></h2>
                                 </td>
                             </tr>
                             <td class="pt-3">
                                 <h3>Oreder</h3>
                             </td>
                             <td>
-                                <h2><span id="oreder" class="mr-2 float-right badge badge-warning"></span></h2>
+                                <h2><span id="oreder" class="mr-2 float-right badge badge-warning">{{$orders_count}}</span></h2>
                             </td>
                             <tr>
                             </tr>
@@ -34,7 +34,7 @@
                                 <h3>Sold Item</h3>
                             </td>
                             <td>
-                                <h2><span id="sold"  class="mr-2 float-right badge badge-warning"></span></h2>
+                                <h2><span id="sold"  class="mr-2 float-right badge badge-warning">{{$orders_item_count}}</span></h2>
                             </td>
                             <tr>
 

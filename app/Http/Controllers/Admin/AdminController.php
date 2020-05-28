@@ -36,7 +36,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'users_count' => User::all()->count(),
+            'vendors_count' => vendor::where('approved','=',1)->count(),
+            'orders_count' => Order::all()->count(),
+            'vendorsReq_count' => vendor::where('approved','=',0)->count()
+        ]);
     }
 
     public function show(Request $request)
@@ -44,25 +49,6 @@ class AdminController extends Controller
 
     }
 
-    public function usersCount(){
-        $userCount = User::all()->count();
-        return $userCount;
-    }
-
-    public function vendorsCount(){
-        $userCount = vendor::where('approved','=',1)->count();
-        return $userCount;
-    }
-
-    public function ordersCount(){
-        $userCount = Order::all()->count();
-        return $userCount;
-    }
-
-    public function vendorsReqCount(){
-        $userCount = vendor::where('approved','=',0)->count();
-        return $userCount;
-    }
 
 /***********************************************************************************/
       /***************   control the vendors    ***************************/

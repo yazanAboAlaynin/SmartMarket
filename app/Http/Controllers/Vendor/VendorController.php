@@ -36,7 +36,11 @@ class VendorController extends Controller
      */
     public function index()
     {
-        return view('vendor.home');
+        return view('vendor.home', [
+            'products_count' => Product::all()->count(),
+            'orders_count' => Order::all()->count(),
+            'orders_item_count' => Order_item::all()->count()
+        ]);
     }
 
     public function profile()
