@@ -172,7 +172,10 @@ class UserController extends Controller
 
         $otherProducts = Product::select('id')->where([
             ['item_num','=',$product->item_num],
-            ['id','<>',$product->id]])->get();
+            ['id','<>',$product->id],
+            ['vendor_id','=',$product->vendor_id],
+            ['category_id','=',$product->category_id],
+            ['brand_id','=',$product->brand_id]])->get();
         $other = [];
         foreach ($prop as $p){
             $otherProp = Property::where([

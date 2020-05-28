@@ -121,8 +121,8 @@ class VendorController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'filename' => 'required',
-            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10048',
             'category_id' => 'required',
             'brand_id' => 'required',
             'discount' => 'required',
@@ -130,7 +130,7 @@ class VendorController extends Controller
 
         if ($files = $request->file('image')) {
             $imagePath = $request->file('image')->store('images', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500, 1500);
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(2000, 2000);
             $image->save();
         }
 

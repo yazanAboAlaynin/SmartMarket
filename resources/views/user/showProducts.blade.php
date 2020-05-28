@@ -7,7 +7,7 @@
 <!-------------------------------             --------------------------------------->
 <section class="featured-categories">
     @if($products->count() > 0)
-    <div class="container card">
+    <div class="container card shadow">
         <div class="text-center">
             <h2>{{ $type }}</h2>
         </div>
