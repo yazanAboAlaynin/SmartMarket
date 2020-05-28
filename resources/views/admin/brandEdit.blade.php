@@ -18,18 +18,18 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h1>add new Category</h1>
+                        <h1>Edit Brand</h1>
                     </div>
 
                     <div class="card-body">
 
-                        <form action="{{ route('admin.category.edit',$category->id) }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('admin.brand.store',$brand->id) }}" enctype="multipart/form-data" method="post">
                             @csrf
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">name</label>
 
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') ?? $brand->name }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -39,7 +39,7 @@
 
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Edit Category</button>
+                                <button class="btn btn-primary"  style="margin-top:10px;width: 30%">Edit Brand</button>
                             </div>
                         </form>
                     </div>

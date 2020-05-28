@@ -11,7 +11,7 @@
                    </div>
                 <div class="card-body">  
 
-                    <form method="POST" action="{{ route('vendor') }}">
+                    <form method="POST" action="{{ route('vendor.profile.update') }}">
                         @csrf
 
                     <div  class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

@@ -18,7 +18,7 @@
                         </div>
                     @endif
                     <div class="card-header">
-                        <h1>add new Category</h1>
+                        <h1>Edit Category</h1>
                     </div>
 
                     <div class="card-body">
@@ -29,7 +29,7 @@
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-4 control-label">name</label>
 
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') ?? $category->name  }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">

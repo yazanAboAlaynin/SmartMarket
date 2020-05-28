@@ -14,7 +14,7 @@
 
                <div class="card-body">
 
-                    <form method="POST" action="{{ route('vendor',$vendor->id) }}">
+                    <form method="POST" action="{{ route('admin.vendor.edit',$vendor->id) }}">
                         @csrf
 
 

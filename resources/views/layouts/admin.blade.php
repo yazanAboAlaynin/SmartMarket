@@ -54,37 +54,34 @@
                     <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:32px"></i>
                         <span style="margin-left: 30px;">Home</span></a>
 
-                    <a href="{{ Route('admin.home') }}"><i class="fa fa-user-circle-o" style="font-size:32px"></i>
-                        <span style="margin-left: 30px">Profile</span></a>
-
                     <a href="{{ Route('admin.products') }}"><i class="fa fa-product-hunt" style="font-size:32px"></i>
                         <span style="margin-left: 30px">Products</span></a>
 
-                    <a href="{{ Route('admin.vendors') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.vendors') }}"><i class="fa fa-signal" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Vendors</span></a>
 
-                    <a href="{{ Route('admin.pendingVendors') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.pendingVendors') }}"><i class="fa fa-briefcase" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Vendors requests</span></a>
 
-                    <a href="{{ Route('admin.users') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.users') }}"><i class="fa fa-users" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Customers</span></a>
 
-                    <a href="{{ Route('admin.orders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.orders') }}"><i class="fa fa-first-order" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Orders</span></a>
 
-                    <a href="{{ Route('admin.oldOrders') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.oldOrders') }}"><i class="fa fa-first-order" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Old Orders</span></a>
 
-                    <a href="{{ Route('admin.categories') }}"><i class="fa fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.categories') }}"><i class="fa fa-copyright" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Categories</span></a>
 
-                    <a href="{{ Route('admin.category.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.category.add') }}"><i class="fa fa-copyright" style="font-size:24px"></i>
                         <span style="margin-left: 30px">add Category</span></a>
 
-                    <a href="{{ Route('admin.brands') }}"><i class="fa fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.brands') }}"><i class="fa fa fa-delicious" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Brands</span></a>
 
-                    <a href="{{ Route('admin.brand.add') }}"><i class="fa fa-handshake-o" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.brand.add') }}"><i class="fa fa-delicious" style="font-size:24px"></i>
                         <span style="margin-left: 30px">add Brand</span></a>
                     <br/>
                     <br/>

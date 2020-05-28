@@ -20,10 +20,11 @@ h4 {
 .container-fluid {
     padding: 5px 10px;
 }
+/* ========footer========== */
 .bg-grey {
     background-color: #cfd8dc;
-    height: 250px;
-    padding-top: 15px;
+    height: 300px;
+    padding-top: 35px;
 }
 
 /* navbar Under navbar Followed larvel */

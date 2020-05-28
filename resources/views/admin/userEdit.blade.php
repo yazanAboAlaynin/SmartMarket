@@ -67,6 +67,7 @@
 
                         </div>
 
+                            //TODO:add address for data base in user
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">address</label>
 
