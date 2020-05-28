@@ -118,7 +118,7 @@ class UserController extends Controller
             ['category_id','=',$t->id],
             ['name','like',$request->choice.'%']
         ])->get();
-        $type = $request->category;
+        $type = $request->choice;
         $choice = $t->name;
         return view('user.showProducts',compact('type','products','choice'));
     }

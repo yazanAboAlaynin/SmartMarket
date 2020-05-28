@@ -28,6 +28,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
     <link rel="manifest" href="{{ asset('manifest.json') }}" >
 </head>
+
 <body style="
         background-image: url({{ asset('images/bg2.jpg') }});
         background-repeat: no-repeat;
@@ -41,16 +42,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" style="height: 500px;">
-                    <div class="card-header bg-white">
+                    <div class="card-header bg-white border-0 text-center">
                         <img src="{{asset('images/mylogo.png')}}" style="width: 300px;height: 100px;padding-right: 40px"/>
-                        {{ __('Admin Login') }}
-
-                        <a class="float-right" href="{{ route('admin.login') }}">{{ __('Register') }}</a></div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('admin.login') }}">
                             @csrf
+                            <div class="bg-white border-0 pt-1 pb-3">
+                                <h2 class="text-center">{{ __('Admin Login') }}</h2>
 
+                            </div>
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -92,9 +93,9 @@
                             </div>
 
                             <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
+                                <div class="col-md-8 offset-md-2">
                                     <input type="hidden" name="device_token" id="device_token">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" style="width: 100%">
                                         {{ __('Login') }}
                                     </button>
 
@@ -105,11 +106,19 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <br/>
+                                    Or
+                                    <a class="" href="{{ route('admin.register') }}">{{ __(' Register') }}</a>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </main>
 </div>
