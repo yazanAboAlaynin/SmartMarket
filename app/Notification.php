@@ -13,7 +13,7 @@ class Notification extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id','order_id'];
 
     protected $dates =  ['deleted_at'];
 

@@ -17,36 +17,40 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+    Auth::routes();
 
-Route::get('/home', 'UserController@index')->name('home');
-Route::get('/admin', 'admin\AdminController@index')->name('admin');
+    Route::get('/home', 'UserController@index')->name('home');
+    Route::get('/admin', 'admin\AdminController@index')->name('admin');
+    Route::get('/vendor', 'vendor\VendorController@index')->name('vendor');
 
 /****** user ********/
 
-Route::get('/products', 'UserController@products')->name('products');
-Route::get('/profile', 'UserController@profile')->name('profile');
-Route::get('/profile/edit', 'UserController@edit')->name('profile.edit');
-Route::post('/profile/update', 'UserController@update')->name('profile.update');
-Route::get('/products/{type}/{choice}', 'UserController@search')->name('search');
-Route::post('/products/search', 'UserController@searchBtn')->name('searchBtn');
-Route::get('/show/products', 'UserController@showProducts')->name('showProducts');
-Route::get('/view/product/{product}', 'UserController@viewProduct')->name('viewProduct');
-Route::get('/add/product/{product}', 'UserController@addToCart')->name('addProduct');
-Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('deleteProduct');
-Route::get('/cart', 'UserController@cart')->name('cart');
-Route::get('/order', 'UserController@order')->name('order');
-//Route::get('/search', 'UserController@search')->name('search');
-Route::get('/add/review/{product}', 'UserController@addReview')->name('add.review');
-Route::post('/review/{product}', 'UserController@review')->name('review');
-//Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
+    Route::get('/products', 'UserController@products')->name('products');
+    Route::get('/profile', 'UserController@profile')->name('profile');
+    Route::get('/profile/edit', 'UserController@edit')->name('profile.edit');
+    Route::post('/profile/update', 'UserController@update')->name('profile.update');
+    Route::get('/products/{type}/{choice}', 'UserController@search')->name('search');
+    Route::post('/products/search', 'UserController@searchBtn')->name('searchBtn');
+    Route::get('/show/products', 'UserController@showProducts')->name('showProducts');
+    Route::get('/view/product/{product}', 'UserController@viewProduct')->name('viewProduct');
+    Route::get('/add/product/{product}', 'UserController@addToCart')->name('addProduct');
+    Route::get('/delete/product/{product}', 'UserController@deleteFromCart')->name('deleteProduct');
+    Route::get('/cart', 'UserController@cart')->name('cart');
+    Route::get('/order', 'UserController@order')->name('order');
+    //Route::get('/search', 'UserController@search')->name('search');
+    Route::get('/add/review/{product}', 'UserController@addReview')->name('add.review');
+    Route::post('/review/{product}', 'UserController@review')->name('review');
+    //Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
-Route::get('/add/orderReview/{order}', 'UserController@addOrderReview')->name('add.orderReview');
+    Route::get('/add/orderReview/{order}', 'UserController@addOrderReview')->name('add.orderReview');
 
 /*******************************************************************************************************/
 
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
+    Route::get('/register', 'auth\RegisterController@index')->name('register');
+    Route::post('/create', 'auth\RegisterController@register')->name('create');
+
     Route::get('/home', 'AdminController@index')->name('home');
     Route::get('/users/count', 'AdminController@usersCount')->name('users.count');
     Route::get('/vendors/count', 'AdminController@vendorsCount')->name('vendors.count');

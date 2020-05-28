@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('dob');
             $table->string('mobile');
             $table->string('image');
+            $table->string('address');
             $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
