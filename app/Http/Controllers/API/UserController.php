@@ -60,9 +60,11 @@ class UserController extends Controller
         }
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-//        $imagePath = $input['image']->store('images','public');
-//        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
-//        $image->save();
+
+        $imagePath = $input['image']->store('images','public');
+
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1500,1500);
+        $image->save();
         $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
