@@ -253,16 +253,7 @@ class VendorController extends Controller
             $items = Product::select('id')->where('vendor_id', '=', $id)->get();
             $data = Order_item::whereIn('product_id', $items)->where('done', '=', 0);
 
-            return DataTables::of($data)
-                ->addColumn('action', function ($data) {
-                    $button = '<button type="button" name="done" id="' . $data->id . '" 
-                    class="edit btn btn-primary btn-sm" onclick=done(' . $data->id . ')>done</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $data->id . '" 
-                    class="delete btn btn-danger btn-sm" onclick=show(' . $data->id . ')>view</button>';
-                    return $button;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+            return DataTables::of($data)->make(true);
         }
 
         return view('vendor.orders');
@@ -278,14 +269,7 @@ class VendorController extends Controller
             $items = Product::select('id')->where('vendor_id', '=', $id)->get();
             $data = Order_item::whereIn('product_id', $items)->where('done', '=', 1);
 
-            return DataTables::of($data)
-                ->addColumn('action', function ($data) {
-                    $button = '<button type="button" name="show" id="' . $data->id . '" 
-                    class="edit btn btn-primary btn-sm" onclick=show(' . $data->id . ')>view</button>';
-                    return $button;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+            return DataTables::of($data)->make(true);
         }
 
         return view('vendor.soldItems');
