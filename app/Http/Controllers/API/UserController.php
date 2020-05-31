@@ -132,7 +132,7 @@ class UserController extends Controller
     public function getProductBrand(Request $request, $id)
     {
         $p = Product::find($id);
-        $brand = Brand::find($p->category_id);
+        $brand = Brand::find($p->brand_id);
 
         return response()->json(['brand' => $brand->name], $this->successStatus);
     }
