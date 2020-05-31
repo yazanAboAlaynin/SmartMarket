@@ -225,7 +225,7 @@ class AdminController extends Controller
     public function orderItems(Order $order){
 
         if(Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')])){
-            dd($order);
+            //dd($order);
         }
 
         if(request()->ajax())
