@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
+                    @foreach($orders as $order)
                     <div class="case">
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
@@ -15,7 +15,7 @@
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
-                                    <span class="subheading">{{$o->discount}}</span>
+                                    <span class="subheading">{{$order->order_items->id}}</span>
                                     <h2><a href="">mm</a></h2>
 
                                     <div class="meta">
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>

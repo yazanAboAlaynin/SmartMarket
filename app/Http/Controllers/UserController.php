@@ -75,8 +75,9 @@ class UserController extends Controller
 
     }
 
-    public function addOrderReview(Order $order){
-        return view('user.reviewOrder',compact('order'));
+    public function addOrderReview($id){
+        $orders = Order::find($id);
+        return view('user.reviewOrder',compact('orders'));
     }
 
     public function addReview(Product $product){
