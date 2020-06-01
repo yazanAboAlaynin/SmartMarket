@@ -30,5 +30,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('product/{id}/other', 'API\UserController@otherProperties');
     Route::post('order', 'API\UserController@order');
     Route::post('search', 'API\UserController@search');
+    Route::get('my/items', 'API\UserController@myItems');
     Route::get('logout', 'API\UserController@logout');
 });

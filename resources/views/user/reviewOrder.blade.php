@@ -7,15 +7,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    @foreach($orders as $order)
+                    @foreach($items as $item)
                     <div class="case">
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
-                                {{--<a href="" class="img w-100 mb-3 mb-md-0" style="background-image: url({{ asset('/storage/' . $order->order_items->product->image) }});"></a>--}}
+                                <a href="" class="img w-100 mb-3 mb-md-0" style="background-image: url({{ asset('/storage/' . $item->product->image) }});"></a>
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
-                                    <span class="subheading">{{$order->order_items->id}}</span>
+                                    <span class="subheading">{{$item->product->name}}</span>
                                     <h2><a href="">mm</a></h2>
 
                                     <div class="meta">

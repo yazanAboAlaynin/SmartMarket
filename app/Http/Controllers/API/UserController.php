@@ -52,6 +52,7 @@ class UserController extends Controller
             'password' => 'required',
             'c_password' => 'required|same:password',
             'dob' => 'required',
+            'address' => 'required',
             'mobile' => 'required',
             'image' => 'required',
         ]);
@@ -70,8 +71,9 @@ class UserController extends Controller
             'email' => $input['email'],
             'password' => $input['password'],
             'dob' => $input['dob'],
+            'address' => $input['address'],
             'mobile' => $input['mobile'],
-            'image' => $input['image'],
+            'image' => $imagePath,
         ]);
         $success['token'] = $user->createToken('MyApp')->accessToken;
         $success['name'] = $user->name;
@@ -249,6 +251,22 @@ class UserController extends Controller
 
         return response()->json(['products'=>$products], $this->successStatus);
     }
+	
+	public function myItems(){
+		$id = auth()->user()->id;
+		
+		$orders = Order::where('user_id',$id)->get();
+		$products = [];
+		foreach($orders as $order){
+			$items = $order->order_items()->get();
+			foreach($items as $item){
+				$product = Product::find($item->product_id);
+				array_push($products,$product);
+			}
+		}
+		
+		return response()->json(['products'=>$products], $this->successStatus);
+	}
 
 
 
