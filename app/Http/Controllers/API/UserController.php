@@ -223,6 +223,7 @@ class UserController extends Controller
 
         $noti = new Notification();
         $noti->user_id = auth()->guard()->user()->id;
+        $noti->order_id = $order->id;
         $noti->title = 'New Order';
         $noti->body = 'you have new order from user: ' . auth()->guard()->user()->id;
         if ($noti->save()) {

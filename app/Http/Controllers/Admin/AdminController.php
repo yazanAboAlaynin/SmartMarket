@@ -224,9 +224,8 @@ class AdminController extends Controller
 
     public function orderItems(Order $order){
 
-        if(Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')])){
-            //dd($order);
-        }
+        Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')]);
+
 
         if(request()->ajax())
         {
@@ -260,6 +259,7 @@ class AdminController extends Controller
     }
 
     public function readOrder(Request $request){
+
         if($request->ajax()){
             $notis = Notification::read();
             return view('readOrder',compact('notis'));
