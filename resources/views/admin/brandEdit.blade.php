@@ -23,7 +23,7 @@
 
                     <div class="card-body">
 
-                        <form action="{{ route('admin.brand.store',$brand->id) }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('admin.brand.edit',$brand->id) }}" enctype="multipart/form-data" method="post">
                             @csrf
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
