@@ -15,11 +15,17 @@
                             </div>
                             <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
                                 <div class="text w-100 pl-md-3">
-                                    <span class="subheading">{{$item->product->name}}</span>
-                                    <h2><a href="">mm</a></h2>
+                                    <span class="subheading">{{$item->product->category->name}}</span>
+                                    <h2><a href="">{{$item->product->name}}</a></h2>
 
                                     <div class="meta">
-                                        <p class="mb-0"><a href="#">Add Review</a></p>
+                                        <form method="POST" action="{{ route('review',$item->product->id) }}">
+                                        {{--<p class="mb-0"><a href="">Add Review</a></p>--}}
+                                                <div class="form-group text-center">
+                                                    <button class="btn btn-dark" style="margin-right:10px;width: 30%">Add Review</button>
+                                                </div>
+
+                                        </form>
                                     </div>
                                 </div>
                             </div>
