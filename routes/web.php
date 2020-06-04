@@ -39,10 +39,10 @@ Route::get('/', function () {
     Route::get('/order', 'UserController@order')->name('order');
     //Route::get('/search', 'UserController@search')->name('search');
     Route::get('/add/review/{product}', 'UserController@addReview')->name('add.review');
-    Route::post('/review/{product}', 'UserController@review')->name('review');
+    Route::get('/review', 'UserController@review')->name('review');
     //Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
-    Route::get('/add/orderReview/{order}', 'UserController@addOrderReview')->name('add.orderReview');
+    Route::get('/add/order/review/{order}', 'UserController@addOrderReview')->name('add.orderReview');
 
 /*******************************************************************************************************/
 

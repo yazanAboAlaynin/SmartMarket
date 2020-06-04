@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->BigInteger('discount');
             $table->BigInteger('total_price');
             $table->integer('done');
+            $table->integer('rated')->nullable();
             $table->timestamps();
         });
     }

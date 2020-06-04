@@ -41,6 +41,14 @@ class UserController extends Controller
      */
     public function index()
     {
+        $orders = Order::where([
+            ['rated',null],
+            ['done',1]
+        ])->get();
+        if($orders->count()){
+           $order = $orders[0];
+            return redirect()->route('add.orderReview',$order);
+        }
         return view('user.home');
     }
 
@@ -76,29 +84,43 @@ class UserController extends Controller
     }
 
     public function addOrderReview(Order $order){
-        $items = $order->order_items()->get();
-        return view('user.reviewOrder',compact('items'));
+        $items = $order->order_items()->where([
+            ['rated',null]
+        ])->get();
+
+
+        return view('user.reviewOrder',compact('items','order'));
     }
 
-    public function addReview(Product $product){
-        return view('user.addreview',compact('product'));
-    }
 
-    public function review(Request $request,Product $product){
+    public function review(Request $request){
 
         $request->validate([
-            'stars' => 'required',
+            'rate' => 'required',
             'comment' => 'required',
         ]);
 
         $review = new Rating();
         $review->user_id = auth()->user()->id;
-        $review->product_id = $product->id;
+        $review->product_id = $request->id;
+        $review->order_id = $request->order;
         $review->description = $request->comment;
-        $review->rate = $request->stars;
+        $review->rate = $request->rate;
         $review->save();
 
-        return redirect()->route('home');
+        $order = Order::find($request->order);
+        $items = Order_item::where([
+            ['order_id',$order->id],
+            ['product_id',$request->id]
+        ]);
+        $items->update(['rated' => 1]);
+
+        if($order->order_items->where('rated',null)->count()==0){
+            $order->rated = 1;
+            $order->save();
+        }
+
+        return response()->json([], 200);
     }
 
 

@@ -20,6 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->BigInteger('quantity');
             $table->BigInteger('price');
             $table->Integer('done');
+            $table->Integer('rated')->nullable();
             $table->timestamps();
         });
     }
