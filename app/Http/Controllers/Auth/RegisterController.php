@@ -58,6 +58,10 @@ class RegisterController extends Controller
             'dob' => 'required',
             'address' => 'required',
             'mobile' => 'required',
+            'occupation' => 'required',
+            'social_status' => 'required',
+            'scientific_level' => 'required',
+            'three_most_hobbies' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     }
@@ -82,6 +86,10 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
             'mobile' => $data['mobile'],
             'address' => $data['address'],
+            'occupation' => $data['occupation'],
+            'social_status' => $data['social_status'],
+            'scientific_level' => $data['scientific_level'],
+            'three_most_hobbies' => $data['three_most_hobbies'],
             'image' => $imagePath,
         ]);
     }

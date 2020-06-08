@@ -24,6 +24,10 @@ class CreateUsersTable extends Migration
             $table->string('mobile');
             $table->string('image');
             $table->string('address');
+            $table->string('occupation');
+            $table->string('social_status');
+            $table->string('scientific_level');
+            $table->string('three_most_hobbies');
             $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();

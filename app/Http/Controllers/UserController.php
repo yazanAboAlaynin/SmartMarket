@@ -69,6 +69,10 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'mobile' => 'required',
+            'occupation' => 'required',
+            'social_status' => 'required',
+            'scientific_level' => 'required',
+            'three_most_hobbies' => 'required',
         ]);
 
         $id = auth()->user()->id;
@@ -77,6 +81,10 @@ class UserController extends Controller
         $user->name = $request['name'];
         $user->email = $request['email'];
         $user->mobile = $request['mobile'];
+        $user->occupation = $request['occupation'];
+        $user->social_status = $request['social_status'];
+        $user->scientific_level = $request['scientific_level'];
+        $user->three_most_hobbies = $request['three_most_hobbies'];
         $user->save();
 
         return redirect('user/profile');

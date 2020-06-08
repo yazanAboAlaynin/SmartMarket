@@ -138,6 +138,55 @@
                                 </div>
 
                                 <div class="form-group row">
+                                    <div class="col-md-8">
+                                        <input id="occupation" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="occupation" value="{{ old('occupation') }}" required autocomplete="occupation" placeholder="Occupation">
+
+                                        @error('occupation')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-8">
+                                        <input id="social_status" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="social_status" value="{{ old('social_status') }}" required autocomplete="social_status" placeholder="Social status">
+
+                                        @error('social_status')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-8">
+                                        <input id="scientific_level" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="scientific_level" value="{{ old('scientific_level') }}" required autocomplete="scientific_level" placeholder="Scientific level">
+
+                                        @error('scientific_level')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-8">
+                                        <textarea class="middle form-control @error('mobile') is-invalid @enderror" name="three_most_hobbies" required autocomplete="three_most_hobbies" placeholder="Three most hobbies" id="three_most_hobbies" rows="3">{{ old('three_most_hobbies') }}</textarea>
+                                        {{--<input id="three_most_hobbies" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="three_most_hobbies" value="{{ old('three_most_hobbies') }}" required autocomplete="three_most_hobbies" placeholder="Three most hobbies">--}}
+
+                                        @error('three_most_hobbies')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
                                     <label for="dob" class="col-md-4 col-form-label text-md-right" style="margin-top: 20px;">{{ __('Date of birth') }}</label>
 
                                     <div class="col-md-6">
