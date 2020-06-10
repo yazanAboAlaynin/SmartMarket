@@ -11,8 +11,10 @@
                 <h2>{{ $user->name }}</h2><br>
                  <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $user->email}}</h4><br>
                  <h4><i class="fa fa-calendar" style="font-size:22px;"></i><strong> Date of birth : </strong>{{ $user->dob}}</h4><br>
+                    <h4><i class="fa fa-address-card" style="font-size:22px;"></i> <strong>Address : </strong>{{ $user->address}}</h4><br>
                  <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $user->mobile}}</h4><br>
                     <h4><i class="fa fa-suitcase" style="font-size:22px;"></i> <strong>Career : </strong>{{ $user->career}}</h4><br>
+                    <h4><i class="fa fa-venus-mars" style="font-size:22px;"></i> <strong>Gender : </strong>{{ $user->gender}}</h4><br>
                     <h4><i class="fa fa-chain-broken" style="font-size:22px;"></i> <strong>Social status : </strong>{{ $user->social_status}}</h4><br>
                     <h4><i class="fa fa-graduation-cap" style="font-size:22px;"></i> <strong>Scientific level : </strong>{{ $user->scientific_level}}</h4><br>
                     <h4><i class="fa fa-thumbs-o-up" style="font-size:22px;"></i> <strong>Three most hobbies : </strong>{{ $user->three_most_hobbies}}</h4><br>
@@ -27,10 +29,10 @@
 
                 </div>
                 <div class="col-sm-4">
-                   <img src="/storage/{{ $user->image }}" style="width:60%;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
+                   <img src="/storage/{{ $user->image }}" style="width:80%;margin-top: 30px;margin-bottom: 20px;border-radius: 50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                 </div>
             </div>
-              <hr style="width:60%;">
+              <hr style="width:60%;margin-top: 50px">
             </div>
 
    

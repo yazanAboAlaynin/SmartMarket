@@ -39,6 +39,23 @@
 
                     </div>
 
+                        <div  class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Email</label>
+                            <div>
+                                <input id="email" type="text" class="form-control" name="email"
+                                       value="{{ old('email') ?? $user->email }}"  required autofocus>
+                            </div>
+
+                            @if ($errors->has('email'))
+                                <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                            @endif
+
+                        </div>
+
+
+
                         <div  class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
                             <label for="dob" class="col-md-4 control-label">Date of birth</label>
                                 <div >
@@ -49,6 +66,21 @@
                             @if ($errors->has('dob'))
                                 <span class="help-block">
                             <strong>{{ $errors->first('dob') }}</strong>
+                        </span>
+                            @endif
+
+                        </div>
+
+                        <div  class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
+                            <label for="address" class="col-md-4 control-label">Address</label>
+                            <div>
+                                <input id="address" type="text" class="form-control" name="address"
+                                       value="{{ old('address') ?? $user->address }}"  required autofocus>
+                            </div>
+
+                            @if ($errors->has('address'))
+                                <span class="help-block">
+                            <strong>{{ $errors->first('address') }}</strong>
                         </span>
                             @endif
 
@@ -84,35 +116,52 @@
 
                         </div>
 
-                        <div  class="form-group{{ $errors->has('social_status') ? ' has-error' : '' }}">
-                            <label for="social_status" class="col-md-4 control-label">Social status</label>
-                            <div >
-                                <input id="social_status" type="text" class="form-control" name="social_status"
-                                       value="{{ old('social_status') ?? $user->social_status }}"  required autofocus>
+                        <br/>
+                        <div class="form-group row">
+                            <label for="dob" class="col-md-4 col-form-label text-md-right"
+                            >{{ __('Social Status') }}</label>
+
+                            <div class="col-md-5">
+                                <select class="form-control @error('social_status') is-invalid @enderror" name="social_status" id="social_status" required autofocus>
+                                    <option value="Married">Married</option>
+                                    <option value="Widowed">Widowed</option>
+                                    <option value="Separated">Separated </option>
+                                    <option value="Divorced">Divorced </option>
+                                    <option value="Single">Single</option>
+                                </select>
                             </div>
-
-                            @if ($errors->has('social_status'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('social_status') }}</strong>
-                        </span>
-                            @endif
-
                         </div>
+                        <br/>
 
-                        <div  class="form-group{{ $errors->has('scientific_level') ? ' has-error' : '' }}">
-                            <label for="scientific_level" class="col-md-4 control-label">Scientific level</label>
-                            <div >
-                                <input id="scientific_level" type="text" class="form-control" name="scientific_level"
-                                       value="{{ old('scientific_level') ?? $user->scientific_level }}"  required autofocus>
+                        <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right"
+                            >{{ __('Gender') }}</label>
+
+                            <div class="col-md-5">
+                                <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender" required autofocus>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
                             </div>
-
-                            @if ($errors->has('scientific_level'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('scientific_level') }}</strong>
-                        </span>
-                            @endif
-
                         </div>
+                        <br/>
+
+                        <div class="form-group row">
+                            <label for="dob" class="col-md-4 col-form-label text-md-right"
+                            >{{ __('Scientific Degree') }}</label>
+
+                            <div class="col-md-5">
+                                <select class="form-control @error('scientific_level') is-invalid @enderror" name="scientific_level" id="scientific_level" required autofocus>
+                                    <option value="Not Educated">Not Educated</option>
+                                    <option value="High school diploma or equivalent">High school diploma or equivalent</option>
+                                    <option value="Associate degree">Associate degree</option>
+                                    <option value="Bachelor's degree">Bachelor's degree</option>
+                                    <option value="Master's degree	">Master's degree </option>
+                                    <option value="Doctoral degree">Doctoral degree </option>
+                                </select>
+                            </div>
+                        </div>
+                        <br/>
 
                         <div  class="form-group{{ $errors->has('three_most_hobbies') ? ' has-error' : '' }}">
                             <label for="three_most_hobbies" class="col-md-4 control-label">Three most hobbies</label>

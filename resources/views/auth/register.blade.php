@@ -190,6 +190,20 @@
                                 <br/>
 
                                 <div class="form-group row">
+                                    <label for="gender" class="col-md-4 col-form-label text-md-right"
+                                    >{{ __('Gender') }}</label>
+
+                                    <div class="col-md-5">
+                                        <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender" required autofocus>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br/>
+                                <br/>
+
+                                <div class="form-group row">
                                     <label for="dob" class="col-md-4 col-form-label text-md-right"
                                     >{{ __('Scientific Degree') }}</label>
 

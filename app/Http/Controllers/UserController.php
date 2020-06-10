@@ -67,9 +67,12 @@ class UserController extends Controller
 
         request()->validate([
             'name' => 'required',
+            'email' => 'required',
             'dob' => 'required',
+            'address' => 'required',
             'mobile' => 'required',
-            'occupation' => 'required',
+            'career' => 'required',
+            'gender' => 'required',
             'social_status' => 'required',
             'scientific_level' => 'required',
             'three_most_hobbies' => 'required',
@@ -79,9 +82,12 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->name = $request['name'];
+        $user->email = $request['dob'];
         $user->dob = $request['dob'];
+        $user->address = $request['dob'];
         $user->mobile = $request['mobile'];
-        $user->occupation = $request['occupation'];
+        $user->career = $request['career'];
+        $user->gender = $request['dob'];
         $user->social_status = $request['social_status'];
         $user->scientific_level = $request['scientific_level'];
         $user->three_most_hobbies = $request['three_most_hobbies'];
