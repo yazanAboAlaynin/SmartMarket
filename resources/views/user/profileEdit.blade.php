@@ -6,6 +6,16 @@
    <div class="row justify-content-center ">
        <div class="col-md-8">
            <div class="card">
+               @if (count($errors) > 0)
+                   <div class="alert alert-danger">
+                       <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                       <ul>
+                           @foreach ($errors->all() as $error)
+                               <li>{{ $error }}</li>
+                           @endforeach
+                       </ul>
+                   </div>
+               @endif
                    <div class="card-header">
                        <h1>Edit Profile</h1>
                    </div>

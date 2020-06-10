@@ -67,7 +67,7 @@ class UserController extends Controller
 
         request()->validate([
             'name' => 'required',
-            'email' => 'required',
+            'dob' => 'required',
             'mobile' => 'required',
             'occupation' => 'required',
             'social_status' => 'required',
@@ -79,7 +79,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         $user->name = $request['name'];
-        $user->email = $request['email'];
+        $user->dob = $request['dob'];
         $user->mobile = $request['mobile'];
         $user->occupation = $request['occupation'];
         $user->social_status = $request['social_status'];
@@ -87,7 +87,7 @@ class UserController extends Controller
         $user->three_most_hobbies = $request['three_most_hobbies'];
         $user->save();
 
-        return redirect('user/profile');
+        return redirect('profile');
 
     }
 

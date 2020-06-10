@@ -45,7 +45,7 @@
                 <div class="row mt-5">
 
                     <div class="col-md-3">
-                        <div class="card">
+                        <div class="card shadow-sm">
                             <img src="/storage/w.jpg" class="card-img-top img-fluid">
                             <div class="card-title ml-2">
                                 <h4>name</h4>
