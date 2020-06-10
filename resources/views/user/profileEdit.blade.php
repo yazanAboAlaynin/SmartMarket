@@ -105,7 +105,7 @@
                             <label for="career" class="col-md-4 control-label">Career</label>
                             <div >
                                 <input id="career" type="text" class="form-control" name="career"
-                                       value="{{ old('occupation') ?? $user->career }}"  required autofocus>
+                                       value="{{ old('career') ?? $user->career }}"  required autofocus>
                             </div>
 
                             @if ($errors->has('career'))
@@ -118,11 +118,11 @@
 
                         <br/>
                         <div class="form-group row">
-                            <label for="dob" class="col-md-4 col-form-label text-md-right"
+                            <label for="social_status" class="col-md-4 col-form-label text-md-right"
                             >{{ __('Social Status') }}</label>
 
-                            <div class="col-md-5">
-                                <select class="form-control @error('social_status') is-invalid @enderror" name="social_status" id="social_status" required autofocus>
+                            <div class="col-md-5" >
+                                <select  class="form-control @error('social_status') is-invalid @enderror" name="social_status" id="social_status" required autofocus>
                                     <option value="Married">Married</option>
                                     <option value="Widowed">Widowed</option>
                                     <option value="Separated">Separated </option>
@@ -147,7 +147,7 @@
                         <br/>
 
                         <div class="form-group row">
-                            <label for="dob" class="col-md-4 col-form-label text-md-right"
+                            <label for="scientific_level" class="col-md-4 col-form-label text-md-right"
                             >{{ __('Scientific Degree') }}</label>
 
                             <div class="col-md-5">
@@ -192,6 +192,16 @@
         </div>
    </div>
 </div>
+    <script>
+        var social_status = "<?php echo $user->social_status; ?>";
+        $('[id=social_status]').val(social_status);
+
+        var gender = "<?php echo $user->gender; ?>";
+        $('[id=gender]').val(gender);
+
+        var scientific_level = "<?php echo $user->scientific_level; ?>";
+        $('[id=scientific_level]').val(scientific_level);
+    </script>
 @endsection
 
 
