@@ -59,16 +59,16 @@
 
                         </div>
 
-                        <div  class="form-group{{ $errors->has('occupation') ? ' has-error' : '' }}">
-                            <label for="occupation" class="col-md-4 control-label">Occupation</label>
+                        <div  class="form-group{{ $errors->has('career') ? ' has-error' : '' }}">
+                            <label for="career" class="col-md-4 control-label">Career</label>
                             <div >
-                                <input id="occupation" type="text" class="form-control" name="occupation"
-                                       value="{{ old('occupation') ?? $user->occupation }}"  required autofocus>
+                                <input id="career" type="text" class="form-control" name="career"
+                                       value="{{ old('occupation') ?? $user->career }}"  required autofocus>
                             </div>
 
-                            @if ($errors->has('occupation'))
+                            @if ($errors->has('career'))
                                 <span class="help-block">
-                            <strong>{{ $errors->first('occupation') }}</strong>
+                            <strong>{{ $errors->first('career') }}</strong>
                         </span>
                             @endif
 

@@ -26,17 +26,19 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
          https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
-    <link rel="manifest" href="{{ asset('manifest.json') }}" >
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
 </head>
 <style>
-    .middle{
+    .middle {
         margin-left: 100px;
 
     }
-    input{
+
+    input {
         margin-top: 20px;
     }
-    button{
+
+    button {
         margin-top: 30px;
     }
 </style>
@@ -49,7 +51,7 @@
 <div id="app">
 
     <main class="py-4">
-        <div class="container p-5" >
+        <div class="container p-5">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
@@ -64,7 +66,10 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-8">
-                                        <input id="name" type="text" class="middle form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name">
+                                        <input id="name" type="text"
+                                               class="middle form-control @error('name') is-invalid @enderror"
+                                               name="name" value="{{ old('name') }}" required autocomplete="name"
+                                               autofocus placeholder="Name">
 
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +83,10 @@
 
 
                                     <div class="col-md-8">
-                                        <input id="email" type="email" class="middle form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                                        <input id="email" type="email"
+                                               class="middle form-control @error('email') is-invalid @enderror"
+                                               name="email" value="{{ old('email') }}" required autocomplete="email"
+                                               placeholder="Email">
 
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -92,7 +100,10 @@
 
 
                                     <div class="col-md-8">
-                                        <input id="password" type="password" class="middle form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                                        <input id="password" type="password"
+                                               class="middle form-control @error('password') is-invalid @enderror"
+                                               name="password" required autocomplete="new-password"
+                                               placeholder="Password">
 
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -105,17 +116,21 @@
                                 <div class="form-group row">
 
                                     <div class="col-md-8">
-                                        <input id="password-confirm" type="password" class="middle form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                                        <input id="password-confirm" type="password" class="middle form-control"
+                                               name="password_confirmation" required autocomplete="new-password"
+                                               placeholder="Confirm Password">
                                     </div>
                                 </div>
-
 
 
                                 <div class="form-group row">
 
 
                                     <div class="col-md-8">
-                                        <input id="mobile" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile" placeholder="Mobile">
+                                        <input id="mobile" type="text"
+                                               class="middle form-control @error('mobile') is-invalid @enderror"
+                                               name="mobile" value="{{ old('mobile') }}" required autocomplete="mobile"
+                                               placeholder="Mobile">
 
                                         @error('mobile')
                                         <span class="invalid-feedback" role="alert">
@@ -127,7 +142,10 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-8">
-                                        <input id="address" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" placeholder="Address">
+                                        <input id="address" type="text"
+                                               class="middle form-control @error('mobile') is-invalid @enderror"
+                                               name="address" value="{{ old('address') }}" required
+                                               autocomplete="address" placeholder="Address">
 
                                         @error('address')
                                         <span class="invalid-feedback" role="alert">
@@ -139,43 +157,61 @@
 
                                 <div class="form-group row">
                                     <div class="col-md-8">
-                                        <input id="occupation" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="occupation" value="{{ old('occupation') }}" required autocomplete="occupation" placeholder="Occupation">
+                                        <input id="career" type="text"
+                                               class="middle form-control @error('mobile') is-invalid @enderror"
+                                               name="career" value="{{ old('career') }}" required autocomplete="career"
+                                               placeholder="Career">
 
-                                        @error('occupation')
+                                        @error('career')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                         @enderror
                                     </div>
                                 </div>
+                                <br/>
+                                <br/>
 
                                 <div class="form-group row">
-                                    <div class="col-md-8">
-                                        <input id="social_status" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="social_status" value="{{ old('social_status') }}" required autocomplete="social_status" placeholder="Social status">
+                                    <label for="dob" class="col-md-4 col-form-label text-md-right"
+                                           >{{ __('Social Status') }}</label>
 
-                                        @error('social_status')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
+                                    <div class="col-md-5">
+                                    <select class="form-control @error('social_status') is-invalid @enderror" name="social_status" id="social_status" required autofocus>
+                                        <option value="Married">Married</option>
+                                        <option value="Widowed">Widowed</option>
+                                        <option value="Separated">Separated </option>
+                                        <option value="Divorced">Divorced </option>
+                                        <option value="Single">Single</option>
+                                    </select>
                                     </div>
                                 </div>
+                                <br/>
+                                <br/>
 
                                 <div class="form-group row">
-                                    <div class="col-md-8">
-                                        <input id="scientific_level" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="scientific_level" value="{{ old('scientific_level') }}" required autocomplete="scientific_level" placeholder="Scientific level">
+                                    <label for="dob" class="col-md-4 col-form-label text-md-right"
+                                    >{{ __('Scientific Degree') }}</label>
 
-                                        @error('scientific_level')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
+                                    <div class="col-md-5">
+                                        <select class="form-control @error('scientific_level') is-invalid @enderror" name="scientific_level" id="scientific_level" required autofocus>
+                                            <option value="Not Educated">Not Educated</option>
+                                            <option value="High school diploma or equivalent">High school diploma or equivalent</option>
+                                            <option value="Associate degree">Associate degree</option>
+                                            <option value="Bachelor's degree">Bachelor's degree</option>
+                                            <option value="Master's degree	">Master's degree </option>
+                                            <option value="Doctoral degree">Doctoral degree </option>
+                                        </select>
                                     </div>
                                 </div>
-
+                                <br/>
+                                <br/>
                                 <div class="form-group row">
                                     <div class="col-md-8">
-                                        <textarea class="middle form-control @error('mobile') is-invalid @enderror" name="three_most_hobbies" required autocomplete="three_most_hobbies" placeholder="Three most hobbies" id="three_most_hobbies" rows="3">{{ old('three_most_hobbies') }}</textarea>
+                                        <textarea class="middle form-control @error('mobile') is-invalid @enderror"
+                                                  name="three_most_hobbies" required autocomplete="three_most_hobbies"
+                                                  placeholder="Three most hobbies" id="three_most_hobbies"
+                                                  rows="3">{{ old('three_most_hobbies') }}</textarea>
                                         {{--<input id="three_most_hobbies" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="three_most_hobbies" value="{{ old('three_most_hobbies') }}" required autocomplete="three_most_hobbies" placeholder="Three most hobbies">--}}
 
                                         @error('three_most_hobbies')
@@ -187,10 +223,13 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="dob" class="col-md-4 col-form-label text-md-right" style="margin-top: 20px;">{{ __('Date of birth') }}</label>
+                                    <label for="dob" class="col-md-4 col-form-label text-md-right"
+                                           style="margin-top: 20px;">{{ __('Date of birth') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="dob" type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required autocomplete="dob">
+                                        <input id="dob" type="date"
+                                               class="form-control @error('dob') is-invalid @enderror" name="dob"
+                                               value="{{ old('dob') }}" required autocomplete="dob">
 
                                         @error('dob')
                                         <span class="invalid-feedback" role="alert">
@@ -201,10 +240,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="image" class="col-md-4 col-form-label text-md-right" style="margin-top: 20px">{{ __('Image') }}</label>
+                                    <label for="image" class="col-md-4 col-form-label text-md-right"
+                                           style="margin-top: 20px">{{ __('Image') }}</label>
 
                                     <div class="col-md-6">
-                                        <input id="image" type="file" class="form-control" name="image" value="{{ old('image') }}" required autofocus>
+                                        <input id="image" type="file" class="form-control" name="image"
+                                               value="{{ old('image') }}" required autofocus>
 
                                         @error('image')
                                         <span class="invalid-feedback" role="alert">
@@ -216,7 +257,7 @@
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-2">
-                                        <button type="submit" class="btn btn-primary"  style="width: 100%">
+                                        <button type="submit" class="btn btn-primary" style="width: 100%">
                                             {{ __('Register') }}
                                         </button>
                                     </div>
@@ -230,7 +271,8 @@
                     <div class="" style="height: 500px;">
 
                         <div class="card-body">
-                            <img src="{{asset('images/logo.png')}}" style="width: 500px;height: 500px;padding-right: 40px"/>
+                            <img src="{{asset('images/logo.png')}}"
+                                 style="width: 500px;height: 500px;padding-right: 40px"/>
                         </div>
                     </div>
                 </div>

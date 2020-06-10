@@ -12,7 +12,7 @@
                  <h4><i class="fa fa-envelope-o" style="font-size:22px;"></i><strong> Email : </strong>{{ $user->email}}</h4><br>
                  <h4><i class="fa fa-calendar" style="font-size:22px;"></i><strong> Date of birth : </strong>{{ $user->dob}}</h4><br>
                  <h4><i class="fa fa-mobile" style="font-size:22px;"></i> <strong>Mobile : </strong>{{ $user->mobile}}</h4><br>
-                    <h4><i class="fa fa-suitcase" style="font-size:22px;"></i> <strong>Occupation : </strong>{{ $user->occupation}}</h4><br>
+                    <h4><i class="fa fa-suitcase" style="font-size:22px;"></i> <strong>Career : </strong>{{ $user->career}}</h4><br>
                     <h4><i class="fa fa-chain-broken" style="font-size:22px;"></i> <strong>Social status : </strong>{{ $user->social_status}}</h4><br>
                     <h4><i class="fa fa-graduation-cap" style="font-size:22px;"></i> <strong>Scientific level : </strong>{{ $user->scientific_level}}</h4><br>
                     <h4><i class="fa fa-thumbs-o-up" style="font-size:22px;"></i> <strong>Three most hobbies : </strong>{{ $user->three_most_hobbies}}</h4><br>
