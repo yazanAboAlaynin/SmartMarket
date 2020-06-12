@@ -42,6 +42,7 @@ class UserController extends Controller
     public function index()
     {
         $orders = Order::where([
+            ['user_id',auth()->user()->id],
             ['rated',null],
             ['done',1]
         ])->get();

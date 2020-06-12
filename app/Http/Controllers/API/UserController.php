@@ -11,6 +11,7 @@ use App\Order_item;
 use App\Product;
 use App\Property;
 use App\Http\Controllers\Controller;
+use App\Rating;
 use App\Vendor;
 use Illuminate\Http\Request;
 use App\User;
@@ -267,6 +268,57 @@ class UserController extends Controller
 		
 		return response()->json(['products'=>$products], $this->successStatus);
 	}
+
+	public function orderReview(){
+        $orders = Order::where([
+            ['user_id',auth()->user()->id],
+            ['rated',null],
+            ['done',1]
+        ])->get();
+        if($orders->count()) {
+            $items = $orders[0]->order_items()->with('product')->where([
+                ['rated', null]
+            ])->get();
+
+            return response()->json(['products'=>$items],$this->successStatus);
+
+        }
+        else{
+
+            return response()->json(['products'=>$orders],$this->successStatus);
+        }
+    }
+
+    public function review(Request $request){
+
+        $request->validate([
+            'rate' => 'required',
+            'comment' => 'required',
+
+        ]);
+
+        $review = new Rating();
+        $review->user_id = auth()->user()->id;
+        $review->product_id = $request->id;
+        $review->order_id = $request->order;
+        $review->description = $request->comment;
+        $review->rate = $request->rate;
+        $review->save();
+
+        $order = Order::find($request->order);
+        $items = Order_item::where([
+            ['order_id',$order->id],
+            ['product_id',$request->id]
+        ]);
+        $items->update(['rated' => 1]);
+
+        if($order->order_items->where('rated',null)->count()==0){
+            $order->rated = 1;
+            $order->save();
+        }
+
+        return response()->json([], 200);
+    }
 
 
 
