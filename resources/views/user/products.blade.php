@@ -79,7 +79,7 @@
                     @foreach($sellers as $c)
                         <div class="col-md-3">
                             <div class="product-top">
-                                <a href="{{ Route('search',['brand',$c->id]) }}">  <img src="/storage/{{$c->image}}" class="d-block w-100"></a>
+                                <a href="{{ Route('search',['seller',$c->id]) }}">  <img src="/storage/{{$c->image}}" class="d-block w-100"></a>
                             </div>
                             <div class="product-bottom text-center">
                                 <h3>{{ $c->name }}</h3>

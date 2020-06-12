@@ -170,7 +170,7 @@
             <div class="media">
                 <img src="/storage/{{ $rating->user->image }}" class="mr-3" style="width:80px">
                 <div class="media-body">
-                    <h5 class="mt-0">{{ $rating->user->name }}
+                    <h5 class="mt-0">{{ $rating->user->name }}</h5>
                         <span class="text-warning">
                             @for($i=0;$i<$rating->rate;$i++)
                             <i class="fa fa-star"></i>
@@ -179,7 +179,7 @@
                                     <i class="fa fa-star-o"></i>
                                 @endfor
                         </span>
-                    </h5>
+
                     <p class="" style="background-color: white">{{ $rating->description }}</p>
 
                 </div>
