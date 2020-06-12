@@ -13,7 +13,7 @@
             <div class="carousel-item active">
                 <img src="/images/logo.jpg" width="100%" height="556px"/>
                 <div class="carousel-caption d-none d-md-block">
-                    <button type="button" class="btn btn-info">Start Shopping</button>
+                    <button type="button" class="btn btn-info"><a href="{{ Route('products') }}">Start Shopping</a></button>
                 </div>
             </div>
             <div class="carousel-item">
