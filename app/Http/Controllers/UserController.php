@@ -201,8 +201,10 @@ class UserController extends Controller
         $images = $product->images()->get();
         $properties = Property::where('product_id','=',$product->id)->get();
         $otherProp = $this->otherProperties($product,$properties);
-
-        return view('user.viewProduct',compact('product','images','properties','otherProp'));
+        $ratings = Rating::with('user')->where('product_id',$product->id)->get();
+        $avg = Rating::where('product_id',$product->id)->avg('rate');
+        $avg =round($avg);
+        return view('user.viewProduct',compact('product','images','properties','otherProp','ratings','avg'));
     }
 
     public function otherProperties(Product $product, $prop){

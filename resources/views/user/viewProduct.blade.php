@@ -33,13 +33,15 @@
                 <p class="new-saly text-center">New/sale</p>
                 <h2> {{$product->name}} </h2>
                 <p><b>Rating : </b>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>  </p>
+                    @for($i=0;$i<$avg;$i++)
+                        <i class="fa fa-star"></i>
+                    @endfor
+                    @for($i=$avg;$i<5;$i++)
+                        <i class="fa fa-star-o"></i>
+                    @endfor
+                </p>
 
-                <p class="price"><b>Price : </b> {{$product->price}}</p>
+                <p class="" style="color: red; font-size: 20px"><b>Price : </b> {{$product->price}}</p>
                 <p><b>Discount : </b> {{$product->discount}}%</p>
                 <?php
                 $priceAfterDiscount = ( $product->price * $product->discount )/100 ;
@@ -103,87 +105,93 @@
     </div>
 
        <!--     Change color of product      -->
-        <div class="container">
-                <div class="title-box">
-                    <h2>Change color</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="product-top">
-                            <img src="/storage/2.jpg" class="d-block w-100">
-                            <div class="overlay-right">
-                                <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+        {{--<div class="container">--}}
+                {{--<div class="title-box">--}}
+                    {{--<h2>Change color</h2>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-md-3">--}}
+                        {{--<div class="product-top">--}}
+                            {{--<img src="/storage/2.jpg" class="d-block w-100">--}}
+                            {{--<div class="overlay-right">--}}
+                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
+                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-3">
-                        <div class="product-top">
-                            <img src="/storage/www.jpg" class="d-block w-100">
-                            <div class="overlay-right">
-                                <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-3">--}}
+                        {{--<div class="product-top">--}}
+                            {{--<img src="/storage/www.jpg" class="d-block w-100">--}}
+                            {{--<div class="overlay-right">--}}
+                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
+                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                   <div class="col-md-3">
-                        <div class="product-top">
-                            <img src="/storage/ww.jpg" class="d-block w-100">
-                            <div class="overlay-right">
-                                <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                   {{--<div class="col-md-3">--}}
+                        {{--<div class="product-top">--}}
+                            {{--<img src="/storage/ww.jpg" class="d-block w-100">--}}
+                            {{--<div class="overlay-right">--}}
+                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
+                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-3">
-                        <div class="product-top">
-                            <img src="/storage/w.jpg" class="d-block w-100">
-                            <div class="overlay-right">
-                                <button type="button" class="btn btn-secondary" title="Quick Shop">
-                                    <i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-3">--}}
+                        {{--<div class="product-top">--}}
+                            {{--<img src="/storage/w.jpg" class="d-block w-100">--}}
+                            {{--<div class="overlay-right">--}}
+                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
+                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                </div>
-            </div>
+                {{--</div>--}}
+            {{--</div>--}}
 
 </section>
 
 <!--  Ratings & Raviews  -->
 <div class="container mt-5 mb-5">
     <div class="row title-box">
-        <h2>Rating&Raview</h2>
+        <h2>Reviews</h2>
     </div>
 
-    <div class="row mt-5 mb-5">
-      <div class="media">
-        <img src="/storage/w.jpg" class="mr-3" style="width:80px">
-        <div class="media-body">
-          <h5 class="mt-0">user name . <span class="text-warning"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> </span></h5>
-            comment
-        </div>
-      </div>
-    </div>
+    @foreach($ratings as $rating)
+        <div class="card p-2">
+            <div class="media">
+                <img src="/storage/{{ $rating->user->image }}" class="mr-3" style="width:80px">
+                <div class="media-body">
+                    <h5 class="mt-0">{{ $rating->user->name }}
+                        <span class="text-warning">
+                            @for($i=0;$i<$rating->rate;$i++)
+                            <i class="fa fa-star"></i>
+                            @endfor
+                            @for($i=$rating->rate;$i<5;$i++)
+                                    <i class="fa fa-star-o"></i>
+                                @endfor
+                        </span>
+                    </h5>
+                    <p class="" style="background-color: white">{{ $rating->description }}</p>
 
-    <div class="row mt-5 mb-5">
-      <div class="media">
-        <img src="/storage/w.jpg" class="mr-3" style="width:80px">
-        <div class="media-body">
-          <h5 class="mt-0">user name . <span class="text-warning"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i> </span></h5>
-            comment
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <br/>
+    @endforeach
+
 
 
 </div>
+<script>
 
+</script>
 @endsection
