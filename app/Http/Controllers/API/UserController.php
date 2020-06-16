@@ -55,6 +55,11 @@ class UserController extends Controller
             'dob' => 'required',
             'address' => 'required',
             'mobile' => 'required',
+            'career' => 'required',
+            'gender' => 'required',
+            'social_status' => 'required',
+            'scientific_level' => 'required',
+            'three_most_hobbies' => 'required',
             'image' => 'required',
         ]);
         if ($validator->fails()) {
@@ -74,6 +79,11 @@ class UserController extends Controller
             'dob' => $input['dob'],
             'address' => $input['address'],
             'mobile' => $input['mobile'],
+            'career' => $input['career'],
+            'gender' => $input['gender'],
+            'social_status' => $input['social_status'],
+            'scientific_level' => $input['scientific_level'],
+            'three_most_hobbies' => $input['three_most_hobbies'],
             'image' => $imagePath,
         ]);
         $success['token'] = $user->createToken('MyApp')->accessToken;
@@ -252,10 +262,10 @@ class UserController extends Controller
 
         return response()->json(['products'=>$products], $this->successStatus);
     }
-	
+
 	public function myItems(){
 		$id = auth()->user()->id;
-		
+
 		$orders = Order::where('user_id',$id)->get();
 		$products = [];
 		foreach($orders as $order){
@@ -265,7 +275,7 @@ class UserController extends Controller
 				array_push($products,$product);
 			}
 		}
-		
+
 		return response()->json(['products'=>$products], $this->successStatus);
 	}
 
@@ -323,11 +333,3 @@ class UserController extends Controller
 
 
 }
-	
-	
-	
-	
-	
-	
-	
-	
