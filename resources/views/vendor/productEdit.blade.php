@@ -78,7 +78,7 @@
 
                             <label for="category_id" class="col-md-4 control-label">category</label>
                             <select class="form-control" name="category_id" id="category_id" required autofocus>
-                                @foreach($categories as $c)
+                                @foreach($category as $c)
                                     <option value = "{{ $c->id }}">{{ $c->name }}</option>
                                 @endforeach
                             </select>
