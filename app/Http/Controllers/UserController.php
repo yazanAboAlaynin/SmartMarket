@@ -14,6 +14,7 @@ use App\property;
 use App\Rating;
 use App\User;
 use App\Vendor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,47 @@ class UserController extends Controller
             return redirect()->route('add.orderReview',$order);
         }
         return view('user.home');
+    }
+
+    public function getArray()
+    {
+        $users = User::select('id','social_status','gender','address','scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
+        foreach ($users as $index=>$user){
+
+            if($user["gender"] == "Male"){
+                $user["gender"] = 1;
+            }else{
+                $user["gender"] = 2;
+            }
+
+            switch ($user["social_status"]){
+                case "Single": $user["social_status"] = 1; break;
+                case "Married": $user["social_status"] = 2; break;
+                case "Widowed": $user["social_status"] = 3; break;
+                case "separated": $user["social_status"] = 4; break;
+                case "Divorced": $user["social_status"] = 5; break;
+            }
+
+            switch ($user["scientific_level"]){
+                case "Not Educated": $user["scientific_level"] = 1; break;
+                case "High school diploma or equivalent": $user["scientific_level"] = 2; break;
+                case "Associate degree": $user["scientific_level"] = 3; break;
+                case "Bachelor's degree": $user["scientific_level"] = 4; break;
+                case "Master's degree": $user["scientific_level"] = 5; break;
+                case "Doctoral degree": $user["scientific_level"] = 6; break;
+            }
+
+            switch ($user["age"]){
+                case ($user["age"] < 18 ): $user["age"] = 1; break;
+                case ($user["age"] >= 18 && $user["age"]<25): $user["age"] = 2; break;
+                case ($user["age"] >= 25 && $user["age"]<35): $user["age"] = 3; break;
+                case ($user["age"] >= 35 && $user["age"]<50): $user["age"] = 4; break;
+                case ($user["age"] >= 50 ): $user["age"] = 5; break;
+            }
+
+        }
+        dd($users->toArray());
+
     }
 
     public function profile(){

@@ -43,6 +43,7 @@ Route::get('/', function () {
     //Route::get('/prop/{product}', 'UserController@otherProperties')->name('otherProperties');
 
     Route::get('/add/order/review/{order}', 'UserController@addOrderReview')->name('add.orderReview');
+    Route::get('/test', 'UserController@getArray');
 
 /*******************************************************************************************************/
 
