@@ -22,7 +22,7 @@ class RegisterController extends Controller
 
         request()->validate([
             'name' => 'required',
-            'email' => 'unique:vendors|required|email',
+            'email' => 'unique:admin|required|email',
             'password' => 'required|min:8',
             'mobile' => 'required',
         ]);
