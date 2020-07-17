@@ -103,60 +103,6 @@
 
         <hr>
     </div>
-
-       <!--     Change color of product      -->
-        {{--<div class="container">--}}
-                {{--<div class="title-box">--}}
-                    {{--<h2>Change color</h2>--}}
-                {{--</div>--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-md-3">--}}
-                        {{--<div class="product-top">--}}
-                            {{--<img src="/storage/2.jpg" class="d-block w-100">--}}
-                            {{--<div class="overlay-right">--}}
-                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
-                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-3">--}}
-                        {{--<div class="product-top">--}}
-                            {{--<img src="/storage/www.jpg" class="d-block w-100">--}}
-                            {{--<div class="overlay-right">--}}
-                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
-                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                   {{--<div class="col-md-3">--}}
-                        {{--<div class="product-top">--}}
-                            {{--<img src="/storage/ww.jpg" class="d-block w-100">--}}
-                            {{--<div class="overlay-right">--}}
-                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
-                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-3">--}}
-                        {{--<div class="product-top">--}}
-                            {{--<img src="/storage/w.jpg" class="d-block w-100">--}}
-                            {{--<div class="overlay-right">--}}
-                                {{--<button type="button" class="btn btn-secondary" title="Quick Shop">--}}
-                                    {{--<i class="fa fa-eye" style="height:65px;width:80px;margin-top: 180px;margin-left: 60px;font-size:66px;background-color:#ffffffd4;border-radius: 20%;padding-top: 0;"></i>--}}
-                                {{--</button>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                {{--</div>--}}
-            {{--</div>--}}
-
 </section>
 
 <!--  Ratings & Raviews  -->

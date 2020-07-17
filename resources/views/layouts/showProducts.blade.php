@@ -237,10 +237,11 @@
 
             </div>
         </div>
-
-        <main class="py-4 content rightcolumn" id="content">
-            @yield('content')
-        </main>
+        <div class="col-sm-10">
+            <main class="py-4 content rightcolumn" id="content">
+                @yield('content')
+            </main>
+        </div>
     </div>
     <div class="footer">
 

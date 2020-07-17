@@ -56,7 +56,7 @@ class UserController extends Controller
 
     public function getArray()
     {
-        $users = User::select('id','social_status','gender','address','scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
+        $users = User::select('id','social_status','gender','scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
         foreach ($users as $index=>$user){
 
             if($user["gender"] == "Male"){
@@ -90,8 +90,21 @@ class UserController extends Controller
                 case ($user["age"] >= 50 ): $user["age"] = 5; break;
             }
 
+            $products = Product::all();
+            $orders = Order::select('id')->where('user_id',$user->id)->get();
+
+            foreach($products as $product){
+                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
+                $x = "p".$product->id;
+                $user[$x] = $count;
+
+            }
+
         }
-        dd($users->toArray());
+        $string_data = \GuzzleHttp\json_encode($users->toArray());
+        file_put_contents("yazzaan.txt", $string_data);
+        $arr = \GuzzleHttp\json_decode($string_data,true);
+        dd($arr);
 
     }
 
