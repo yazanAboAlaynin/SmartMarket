@@ -19,9 +19,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use League\Csv\Writer;
+use function Rubix\ML\array_transpose;
 use function Sodium\add;
 use function Sodium\compare;
 use Yajra\DataTables\Facades\DataTables;
+use Rubix\ML\Other\Loggers\Screen;
+use Rubix\ML\CrossValidation\Reports\ContingencyTable;
+use Rubix\ML\CrossValidation\Metrics\Homogeneity;
+use Rubix\ML\Clusterers\FuzzyCMeans;
+use Rubix\ML\Kernels\Distance\Euclidean;
+use Rubix\ML\Clusterers\Seeders\Random;
+use Rubix\ML\Datasets\Labeled;
 
 class UserController extends Controller
 {
@@ -93,18 +102,103 @@ class UserController extends Controller
             $products = Product::all();
             $orders = Order::select('id')->where('user_id',$user->id)->get();
 
-            foreach($products as $product){
-                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
-                $x = "p".$product->id;
-                $user[$x] = $count;
-
-            }
+//            foreach($products as $product){
+//                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
+//                $x = "p".$product->id;
+//                $user[$x] = $count;
+//
+//            }
 
         }
+        //dd($users->toArray());
         $string_data = \GuzzleHttp\json_encode($users->toArray());
         file_put_contents("yazzaan.txt", $string_data);
-        $arr = \GuzzleHttp\json_decode($string_data,true);
-        dd($arr);
+        $arr1 = json_decode($string_data,true);
+
+        $arr = [];
+        $label = [];
+
+        foreach ($arr1 as $key=>$val){
+            $a = [];
+            foreach ($val as $k=>$v){
+                if(is_numeric($v)&&$k!="id")
+                    array_push($a,$v);
+                else if(!is_numeric($v)){
+                    $v = 2;
+                    array_push($a,$v);
+                }
+            }
+            array_push($label,$val["id"]);
+            array_push($arr,$a);
+            //$arr[$val["id"]] = new Blob($a, 1.0);
+        }
+
+
+        $dataset = new Labeled($arr,$label);
+
+        //[$training, $testing] = $dataset->stratifiedSplit(0.8);
+
+        $estimator = new FuzzyCMeans(5, 1.1, 200, 1, new Euclidean(), new Random());
+
+        //$estimator->setLogger(new Screen('colors'));
+
+        //echo 'Training ...' . PHP_EOL;
+
+        $estimator->train($dataset);
+
+        $losses = $estimator->steps();
+
+        $writer = Writer::createFromPath('progress.csv', 'w+');
+
+        $writer->insertOne(['loss']);
+        $writer->insertAll(array_transpose([$losses]));
+
+       // echo 'Progress saved to progress.csv' . PHP_EOL;
+
+        //echo 'Making predictions ...' . PHP_EOL;
+
+        $predictions = $estimator->predict($dataset);
+
+        $report = new ContingencyTable();
+
+        $results = $report->generate($predictions, $dataset->labels());
+
+        file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
+
+       // echo 'Report saved to report.json' . PHP_EOL;
+
+        $metric = new Homogeneity();
+
+        $score = $metric->score($predictions, $dataset->labels());
+
+        //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
+
+        $id = auth()->user()->id;
+        $cluster = 0;
+        foreach ($results as $k=>$res){
+            foreach ($res as $key => $val){
+                if($key == $id && $val == 1){
+                   $cluster = $k;
+                }
+            }
+        }
+        $ids = [];
+        foreach ($results[$cluster] as $key => $val){
+            if( $val == 1){
+                array_push($ids,$key);
+               // echo "<br> $key";
+            }
+            else{
+
+            }
+        }
+
+        $orders = Order::select('id')->whereIn('user_id',$ids)->get();
+        $ordersItems = Order_item::select('product_id')->whereIn('order_id',$orders)->get();
+        $products = Product::whereIn('id',$ordersItems)->get();
+        $type = '';
+        $choice = 'Recommendation';
+        return view('user.showProducts',compact('type','products','choice'));
 
     }
 
@@ -372,7 +466,7 @@ class UserController extends Controller
             if($noti->save()){
 
                 $url = route('admin.order.items',$order->id);
-                $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
+               // $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
             }
 
         }
