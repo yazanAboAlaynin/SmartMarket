@@ -12,6 +12,7 @@ use App\Order;
 use App\Order_item;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
 use function Sodium\compare;
 use Yajra\DataTables\Facades\DataTables;
@@ -36,10 +37,23 @@ class VendorController extends Controller
      */
     public function index()
     {
+       $data = Order_item::select(DB::raw('product_id, sum(quantity) as quantity'))->groupBy('product_id')->get()->toArray();
+       //dd($all);
+        $all = [];
+        for ($i=0;$i<sizeof($data);$i++){
+            $x = [];
+            array_push($x,$data[$i]['product_id']);
+            array_push($x,$data[$i]['quantity']);
+            array_push($all,$x);
+        }
+       // dd($all);
+        $all = json_encode($all);
+
         return view('vendor.home', [
             'products_count' => Product::all()->count(),
             'orders_count' => Order::all()->count(),
-            'orders_item_count' => Order_item::all()->count()
+            'orders_item_count' => Order_item::all()->count(),
+            'all' => $all
         ]);
     }
 
@@ -199,6 +213,12 @@ class VendorController extends Controller
     public function updateProduct(Product $product)
     {
 
+        return view('vendor.productEdit', compact('product'));
+    }
+
+    public function product(Request $request)
+    {
+        $product = Product::find($request->id);
         return view('vendor.productEdit', compact('product'));
     }
 

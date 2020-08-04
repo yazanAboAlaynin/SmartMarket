@@ -84,11 +84,9 @@
             </div>
         </nav>
 
-        <div class="img">
-            <img src="/storage/2.jpg" width="100%" height="400px"/>
-        </div>
 
-        <nav class="navbar navbar-expand-md shadow-sm navbar-light sticky-top" style="background-color: #b0b6b8;z-index: 1">
+
+        <nav class="navbar navbar-expand-md shadow-sm navbar-light" style="background-color: #b0b6b8;z-index: 1">
             <div class="container">
             <ul class="navbar-nav bakcolor">
                 <li class="nav-item">

@@ -117,6 +117,7 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
     Route::get('/products', 'VendorController@products')->name('products');
     Route::get('/product/{product}/update', 'VendorController@updateProduct')->name('product.update');
     Route::post('/product/{product}/edit', 'VendorController@editProduct')->name('product.edit');
+    Route::get('/product', 'VendorController@product')->name('product');
     Route::get('/product/delete', 'VendorController@deleteProduct')->name('product.delete');
 
     Route::get('/product/{product}/add/Properties', 'VendorController@addProperties')->name('product.add.properties');
@@ -124,5 +125,6 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
 
     Route::get('/orders', 'VendorController@orders')->name('orders');
     Route::get('/sold/items', 'VendorController@soldItems')->name('soldItems');
+   // Route::get('/dashboard', 'VendorController@dashboard')->name('dashboard');
 
 });
