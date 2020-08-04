@@ -28,6 +28,7 @@
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
     
     <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/circle.js') }}" defer></script>
 
 
 </head>

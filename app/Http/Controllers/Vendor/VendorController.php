@@ -37,7 +37,7 @@ class VendorController extends Controller
      */
     public function index()
     {
-       $data = Order_item::select(DB::raw('product_id, sum(quantity) as quantity'))->groupBy('product_id')->get()->toArray();
+       $data = Order_item::select(DB::raw('product_id, sum(quantity) as quantity'))->groupBy('product_id')->orderBy('quantity',"desc")->get()->toArray();
        //dd($all);
         $all = [];
         for ($i=0;$i<sizeof($data);$i++){
