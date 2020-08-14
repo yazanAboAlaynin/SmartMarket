@@ -8,7 +8,7 @@
         </h4>
         <p>
             show order from <b>Sa</b>
-            <small><a href="{{ Route('admin.order.items',$n->user_id) }}" class="btn btn-info btn-xs pull-right btn-read">Read</a></small>
+            <small><a href="{{ Route('admin.order.items',$n->order_id) }}" class="btn btn-info btn-xs pull-right btn-read">Read</a></small>
     </p>
     </a>
 </li>

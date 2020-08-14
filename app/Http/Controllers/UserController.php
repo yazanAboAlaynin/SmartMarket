@@ -51,15 +51,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $orders = Order::where([
-            ['user_id',auth()->user()->id],
-            ['rated',null],
-            ['done',1]
-        ])->get();
-        if($orders->count()){
-           $order = $orders[0];
-            return redirect()->route('add.orderReview',$order);
-        }
+
         return view('user.home');
     }
 
@@ -204,7 +196,10 @@ class UserController extends Controller
 
     public function profile(){
         $user = auth()->user();
-        return view('user.profile',compact('user'));
+        $orders = Order::select('id')->where('user_id',auth()->user()->id)->get();
+        $ordersItems = Order_item::select('product_id')->whereIn('order_id',$orders)->get();
+
+        return view('user.profile',compact('user','ordersItems'));
     }
     public function edit()
     {
@@ -291,6 +286,15 @@ class UserController extends Controller
 
     public function products()
     {
+        $orders = Order::where([
+            ['user_id',auth()->user()->id],
+            ['rated',null],
+            ['done',1]
+        ])->get();
+        if($orders->count()){
+            $order = $orders[0];
+            return redirect()->route('add.orderReview',$order);
+        }
         return view('user.products');
     }
 
@@ -470,7 +474,7 @@ class UserController extends Controller
             }
 
         }
-        return redirect()->route('home');
+        return redirect()->route('products');
     }
 
 }

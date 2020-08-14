@@ -131,10 +131,18 @@
                         {{--<a class="nav-link" href="#"><i class="fa fa-language" style="font-size:20px;color:orange"></i> Language</a>--}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('cart') }}"><i class="fa fa-shopping-basket"
-                                                                          style="font-size:20px;color:orange"></i> Cart
-                            <span class="badge badge-pill badge-danger">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
+                        <a class="nav-link" href="{{ route('cart') }}" title="Cart"><i class="fa fa-shopping-basket"
+                                                                          style="font-size:20px;color:orange"></i>
+                            <span class="badge badge-pill badge-danger">{{ Session::has('cart') ? Session::get('cart')->totalQty : '0' }}</span>
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('products') }}"><i class="fa"
+                                                                          style="font-size:20px;color:orange"></i> Shopping</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('recommend') }}"><i class="fa"
+                                                                          style="font-size:20px;color:orange"></i> Get Recommendation</a>
                     </li>
                     @guest
                         <li class="nav-item">
@@ -146,6 +154,7 @@
                             </li>
                         @endif
                         @else
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -153,6 +162,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        {{ __('Profile') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -165,6 +177,7 @@
                                     </form>
                                 </div>
                             </li>
+
                             @endguest
 
                 </ul>

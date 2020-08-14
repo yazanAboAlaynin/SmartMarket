@@ -41,23 +41,28 @@
             <!-- Container (productMine Section) -->
             <div class="container">
                 <div class="row mt-5 title-box">
-                    <h2>Products Mine</h2>
+                    <h2>Sold Products</h2>
                 </div>
 
                 <div class="row mt-5">
-
+                    @if(sizeof($ordersItems))
+                    @foreach($ordersItems as $product)
                     <div class="col-md-3">
-                        <div class="card shadow-sm">
-                            <img src="/storage/w.jpg" class="card-img-top img-fluid">
-                            <div class="card-title ml-2">
-                                <h4>name</h4>
-                            </div>
-                            <div class="card-text text-center">
-                                description
-                            </div>
-                        </div>
-                    </div>       
 
+                            <div class="card shadow-sm">
+                                <img src="/storage/{{ $product->product->image }}" class="card-img-top img-fluid">
+                                <div class="card-title ml-2">
+                                    <h4>{{ $product->product->name }}</h4>
+                                </div>
+                                <div class="card-text text-center">
+                                    {{ $product->price }}
+                                </div>
+                            </div>
+
+                    </div>
+                    @endforeach
+                        @else <h2>you don't have products yet</h2>
+                        @endif
                 </div>
 
            </div>

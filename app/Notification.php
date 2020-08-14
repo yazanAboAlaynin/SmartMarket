@@ -76,7 +76,7 @@ class Notification extends Model
     }
 
     public function scopeRead($query){
-        return $this->where('read_at',null)->get();
+        return $this->where('read_at',null)->orderby('created_at','desc')->get();
     }
 
     public function scopeNumberAlert(){

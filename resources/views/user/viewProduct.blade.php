@@ -41,14 +41,17 @@
                     @endfor
                 </p>
 
-                <p class="" style="color: red; font-size: 20px"><b>Price : </b> {{$product->price}}</p>
+                <p class="" style="color: red; font-size: 20px"><b>Price : </b> {{$product->price}} S.P</p>
+                @if($product->discount != '0')
                 <p><b>Discount : </b> {{$product->discount}}%</p>
                 <?php
                 $priceAfterDiscount = ( $product->price * $product->discount )/100 ;
                 $priceAfterDiscount = ($product->price) - $priceAfterDiscount ;
 
                 ?>
-                <p class="price-discount"><b>Price after Discount : </b> {{ $priceAfterDiscount}}</p>
+
+                <p class="price-discount"><b>Price after Discount : </b> {{ $priceAfterDiscount}} S.P</p>
+                @endif
                 <p><b>Brand : </b> {{$product->brand->name}}</p>
 
                 <form method="GET" action="{{ Route('addProduct',$product->id) }}">
@@ -70,13 +73,18 @@
        <h6>Properties</h6>
         @foreach($properties as $property)
             <h3><span><b>{{$property->name}}:</b> {{$property->value}}</span></h3>
+            @if(sizeof($otherProp[$property->name]) > 1)
             <div class="row mb-2 ml-1">
                 <p>
                     <b style="font-size:15px;">other {{ $property->name }} : &nbsp; &nbsp;</b>
                 </p>
+
+
                 <div class="dropdown">
                     <button class="dropbtn">Select {{ $property->name }} <i class="fa fa-chevron-down"></i></button>
                     <div class="dropdown-content">
+
+
                         @foreach($otherProp[$property->name] as $p)
                             <?php $last= ''?>
                             @foreach($p as $pp)
@@ -85,11 +93,14 @@
                                    <a href="{{ route('viewProduct',$pp->product_id) }}">{{ $pp->value }}</a>
                                 @endif
                                 @endforeach
+
                         @endforeach
+
                     </div>
                 </div>
 
             </div>
+            @endif
         @endforeach
     </div>
 </section>
@@ -110,7 +121,7 @@
     <div class="row title-box">
         <h2>Reviews</h2>
     </div>
-
+@if(sizeof($ratings))
     @foreach($ratings as $rating)
         <div class="card p-2">
             <div class="media">
@@ -133,6 +144,9 @@
         </div>
         <br/>
     @endforeach
+    @else <div class="alert-warning"><h2>there is no reviews </h2></div>
+    @endif
+
 
 
 
