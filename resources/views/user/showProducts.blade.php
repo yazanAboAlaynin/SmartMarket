@@ -13,7 +13,7 @@
         </div>
         <br/>
          <div class="title-box">
-            <h2>{{ $choice }}</h2>
+            <h5>{{ $choice }}</h5>
         </div>
 
 

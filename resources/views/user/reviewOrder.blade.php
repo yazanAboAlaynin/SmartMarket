@@ -70,7 +70,7 @@
                                 <br/>
 
                                 <div class="row justify-content-center">
-                                    <div class="col-6">
+                                    <div class="col-8">
 
                                         <div class="form-group text-center">
                                             <button id="review{{$item->product->id}}" onclick="review({{$item->product->id}},getRateValue({{$item->product->id}}),getCommentValue({{$item->product->id}}))" class="btn btn-primary" style="margin-top:10px;width: 20%">Add Review</button>
@@ -95,7 +95,7 @@
     <br/>
     <script>
         if(!{{ count($items) }}){
-            location.replace("{{ route('home') }}");
+            location.replace("{{ route('products') }}");
         }
         var order = {{ $order->id }};
         function getRateValue(id){

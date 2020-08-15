@@ -284,10 +284,11 @@ class VendorController extends Controller
     {
 
 
+
         if ($request->ajax()) {
             $id = auth()->guard('vendor')->user()->id;
             $items = Product::select('id')->where('vendor_id', '=', $id)->get();
-            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 1);
+            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 1)->get();
 
             return DataTables::of($data)->make(true);
         }
