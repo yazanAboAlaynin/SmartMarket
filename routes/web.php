@@ -52,6 +52,11 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
+    Route::get('/addAdmin', 'AdminController@addnewAdmin')->name('addAdmin');
+    Route::post('/create', 'AdminController@addAdmin')->name('create');
+    Route::get('/admins', 'AdminController@admins')->name('admins');
+    Route::get('/admin/delete', 'AdminController@deleteAdmin')->name('admin.delete');
+
     Route::get('/home', 'AdminController@index')->name('home');
     Route::get('/users/count', 'AdminController@usersCount')->name('users.count');
     Route::get('/vendors/count', 'AdminController@vendorsCount')->name('vendors.count');

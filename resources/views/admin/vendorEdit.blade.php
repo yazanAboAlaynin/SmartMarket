@@ -9,7 +9,7 @@
 
             <div class="card">
                     <div class="card-header">
-                       <h1>Edit Profile</h1>
+                       <h1>Edit Vendor</h1>
                     </div>
 
                <div class="card-body">
@@ -110,7 +110,7 @@
                     </div>
 
                         <div class="form-group text-center">
-                            <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Profile</button>
+                            <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Vendor</button>
                         </div>
 
                     </form>

@@ -106,13 +106,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row justify-content-center">
-                                <div class="col-md-4">
-                                    <br/>
-                                    Or
-                                    <a class="" href="{{ route('admin.register') }}">{{ __(' Register') }}</a>
-                                </div>
-                            </div>
+
                         </form>
                     </div>
                 </div>

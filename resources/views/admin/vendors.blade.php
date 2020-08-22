@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Companies:</h1>
+        <h1>Vendors:</h1>
 
         <br/>
         <br/>

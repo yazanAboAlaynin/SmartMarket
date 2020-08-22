@@ -54,6 +54,12 @@
                     <a class="ap" href="{{ Route('admin.home') }}"><i class="fa fa-home" style="font-size:32px"></i>
                         <span style="margin-left: 30px;">Home</span></a>
 
+                    <a class="ap" href="{{ Route('admin.addAdmin') }}"><i class="fa fa-user-plus" style="font-size:32px"></i>
+                        <span style="margin-left: 30px;">Add New Admin</span></a>
+
+                    <a class="ap" href="{{ Route('admin.admins') }}"><i class="fa fa-users" style="font-size:32px"></i>
+                        <span style="margin-left: 30px;">Admins</span></a>
+
                     <a href="{{ Route('admin.products') }}"><i class="fa fa-product-hunt" style="font-size:32px"></i>
                         <span style="margin-left: 30px">Products</span></a>
 
@@ -64,7 +70,7 @@
                         <span style="margin-left: 30px">Vendors requests</span></a>
 
                     <a href="{{ Route('admin.users') }}"><i class="fa fa-users" style="font-size:24px"></i>
-                        <span style="margin-left: 30px">Customers</span></a>
+                        <span style="margin-left: 30px">Users</span></a>
 
                     <a href="{{ Route('admin.orders') }}"><i class="fa fa-first-order" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Orders</span></a>

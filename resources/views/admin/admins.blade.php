@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Categories:</h1>
+        <h1>Admins:</h1>
 
         <br/>
         <br/>
@@ -17,10 +17,9 @@
 
                 <th>id</th>
 
-                <th>image</th>
+                <th>Name</th>
 
-                <th>name</th>
-
+                <th>Email</th>
 
                 <th width="100px">Action</th>
 
@@ -46,32 +45,23 @@
 
         $(function () {
 
+
+
             var table = $('.data-table').DataTable({
 
                 processing: true,
 
                 serverSide: true,
 
-                ajax: "{{ route('admin.categories') }}",
+                ajax: "{{ route('admin.admins') }}",
 
                 columns: [
 
                     {data: 'id', name: 'id'},
 
-                    {
-                        "name": "image",
-                        "data": "image",
-                        "render": function (data, type, full, meta) {
-                            return "<img src=\"/storage/" + data + "\" height=\"60\" />";
-                        },
-                        "title": "Image",
-                        "orderable": true,
-                        "searchable": true
-                    },
-
                     {data: 'name', name: 'name'},
 
-
+                    {data: 'email', name: 'email'},
 
                     {data: 'action', name: 'action', orderable: false, searchable: false},
 
@@ -82,9 +72,8 @@
 
 
         });
-        function update(id) {
-            window.location.href = 'category/'+id+'/update';
-        }
+
+
 
         function del(id) {
 
@@ -97,8 +86,8 @@
                     alert('Data Deleted');
                 }
             };
-
-            xhttp.open("get", "{{ route("admin.category.delete") }}?id=" + id, true);
+            var x = document.getElementById(id).value;
+            xhttp.open("get", "{{ Route("admin.admin.delete") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 

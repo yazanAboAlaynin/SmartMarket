@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Profile</button>
+                            <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Product</button>
                         </div>
 
                     </form>

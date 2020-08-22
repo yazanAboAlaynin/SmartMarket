@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <div class="card">
                     <div class="card-header">
-                            <h1>Edit Profile</h1>
+                            <h1>Edit User</h1>
                     </div>
 
                     <div class="card-body">
@@ -67,7 +67,7 @@
 
                         </div>
 
-                            //TODO:add address for data base in user
+
                         <div class="form-group{{ $errors->has('address') ? ' has-error' : '' }}">
                             <label for="address" class="col-md-4 control-label">address</label>
 
@@ -87,7 +87,7 @@
 
 
                         <div class="form-group text-center">
-                                <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save Profile</button>
+                                <button class="btn btn-primary"  style="margin-top:10px;width: 20%">Save User</button>
                             </div>
 
                         </form>

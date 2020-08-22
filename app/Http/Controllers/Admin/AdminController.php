@@ -12,6 +12,7 @@ use App\Order;
 use App\Order_item;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -49,6 +50,61 @@ class AdminController extends Controller
 
     }
 
+    public function addnewAdmin(){
+
+        return view('admin.AddAdmin');
+    }
+
+    public function addAdmin(Request $request)
+    {
+        request()->validate([
+            'name' => 'required',
+            'email' => 'unique:admins|required|email',
+            'password' => 'required|min:8',
+            'mobile' => 'required',
+        ]);
+
+        $data = $request->all();
+
+          Admin::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'mobile' => $data['mobile'],
+        ]);
+
+
+        return redirect('admin/home');
+    }
+
+    public function admins(Request $request){
+
+        if($request->ajax())
+        {
+            $data = Admin::all();
+            return DataTables::of($data)
+                ->addColumn('action', function($data){
+                    $button = '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin.admins');
+
+    }
+
+    public function deleteAdmin(Request $request){
+
+        $data = Admin::findOrFail($request->id);
+        $data->delete();
+
+        return;
+    }
+
 
 /***********************************************************************************/
       /***************   control the vendors    ***************************/
@@ -80,8 +136,8 @@ class AdminController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required',
-            'mobile' => 'required',
+            'phone' => 'required|numeric',
+            'mobile' => 'required|numeric',
             'address' => 'required',
         ]);
         $vendor = Vendor::find($id);
@@ -165,7 +221,7 @@ class AdminController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'mobile' => 'required',
+            'mobile' => 'required|numeric',
            // 'address' => 'required',
         ]);
         $user = User::find($id);
@@ -300,11 +356,11 @@ class AdminController extends Controller
         $data = request()->validate([
             'name' => 'required',
             'description' => 'required',
-            'price' => 'required',
-            'quantity' => 'required',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric',
             'category_id' => 'required',
             'brand_id' => 'required',
-            'discount' => 'required',
+            'discount' => 'required|numeric',
         ]);
 
         $product->name = $request->input('name');

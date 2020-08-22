@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Orders:</h1>
+        <h1>Brands:</h1>
 
         <br/>
         <br/>
