@@ -4,7 +4,7 @@
 
     <div class="container">
 
-        <h1>Products:</h1>
+        <h1>Discounts:</h1>
 
         <br/>
         <br/>
@@ -20,8 +20,6 @@
                 <th>image</th>
 
                 <th>Name</th>
-
-                <th>Price</th>
 
                 <th>Discount</th>
 
@@ -57,7 +55,7 @@
 
                 serverSide: true,
 
-                ajax: "{{ route('vendor.products') }}",
+                ajax: "{{ route('vendor.discounts') }}",
 
                 columns: [
 
@@ -76,8 +74,6 @@
 
                     {data: 'name', name: 'name'},
 
-                    {data: 'price', name: 'price'},
-
                     {data: 'discount', name: 'discount'},
 
                     {data: 'action', name: 'action', orderable: false, searchable: false},
@@ -90,9 +86,8 @@
 
         });
 
-
         function update(id) {
-            window.location.href = 'product/'+id+'/update';
+            window.location.href = 'discount/'+id+'/update';
         }
 
         function del(id) {
@@ -103,11 +98,11 @@
                     //document.getElementById("test").innerHTML = this.responseText;
                     //window.alert("deleted successfuly id = "+this.responseText);
                     $('.data-table').DataTable().ajax.reload();
-                    alert('Data Deleted');
+                    alert('Discount Deleted');
                 }
             };
 
-            xhttp.open("get", "{{ route("vendor.product.delete") }}?id=" + id, true);
+            xhttp.open("get", "{{ route("vendor.discount.delete") }}?id=" + id, true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send();
 

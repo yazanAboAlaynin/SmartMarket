@@ -123,6 +123,12 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
     Route::get('/product/{product}/add/Properties', 'VendorController@addProperties')->name('product.add.properties');
     Route::post('/product/{product}/store/Properties', 'VendorController@storeProperties')->name('product.store.properties');
 
+
+    Route::get('/discounts', 'VendorController@discounts')->name('discounts');
+    Route::get('/discount/{discount}/update', 'VendorController@updateDiscount')->name('discount.update');
+    Route::post('/discount/{discount}/edit', 'VendorController@editDiscount')->name('discount.edit');
+    Route::get('/discount/delete', 'VendorController@deleteDiscount')->name('discount.delete');
+
     Route::get('/orders', 'VendorController@orders')->name('orders');
     Route::get('/sold/items', 'VendorController@soldItems')->name('soldItems');
    // Route::get('/dashboard', 'VendorController@dashboard')->name('dashboard');

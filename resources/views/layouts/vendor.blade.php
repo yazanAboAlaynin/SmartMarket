@@ -100,6 +100,9 @@
                     <a class="nav-link"  href="{{ Route('vendor.products')}}">Products</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link"  href="{{ Route('vendor.discounts')}}">Discounts</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link"  href="{{ Route('vendor.orders')}}">Orders</a>
                 </li>
                 <li class="nav-item">

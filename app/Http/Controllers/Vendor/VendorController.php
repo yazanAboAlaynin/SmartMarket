@@ -107,6 +107,7 @@ class VendorController extends Controller
             $items = auth()->guard('vendor')->user()->products();
             return DataTables::of($items)
                 ->addColumn('action', function ($items) {
+
                     $button = '<button type="button" name="edit" id="' . $items->id . '" 
                     class="edit btn btn-primary btn-sm" onclick=update(' . $items->id . ')>Edit</button>';
                     $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '" 
@@ -257,6 +258,61 @@ class VendorController extends Controller
 
         return redirect()->route('vendor.home');
     }
+
+
+
+    public function discounts()
+    {
+        $id = auth()->guard('vendor')->user()->discount != '0';
+
+        if (request()->ajax()) {
+            $items = Product::where('discount','!=','0')->get();
+            return DataTables::of($items)
+                ->addColumn('action', function ($items) {
+                    $button = '<button type="button" name="edit" id="' . $items->id . '" 
+                    class="edit btn btn-primary btn-sm" onclick=update(' . $items->id . ')>Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '" 
+                    class="delete btn btn-danger btn-sm" onclick=del(' . $items->id . ')>Delete</button>';
+
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('vendor.discounts', compact('id'));
+
+    }
+
+    public function editDiscount(Product $discount, Request $request)
+    {
+
+        $data = request()->validate([
+            'discount' => 'required',
+        ]);
+
+
+        $discount->discount = $request->input('discount');
+        $discount->save(); //persist the data
+
+        return redirect('vendor/discounts');
+    }
+
+    public function updateDiscount(Product $discount)
+    {
+
+        return view('vendor.discountEdit', compact('discount'));
+    }
+
+    public function deleteDiscount(Request $request)
+    {
+
+        $data = Product::findOrFail($request->id);
+        $data->discount = 0;
+        $data->save();
+        return;
+    }
+
 
     /*********************** end products *********************************/
     /***********************************************************************************/
