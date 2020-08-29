@@ -28,7 +28,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
-    
+
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -168,7 +168,9 @@
     </nav>
 
     <main class="py-4 content" id="content" >
+
         @yield('content')
+
     </main>
 </div>
 <script src="{{ asset('js/firebase.js') }}"></script>

@@ -21,6 +21,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('device_token')->nullable();
             $table->string('mobile');
+            $table->string('moderator');
             $table->rememberToken();
             $table->timestamps();
         });

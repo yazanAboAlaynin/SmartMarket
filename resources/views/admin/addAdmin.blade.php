@@ -68,6 +68,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="moderator" class="col-md-4 col-form-label text-md-right">{{ __('moderator') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="moderator" type="text" class="form-control @error('moderator') is-invalid @enderror" name="moderator" value="{{ old('moderator') }}" required autocomplete="moderator" autofocus>
+
+                                    @error('moderator')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

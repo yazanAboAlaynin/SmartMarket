@@ -3,7 +3,7 @@
 @section('content')
 
 
-        <div class="row">    
+        <div class="row">
             <!-- Container (About Section) -->
         <div id="about" class="container-fluid">
             <div class="row">
@@ -17,15 +17,15 @@
                     <h4><i class="fa fa-venus-mars" style="font-size:22px;"></i> <strong>Gender : </strong>{{ $user->gender}}</h4><br>
                     <h4><i class="fa fa-chain-broken" style="font-size:22px;"></i> <strong>Social status : </strong>{{ $user->social_status}}</h4><br>
                     <h4><i class="fa fa-graduation-cap" style="font-size:22px;"></i> <strong>Scientific level : </strong>{{ $user->scientific_level}}</h4><br>
-                    <h4><i class="fa fa-thumbs-o-up" style="font-size:22px;"></i> <strong>Three most hobbies : </strong>{{ $user->three_most_hobbies}}</h4><br>
+
 
                     <div class="form-group row mb-0">
                         <div class="col-md-6 ">
                             <a href="{{ Route('profile.edit') }}" class="btn btn-primary" style="border-radius:10%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);">
                                 {{ __('Edit Profile') }}
-                            </a>  
+                            </a>
                         </div>
-                    </div>  
+                    </div>
 
                 </div>
                 <div class="col-sm-4">
@@ -35,8 +35,8 @@
               <hr style="width:60%;margin-top: 50px">
             </div>
 
-   
-         
+
+
 
             <!-- Container (productMine Section) -->
             <div class="container">
@@ -67,8 +67,8 @@
 
            </div>
 
-       
-    
+
+
 
 
 @endsection

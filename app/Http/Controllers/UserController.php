@@ -220,7 +220,7 @@ class UserController extends Controller
             'gender' => 'required',
             'social_status' => 'required',
             'scientific_level' => 'required',
-            'three_most_hobbies' => 'required',
+
         ]);
 
         $id = auth()->user()->id;
@@ -235,7 +235,7 @@ class UserController extends Controller
         $user->gender = $request['dob'];
         $user->social_status = $request['social_status'];
         $user->scientific_level = $request['scientific_level'];
-        $user->three_most_hobbies = $request['three_most_hobbies'];
+
         $user->save();
 
         return redirect('profile');

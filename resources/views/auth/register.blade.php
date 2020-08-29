@@ -220,21 +220,7 @@
                                 </div>
                                 <br/>
                                 <br/>
-                                <div class="form-group row">
-                                    <div class="col-md-8">
-                                        <textarea class="middle form-control @error('mobile') is-invalid @enderror"
-                                                  name="three_most_hobbies" required autocomplete="three_most_hobbies"
-                                                  placeholder="Three most hobbies" id="three_most_hobbies"
-                                                  rows="3">{{ old('three_most_hobbies') }}</textarea>
-                                        {{--<input id="three_most_hobbies" type="text" class="middle form-control @error('mobile') is-invalid @enderror" name="three_most_hobbies" value="{{ old('three_most_hobbies') }}" required autocomplete="three_most_hobbies" placeholder="Three most hobbies">--}}
 
-                                        @error('three_most_hobbies')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
 
                                 <div class="form-group row">
                                     <label for="dob" class="col-md-4 col-form-label text-md-right"

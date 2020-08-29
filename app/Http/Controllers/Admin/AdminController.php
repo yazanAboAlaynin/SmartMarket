@@ -62,6 +62,7 @@ class AdminController extends Controller
             'email' => 'unique:admins|required|email',
             'password' => 'required|min:8',
             'mobile' => 'required',
+            'moderator' => 'required',
         ]);
 
         $data = $request->all();
@@ -71,6 +72,7 @@ class AdminController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'mobile' => $data['mobile'],
+            'moderator' => $data['moderator'],
         ]);
 
 
@@ -84,7 +86,7 @@ class AdminController extends Controller
             $data = Admin::all();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    $button = '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
 
                     return $button;
@@ -116,9 +118,9 @@ class AdminController extends Controller
             $data = Vendor::where('approved','=','1')->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'" 
+                    $button = '<button type="button" name="edit" id="'.$data->id.'"
                     class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
 
                     return $button;
@@ -171,7 +173,7 @@ class AdminController extends Controller
             $data = Vendor::where('approved','=',"0")->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="approve" id="'.$data->id.'" 
+                    $button = '<button type="button" name="approve" id="'.$data->id.'"
                     class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>approve</button>';
                     return $button;
                 })
@@ -202,9 +204,9 @@ class AdminController extends Controller
             $data = User::latest()->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'" 
+                    $button = '<button type="button" name="edit" id="'.$data->id.'"
                     class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
                     return $button;
                 })
@@ -256,9 +258,9 @@ class AdminController extends Controller
             $data = Order::where('done','=',0)->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="done" id="'.$data->id.'" 
+                    $button = '<button type="button" name="done" id="'.$data->id.'"
                     class="edit btn btn-primary btn-sm" onclick=done('.$data->id.')>done</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=show('.$data->id.')>view</button>';
                     return $button;
                 })
@@ -303,7 +305,7 @@ class AdminController extends Controller
             $data = Order::where('done','=',1)->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="show" id="'.$data->id.'" 
+                    $button = '<button type="button" name="show" id="'.$data->id.'"
                     class="edit btn btn-primary btn-sm" onclick=show('.$data->id.')>view</button>';
                     return $button;
                 })
@@ -336,9 +338,9 @@ class AdminController extends Controller
             $items = Product::latest()->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
-                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    $button = '<button type="button" name="edit" id="'.$items->id.'"
                     class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
 
                     return $button;
@@ -398,9 +400,9 @@ class AdminController extends Controller
             $items = Category::latest()->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
-                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    $button = '<button type="button" name="edit" id="'.$items->id.'"
                     class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
 
                     return $button;
@@ -469,9 +471,9 @@ class AdminController extends Controller
             $items = Brand::latest()->get();
             return DataTables::of($items)
                 ->addColumn('action', function($items){
-                    $button = '<button type="button" name="edit" id="'.$items->id.'" 
+                    $button = '<button type="button" name="edit" id="'.$items->id.'"
                     class="edit btn btn-primary btn-sm" onclick=update('.$items->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$items->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$items->id.')>Delete</button>';
 
                     return $button;

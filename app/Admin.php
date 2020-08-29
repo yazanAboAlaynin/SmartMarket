@@ -16,7 +16,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile','device_token',
+        'name', 'email', 'password', 'mobile','device_token','moderator',
     ];
 
     /**
@@ -36,4 +36,8 @@ class Admin extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isModerator(){
+        return $this->moderator == "1" ? true:false;
+    }
 }

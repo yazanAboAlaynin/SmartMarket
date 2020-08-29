@@ -19,7 +19,7 @@
                    <div class="card-header">
                        <h1>Edit Profile</h1>
                    </div>
-                <div class="card-body">  
+                <div class="card-body">
 
                     <form method="POST" action="{{ route('profile.update') }}">
                         @csrf
@@ -163,21 +163,7 @@
                         </div>
                         <br/>
 
-                        <div  class="form-group{{ $errors->has('three_most_hobbies') ? ' has-error' : '' }}">
-                            <label for="three_most_hobbies" class="col-md-4 control-label">Three most hobbies</label>
-                            <div >
-                                <textarea  id="three_most_hobbies" type="text" class="form-control" name="three_most_hobbies" rows="3" required autofocus>{{ old('three_most_hobbies') ?? $user->three_most_hobbies }}</textarea>
-                                {{--<input id="three_most_hobbies" type="text" class="form-control" name="three_most_hobbies"--}}
-                                       {{--value="{{ old('three_most_hobbies') ?? $user->three_most_hobbies }}"  required autofocus>--}}
-                            </div>
 
-                            @if ($errors->has('three_most_hobbies'))
-                                <span class="help-block">
-                            <strong>{{ $errors->first('three_most_hobbies') }}</strong>
-                        </span>
-                            @endif
-
-                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-10">

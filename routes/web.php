@@ -52,10 +52,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::get('/register', 'auth\RegisterController@index')->name('register');
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
-    Route::get('/addAdmin', 'AdminController@addnewAdmin')->name('addAdmin');
-    Route::post('/create', 'AdminController@addAdmin')->name('create');
-    Route::get('/admins', 'AdminController@admins')->name('admins');
-    Route::get('/admin/delete', 'AdminController@deleteAdmin')->name('admin.delete');
+    Route::get('/addAdmin', 'AdminController@addnewAdmin')->name('addAdmin')->middleware('moderator');
+    Route::post('/create', 'AdminController@addAdmin')->name('create')->middleware('moderator');;
+    Route::get('/admins', 'AdminController@admins')->name('admins')->middleware('moderator');;
+    Route::get('/admin/delete', 'AdminController@deleteAdmin')->name('admin.delete')->middleware('moderator');;
 
     Route::get('/home', 'AdminController@index')->name('home');
     Route::get('/users/count', 'AdminController@usersCount')->name('users.count');
@@ -118,7 +118,7 @@ Route::namespace('Vendor')->prefix('vendor')->as('vendor.')->group(function() {
 
     Route::get('/add/product', 'VendorController@addProduct')->name('add.product');
     Route::post('/store/product', 'VendorController@storeProduct')->name('store.product');
-    
+
     Route::get('/products', 'VendorController@products')->name('products');
     Route::get('/product/{product}/update', 'VendorController@updateProduct')->name('product.update');
     Route::post('/product/{product}/edit', 'VendorController@editProduct')->name('product.edit');
