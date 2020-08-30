@@ -19,20 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="discount">
-      <change beforePath="$PROJECT_DIR$/.idea/SmartMarket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartMarket.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Notification.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_11_111356_create_notifications_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/firebase-messaging-sw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/firebase.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/yazzaan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/yazzaan.txt" afterDir="false" />
+    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="erase notif">
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -354,21 +342,7 @@
       <workItem from="1597511244432" duration="720000" />
       <workItem from="1597944511895" duration="18000" />
       <workItem from="1598107270652" duration="9561000" />
-      <workItem from="1598801927016" duration="1533000" />
-    </task>
-    <task id="LOCAL-00076" summary="latest">
-      <created>1588877927866</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1588877927867</updated>
-    </task>
-    <task id="LOCAL-00077" summary="latest">
-      <created>1588877950492</created>
-      <option name="number" value="00077" />
-      <option name="presentableId" value="LOCAL-00077" />
-      <option name="project" value="LOCAL" />
-      <updated>1588877950492</updated>
+      <workItem from="1598801927016" duration="1949000" />
     </task>
     <task id="LOCAL-00078" summary="latest">
       <created>1588934813229</created>
@@ -699,7 +673,21 @@
       <option name="project" value="LOCAL" />
       <updated>1598730067522</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="erase noti">
+      <created>1598803974218</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1598803974220</updated>
+    </task>
+    <task id="LOCAL-00126" summary="erase notif">
+      <created>1598804102100</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
+      <option name="project" value="LOCAL" />
+      <updated>1598804102100</updated>
+    </task>
+    <option name="localTasksCounter" value="127" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -724,16 +712,18 @@
     <MESSAGE value="circle" />
     <MESSAGE value="new" />
     <MESSAGE value="discount" />
-    <option name="LAST_COMMIT_MESSAGE" value="discount" />
+    <MESSAGE value="erase noti" />
+    <MESSAGE value="erase notif" />
+    <option name="LAST_COMMIT_MESSAGE" value="erase notif" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598803509385">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598803509385" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1598730069236">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1598804104603">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598730069236" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598804104603" />
   </component>
 </project>
