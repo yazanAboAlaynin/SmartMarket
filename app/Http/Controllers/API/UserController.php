@@ -234,16 +234,16 @@ class UserController extends Controller
         $order->total_price = $totPrice - $totDiscount;
         $order->save();
 
-        $noti = new Notification();
-        $noti->user_id = auth()->guard()->user()->id;
-        $noti->order_id = $order->id;
-        $noti->title = 'New Order';
-        $noti->body = 'you have new order from user: ' . auth()->guard()->user()->id;
-        if ($noti->save()) {
-
-            $url = route('admin.order.items', $order->id);
-            $noti->toMultiDevice(Admin::all(), $noti->title, $noti->body, null, $url);
-        }
+//        $noti = new Notification();
+//        $noti->user_id = auth()->guard()->user()->id;
+//        $noti->order_id = $order->id;
+//        $noti->title = 'New Order';
+//        $noti->body = 'you have new order from user: ' . auth()->guard()->user()->id;
+//        if ($noti->save()) {
+//
+//            $url = route('admin.order.items', $order->id);
+//            $noti->toMultiDevice(Admin::all(), $noti->title, $noti->body, null, $url);
+//        }
         $success = "yes";
         return response()->json(['success'=>$success], $this->successStatus);
     }
