@@ -123,7 +123,6 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/vendor/apility/laravel-fcm" />
       <path value="$PROJECT_DIR$/vendor/rubix/tensor" />
       <path value="$PROJECT_DIR$/vendor/rubix/ml" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />

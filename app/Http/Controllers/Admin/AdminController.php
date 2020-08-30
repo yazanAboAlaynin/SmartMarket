@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Brand;
 use App\Category;
-use App\Notification;
 use App\Product;
 use App\Vendor;
 use App\Http\Controllers\Controller;
@@ -282,7 +281,7 @@ class AdminController extends Controller
 
     public function orderItems(Order $order){
 
-        Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')]);
+   //     Notification::where('order_id','=',$order->id)->update(['read_at'=>date('Y-m-d H:i:s')]);
 
 
         if(request()->ajax())
@@ -319,7 +318,7 @@ class AdminController extends Controller
     public function readOrder(Request $request){
 
         if($request->ajax()){
-            $notis = Notification::read();
+         //   $notis = Notification::read();
             return view('readOrder',compact('notis'));
         }
         return response()->json(['data'=>234234],200);

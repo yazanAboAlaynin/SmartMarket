@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Brand;
 use App\Category;
-use App\Notification;
 use App\Order;
 use App\Order_item;
 use App\Product;
@@ -21,10 +20,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use League\Csv\Writer;
 use function Rubix\ML\array_transpose;
-use function Sodium\add;
-use function Sodium\compare;
-use Yajra\DataTables\Facades\DataTables;
-use Rubix\ML\Other\Loggers\Screen;
 use Rubix\ML\CrossValidation\Reports\ContingencyTable;
 use Rubix\ML\CrossValidation\Metrics\Homogeneity;
 use Rubix\ML\Clusterers\FuzzyCMeans;
@@ -462,16 +457,16 @@ class UserController extends Controller
             $order->discount = $totDiscount;
             $order->save();
 
-            $noti = new Notification();
-            $noti->user_id = auth()->guard()->user()->id;
-            $noti->title = 'New Order';
-            $noti->order_id = $order->id;
-            $noti->body = 'you have new order from user: '.auth()->guard()->user()->id;
-            if($noti->save()){
-
-                $url = route('admin.order.items',$order->id);
-               // $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
-            }
+//            $noti = new Notification();
+//            $noti->user_id = auth()->guard()->user()->id;
+//            $noti->title = 'New Order';
+//            $noti->order_id = $order->id;
+//            $noti->body = 'you have new order from user: '.auth()->guard()->user()->id;
+//            if($noti->save()){
+//
+//                $url = route('admin.order.items',$order->id);
+//               // $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
+//            }
 
         }
         return redirect()->route('products');

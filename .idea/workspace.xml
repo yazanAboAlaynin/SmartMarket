@@ -19,22 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="">
+    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="discount">
+      <change beforePath="$PROJECT_DIR$/.idea/SmartMarket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartMarket.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Admin.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_15_161225_create_admins_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_03_15_161225_create_admins_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/addAdmin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/addAdmin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/profileEdit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/profileEdit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Notification.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_11_111356_create_notifications_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/firebase-messaging-sw.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/firebase.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/yazzaan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/yazzaan.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +40,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable path="composer" />
     </execution>
@@ -52,40 +51,6 @@
         <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>-1</find>
-      <find>-</find>
-      <find>width</find>
-      <find>main</find>
-      <find>content</find>
-      <find>margin</find>
-      <find>hover</find>
-      <find>showProduct</find>
-      <find>count</find>
-      <find>data</find>
-      <find>show-order</find>
-      <find>rev</find>
-      <find>cate</find>
-      <find>image</find>
-      <find>orders</find>
-      <find>review</find>
-      <find>img</find>
-      <find>view</find>
-      <find>with</find>
-      <find>case</find>
-      <find>getArr</find>
-      <find>showProducts</find>
-      <find>canvas</find>
-      <find>arc</find>
-      <find>profile</find>
-      <find>order</find>
-      <find>reador</find>
-      <find>orderite</find>
-      <find>home</find>
-      <find>recommend</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -213,7 +178,6 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
-      <path value="$PROJECT_DIR$/vendor/apility/laravel-fcm" />
       <path value="$PROJECT_DIR$/vendor/rubix/tensor" />
       <path value="$PROJECT_DIR$/vendor/rubix/ml" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
@@ -222,14 +186,15 @@
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1346" />
-    <option name="height" value="660" />
-  </component>
+  <component name="ProjectId" id="1gpBzqdddB9OAMhRQphXfR3106d" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../test/SmartMarket" />
     <property name="nodejs_interpreter_path" value="$PROJECT_DIR$/../../../Program Files/nodejs/node" />
@@ -389,13 +354,7 @@
       <workItem from="1597511244432" duration="720000" />
       <workItem from="1597944511895" duration="18000" />
       <workItem from="1598107270652" duration="9561000" />
-    </task>
-    <task id="LOCAL-00075" summary="latest">
-      <created>1588862907173</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1588862907175</updated>
+      <workItem from="1598801927016" duration="1533000" />
     </task>
     <task id="LOCAL-00076" summary="latest">
       <created>1588877927866</created>
@@ -733,13 +692,29 @@
       <option name="project" value="LOCAL" />
       <updated>1598113552712</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="discount">
+      <created>1598730067522</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1598730067522</updated>
+    </task>
+    <option name="localTasksCounter" value="125" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
@@ -750,5 +725,15 @@
     <MESSAGE value="new" />
     <MESSAGE value="discount" />
     <option name="LAST_COMMIT_MESSAGE" value="discount" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598803509385">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598803509385" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1598730069236">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1598730069236" />
   </component>
 </project>
