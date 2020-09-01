@@ -68,12 +68,14 @@
 
 </section>
 @if(sizeof($properties) > 0)
+
 <section class="product-description">
     <div class="container">
        <h6>Properties</h6>
         @foreach($properties as $property)
             <h3><span><b>{{$property->name}}:</b> {{$property->value}}</span></h3>
-            @if(sizeof($otherProp[$property->name]) > 1)
+            @if(sizeof($otherProp[$property->name][0]) > 0)
+
             <div class="row mb-2 ml-1">
                 <p>
                     <b style="font-size:15px;">other {{ $property->name }} : &nbsp; &nbsp;</b>
@@ -106,6 +108,7 @@
 </section>
     <br/><br/><br/>
 @endif
+
 <!--     Description       -->
 <section class="product-description">
     <div class="container">
