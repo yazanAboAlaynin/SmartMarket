@@ -39,7 +39,7 @@ class AdminController extends Controller
         return view('admin.dashboard', [
             'users_count' => User::all()->count(),
             'vendors_count' => vendor::where('approved','=',1)->count(),
-            'orders_count' => Order::all()->count(),
+            'orders_count' => Order::where('done','=',0)->count(),
             'vendorsReq_count' => vendor::where('approved','=',0)->count()
         ]);
     }

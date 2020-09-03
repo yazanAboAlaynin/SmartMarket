@@ -39,7 +39,14 @@
     <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-messaging.js"></script>
     <link rel="manifest" href="{{ asset('manifest.json') }}" >
 
+
 </head>
+
+<style>
+    body {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+    }
+</style>
 
 <body>
 <div id="app">
@@ -57,13 +64,13 @@
                     <a class="ap" href="{{ Route('admin.addAdmin') }}"><i class="fa fa-user-plus" style="font-size:32px"></i>
                         <span style="margin-left: 30px;">Add New Admin</span></a>
 
-                    <a class="ap" href="{{ Route('admin.admins') }}"><i class="fa fa-users" style="font-size:32px"></i>
+                    <a class="ap" href="{{ Route('admin.admins') }}"><i class="fa fa-user-secret" style="font-size:32px"></i>
                         <span style="margin-left: 30px;">Admins</span></a>
 
                     <a href="{{ Route('admin.products') }}"><i class="fa fa-product-hunt" style="font-size:32px"></i>
                         <span style="margin-left: 30px">Products</span></a>
 
-                    <a href="{{ Route('admin.vendors') }}"><i class="fa fa-signal" style="font-size:24px"></i>
+                    <a href="{{ Route('admin.vendors') }}"><i class="fa fa-line-chart" style="font-size:24px"></i>
                         <span style="margin-left: 30px">Vendors</span></a>
 
                     <a href="{{ Route('admin.pendingVendors') }}"><i class="fa fa-briefcase" style="font-size:24px"></i>
