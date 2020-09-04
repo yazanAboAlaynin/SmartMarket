@@ -47,47 +47,82 @@ class UserController extends Controller
     public function index()
     {
 
-        return view('user.home');
+        return view('user.products');
     }
 
-    public function getArray()
+    public function recommendation()
     {
-        $users = User::select('id','social_status','gender','scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
-        foreach ($users as $index=>$user){
+        $u = auth()->user();
+        if($u->orders()->count() == 0) {
 
-            if($user["gender"] == "Male"){
-                $user["gender"] = 1;
-            }else{
-                $user["gender"] = 2;
-            }
+            $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
+            foreach ($users as $index => $user) {
 
-            switch ($user["social_status"]){
-                case "Single": $user["social_status"] = 1; break;
-                case "Married": $user["social_status"] = 2; break;
-                case "Widowed": $user["social_status"] = 3; break;
-                case "separated": $user["social_status"] = 4; break;
-                case "Divorced": $user["social_status"] = 5; break;
-            }
+                if ($user["gender"] == "Male") {
+                    $user["gender"] = 1;
+                } else {
+                    $user["gender"] = 2;
+                }
 
-            switch ($user["scientific_level"]){
-                case "Not Educated": $user["scientific_level"] = 1; break;
-                case "High school diploma or equivalent": $user["scientific_level"] = 2; break;
-                case "Associate degree": $user["scientific_level"] = 3; break;
-                case "Bachelor's degree": $user["scientific_level"] = 4; break;
-                case "Master's degree": $user["scientific_level"] = 5; break;
-                case "Doctoral degree": $user["scientific_level"] = 6; break;
-            }
+                switch ($user["social_status"]) {
+                    case "Single":
+                        $user["social_status"] = 1;
+                        break;
+                    case "Married":
+                        $user["social_status"] = 2;
+                        break;
+                    case "Widowed":
+                        $user["social_status"] = 3;
+                        break;
+                    case "separated":
+                        $user["social_status"] = 4;
+                        break;
+                    case "Divorced":
+                        $user["social_status"] = 5;
+                        break;
+                }
 
-            switch ($user["age"]){
-                case ($user["age"] < 18 ): $user["age"] = 1; break;
-                case ($user["age"] >= 18 && $user["age"]<25): $user["age"] = 2; break;
-                case ($user["age"] >= 25 && $user["age"]<35): $user["age"] = 3; break;
-                case ($user["age"] >= 35 && $user["age"]<50): $user["age"] = 4; break;
-                case ($user["age"] >= 50 ): $user["age"] = 5; break;
-            }
+                switch ($user["scientific_level"]) {
+                    case "Not Educated":
+                        $user["scientific_level"] = 1;
+                        break;
+                    case "High school diploma or equivalent":
+                        $user["scientific_level"] = 2;
+                        break;
+                    case "Associate degree":
+                        $user["scientific_level"] = 3;
+                        break;
+                    case "Bachelor's degree":
+                        $user["scientific_level"] = 4;
+                        break;
+                    case "Master's degree":
+                        $user["scientific_level"] = 5;
+                        break;
+                    case "Doctoral degree":
+                        $user["scientific_level"] = 6;
+                        break;
+                }
 
-            $products = Product::all();
-            $orders = Order::select('id')->where('user_id',$user->id)->get();
+                switch ($user["age"]) {
+                    case ($user["age"] < 18):
+                        $user["age"] = 1;
+                        break;
+                    case ($user["age"] >= 18 && $user["age"] < 25):
+                        $user["age"] = 2;
+                        break;
+                    case ($user["age"] >= 25 && $user["age"] < 35):
+                        $user["age"] = 3;
+                        break;
+                    case ($user["age"] >= 35 && $user["age"] < 50):
+                        $user["age"] = 4;
+                        break;
+                    case ($user["age"] >= 50):
+                        $user["age"] = 5;
+                        break;
+                }
+
+                $products = Product::all();
+                $orders = Order::select('id')->where('user_id', $user->id)->get();
 
 //            foreach($products as $product){
 //                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
@@ -96,97 +131,263 @@ class UserController extends Controller
 //
 //            }
 
-        }
-        //dd($users->toArray());
-        $string_data = \GuzzleHttp\json_encode($users->toArray());
-        file_put_contents("yazzaan.txt", $string_data);
-        $arr1 = json_decode($string_data,true);
+            }
+            //dd($users->toArray());
+            $string_data = \GuzzleHttp\json_encode($users->toArray());
+            file_put_contents("yazzaan.txt", $string_data);
+            $arr1 = json_decode($string_data, true);
 
-        $arr = [];
-        $label = [];
+            $arr = [];
+            $label = [];
 
-        foreach ($arr1 as $key=>$val){
-            $a = [];
-            foreach ($val as $k=>$v){
-                if(is_numeric($v)&&$k!="id")
-                    array_push($a,$v);
-                else if(!is_numeric($v)){
-                    $v = 2;
-                    array_push($a,$v);
+            foreach ($arr1 as $key => $val) {
+                $a = [];
+                foreach ($val as $k => $v) {
+                    if (is_numeric($v) && $k != "id")
+                        array_push($a, $v);
+                    else if (!is_numeric($v)) {
+                        $v = 2;
+                        array_push($a, $v);
+                    }
+                }
+                array_push($label, $val["id"]);
+                array_push($arr, $a);
+                //$arr[$val["id"]] = new Blob($a, 1.0);
+            }
+
+
+            $dataset = new Labeled($arr, $label);
+
+            //[$training, $testing] = $dataset->stratifiedSplit(0.8);
+
+            $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
+
+            //$estimator->setLogger(new Screen('colors'));
+
+            //echo 'Training ...' . PHP_EOL;
+
+            $estimator->train($dataset);
+
+            $losses = $estimator->steps();
+
+            $writer = Writer::createFromPath('progress.csv', 'w+');
+
+            $writer->insertOne(['loss']);
+            $writer->insertAll(array_transpose([$losses]));
+
+            // echo 'Progress saved to progress.csv' . PHP_EOL;
+
+            //echo 'Making predictions ...' . PHP_EOL;
+
+            $predictions = $estimator->predict($dataset);
+
+            $report = new ContingencyTable();
+
+            $results = $report->generate($predictions, $dataset->labels());
+
+            file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
+
+            // echo 'Report saved to report.json' . PHP_EOL;
+
+            $metric = new Homogeneity();
+
+            $score = $metric->score($predictions, $dataset->labels());
+
+            //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
+
+            $id = auth()->user()->id;
+            $cluster = 0;
+            foreach ($results as $k => $res) {
+                foreach ($res as $key => $val) {
+                    if ($key == $id && $val == 1) {
+                        $cluster = $k;
+                    }
                 }
             }
-            array_push($label,$val["id"]);
-            array_push($arr,$a);
-            //$arr[$val["id"]] = new Blob($a, 1.0);
-        }
+            $ids = [];
+            foreach ($results[$cluster] as $key => $val) {
+                if ($val == 1) {
+                    array_push($ids, $key);
+                    // echo "<br> $key";
+                } else {
 
-
-        $dataset = new Labeled($arr,$label);
-
-        //[$training, $testing] = $dataset->stratifiedSplit(0.8);
-
-        $estimator = new FuzzyCMeans(5, 1.1, 200, 1, new Euclidean(), new Random());
-
-        //$estimator->setLogger(new Screen('colors'));
-
-        //echo 'Training ...' . PHP_EOL;
-
-        $estimator->train($dataset);
-
-        $losses = $estimator->steps();
-
-        $writer = Writer::createFromPath('progress.csv', 'w+');
-
-        $writer->insertOne(['loss']);
-        $writer->insertAll(array_transpose([$losses]));
-
-       // echo 'Progress saved to progress.csv' . PHP_EOL;
-
-        //echo 'Making predictions ...' . PHP_EOL;
-
-        $predictions = $estimator->predict($dataset);
-
-        $report = new ContingencyTable();
-
-        $results = $report->generate($predictions, $dataset->labels());
-
-        file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
-
-       // echo 'Report saved to report.json' . PHP_EOL;
-
-        $metric = new Homogeneity();
-
-        $score = $metric->score($predictions, $dataset->labels());
-
-        //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
-
-        $id = auth()->user()->id;
-        $cluster = 0;
-        foreach ($results as $k=>$res){
-            foreach ($res as $key => $val){
-                if($key == $id && $val == 1){
-                   $cluster = $k;
                 }
             }
+
+            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
+            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
+            $products = Product::whereIn('id', $ordersItems)->get();
+            $type = '';
+            $choice = 'Recommendation';
+            return view('user.showProducts', compact('type', 'products', 'choice'));
         }
-        $ids = [];
-        foreach ($results[$cluster] as $key => $val){
-            if( $val == 1){
-                array_push($ids,$key);
-               // echo "<br> $key";
-            }
-            else{
+        else{
+            $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
+            foreach ($users as $index => $user) {
+
+                if ($user["gender"] == "Male") {
+                    $user["gender"] = 1;
+                } else {
+                    $user["gender"] = 2;
+                }
+
+                switch ($user["social_status"]) {
+                    case "Single":
+                        $user["social_status"] = 1;
+                        break;
+                    case "Married":
+                        $user["social_status"] = 2;
+                        break;
+                    case "Widowed":
+                        $user["social_status"] = 3;
+                        break;
+                    case "separated":
+                        $user["social_status"] = 4;
+                        break;
+                    case "Divorced":
+                        $user["social_status"] = 5;
+                        break;
+                }
+
+                switch ($user["scientific_level"]) {
+                    case "Not Educated":
+                        $user["scientific_level"] = 1;
+                        break;
+                    case "High school diploma or equivalent":
+                        $user["scientific_level"] = 2;
+                        break;
+                    case "Associate degree":
+                        $user["scientific_level"] = 3;
+                        break;
+                    case "Bachelor's degree":
+                        $user["scientific_level"] = 4;
+                        break;
+                    case "Master's degree":
+                        $user["scientific_level"] = 5;
+                        break;
+                    case "Doctoral degree":
+                        $user["scientific_level"] = 6;
+                        break;
+                }
+
+                switch ($user["age"]) {
+                    case ($user["age"] < 18):
+                        $user["age"] = 1;
+                        break;
+                    case ($user["age"] >= 18 && $user["age"] < 25):
+                        $user["age"] = 2;
+                        break;
+                    case ($user["age"] >= 25 && $user["age"] < 35):
+                        $user["age"] = 3;
+                        break;
+                    case ($user["age"] >= 35 && $user["age"] < 50):
+                        $user["age"] = 4;
+                        break;
+                    case ($user["age"] >= 50):
+                        $user["age"] = 5;
+                        break;
+                }
+
+                $products = Product::all();
+                $orders = Order::select('id')->where('user_id', $user->id)->get();
+
+            foreach($products as $product){
+                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
+                $x = "p".$product->id;
+                $user[$x] = $count;
 
             }
+
+            }
+            //dd($users->toArray());
+            $string_data = \GuzzleHttp\json_encode($users->toArray());
+            file_put_contents("yazzaan.txt", $string_data);
+            $arr1 = json_decode($string_data, true);
+
+            $arr = [];
+            $label = [];
+
+            foreach ($arr1 as $key => $val) {
+                $a = [];
+                foreach ($val as $k => $v) {
+                    if (is_numeric($v) && $k != "id")
+                        array_push($a, $v);
+                    else if (!is_numeric($v)) {
+                        $v = 2;
+                        array_push($a, $v);
+                    }
+                }
+                array_push($label, $val["id"]);
+                array_push($arr, $a);
+                //$arr[$val["id"]] = new Blob($a, 1.0);
+            }
+
+
+            $dataset = new Labeled($arr, $label);
+
+            //[$training, $testing] = $dataset->stratifiedSplit(0.8);
+
+            $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
+
+            //$estimator->setLogger(new Screen('colors'));
+
+            //echo 'Training ...' . PHP_EOL;
+
+            $estimator->train($dataset);
+
+            $losses = $estimator->steps();
+
+            $writer = Writer::createFromPath('progress.csv', 'w+');
+
+            $writer->insertOne(['loss']);
+            $writer->insertAll(array_transpose([$losses]));
+
+            // echo 'Progress saved to progress.csv' . PHP_EOL;
+
+            //echo 'Making predictions ...' . PHP_EOL;
+
+            $predictions = $estimator->predict($dataset);
+
+            $report = new ContingencyTable();
+
+            $results = $report->generate($predictions, $dataset->labels());
+
+            file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
+
+            // echo 'Report saved to report.json' . PHP_EOL;
+
+            $metric = new Homogeneity();
+
+            $score = $metric->score($predictions, $dataset->labels());
+
+            //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
+
+            $id = auth()->user()->id;
+            $cluster = 0;
+            foreach ($results as $k => $res) {
+                foreach ($res as $key => $val) {
+                    if ($key == $id && $val == 1) {
+                        $cluster = $k;
+                    }
+                }
+            }
+            $ids = [];
+            foreach ($results[$cluster] as $key => $val) {
+                if ($val == 1) {
+                    array_push($ids, $key);
+                    // echo "<br> $key";
+                } else {
+
+                }
+            }
+
+            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
+            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
+            $products = Product::whereIn('id', $ordersItems)->get();
+            $type = '';
+            $choice = 'Recommendation';
+            return view('user.showProducts', compact('type', 'products', 'choice'));
         }
-
-        $orders = Order::select('id')->whereIn('user_id',$ids)->get();
-        $ordersItems = Order_item::select('product_id')->whereIn('order_id',$orders)->get();
-        $products = Product::whereIn('id',$ordersItems)->get();
-        $type = '';
-        $choice = 'Recommendation';
-        return view('user.showProducts',compact('type','products','choice'));
-
     }
 
     public function profile(){

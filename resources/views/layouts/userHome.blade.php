@@ -141,7 +141,7 @@
                                                                           style="font-size:20px;color:orange"></i> Shopping</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('recommend') }}"><i class="fa"
+                        <a class="nav-link" href="{{ route('recommendation') }}"><i class="fa"
                                                                           style="font-size:20px;color:orange"></i> Get Recommendation</a>
                     </li>
                     @guest
