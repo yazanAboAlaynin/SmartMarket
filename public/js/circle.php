@@ -1,5 +1,5 @@
 
-
+<script>
 var myTotal = 0;
 var myColor = ['#39CCCC', '#001f3f', '#C57042','#95D861','#CC8A3E','#292A24','#767867','#848298','#166BBB','#7A3D2E','#D76932','#999FAF','#8CB3D3','#D5B234','#A54B4B','#7B817F','#6ED136']; // Colors of each slice
 
@@ -41,7 +41,7 @@ function draw() {
 
         tt.type = "color"; // make the type of input color
         // put the elements inside each other
-        atag.href = "{{ route('vendor.product') }}?id=" + val[1][0];
+        atag.href = "<?= route('vendor.product')  ?>?id=" + val[1][0];
         x.appendChild(t);
 
         x.appendChild(tt);
@@ -163,11 +163,11 @@ var colors = ['#39CCCC', '#001f3f', '#C57042','#95D861','#D5B234','#292A24','#76
 function drawBar() {
 
     var width = 40; //bar width
-    var X = 10; // first bar position
+    var X = 60; // first bar position
     // looping on the values to draw each rectangle
-    for (var i =0; i<Math.min(10,values.length); i++) {
+    for (var i =0; i<Math.min(5,values.length); i++) {
         barCtx.fillStyle = colors[i%colors.length]; // choose color for rectangle
-        var h = values[i][1]*30; // get the height of rectangle
+        var h = Math.min(250,values[i][1]*30); // get the height of rectangle
         // draw the rectangle (position on x,position on y,width of rectangle,height of rectangle)
         barCtx.fillRect(X,barCan.height - h,width,h);
 
@@ -195,12 +195,12 @@ barCan.onmousemove = function (e) {
     barCtx.clearRect(0, 0, barCan.width, barCan.height);
 
     var width = 40; //bar width
-    var X = 10; // first bar position
+    var X = 60; // first bar position
 
     //start drawing again
-    for (var i =0; i<Math.min(10,values.length); i++) {
+    for (var i =0; i<Math.min(5,values.length); i++) {
 
-        var h = values[i][1]*30;
+        var h = Math.min(250,values[i][1]*30);
         barCtx.beginPath();
         barCtx.rect(X,barCan.height - h,width,h);
 
@@ -327,3 +327,4 @@ function saveit() {
 drawGrids();
 drawAxis();
 drawChart();
+</script>

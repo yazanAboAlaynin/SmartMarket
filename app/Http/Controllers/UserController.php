@@ -539,9 +539,10 @@ class UserController extends Controller
                 return view('user.showProducts',compact('type','products','choice'));
 
             case 'onRate':
-                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','>=',$choice)->groupBy('product_id')->get();
+                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','<=',$choice)->groupBy('product_id')->get();
+                $t = $t->pluck('product_id');
                 $products = Product::whereIN('id',$t)->get();
-                $type ="".$choice." stars and up";
+                $type ="".$choice." stars";
                 return view('user.showProducts',compact('type','products','choice'));
         }
         return redirect('product');

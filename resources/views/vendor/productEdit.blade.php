@@ -5,11 +5,11 @@
 <div class="container pt-2">
    <div class="row justify-content-center ">
        <div class="col-md-8">
-           <div class="card"> 
+           <div class="card">
                    <div class="card-header">
                        <h1>Edit Product</h1>
                    </div>
-                <div class="card-body">  
+                <div class="card-body">
 
                     <form method="POST" action="{{ route('vendor.product.edit',$product->id) }}">
                         @csrf
@@ -77,9 +77,10 @@
                         <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
 
                             <label for="category_id" class="col-md-4 control-label">category</label>
-                            <select class="form-control" name="category_id" id="category_id" required autofocus>
+                            <select class="form-control" name="category_id"  id="category_id" required autofocus>
                                 @foreach($category as $c)
-                                    <option value = "{{ $c->id }}">{{ $c->name }}</option>
+
+                                    <option value = "{{ $c->id }}" {{ $c->id  === $product->category_id ?'selected' : ''}}>{{ $c->name }}</option>
                                 @endforeach
                             </select>
 
@@ -97,7 +98,7 @@
                             <label for="brand_id" class="col-md-4 control-label">brand</label>
                             <select class="form-control" name="brand_id" id = "brand_id" >
                                 @foreach($brands as $b)
-                                    <option value = "{{ $b->id }}">{{ $b->name }}</option>
+                                    <option value = "{{ $b->id }}" {{ $b->id  === $product->brand_id ?'selected' : ''}}>{{ $b->name }}</option>
                                 @endforeach
                             </select>
 

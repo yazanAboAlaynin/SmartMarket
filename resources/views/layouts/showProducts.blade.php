@@ -198,7 +198,7 @@
                         <ul>
                             @foreach($sellers as $seller)
 
-                                <li><a href="{{ Route('search',['seller',$seller->id]) }}">{{$seller->name}} </a></li>
+                                <li><a href="{{ Route('search',['seller',$seller->id]) }}">{{$seller['name']}} </a></li>
 
                             @endforeach
                         </ul>

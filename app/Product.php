@@ -31,4 +31,8 @@ class Product extends Model
     public function properties(){
         return $this->hasMany(Property::class);
     }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
 }

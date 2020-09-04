@@ -8,7 +8,7 @@
                     <div class="card-header text-center"><h2>Top 5 Products</h2></div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a id="download" href="#" onclick="saveit()" download>download</a>
+                            <a id="download2" href="#" onclick="saveit2()" download>download</a>
                         </div>
 
                     </div>
@@ -16,7 +16,7 @@
                         <div class="col-md-12 text-center">
                             <canvas id="bar" width="500" height="300" style="border:1px solid #e1e8d1; background-color: #e1e8d1">
                             </canvas>
-                            <img id="image" style="display: none;"/>
+                            <img id="image2" style="display: none;"/>
                         </div>
 
                     </div>
@@ -25,26 +25,25 @@
 
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center"><h2>Top 5 Products</h2></div>
+                    <div class="card-header text-center"><h2>Top 5 Categories</h2></div>
                     <div class="row">
                         <div class="col-md-12">
-                            <a id="download" href="#" onclick="saveit()" download>download</a>
+                            <a id="download3" href="#" onclick="saveit3()" download>download</a>
                         </div>
 
                     </div>
                     <div class="row ">
                         <div class="col-md-12 text-center">
-                            <div class="col-md-12" style="overflow: scroll">
-                                <canvas id="coordinate" width="1000" height="300" style="border:1px solid black">
-                                </canvas>
-                                <img id="image" style="display: none;"/>
-                            </div>
-
+                            <canvas id="bar2" width="500" height="300" style="border:1px solid #e1e8d1; background-color: #e1e8d1">
+                            </canvas>
+                            <img id="image3" style="display: none;"/>
                         </div>
 
                     </div>
                 </div>
             </div>
+
+
 
         </div>
     </div>
@@ -57,7 +56,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a id="download" href="#" onclick="saveit()" download>download</a>
+                            <a id="download" href="#" onclick="saveit1()" download>download</a>
                         </div>
                     </div>
                     <div class="row ">
@@ -84,11 +83,14 @@
         var barCan = document.getElementById("bar");
         var barCtx = barCan.getContext("2d");
 
-        var Ccanvas = document.getElementById("coordinate");
-        var Cctx = Ccanvas.getContext("2d");
+        var barCan2 = document.getElementById("bar2");
+        var barCtx2 = barCan2.getContext("2d");
+
+
         var color = "#042b76";
         var lastend = 0;
         var values = {!! $all !!};
+        var values2 = {!! $cat !!};
         var entries = Object.entries(values);
 
     </script>

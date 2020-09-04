@@ -35,13 +35,22 @@
                     </div>
                 </div>
                 <div class="product-bottom text-center">
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star-half-o"></i>
+{{ round($product->ratings()->avg('rate')) }}
+                    @for($i=0;$i<round($product->ratings()->avg('rate'));$i++)
+                        <i class="fa fa-star"></i>
+                    @endfor
+                    @for($i=round($product->ratings()->avg('rate'));$i<5;$i++)
+                        <i class="fa fa-star-o"></i>
+                    @endfor
                     <h3>{{ $product->name }}</h3>
-                    <h5>{{ $product->price }}</h5>
+                    <h5>Price: {{ $product->price }}</h5>
+                    @if($product->discount != '0')
+                        <?php
+                        $priceAfterDiscount = ( $product->price * $product->discount )/100 ;
+                        $priceAfterDiscount = ($product->price) - $priceAfterDiscount ;
+                        ?>
+                        <p class="price-discount"><b>Price after Discount : </b> {{ $priceAfterDiscount}} S.P</p>
+                        @endif
                 </div>
             </div>
             @endforeach

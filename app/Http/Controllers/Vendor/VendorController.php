@@ -38,6 +38,8 @@ class VendorController extends Controller
     public function index()
     {
        $data = Order_item::select(DB::raw('product_id, sum(quantity) as quantity'))->groupBy('product_id')->orderBy('quantity',"desc")->get()->toArray();
+       $data2 = Category::all();
+
        //dd($all);
         $all = [];
         for ($i=0;$i<sizeof($data);$i++){
@@ -49,11 +51,27 @@ class VendorController extends Controller
        // dd($all);
         $all = json_encode($all);
 
+        $all2 = [];
+        $cat = [];
+        for ($i=0;$i<sizeof($data2);$i++){
+            $x = [];
+            array_push($x,$data2[$i]['name']);
+            array_push($x,$data2[$i]->products()->count());
+            array_push($all2,$x);
+        }
+        // dd($all);
+        sort($all2);
+        for ($i=0;$i<min(5,sizeof($all2));$i++)
+            array_push($cat,$all2[$i]);
+
+        $cat = json_encode($cat);
+
         return view('vendor.home', [
             'products_count' => Product::all()->count(),
             'orders_count' => Order::all()->count(),
             'orders_item_count' => Order_item::all()->count(),
-            'all' => $all
+            'all' => $all,
+            'cat' => $cat
         ]);
     }
 
@@ -108,9 +126,9 @@ class VendorController extends Controller
             return DataTables::of($items)
                 ->addColumn('action', function ($items) {
 
-                    $button = '<button type="button" name="edit" id="' . $items->id . '" 
+                    $button = '<button type="button" name="edit" id="' . $items->id . '"
                     class="edit btn btn-primary btn-sm" onclick=update(' . $items->id . ')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '"
                     class="delete btn btn-danger btn-sm" onclick=del(' . $items->id . ')>Delete</button>';
 
                     return $button;
@@ -269,9 +287,9 @@ class VendorController extends Controller
             $items = Product::where('discount','!=','0')->get();
             return DataTables::of($items)
                 ->addColumn('action', function ($items) {
-                    $button = '<button type="button" name="edit" id="' . $items->id . '" 
+                    $button = '<button type="button" name="edit" id="' . $items->id . '"
                     class="edit btn btn-primary btn-sm" onclick=update(' . $items->id . ')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '" 
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="' . $items->id . '"
                     class="delete btn btn-danger btn-sm" onclick=del(' . $items->id . ')>Delete</button>';
 
                     return $button;

@@ -143,7 +143,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-8">
                                         <input id="address" type="text"
-                                               class="middle form-control @error('mobile') is-invalid @enderror"
+                                               class="middle form-control @error('address') is-invalid @enderror"
                                                name="address" value="{{ old('address') }}" required
                                                autocomplete="address" placeholder="Address">
 
@@ -158,7 +158,7 @@
                                 <div class="form-group row">
                                     <div class="col-md-8">
                                         <input id="career" type="text"
-                                               class="middle form-control @error('mobile') is-invalid @enderror"
+                                               class="middle form-control @error('career') is-invalid @enderror"
                                                name="career" value="{{ old('career') }}" required autocomplete="career"
                                                placeholder="Career">
 
@@ -178,11 +178,11 @@
 
                                     <div class="col-md-5">
                                     <select class="form-control @error('social_status') is-invalid @enderror" name="social_status" id="social_status" required autofocus>
-                                        <option value="Married">Married</option>
-                                        <option value="Widowed">Widowed</option>
-                                        <option value="Separated">Separated </option>
-                                        <option value="Divorced">Divorced </option>
-                                        <option value="Single">Single</option>
+                                        <option value="Married" {{ "Married"  === old('social_status') ?'selected' : ''}}>Married</option>
+                                        <option value="Widowed" {{ "Widowed"  === old('social_status') ?'selected' : ''}}>Widowed</option>
+                                        <option value="Separated" {{ "Separated"  === old('social_status') ?'selected' : ''}}>Separated </option>
+                                        <option value="Divorced" {{ "Divorced"  === old('social_status') ?'selected' : ''}}>Divorced </option>
+                                        <option value="Single" {{ "Single"  === old('social_status') ?'selected' : ''}}>Single</option>
                                     </select>
                                     </div>
                                 </div>
@@ -195,8 +195,8 @@
 
                                     <div class="col-md-5">
                                         <select class="form-control @error('gender') is-invalid @enderror" name="gender" id="gender" required autofocus>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
+                                            <option value="Male" {{ "Male"  === old('gender') ?'selected' : ''}}>Male</option>
+                                            <option value="Female" {{ "Female"  === old('gender') ?'selected' : ''}}>Female</option>
                                         </select>
                                     </div>
                                 </div>
@@ -209,12 +209,12 @@
 
                                     <div class="col-md-5">
                                         <select class="form-control @error('scientific_level') is-invalid @enderror" name="scientific_level" id="scientific_level" required autofocus>
-                                            <option value="Not Educated">Not Educated</option>
-                                            <option value="High school diploma or equivalent">High school diploma or equivalent</option>
-                                            <option value="Associate degree">Associate degree</option>
-                                            <option value="Bachelor's degree">Bachelor's degree</option>
-                                            <option value="Master's degree	">Master's degree </option>
-                                            <option value="Doctoral degree">Doctoral degree </option>
+                                            <option value="Not Educated" {{ "Not Educated"  === old('scientific_level') ?'selected' : ''}}>Not Educated</option>
+                                            <option value="High school diploma or equivalent" {{ "High school diploma or equivalent"  === old('scientific_level') ?'selected' : ''}}>High school diploma or equivalent</option>
+                                            <option value="Associate degree" {{ "Associate degree"  === old('scientific_level') ?'selected' : ''}}>Associate degree</option>
+                                            <option value="Bachelor's degree" {{ "Bachelor's degree"  === old('scientific_level') ?'selected' : ''}}>Bachelor's degree</option>
+                                            <option value="Master's degree	" {{ "Master's degree"  === old('scientific_level') ?'selected' : ''}}>Master's degree </option>
+                                            <option value="Doctoral degree" {{ "Doctoral degree"  === old('scientific_level') ?'selected' : ''}}>Doctoral degree </option>
                                         </select>
                                     </div>
                                 </div>
