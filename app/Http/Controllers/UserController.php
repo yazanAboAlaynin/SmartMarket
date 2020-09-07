@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use League\Csv\Writer;
+use Rubix\ML\Persisters\Filesystem;
 use function Rubix\ML\array_transpose;
 use Rubix\ML\CrossValidation\Reports\ContingencyTable;
 use Rubix\ML\CrossValidation\Metrics\Homogeneity;
@@ -334,6 +335,12 @@ class UserController extends Controller
             //echo 'Training ...' . PHP_EOL;
 
             $estimator->train($dataset);
+
+            $persister = new Filesystem('trained.model');
+            $persister->save($estimator);
+
+            $persister = new Filesystem('example.model');
+            $estimator = $persister->load();
 
             $losses = $estimator->steps();
 
