@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="proprities">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.rnd" beforeDir="false" afterPath="$PROJECT_DIR$/.rnd" afterDir="false" />
+    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="test">
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,13 +355,7 @@
       <workItem from="1599405958322" duration="47000" />
       <workItem from="1599406489186" duration="70000" />
       <workItem from="1599407680951" duration="14000" />
-    </task>
-    <task id="LOCAL-00081" summary="latest">
-      <created>1588968010192</created>
-      <option name="number" value="00081" />
-      <option name="presentableId" value="LOCAL-00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1588968010192</updated>
+      <workItem from="1599468631041" duration="325000" />
     </task>
     <task id="LOCAL-00082" summary="latest">
       <created>1589025112340</created>
@@ -700,7 +693,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599203890364</updated>
     </task>
-    <option name="localTasksCounter" value="130" />
+    <task id="LOCAL-00130" summary="test">
+      <created>1599468891948</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1599468891950</updated>
+    </task>
+    <option name="localTasksCounter" value="131" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,7 +728,8 @@
     <MESSAGE value="erase noti" />
     <MESSAGE value="erase notif" />
     <MESSAGE value="proprities" />
-    <option name="LAST_COMMIT_MESSAGE" value="proprities" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598803509385">

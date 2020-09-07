@@ -339,7 +339,7 @@ class UserController extends Controller
             $persister = new Filesystem('trained.model');
             $persister->save($estimator);
 
-            $persister = new Filesystem('example.model');
+            $persister = new Filesystem('trained.model');
             $estimator = $persister->load();
 
             $losses = $estimator->steps();
