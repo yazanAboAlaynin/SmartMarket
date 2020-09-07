@@ -53,293 +53,99 @@ class UserController extends Controller
 
     public function recommendation()
     {
-        $u = auth()->user();
-        if($u->orders()->count() == 0) {
-
-            $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
-            foreach ($users as $index => $user) {
-
-                if ($user["gender"] == "Male") {
-                    $user["gender"] = 1;
-                } else {
-                    $user["gender"] = 2;
-                }
-
-                switch ($user["social_status"]) {
-                    case "Single":
-                        $user["social_status"] = 1;
-                        break;
-                    case "Married":
-                        $user["social_status"] = 2;
-                        break;
-                    case "Widowed":
-                        $user["social_status"] = 3;
-                        break;
-                    case "separated":
-                        $user["social_status"] = 4;
-                        break;
-                    case "Divorced":
-                        $user["social_status"] = 5;
-                        break;
-                }
-
-                switch ($user["scientific_level"]) {
-                    case "Not Educated":
-                        $user["scientific_level"] = 1;
-                        break;
-                    case "High school diploma or equivalent":
-                        $user["scientific_level"] = 2;
-                        break;
-                    case "Associate degree":
-                        $user["scientific_level"] = 3;
-                        break;
-                    case "Bachelor's degree":
-                        $user["scientific_level"] = 4;
-                        break;
-                    case "Master's degree":
-                        $user["scientific_level"] = 5;
-                        break;
-                    case "Doctoral degree":
-                        $user["scientific_level"] = 6;
-                        break;
-                }
-
-                switch ($user["age"]) {
-                    case ($user["age"] < 18):
-                        $user["age"] = 1;
-                        break;
-                    case ($user["age"] >= 18 && $user["age"] < 25):
-                        $user["age"] = 2;
-                        break;
-                    case ($user["age"] >= 25 && $user["age"] < 35):
-                        $user["age"] = 3;
-                        break;
-                    case ($user["age"] >= 35 && $user["age"] < 50):
-                        $user["age"] = 4;
-                        break;
-                    case ($user["age"] >= 50):
-                        $user["age"] = 5;
-                        break;
-                }
-
-                $products = Product::all();
-                $orders = Order::select('id')->where('user_id', $user->id)->get();
-
-//            foreach($products as $product){
-//                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
-//                $x = "p".$product->id;
-//                $user[$x] = $count;
-//
-//            }
-
-            }
-            //dd($users->toArray());
-            $string_data = \GuzzleHttp\json_encode($users->toArray());
-            file_put_contents("yazzaan.txt", $string_data);
-            $arr1 = json_decode($string_data, true);
-
-            $arr = [];
-            $label = [];
-
-            foreach ($arr1 as $key => $val) {
-                $a = [];
-                foreach ($val as $k => $v) {
-                    if (is_numeric($v) && $k != "id")
-                        array_push($a, $v);
-                    else if (!is_numeric($v)) {
-                        $v = 2;
-                        array_push($a, $v);
-                    }
-                }
-                array_push($label, $val["id"]);
-                array_push($arr, $a);
-                //$arr[$val["id"]] = new Blob($a, 1.0);
-            }
-
-
-            $dataset = new Labeled($arr, $label);
-
-            //[$training, $testing] = $dataset->stratifiedSplit(0.8);
-
-            $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
-
-            //$estimator->setLogger(new Screen('colors'));
-
-            //echo 'Training ...' . PHP_EOL;
-
-            $estimator->train($dataset);
-
-            $losses = $estimator->steps();
-
-            $writer = Writer::createFromPath('progress.csv', 'w+');
-
-            $writer->insertOne(['loss']);
-            $writer->insertAll(array_transpose([$losses]));
-
-            // echo 'Progress saved to progress.csv' . PHP_EOL;
-
-            //echo 'Making predictions ...' . PHP_EOL;
-
-            $predictions = $estimator->predict($dataset);
-
-            $report = new ContingencyTable();
-
-            $results = $report->generate($predictions, $dataset->labels());
-
-            file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
-
-            // echo 'Report saved to report.json' . PHP_EOL;
-
-            $metric = new Homogeneity();
-
-            $score = $metric->score($predictions, $dataset->labels());
-
-            //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
-
-            $id = auth()->user()->id;
-            $cluster = 0;
-            foreach ($results as $k => $res) {
-                foreach ($res as $key => $val) {
-                    if ($key == $id && $val == 1) {
-                        $cluster = $k;
-                    }
-                }
-            }
-            $ids = [];
-            foreach ($results[$cluster] as $key => $val) {
-                if ($val == 1) {
-                    array_push($ids, $key);
-                    // echo "<br> $key";
-                } else {
-
-                }
-            }
-
-            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
-            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
-            $products = Product::whereIn('id', $ordersItems)->get();
-            $type = '';
-            $choice = 'Recommendation';
-            return view('user.showProducts', compact('type', 'products', 'choice'));
+        $user = User::select('id', 'social_status', 'gender', 'scientific_level')
+        ->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")
+            ->where('id',auth()->user()->id)
+            ->get();
+        if ($user[0]["gender"] == "Male") {
+            $user[0]["gender"] = 1;
+        } else {
+            $user[0]["gender"] = 2;
         }
-        else{
-            $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
-            foreach ($users as $index => $user) {
+        switch ($user[0]["social_status"]) {
+            case "Single":
+                $user[0]["social_status"] = 1;
+                break;
+            case "Married":
+                $user[0]["social_status"] = 2;
+                break;
+            case "Widowed":
+                $user[0]["social_status"] = 3;
+                break;
+            case "separated":
+                $user[0]["social_status"] = 4;
+                break;
+            case "Divorced":
+                $user[0]["social_status"] = 5;
+                break;
+        }
 
-                if ($user["gender"] == "Male") {
-                    $user["gender"] = 1;
-                } else {
-                    $user["gender"] = 2;
+        switch ($user[0]["scientific_level"]) {
+            case "Not Educated":
+                $user[0]["scientific_level"] = 1;
+                break;
+            case "High school diploma or equivalent":
+                $user[0]["scientific_level"] = 2;
+                break;
+            case "Associate degree":
+                $user[0]["scientific_level"] = 3;
+                break;
+            case "Bachelor's degree":
+                $user[0]["scientific_level"] = 4;
+                break;
+            case "Master's degree":
+                $user[0]["scientific_level"] = 5;
+                break;
+            case "Doctoral degree":
+                $user[0]["scientific_level"] = 6;
+                break;
+        }
+
+        switch ($user[0]["age"]) {
+            case ($user[0]["age"] < 18):
+                $user[0]["age"] = 1;
+                break;
+            case ($user[0]["age"] >= 18 && $user[0]["age"] < 25):
+                $user[0]["age"] = 2;
+                break;
+            case ($user[0]["age"] >= 25 && $user[0]["age"] < 35):
+                $user[0]["age"] = 3;
+                break;
+            case ($user[0]["age"] >= 35 && $user[0]["age"] < 50):
+                $user[0]["age"] = 4;
+                break;
+            case ($user[0]["age"] >= 50):
+                $user[0]["age"] = 5;
+                break;
+        }
+
+
+        $string_data = \GuzzleHttp\json_encode($user->toArray());
+        file_put_contents("yazzaan.txt", $string_data);
+        $arr1 = json_decode($string_data, true);
+
+        $arr = [];
+        $label = [];
+
+        foreach ($arr1 as $key => $val) {
+            $a = [];
+            foreach ($val as $k => $v) {
+                if (is_numeric($v) && $k != "id")
+                    array_push($a, $v);
+                else if (!is_numeric($v)) {
+                    $v = 2;
+                    array_push($a, $v);
                 }
-
-                switch ($user["social_status"]) {
-                    case "Single":
-                        $user["social_status"] = 1;
-                        break;
-                    case "Married":
-                        $user["social_status"] = 2;
-                        break;
-                    case "Widowed":
-                        $user["social_status"] = 3;
-                        break;
-                    case "separated":
-                        $user["social_status"] = 4;
-                        break;
-                    case "Divorced":
-                        $user["social_status"] = 5;
-                        break;
-                }
-
-                switch ($user["scientific_level"]) {
-                    case "Not Educated":
-                        $user["scientific_level"] = 1;
-                        break;
-                    case "High school diploma or equivalent":
-                        $user["scientific_level"] = 2;
-                        break;
-                    case "Associate degree":
-                        $user["scientific_level"] = 3;
-                        break;
-                    case "Bachelor's degree":
-                        $user["scientific_level"] = 4;
-                        break;
-                    case "Master's degree":
-                        $user["scientific_level"] = 5;
-                        break;
-                    case "Doctoral degree":
-                        $user["scientific_level"] = 6;
-                        break;
-                }
-
-                switch ($user["age"]) {
-                    case ($user["age"] < 18):
-                        $user["age"] = 1;
-                        break;
-                    case ($user["age"] >= 18 && $user["age"] < 25):
-                        $user["age"] = 2;
-                        break;
-                    case ($user["age"] >= 25 && $user["age"] < 35):
-                        $user["age"] = 3;
-                        break;
-                    case ($user["age"] >= 35 && $user["age"] < 50):
-                        $user["age"] = 4;
-                        break;
-                    case ($user["age"] >= 50):
-                        $user["age"] = 5;
-                        break;
-                }
-
-                $products = Product::all();
-                $orders = Order::select('id')->where('user_id', $user->id)->get();
-
-            foreach($products as $product){
-                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
-                $x = "p".$product->id;
-                $user[$x] = $count;
-
             }
+            array_push($label, $val["id"]);
+            array_push($arr, $a);
 
-            }
-            //dd($users->toArray());
-            $string_data = \GuzzleHttp\json_encode($users->toArray());
-            file_put_contents("yazzaan.txt", $string_data);
-            $arr1 = json_decode($string_data, true);
+        }
+        $dataset = new Labeled($arr, $label);
 
-            $arr = [];
-            $label = [];
+        if ($user[0]->orders()->count() == 0) {
 
-            foreach ($arr1 as $key => $val) {
-                $a = [];
-                foreach ($val as $k => $v) {
-                    if (is_numeric($v) && $k != "id")
-                        array_push($a, $v);
-                    else if (!is_numeric($v)) {
-                        $v = 2;
-                        array_push($a, $v);
-                    }
-                }
-                array_push($label, $val["id"]);
-                array_push($arr, $a);
-                //$arr[$val["id"]] = new Blob($a, 1.0);
-            }
-
-
-            $dataset = new Labeled($arr, $label);
-
-            //[$training, $testing] = $dataset->stratifiedSplit(0.8);
-
-            $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
-
-            //$estimator->setLogger(new Screen('colors'));
-
-            //echo 'Training ...' . PHP_EOL;
-
-            $estimator->train($dataset);
-
-            $persister = new Filesystem('trained.model');
-            $persister->save($estimator);
-
-            $persister = new Filesystem('trained.model');
+            $persister = new Filesystem('trained2.model');
             $estimator = $persister->load();
 
             $losses = $estimator->steps();
@@ -349,42 +155,81 @@ class UserController extends Controller
             $writer->insertOne(['loss']);
             $writer->insertAll(array_transpose([$losses]));
 
-            // echo 'Progress saved to progress.csv' . PHP_EOL;
-
-            //echo 'Making predictions ...' . PHP_EOL;
-
-            $predictions = $estimator->predict($dataset);
-
-            $report = new ContingencyTable();
-
-            $results = $report->generate($predictions, $dataset->labels());
-
-            file_put_contents('report.json', json_encode($results, JSON_PRETTY_PRINT));
-
-            // echo 'Report saved to report.json' . PHP_EOL;
-
-            $metric = new Homogeneity();
-
-            $score = $metric->score($predictions, $dataset->labels());
-
-            //echo 'Clusters are ' . (string) round($score * 100.0, 2) . '% homogenous' . PHP_EOL;
+            $predictions = $estimator->predictSample($dataset->sample(0));
+            $string = file_get_contents("report2.json");
+            $results = \GuzzleHttp\json_decode($string,true);
 
             $id = auth()->user()->id;
-            $cluster = 0;
-            foreach ($results as $k => $res) {
-                foreach ($res as $key => $val) {
-                    if ($key == $id && $val == 1) {
-                        $cluster = $k;
-                    }
-                }
-            }
+
             $ids = [];
-            foreach ($results[$cluster] as $key => $val) {
+            foreach ($results[$predictions] as $key => $val) {
                 if ($val == 1) {
                     array_push($ids, $key);
                     // echo "<br> $key";
-                } else {
+                }
+            }
 
+            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
+            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
+            $products = Product::whereIn('id', $ordersItems)->get();
+            $type = '';
+            $choice = 'Recommendation';
+            return view('user.showProducts', compact('type', 'products', 'choice'));
+        }
+        else {
+            $products = Product::all();
+            $orders = Order::select('id')->where('user_id', $user[0]->id)->get();
+
+            foreach($products as $product){
+                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
+                $x = "p".$product->id;
+                $user[0][$x] = $count;
+
+            }
+            $string_data = \GuzzleHttp\json_encode($user->toArray());
+            file_put_contents("yazzaan.txt", $string_data);
+            $arr1 = json_decode($string_data, true);
+
+            $arr = [];
+            $label = [];
+
+            foreach ($arr1 as $key => $val) {
+                $a = [];
+                foreach ($val as $k => $v) {
+                    if (is_numeric($v) && $k != "id")
+                        array_push($a, $v);
+                    else if (!is_numeric($v)) {
+                        $v = 2;
+                        array_push($a, $v);
+                    }
+                }
+                array_push($label, $val["id"]);
+                array_push($arr, $a);
+
+            }
+            $dataset = new Labeled($arr, $label);
+
+            $persister = new Filesystem('trained1.model');
+            $estimator = $persister->load();
+
+            $losses = $estimator->steps();
+
+            $writer = Writer::createFromPath('progress.csv', 'w+');
+
+            $writer->insertOne(['loss']);
+            $writer->insertAll(array_transpose([$losses]));
+
+            $predictions = $estimator->predictSample($dataset->sample(0));
+            $string = file_get_contents("report1.json");
+            $results = \GuzzleHttp\json_decode($string,true);
+
+            $id = auth()->user()->id;
+
+            $ids = [];
+            foreach ($results[$predictions] as $key => $val) {
+                if ($val == 1) {
+                    array_push($ids, $key);
+                    // echo "<br> $key";
                 }
             }
 
@@ -397,21 +242,24 @@ class UserController extends Controller
         }
     }
 
-    public function profile(){
+    public function profile()
+    {
         $user = auth()->user();
-        $orders = Order::select('id')->where('user_id',auth()->user()->id)->get();
-        $ordersItems = Order_item::select('product_id')->whereIn('order_id',$orders)->get();
+        $orders = Order::select('id')->where('user_id', auth()->user()->id)->get();
+        $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
 
-        return view('user.profile',compact('user','ordersItems'));
+        return view('user.profile', compact('user', 'ordersItems'));
     }
+
     public function edit()
     {
         $id = auth()->user()->id;
         $user = User::find($id);
-        return view('user.profileEdit',compact('user'));
+        return view('user.profileEdit', compact('user'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
 
         request()->validate([
             'name' => 'required',
@@ -445,17 +293,19 @@ class UserController extends Controller
 
     }
 
-    public function addOrderReview(Order $order){
+    public function addOrderReview(Order $order)
+    {
         $items = $order->order_items()->where([
-            ['rated',null]
+            ['rated', null]
         ])->get();
 
 
-        return view('user.reviewOrder',compact('items','order'));
+        return view('user.reviewOrder', compact('items', 'order'));
     }
 
 
-    public function review(Request $request){
+    public function review(Request $request)
+    {
 
         $request->validate([
             'rate' => 'required',
@@ -472,12 +322,12 @@ class UserController extends Controller
 
         $order = Order::find($request->order);
         $items = Order_item::where([
-            ['order_id',$order->id],
-            ['product_id',$request->id]
+            ['order_id', $order->id],
+            ['product_id', $request->id]
         ]);
         $items->update(['rated' => 1]);
 
-        if($order->order_items->where('rated',null)->count()==0){
+        if ($order->order_items->where('rated', null)->count() == 0) {
             $order->rated = 1;
             $order->save();
         }
@@ -486,101 +336,104 @@ class UserController extends Controller
     }
 
 
-
     public function products()
     {
         $orders = Order::where([
-            ['user_id',auth()->user()->id],
-            ['rated',null],
-            ['done',1]
+            ['user_id', auth()->user()->id],
+            ['rated', null],
+            ['done', 1]
         ])->get();
-        if($orders->count()){
+        if ($orders->count()) {
             $order = $orders[0];
-            return redirect()->route('add.orderReview',$order);
+            return redirect()->route('add.orderReview', $order);
         }
         return view('user.products');
     }
 
-    public function searchBtn(Request $request){
+    public function searchBtn(Request $request)
+    {
         $request->validate([
-           'category' => 'required',
-           'choice' => 'required'
+            'category' => 'required',
+            'choice' => 'required'
         ]);
         //dd('here');
         $t = Category::find($request->category);
         $products = Product::where([
-            ['category_id','=',$t->id],
-            ['name','like',$request->choice.'%']
+            ['category_id', '=', $t->id],
+            ['name', 'like', $request->choice . '%']
         ])->get();
         $type = $request->choice;
         $choice = $t->name;
-        return view('user.showProducts',compact('type','products','choice'));
+        return view('user.showProducts', compact('type', 'products', 'choice'));
     }
 
-    public function search($type,$choice){
+    public function search($type, $choice)
+    {
 
-        switch ($type){
+        switch ($type) {
             case 'category':
                 $t = Category::find($choice);
-                $products = Product::where('category_id','=',$t->id)->get();
+                $products = Product::where('category_id', '=', $t->id)->get();
                 $choice = $t->name;
-              return view('user.showProducts',compact('type','products','choice'));
+                return view('user.showProducts', compact('type', 'products', 'choice'));
 
             case 'brand':
                 $t = Brand::find($choice);
-                $products = Product::where('brand_id','=',$t->id)->get();
+                $products = Product::where('brand_id', '=', $t->id)->get();
                 $choice = $t->name;
-                return view('user.showProducts',compact('type','products','choice'));
+                return view('user.showProducts', compact('type', 'products', 'choice'));
 
             case 'seller':
                 $t = Vendor::find($choice);
-                $products = Product::where('vendor_id','=',$t->id)->get();
+                $products = Product::where('vendor_id', '=', $t->id)->get();
                 $choice = $t->name;
-                return view('user.showProducts',compact('type','products','choice'));
+                return view('user.showProducts', compact('type', 'products', 'choice'));
 
             case 'topRated':
-                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','>=',4)->groupBy('product_id')->get();
-                $products = Product::whereIN('id',$t)->get();
+                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total', '>=', 4)->groupBy('product_id')->get();
+                $products = Product::whereIN('id', $t)->get();
                 $choice = null;
                 $type = "Top Rated";
-                return view('user.showProducts',compact('type','products','choice'));
+                return view('user.showProducts', compact('type', 'products', 'choice'));
 
             case 'onRate':
-                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total','<=',$choice)->groupBy('product_id')->get();
+                $t = Rating::select('product_id', DB::raw('ROUND(avg(rate)) as total'))->having('total', '<=', $choice)->groupBy('product_id')->get();
                 $t = $t->pluck('product_id');
-                $products = Product::whereIN('id',$t)->get();
-                $type ="".$choice." stars";
-                return view('user.showProducts',compact('type','products','choice'));
+                $products = Product::whereIN('id', $t)->get();
+                $type = "" . $choice . " stars";
+                return view('user.showProducts', compact('type', 'products', 'choice'));
         }
         return redirect('product');
     }
 
-    public function viewProduct(Product $product){
+    public function viewProduct(Product $product)
+    {
         $images = $product->images()->get();
-        $properties = Property::where('product_id','=',$product->id)->get();
-        $otherProp = $this->otherProperties($product,$properties);
-        $ratings = Rating::with('user')->where('product_id',$product->id)->get();
-        $avg = Rating::where('product_id',$product->id)->avg('rate');
-        $avg =round($avg);
-        return view('user.viewProduct',compact('product','images','properties','otherProp','ratings','avg'));
+        $properties = Property::where('product_id', '=', $product->id)->get();
+        $otherProp = $this->otherProperties($product, $properties);
+        $ratings = Rating::with('user')->where('product_id', $product->id)->get();
+        $avg = Rating::where('product_id', $product->id)->avg('rate');
+        $avg = round($avg);
+        return view('user.viewProduct', compact('product', 'images', 'properties', 'otherProp', 'ratings', 'avg'));
     }
 
-    public function otherProperties(Product $product, $prop){
+    public function otherProperties(Product $product, $prop)
+    {
 
         $otherProducts = Product::select('id')->where([
-            ['item_num','=',$product->item_num],
-            ['id','<>',$product->id],
-            ['vendor_id','=',$product->vendor_id],
-            ['category_id','=',$product->category_id],
-            ['brand_id','=',$product->brand_id]])->get();
+            ['item_num', '=', $product->item_num],
+            ['id', '<>', $product->id],
+            ['vendor_id', '=', $product->vendor_id],
+            ['category_id', '=', $product->category_id],
+            ['brand_id', '=', $product->brand_id]])->get();
         $other = [];
-        foreach ($prop as $p){
+        foreach ($prop as $p) {
             $otherProp = Property::where([
-                ['name','=',$p->name],
-                ['value','<>',$p->value]
-            ])->whereIn('product_id',$otherProducts)->get();
-            $other[$p->name]=[];
-             array_push($other[$p->name],$otherProp);
+                ['name', '=', $p->name],
+                ['value', '<>', $p->value]
+            ])->whereIn('product_id', $otherProducts)->get();
+            $other[$p->name] = [];
+            array_push($other[$p->name], $otherProp);
         }
         //dd($other);
         return $other;
@@ -602,10 +455,11 @@ class UserController extends Controller
             $totalPrice = $cart->totalPrice;
         }
 
-        return view('user.cart', compact('products','totalPrice','totalQty'));
+        return view('user.cart', compact('products', 'totalPrice', 'totalQty'));
     }
 
-    public function addToCart(Request $request,Product $product){
+    public function addToCart(Request $request, Product $product)
+    {
 
         request()->validate([
             'quantity' => 'required',
@@ -613,27 +467,29 @@ class UserController extends Controller
 
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product,$product->id,$request->quantity);
-        $request->session()->put('cart',$cart);
+        $cart->add($product, $product->id, $request->quantity);
+        $request->session()->put('cart', $cart);
 
         return redirect()->route('cart');
     }
 
-    public function deleteFromCart(Request $request,Product $product){
+    public function deleteFromCart(Request $request, Product $product)
+    {
 
-        if(Session::has('cart')){
+        if (Session::has('cart')) {
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
             $cart->delete($product);
-            $request->session()->put('cart',$cart);
+            $request->session()->put('cart', $cart);
         }
 
         return redirect()->route('cart');
     }
 
-    public function order(){
+    public function order()
+    {
 
-        if(Session::has('cart')){
+        if (Session::has('cart')) {
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
             $products = $cart->items;
@@ -644,11 +500,11 @@ class UserController extends Controller
 
             $order->user_id = $user;
             $order->discount = 0;
-            $order->total_price =$cart->totalPrice;
+            $order->total_price = $cart->totalPrice;
             $order->done = 0;
             $order->save();
 
-            foreach ($products as $product){
+            foreach ($products as $product) {
                 $order_item = new Order_item();
                 $order_item->product_id = $product['item']->id;
                 $order_item->quantity = $product['qty'];
@@ -657,7 +513,7 @@ class UserController extends Controller
                 $p->save();
                 $order_item->price = $product['price'];
                 $order_item->done = 0;
-                $discount = ($product['item']->discount * $product['item']->price)/100;
+                $discount = ($product['item']->discount * $product['item']->price) / 100;
                 $totDiscount += ($discount * $product['qty']);
                 $order->order_items()->save($order_item);
             }
