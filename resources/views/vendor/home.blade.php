@@ -25,7 +25,7 @@
 
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center"><h2>Top 5 Categories</h2></div>
+                    <div class="card-header text-center"><h2>Daily Orders</h2></div>
                     <div class="row">
                         <div class="col-md-12">
                             <a id="download3" href="#" onclick="saveit3()" download>download</a>
