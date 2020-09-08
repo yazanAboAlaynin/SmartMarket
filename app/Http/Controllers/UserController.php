@@ -222,7 +222,9 @@ class UserController extends Controller
             $predictions = $estimator->predictSample($dataset->sample(0));
             $string = file_get_contents("report1.json");
             $results = \GuzzleHttp\json_decode($string,true);
-
+            if(is_null($predictions)){
+                $predictions = 0;
+            }
             $id = auth()->user()->id;
 
             $ids = [];

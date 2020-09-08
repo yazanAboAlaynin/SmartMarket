@@ -51,8 +51,9 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Auth::routes(['register' => false]);
     Route::get('/register', 'auth\RegisterController@index')->name('register');
 
-    Route::get('/train1', 'AdminController@train1')->name('train1');
-    Route::get('/train2', 'AdminController@train2')->name('train2');
+    Route::post('/train1', 'AdminController@train1')->name('train1');
+    Route::post('/train2', 'AdminController@train2')->name('train2');
+    Route::get('/training', 'AdminController@training')->name('training');
 
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 

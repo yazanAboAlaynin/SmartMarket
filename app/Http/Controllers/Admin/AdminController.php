@@ -16,6 +16,7 @@ use Intervention\Image\Facades\Image;
 use League\Csv\Writer;
 use Rubix\ML\Clusterers\FuzzyCMeans;
 use Rubix\ML\Clusterers\Seeders\Random;
+use Rubix\ML\CrossValidation\Metrics\Homogeneity;
 use Rubix\ML\CrossValidation\Reports\ContingencyTable;
 use Rubix\ML\Datasets\Labeled;
 use Rubix\ML\Kernels\Distance\Euclidean;
@@ -539,7 +540,8 @@ class AdminController extends Controller
         return;
     }
 
-    public function train1(){
+    public function train1(Request $request){
+        //train user that has old orders
         $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
         foreach ($users as $index => $user) {
 
@@ -639,7 +641,7 @@ class AdminController extends Controller
             //$arr[$val["id"]] = new Blob($a, 1.0);
         }
         $dataset = new Labeled($arr, $label);
-        $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
+        $estimator = new FuzzyCMeans(min($request['cluster'],$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
         $estimator->train($dataset);
         $persister = new Filesystem('trained1.model');
         $persister->save($estimator);
@@ -655,12 +657,16 @@ class AdminController extends Controller
             $report = new ContingencyTable();
 
             $results = $report->generate($predictions, $dataset->labels());
+        $metric = new Homogeneity();
+
+        $score = $metric->score($predictions, $dataset->labels());
+        $score = (string) round($score * 100.0,2);
 
             file_put_contents('report1.json', json_encode($results, JSON_PRETTY_PRINT));
-//
+        return redirect()->route('admin.training',compact('score'));
     }
 
-    public function train2(){
+    public function train2(Request $request){
         $users = User::select('id', 'social_status', 'gender', 'scientific_level')->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")->get();
         foreach ($users as $index => $user) {
 
@@ -750,7 +756,7 @@ class AdminController extends Controller
 
         }
         $dataset = new Labeled($arr, $label);
-        $estimator = new FuzzyCMeans(min(8,$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
+        $estimator = new FuzzyCMeans(min($request['cluster'],$users->count()), 1.1, 200, 1, new Euclidean(), new Random());
         $estimator->train($dataset);
         $persister = new Filesystem('trained2.model');
         $persister->save($estimator);
@@ -765,10 +771,21 @@ class AdminController extends Controller
         $report = new ContingencyTable();
 
         $results = $report->generate($predictions, $dataset->labels());
+        $metric = new Homogeneity();
+
+        $score = $metric->score($predictions, $dataset->labels());
+        $score = (string) round($score * 100.0,2);
+
+
 
         file_put_contents('report2.json', json_encode($results, true));
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.training',compact('score'));
+    }
+
+    public function training(Request $request){
+        $score = $request['score'] ;
+        return view('admin.train',compact('score'));
     }
 
 }

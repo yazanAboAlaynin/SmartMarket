@@ -96,6 +96,8 @@
 
                     <a href="{{ Route('admin.brand.add') }}"><i class="fa fa-delicious" style="font-size:24px"></i>
                         <span style="margin-left: 30px">add Brand</span></a>
+                    <a href="{{ Route('admin.training') }}"><i class="fa fa-copyright" style="font-size:24px"></i>
+                        <span style="margin-left: 30px">Train Model</span></a>
                     <br/>
                     <br/>
                     <br/>

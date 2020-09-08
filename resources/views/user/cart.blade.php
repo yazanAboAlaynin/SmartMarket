@@ -31,11 +31,11 @@
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">${{ $product['item']->price }}</td>
+                    <td data-th="Price">{{ $product['item']->price }} S.P</td>
                     <td data-th="Quantity">
                         {{ $product['qty'] }}
                     </td>
-                    <td data-th="Subtotal" class="text-center">${{ $product['price'] }}</td>
+                    <td data-th="Subtotal" class="text-center">{{ $product['price'] }} S.P</td>
                     <td class="actions" data-th="">
                         <a href="{{ Route("addProduct",[$product['item']->id,'quantity'=>1]) }}" class="btn btn-info btn-sm update-cart"
                            data-id="{{ $product['item']->id }}" >+
@@ -57,7 +57,7 @@
                         Continue Shopping</a></td>
                 <td></td>
                 <td colspan="1" class="hidden-xs">{{ $totalQty }}</td>
-                <td class="hidden-xs text-center"><strong>Total: {{ $totalPrice }}$</strong></td>
+                <td class="hidden-xs text-center"><strong>Total: {{ $totalPrice }} S.P</strong></td>
             </tr>
             </tfoot>
         </table>
