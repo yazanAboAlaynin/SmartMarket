@@ -346,9 +346,9 @@
             function drawBar2() {
 
                 var width = 40; //bar width
-                var X = 60; // first bar position
+                var X = 5; // first bar position
                 // looping on the values to draw each rectangle
-                for (var i =0; i<Math.min(5,values2.length); i++) {
+                for (var i =0; i<Math.min(10,values2.length); i++) {
                     barCtx2.fillStyle = colors2[i%colors.length]; // choose color for rectangle
                     var h = Math.min(250,values2[i][1]*30); // get the height of rectangle
                     // draw the rectangle (position on x,position on y,width of rectangle,height of rectangle)
@@ -378,7 +378,7 @@
                 barCtx2.clearRect(0, 0, barCan2.width, barCan2.height);
 
                 var width = 40; //bar width
-                var X = 60; // first bar position
+                var X = 5; // first bar position
 
                 //start drawing again
                 for (var i =0; i<Math.min(5,values2.length); i++) {

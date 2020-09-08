@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use App\Order_item;
 use App\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Intervention\Image\Facades\Image;
@@ -37,8 +38,16 @@ class VendorController extends Controller
      */
     public function index()
     {
-       $data = Order_item::select(DB::raw('product_id, sum(quantity) as quantity'))->groupBy('product_id')->orderBy('quantity',"desc")->get()->toArray();
-       $data2 = Category::all();
+       $data = Order_item::select(DB::raw('product_id, sum(order_items.quantity) as quantity'))
+           ->join('products','products.id','=','order_items.product_id')
+           ->where('products.vendor_id',auth()->user()->id)
+           ->groupBy('product_id')->orderBy('quantity',"desc")->get()->toArray();
+
+        $data2 = Order_item::select(DB::raw('sum(order_items.quantity) as quantity'),'order_items.created_at')
+            ->join('products','products.id','=','order_items.product_id')
+            ->where('products.vendor_id',auth()->user()->id)
+            ->orderBy('created_at',"desc")
+            ->groupBy(DB::raw("day(order_items.created_at)"))->get()->toArray();
 
        //dd($all);
         $all = [];
@@ -55,8 +64,8 @@ class VendorController extends Controller
         $cat = [];
         for ($i=0;$i<sizeof($data2);$i++){
             $x = [];
-            array_push($x,$data2[$i]['name']);
-            array_push($x,$data2[$i]->products()->count());
+            array_push($x, date("d",  strtotime($data2[$i]['created_at'])) );
+            array_push($x,$data2[$i]['quantity']);
             array_push($all2,$x);
         }
         // dd($all);

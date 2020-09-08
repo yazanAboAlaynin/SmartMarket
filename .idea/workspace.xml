@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="test">
-      <change beforePath="$PROJECT_DIR$/public/yazzaan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/yazzaan.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/showProducts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/showProducts.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Vendor/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Vendor/VendorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -361,14 +363,8 @@
       <workItem from="1599475348355" duration="6000" />
       <workItem from="1599499886317" duration="4909000" />
       <workItem from="1599543510680" duration="148000" />
-      <workItem from="1599585415214" duration="3501000" />
-    </task>
-    <task id="LOCAL-00085" summary="latest">
-      <created>1589032634597</created>
-      <option name="number" value="00085" />
-      <option name="presentableId" value="LOCAL-00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1589032634597</updated>
+      <workItem from="1599585415214" duration="4522000" />
+      <workItem from="1599590688054" duration="1265000" />
     </task>
     <task id="LOCAL-00086" summary="latest">
       <created>1589126146036</created>
@@ -706,7 +702,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599588231792</updated>
     </task>
-    <option name="localTasksCounter" value="134" />
+    <task id="LOCAL-00134" summary="test">
+      <created>1599589650605</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1599589650605</updated>
+    </task>
+    <option name="localTasksCounter" value="135" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -742,14 +745,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598803509385" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599503168407">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599591844133">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599503168407" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599588233420">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599591844133" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599589652011">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599588233420" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599589652011" />
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599468845028">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
