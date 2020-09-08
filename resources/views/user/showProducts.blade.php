@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="product-bottom text-center">
-{{ round($product->ratings()->avg('rate')) }}
+
                     @for($i=0;$i<round($product->ratings()->avg('rate'));$i++)
                         <i class="fa fa-star"></i>
                     @endfor
