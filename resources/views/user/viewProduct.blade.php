@@ -57,7 +57,7 @@
                 <form method="GET" action="{{ Route('addProduct',$product->id) }}">
                     @csrf
                     <label for="quantity" class="">{{ __('Quantity') }}</label>
-                    <input id="quantity" type="number" max="10" min="1" name="quantity" value="1" required autocomplete="quantity" autofocus>
+                    <input id="quantity" type="number" min="1" name="quantity" value="1" required autocomplete="quantity" autofocus>
                     <button class="btn btn-primary">Add to Cart</button>
                 </form>
             </div>

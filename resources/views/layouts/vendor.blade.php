@@ -143,6 +143,7 @@
                 var beginAngle = 0;
                 var endAngle = 0;
                 entries.forEach(function (val, idx) {
+
                     ctx.fillStyle = myColor[idx % myColor.length]; // choosing color
                     ctx.beginPath(); // start drawing
                     ctx.moveTo(canvas.width / 2, canvas.height / 2); // move the cursor to start position
@@ -178,7 +179,7 @@
                     var labelY = canvas.height / 2 + (pieRadius / 2) * Math.sin(beginAngle + (endAngle - beginAngle) / 2);
                     ctx.fillStyle = "white";
                     ctx.font = "bold 10px Arial";
-                    ctx.fillText("" + val[1][0], labelX, labelY);
+                 //   ctx.fillText("" + val[1][0], labelX, labelY);
 
 
                     // when mouse move on the li element
@@ -244,7 +245,7 @@
                     var labelY = canvas.height / 2 + (pieRadius / 2) * Math.sin(beginAngle + (endAngle - beginAngle) / 2);
                     ctx.fillStyle = "white";
                     ctx.font = "bold 10px Arial";
-                    ctx.fillText("" + values[i][0], labelX, labelY);
+                  //  ctx.fillText("" + values[i][0], labelX, labelY);
 
                     j++;
                     i++;
@@ -348,7 +349,7 @@
                 var width = 40; //bar width
                 var X = 5; // first bar position
                 // looping on the values to draw each rectangle
-                for (var i =0; i<Math.min(10,values2.length); i++) {
+                for (var i =0; i<Math.min(7,values2.length); i++) {
                     barCtx2.fillStyle = colors2[i%colors.length]; // choose color for rectangle
                     var h = Math.min(250,values2[i][1]*30); // get the height of rectangle
                     // draw the rectangle (position on x,position on y,width of rectangle,height of rectangle)

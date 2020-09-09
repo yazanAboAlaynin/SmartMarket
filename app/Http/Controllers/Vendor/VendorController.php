@@ -41,7 +41,7 @@ class VendorController extends Controller
        $data = Order_item::select(DB::raw('product_id, sum(order_items.quantity) as quantity'))
            ->join('products','products.id','=','order_items.product_id')
            ->where('products.vendor_id',auth()->user()->id)
-           ->groupBy('product_id')->orderBy('quantity',"desc")->get()->toArray();
+           ->groupBy('product_id')->orderBy('quantity',"desc")->take(20)->get()->toArray();
 
         $data2 = Order_item::select(DB::raw('sum(order_items.quantity) as quantity'),'order_items.created_at')
             ->join('products','products.id','=','order_items.product_id')
