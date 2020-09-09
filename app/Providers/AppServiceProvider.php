@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('category',Category::all());
         View::share('brands',Brand::all());
         $orders = Order_item::select('product_id',DB::raw('COUNT(id) as cnt'))->groupBy('product_id')->orderBy('cnt', 'DESC')->take(5)->get();
-
+        //dd($orders);
         $sellers = [];
         foreach ($orders as $order){
             array_push($sellers,$order->product()->get()[0]->vendor()->get()[0]);

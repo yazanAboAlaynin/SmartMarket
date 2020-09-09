@@ -290,10 +290,11 @@ class VendorController extends Controller
 
     public function discounts()
     {
-        $id = auth()->guard('vendor')->user()->discount != '0';
+        $id = auth()->guard('vendor')->user()->id;
 
         if (request()->ajax()) {
-            $items = Product::where('discount','!=','0')->get();
+            $items =  auth()->guard('vendor')->user()->products()->where('discount','!=','0')->get();
+
             return DataTables::of($items)
                 ->addColumn('action', function ($items) {
                     $button = '<button type="button" name="edit" id="' . $items->id . '"
