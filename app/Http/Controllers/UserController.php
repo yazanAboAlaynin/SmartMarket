@@ -47,7 +47,6 @@ class UserController extends Controller
      */
     public function index()
     {
-
         return view('user.products');
     }
 
@@ -495,6 +494,9 @@ class UserController extends Controller
             $oldCart = Session::get('cart');
             $cart = new Cart($oldCart);
             $products = $cart->items;
+            if(sizeof($products)==0){
+                return redirect()->route('cart');
+            }
 
             $order = new Order();
             $user = auth()->user()->id;
@@ -504,19 +506,23 @@ class UserController extends Controller
             $order->discount = 0;
             $order->total_price = $cart->totalPrice;
             $order->done = 0;
-            $order->save();
+
 
             foreach ($products as $product) {
                 $order_item = new Order_item();
                 $order_item->product_id = $product['item']->id;
                 $order_item->quantity = $product['qty'];
                 $p = Product::find($product['item']->id);
+                if($p->quantity<$product['qty']){
+                    return redirect()->route('cart');
+                }
                 $p->quantity -= $product['qty'];
                 $p->save();
                 $order_item->price = $product['price'];
                 $order_item->done = 0;
                 $discount = ($product['item']->discount * $product['item']->price) / 100;
                 $totDiscount += ($discount * $product['qty']);
+                $order->save();
                 $order->order_items()->save($order_item);
             }
 
