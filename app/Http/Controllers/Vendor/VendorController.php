@@ -70,7 +70,7 @@ class VendorController extends Controller
         }
         // dd($all);
         sort($all2);
-        for ($i=0;$i<min(5,sizeof($all2));$i++)
+        for ($i=0;$i<min(7,sizeof($all2));$i++)
             array_push($cat,$all2[$i]);
 
         $cat = json_encode($cat);

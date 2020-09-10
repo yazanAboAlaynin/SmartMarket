@@ -19,14 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="test">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_29_2020_10_06_PM__Default_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_29_2020_10_06_PM__Default_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_4_2020_10_02_AM__Default_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_9_4_2020_10_02_AM__Default_.xml" afterDir="false" />
+    <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="latest">
+      <change beforePath="$PROJECT_DIR$/.idea/SmartMarket.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SmartMarket.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Vendor/VendorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Vendor/VendorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/user/viewProduct.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/viewProduct.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,20 +363,7 @@
       <workItem from="1599543510680" duration="148000" />
       <workItem from="1599585415214" duration="4522000" />
       <workItem from="1599590688054" duration="1265000" />
-    </task>
-    <task id="LOCAL-00086" summary="latest">
-      <created>1589126146036</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1589126146037</updated>
-    </task>
-    <task id="LOCAL-00087" summary="latest">
-      <created>1589201971534</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1589201971534</updated>
+      <workItem from="1599748515820" duration="143000" />
     </task>
     <task id="LOCAL-00088" summary="latest">
       <created>1589204164572</created>
@@ -712,7 +694,21 @@
       <option name="project" value="LOCAL" />
       <updated>1599589650605</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="latest">
+      <created>1599675853524</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1599675853525</updated>
+    </task>
+    <task id="LOCAL-00136" summary="latest">
+      <created>1599675901428</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1599675901428</updated>
+    </task>
+    <option name="localTasksCounter" value="137" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -733,7 +729,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creating models" />
     <MESSAGE value="admin login" />
-    <MESSAGE value="latest" />
     <MESSAGE value="circle" />
     <MESSAGE value="new" />
     <MESSAGE value="discount" />
@@ -741,7 +736,8 @@
     <MESSAGE value="erase notif" />
     <MESSAGE value="proprities" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="latest" />
+    <option name="LAST_COMMIT_MESSAGE" value="latest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1598803509385">
@@ -752,10 +748,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599591844133" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599589652011">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599675916815">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599589652011" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599675916815" />
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599468845028">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
