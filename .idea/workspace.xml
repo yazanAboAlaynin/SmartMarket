@@ -21,12 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c2496d0f-a7e4-462a-afd0-ff8399972099" name="Default" comment="latest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/API/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/products.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/products.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/progress.csv" beforeDir="false" afterPath="$PROJECT_DIR$/public/progress.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/report1.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/report1.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/trained1.model" beforeDir="false" afterPath="$PROJECT_DIR$/public/trained1.model" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/yazzaan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/yazzaan.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/vendor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -369,14 +371,7 @@
       <workItem from="1599585415214" duration="4522000" />
       <workItem from="1599590688054" duration="1265000" />
       <workItem from="1599748515820" duration="143000" />
-      <workItem from="1599749737287" duration="1068000" />
-    </task>
-    <task id="LOCAL-00089" summary="latest">
-      <created>1589204195672</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1589204195672</updated>
+      <workItem from="1599749737287" duration="2964000" />
     </task>
     <task id="LOCAL-00090" summary="latest">
       <created>1589205057652</created>
@@ -714,7 +709,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599749958767</updated>
     </task>
-    <option name="localTasksCounter" value="138" />
+    <task id="LOCAL-00138" summary="latest">
+      <created>1599751109534</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1599751109534</updated>
+    </task>
+    <option name="localTasksCounter" value="139" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -750,18 +752,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1598803509385" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599591844133">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599751358965">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599591844133" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599749963019">
+    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1599751358965" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1599751111287">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599749963019" />
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599468845028">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1599751111287" />
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599751264516">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1599468845028" />
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1599751264516" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1599587054089">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

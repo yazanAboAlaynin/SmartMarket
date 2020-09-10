@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use League\Csv\Writer;
+use Rubix\ML\Datasets\Labeled;
+use Rubix\ML\Persisters\Filesystem;
+use function Rubix\ML\array_transpose;
 
 class UserController extends Controller
 {
@@ -233,17 +237,6 @@ class UserController extends Controller
         $order->discount = $totDiscount;
         $order->total_price = $totPrice - $totDiscount;
         $order->save();
-
-//        $noti = new Notification();
-//        $noti->user_id = auth()->guard()->user()->id;
-//        $noti->order_id = $order->id;
-//        $noti->title = 'New Order';
-//        $noti->body = 'you have new order from user: ' . auth()->guard()->user()->id;
-//        if ($noti->save()) {
-//
-//            $url = route('admin.order.items', $order->id);
-//            $noti->toMultiDevice(Admin::all(), $noti->title, $noti->body, null, $url);
-//        }
         $success = "yes";
         return response()->json(['success'=>$success], $this->successStatus);
     }
@@ -328,6 +321,204 @@ class UserController extends Controller
         }
 
         return response()->json([], 200);
+    }
+
+    public function recommendation()
+    {
+        $user = User::select('id', 'social_status', 'gender', 'scientific_level')
+            ->selectRaw("TIMESTAMPDIFF(YEAR, DATE(dob), current_date) AS age")
+            ->where('id',auth()->user()->id)
+            ->get();
+        if ($user[0]["gender"] == "Male") {
+            $user[0]["gender"] = 1;
+        } else {
+            $user[0]["gender"] = 2;
+        }
+        switch ($user[0]["social_status"]) {
+            case "Single":
+                $user[0]["social_status"] = 1;
+                break;
+            case "Married":
+                $user[0]["social_status"] = 2;
+                break;
+            case "Widowed":
+                $user[0]["social_status"] = 3;
+                break;
+            case "separated":
+                $user[0]["social_status"] = 4;
+                break;
+            case "Divorced":
+                $user[0]["social_status"] = 5;
+                break;
+        }
+
+        switch ($user[0]["scientific_level"]) {
+            case "Not Educated":
+                $user[0]["scientific_level"] = 1;
+                break;
+            case "High school diploma or equivalent":
+                $user[0]["scientific_level"] = 2;
+                break;
+            case "Associate degree":
+                $user[0]["scientific_level"] = 3;
+                break;
+            case "Bachelor's degree":
+                $user[0]["scientific_level"] = 4;
+                break;
+            case "Master's degree":
+                $user[0]["scientific_level"] = 5;
+                break;
+            case "Doctoral degree":
+                $user[0]["scientific_level"] = 6;
+                break;
+        }
+
+        switch ($user[0]["age"]) {
+            case ($user[0]["age"] < 18):
+                $user[0]["age"] = 1;
+                break;
+            case ($user[0]["age"] >= 18 && $user[0]["age"] < 25):
+                $user[0]["age"] = 2;
+                break;
+            case ($user[0]["age"] >= 25 && $user[0]["age"] < 35):
+                $user[0]["age"] = 3;
+                break;
+            case ($user[0]["age"] >= 35 && $user[0]["age"] < 50):
+                $user[0]["age"] = 4;
+                break;
+            case ($user[0]["age"] >= 50):
+                $user[0]["age"] = 5;
+                break;
+        }
+
+
+        $string_data = \GuzzleHttp\json_encode($user->toArray());
+        file_put_contents("yazzaan.txt", $string_data);
+        $arr1 = json_decode($string_data, true);
+
+        $arr = [];
+        $label = [];
+
+        foreach ($arr1 as $key => $val) {
+            $a = [];
+            foreach ($val as $k => $v) {
+                if (is_numeric($v) && $k != "id")
+                    array_push($a, $v);
+                else if (!is_numeric($v)) {
+                    $v = 2;
+                    array_push($a, $v);
+                }
+            }
+            array_push($label, $val["id"]);
+            array_push($arr, $a);
+
+        }
+        $dataset = new Labeled($arr, $label);
+
+        if ($user[0]->orders()->count() == 0) {
+
+            $persister = new Filesystem('trained2.model');
+            $estimator = $persister->load();
+
+            $losses = $estimator->steps();
+
+            $writer = Writer::createFromPath('progress.csv', 'w+');
+
+            $writer->insertOne(['loss']);
+            $writer->insertAll(array_transpose([$losses]));
+
+            $predictions = $estimator->predictSample($dataset->sample(0));
+            $string = file_get_contents("report2.json");
+            $results = \GuzzleHttp\json_decode($string,true);
+
+            $id = auth()->user()->id;
+
+            $ids = [];
+            foreach ($results[$predictions] as $key => $val) {
+                if ($val == 1) {
+                    array_push($ids, $key);
+                    // echo "<br> $key";
+                }
+            }
+
+            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
+            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
+            $products = Product::whereIn('id', $ordersItems)->get();
+            $type = '';
+            $choice = 'Recommendation';
+            return response()->json(['products'=>$products], 200);
+        }
+        else {
+            //   $products = Product::all();
+            $string = file_get_contents("products.json");
+            $products = \GuzzleHttp\json_decode($string,true);
+
+            $orders = Order::select('id')->where('user_id', $user[0]->id)->get();
+
+            foreach($products as $product){
+
+                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product['id'])->get()->sum('quantity');
+                $x = "p".$product['id'];
+                $user[0][$x] = $count;
+
+            }
+
+            $string_data = \GuzzleHttp\json_encode($user->toArray());
+            file_put_contents("yazzaan.txt", $string_data);
+            $arr1 = json_decode($string_data, true);
+
+            $arr = [];
+            $label = [];
+
+            foreach ($arr1 as $key => $val) {
+                $a = [];
+                foreach ($val as $k => $v) {
+                    if (is_numeric($v) && $k != "id")
+                        array_push($a, $v);
+                    else if (!is_numeric($v)) {
+                        $v = 2;
+                        array_push($a, $v);
+                    }
+                }
+                array_push($label, $val["id"]);
+                array_push($arr, $a);
+
+            }
+            $dataset = new Labeled($arr, $label);
+
+            $persister = new Filesystem('trained1.model');
+            $estimator = $persister->load();
+
+            $losses = $estimator->steps();
+
+            $writer = Writer::createFromPath('progress.csv', 'w+');
+
+            $writer->insertOne(['loss']);
+            $writer->insertAll(array_transpose([$losses]));
+
+            $predictions = $estimator->predictSample($dataset->sample(0));
+            $string = file_get_contents("report1.json");
+            $results = \GuzzleHttp\json_decode($string,true);
+            if(is_null($predictions)){
+                $predictions = 0;
+            }
+            $id = auth()->user()->id;
+
+            $ids = [];
+            foreach ($results[$predictions] as $key => $val) {
+                if ($val == 1) {
+                    array_push($ids, $key);
+                    // echo "<br> $key";
+                }
+            }
+
+            $orders = Order::select('id')->whereIn('user_id', $ids)->get();
+            $ordersItems = Order_item::select('product_id')->whereIn('order_id', $orders)->get();
+            $products = Product::whereIn('id', $ordersItems)->get();
+            $type = '';
+            $choice = 'Recommendation';
+            return response()->json(['products'=>$products], 200);
+        }
     }
 
 

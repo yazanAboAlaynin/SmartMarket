@@ -382,7 +382,7 @@
                 var X = 5; // first bar position
 
                 //start drawing again
-                for (var i =0; i<Math.min(5,values2.length); i++) {
+                for (var i =0; i<Math.min(7,values2.length); i++) {
 
                     var h = Math.min(250,values2[i][1]*30);
                     barCtx2.beginPath();

@@ -33,5 +33,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('review', 'API\UserController@review');
     Route::get('my/items', 'API\UserController@myItems');
     Route::get('orderReview', 'API\UserController@orderReview');
+    Route::get('recommendation', 'API\UserController@recommendation');
     Route::get('logout', 'API\UserController@logout');
 });
