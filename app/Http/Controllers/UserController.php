@@ -176,15 +176,20 @@ class UserController extends Controller
             return view('user.showProducts', compact('type', 'products', 'choice'));
         }
         else {
-            $products = Product::all();
+         //   $products = Product::all();
+            $string = file_get_contents("products.json");
+            $products = \GuzzleHttp\json_decode($string,true);
+
             $orders = Order::select('id')->where('user_id', $user[0]->id)->get();
 
             foreach($products as $product){
-                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product->id)->get()->sum('quantity');
-                $x = "p".$product->id;
+
+                $count = Order_item::select('quantity')->whereIn('order_id',$orders)->where('product_id',$product['id'])->get()->sum('quantity');
+                $x = "p".$product['id'];
                 $user[0][$x] = $count;
 
             }
+
             $string_data = \GuzzleHttp\json_encode($user->toArray());
             file_put_contents("yazzaan.txt", $string_data);
             $arr1 = json_decode($string_data, true);
@@ -529,17 +534,6 @@ class UserController extends Controller
             Session::remove('cart');
             $order->discount = $totDiscount;
             $order->save();
-
-//            $noti = new Notification();
-//            $noti->user_id = auth()->guard()->user()->id;
-//            $noti->title = 'New Order';
-//            $noti->order_id = $order->id;
-//            $noti->body = 'you have new order from user: '.auth()->guard()->user()->id;
-//            if($noti->save()){
-//
-//                $url = route('admin.order.items',$order->id);
-//               // $noti->toMultiDevice(Admin::all(),$noti->title,$noti->body,null,$url);
-//            }
 
         }
         return redirect()->route('products');

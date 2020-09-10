@@ -619,6 +619,8 @@ class AdminController extends Controller
             }
 
         }
+        $string_data = \GuzzleHttp\json_encode($products->toArray());
+        file_put_contents("products.json", $string_data);
         //dd($users->toArray());
         $string_data = \GuzzleHttp\json_encode($users->toArray());
         file_put_contents("yazzaan.txt", $string_data);
