@@ -76,9 +76,6 @@ class VendorController extends Controller
         $cat = json_encode($cat);
 
         return view('vendor.home', [
-            'products_count' => Product::all()->count(),
-            'orders_count' => Order::all()->count(),
-            'orders_item_count' => Order_item::all()->count(),
             'all' => $all,
             'cat' => $cat
         ]);
@@ -355,7 +352,7 @@ class VendorController extends Controller
         if ($request->ajax()) {
             $id = auth()->guard('vendor')->user()->id;
             $items = Product::select('id')->where('vendor_id', '=', $id)->get();
-            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 0);
+            $data = Order_item::whereIn('product_id', $items)->where('done', '=', 0)->get();
 
             return DataTables::of($data)->make(true);
         }
@@ -366,8 +363,6 @@ class VendorController extends Controller
 
     public function soldItems(Request $request)
     {
-
-
 
         if ($request->ajax()) {
             $id = auth()->guard('vendor')->user()->id;

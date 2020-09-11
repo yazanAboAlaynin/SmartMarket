@@ -11,6 +11,7 @@ use App\Order;
 use App\Order_item;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use League\Csv\Writer;
@@ -51,11 +52,6 @@ class AdminController extends Controller
             'orders_count' => Order::where('done','=',0)->count(),
             'vendorsReq_count' => vendor::where('approved','=',0)->count()
         ]);
-    }
-
-    public function show(Request $request)
-    {
-
     }
 
     public function addnewAdmin(){
@@ -126,9 +122,8 @@ class AdminController extends Controller
             $data = Vendor::where('approved','=','1')->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'"
-                    class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
+
+                    $button = '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
 
                     return $button;
@@ -141,29 +136,7 @@ class AdminController extends Controller
 
     }
 
-    public function editVendor(Request $request,$id)
-    {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|numeric',
-            'mobile' => 'required|numeric',
-            'address' => 'required',
-        ]);
-        $vendor = Vendor::find($id);
-        $vendor->name = $request->input('name');
-        $vendor->email = $request->input('email');
-        $vendor->mobile = $request->input('mobile');
-        $vendor->phone = $request->input('phone');
-        $vendor->address = $request->input('address');
-        $vendor->save(); //persist the data
-        return redirect('admin/vendors');
-    }
 
-    public function updateVendor(Vendor $vendor){
-
-        return view('admin.vendorEdit',compact('vendor'));
-    }
 
     public function deleteVendor(Request $request){
 
@@ -212,9 +185,7 @@ class AdminController extends Controller
             $data = User::latest()->get();
             return DataTables::of($data)
                 ->addColumn('action', function($data){
-                    $button = '<button type="button" name="edit" id="'.$data->id.'"
-                    class="edit btn btn-primary btn-sm" onclick=update('.$data->id.')>Edit</button>';
-                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
+                    $button = '&nbsp;&nbsp;&nbsp;<button type="button" name="delete" id="'.$data->id.'"
                     class="delete btn btn-danger btn-sm" onclick=del('.$data->id.')>Delete</button>';
                     return $button;
                 })
@@ -226,26 +197,7 @@ class AdminController extends Controller
 
     }
 
-    public function editUser(Request $request,$id)
-    {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'mobile' => 'required|numeric',
-           // 'address' => 'required',
-        ]);
-        $user = User::find($id);
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->mobile = $request->input('mobile');
-        //$user->address = $request->input('address');
-        $user->save(); //persist the data
-        return redirect('admin/users');
-    }
 
-    public function updateUser(User $user){
-        return view('admin.userEdit',compact('user'));
-    }
 
     public function deleteUser(Request $request){
         $data = User::findOrFail($request->id);
@@ -282,6 +234,11 @@ class AdminController extends Controller
 
     public function done(Request $request){
         $data = Order::findOrFail($request->id);
+
+            DB::table('order_items')
+                ->where('order_id', $data->id)
+                ->update(array('done' => 1));
+
         $data->done = 1;
         $data->save();
         return;

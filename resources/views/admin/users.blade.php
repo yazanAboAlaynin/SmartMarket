@@ -73,9 +73,6 @@
 
         });
 
-        function update(id) {
-            window.location.href = 'user/'+id+'/update';
-            }
 
         function del(id) {
 

@@ -58,8 +58,8 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::post('/create', 'auth\RegisterController@register')->name('create');
 
     Route::get('/addAdmin', 'AdminController@addnewAdmin')->name('addAdmin')->middleware('moderator');
-    Route::post('/create', 'AdminController@addAdmin')->name('create')->middleware('moderator');;
-    Route::get('/admins', 'AdminController@admins')->name('admins')->middleware('moderator');;
+    Route::post('/create', 'AdminController@addAdmin')->name('create')->middleware('moderator');
+    Route::get('/admins', 'AdminController@admins')->name('admins')->middleware('moderator');
     Route::get('/admin/delete', 'AdminController@deleteAdmin')->name('admin.delete')->middleware('moderator');;
 
     Route::get('/home', 'AdminController@index')->name('home');
@@ -88,9 +88,9 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
     Route::post('/order/read', 'AdminController@readOrder')->name('read.order');
 
     Route::get('/products', 'AdminController@products')->name('products');
-    Route::get('/product/{product}/update', 'AdminController@updateProduct')->name('product.update');
-    Route::post('/product/{product}/edit', 'AdminController@editProduct')->name('product.edit');
-    Route::get('/product/delete', 'AdminController@deleteProduct')->name('product.delete');
+    Route::get('/product/{product}/update', 'AdminController@updateProduct')->name('product.update')->middleware('moderator');
+    Route::post('/product/{product}/edit', 'AdminController@editProduct')->name('product.edit')->middleware('moderator');
+    Route::get('/product/delete', 'AdminController@deleteProduct')->name('product.delete')->middleware('moderator');
 
     Route::get('/category/add', 'AdminController@addCategory')->name('category.add');
     Route::post('/category/store', 'AdminController@storeCategory')->name('category.store');

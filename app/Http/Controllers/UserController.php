@@ -341,7 +341,7 @@ class UserController extends Controller
         return response()->json([], 200);
     }
 
-
+// Home function
     public function products()
     {
         $orders = Order::where([
@@ -511,8 +511,13 @@ class UserController extends Controller
             $order->discount = 0;
             $order->total_price = $cart->totalPrice;
             $order->done = 0;
-
-
+            foreach ($products as $product){
+                $p = Product::find($product['item']->id);
+                if($p->quantity<$product['qty']){
+                    return redirect()->route('cart');
+                }
+            }
+            $order->save();
             foreach ($products as $product) {
                 $order_item = new Order_item();
                 $order_item->product_id = $product['item']->id;
@@ -527,7 +532,7 @@ class UserController extends Controller
                 $order_item->done = 0;
                 $discount = ($product['item']->discount * $product['item']->price) / 100;
                 $totDiscount += ($discount * $product['qty']);
-                $order->save();
+
                 $order->order_items()->save($order_item);
             }
 

@@ -73,9 +73,7 @@
 
         });
 
-        function update(id) {
-            window.location.href = 'vendor/'+id+'/update';
-        }
+
 
         function del(id) {
 
