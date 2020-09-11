@@ -63,7 +63,6 @@ class UserController extends Controller
             'gender' => 'required',
             'social_status' => 'required',
             'scientific_level' => 'required',
-            'three_most_hobbies' => 'required',
             'image' => 'required',
         ]);
         if ($validator->fails()) {
@@ -87,7 +86,6 @@ class UserController extends Controller
             'gender' => $input['gender'],
             'social_status' => $input['social_status'],
             'scientific_level' => $input['scientific_level'],
-            'three_most_hobbies' => $input['three_most_hobbies'],
             'image' => $imagePath,
         ]);
         $success['token'] = $user->createToken('MyApp')->accessToken;
